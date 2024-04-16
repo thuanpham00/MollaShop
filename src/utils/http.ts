@@ -30,7 +30,7 @@ class http {
         (error) => {
           console.log(error)
         }
-      )
+      ) // việc gửi access_token lên server để xác thực người dùng, bảo mật, phân quyền
     this.instance.interceptors.response.use(
       (response) => {
         //console.log(response)

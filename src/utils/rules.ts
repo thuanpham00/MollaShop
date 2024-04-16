@@ -27,7 +27,7 @@ export const schema = yup
         }
         return price_max !== "" || price_min !== ""
       }
-    }).defined(),
+    }).defined(), // defined giúp loại bỏ giá trị undefined mà không cần dùng required
     price_max: yup.string().test({
       name: "price-not-allowed",
       message: "Giá không phù hợp",

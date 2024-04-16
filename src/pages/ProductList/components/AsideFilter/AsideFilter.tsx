@@ -1,7 +1,7 @@
 import { Link, createSearchParams, useNavigate } from "react-router-dom"
 import Button from "src/Components/Button"
 import { path } from "src/constants/path"
-import { queryParamConfig } from "../ProductList"
+import { queryParamConfig } from "../../ProductList"
 import { Categories } from "src/types/categories.type"
 import classNames from "classnames"
 import { Controller, useForm } from "react-hook-form"
@@ -63,7 +63,7 @@ export default function AsideFilter({ categories, queryConfig }: Props) {
       <Link
         to={path.productList}
         className={classNames("flex items-center gap-x-2 text-gray-500 duration-200 uppercase font-semibold text-md", {
-          "text-secondBlue": !category
+          "text-primaryOrange": !category
         })}
       >
         <svg
@@ -97,7 +97,7 @@ export default function AsideFilter({ categories, queryConfig }: Props) {
                   }).toString()
                 }}
                 className={classNames("relative font-medium", {
-                  "text-secondBlue": isActive,
+                  "text-primaryOrange": isActive,
                   "text-gray-500": !isActive
                 })}
               >
@@ -181,7 +181,7 @@ export default function AsideFilter({ categories, queryConfig }: Props) {
 
           <div className="mt-1 text-red-500 min-h-[1.25rem] text-sm text-center">{errors.price_min?.message}</div>
 
-          <Button classInput="flex items-center justify-center w-full bg-primaryBlue text-white py-3 px-2 uppercase hover:bg-primaryBlue/80 duration-300 text-sm">
+          <Button classInput="flex items-center justify-center w-full bg-primaryOrange text-white py-3 px-2 uppercase hover:bg-primaryOrange/80 duration-300 text-sm">
             Áp dụng
           </Button>
         </form>
@@ -197,7 +197,7 @@ export default function AsideFilter({ categories, queryConfig }: Props) {
 
       <Button
         onClick={handleDeleteConfig}
-        classInput="flex items-center justify-center w-full bg-primaryBlue text-white py-3 px-2 uppercase hover:bg-primaryBlue/80 duration-300 text-sm"
+        classInput="flex items-center justify-center w-full bg-primaryOrange text-white py-3 px-2 uppercase hover:bg-primaryOrange/80 duration-300 text-sm"
       >
         Xóa tất cả
       </Button>

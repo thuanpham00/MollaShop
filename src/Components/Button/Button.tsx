@@ -9,7 +9,7 @@ interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
 export default function Button({
   className,
   type,
-  classInput = "flex items-center justify-center gap-x-2 w-full bg-primaryBlue text-white py-4 px-2 uppercase hover:bg-primaryBlue/80 duration-300",
+  classInput = "flex items-center justify-center gap-x-2 w-full bg-primaryOrange text-white py-4 px-2 uppercase hover:bg-primaryOrange/80 duration-300",
   isLoading,
   disabled,
   children,

@@ -19,27 +19,27 @@ export default function Footer() {
               <h3 className="text-[#27232f] text-2xl font-semibold">Shop</h3>
               <ul className="mt-10">
                 <li>
-                  <a href="#" className="text-primaryBlue mb-2 block text-base">
+                  <a href="#" className="text-primaryOrange mb-2 block text-base">
                     Hot deals
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="text-primaryBlue mb-2 block text-base">
+                  <a href="#" className="text-primaryOrange mb-2 block text-base">
                     Categories
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="text-primaryBlue mb-2 block text-base">
+                  <a href="#" className="text-primaryOrange mb-2 block text-base">
                     Brands
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="text-primaryBlue mb-2 block text-base">
+                  <a href="#" className="text-primaryOrange mb-2 block text-base">
                     Rebates
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="text-primaryBlue mb-2 block text-base">
+                  <a href="#" className="text-primaryOrange mb-2 block text-base">
                     Weekly deals
                   </a>
                 </li>
@@ -50,27 +50,27 @@ export default function Footer() {
               <h3 className="text-[#27232f] text-2xl font-semibold">Need help?</h3>
               <ul className="mt-10">
                 <li>
-                  <a href="#" className="text-primaryBlue mb-2 block text-base">
+                  <a href="#" className="text-primaryOrange mb-2 block text-base">
                     Contact
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="text-primaryBlue mb-2 block text-base">
+                  <a href="#" className="text-primaryOrange mb-2 block text-base">
                     Order tracking
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="text-primaryBlue mb-2 block text-base">
+                  <a href="#" className="text-primaryOrange mb-2 block text-base">
                     FAQs
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="text-primaryBlue mb-2 block text-base">
+                  <a href="#" className="text-primaryOrange mb-2 block text-base">
                     Return policy
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="text-primaryBlue mb-2 block text-base">
+                  <a href="#" className="text-primaryOrange mb-2 block text-base">
                     Privacy policy
                   </a>
                 </li>
@@ -81,17 +81,17 @@ export default function Footer() {
               <h3 className="text-[#27232f] text-2xl font-semibold">Contact</h3>
               <ul className="mt-10">
                 <li>
-                  <a href="#" className="text-primaryBlue mb-2 block text-base">
+                  <a href="#" className="text-primaryOrange mb-2 block text-base">
                     23/46 NHT, Tan Phu, Ho Chi Minh city
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="text-primaryBlue mb-2 block text-base">
+                  <a href="#" className="text-primaryOrange mb-2 block text-base">
                     phamminhthuan912@gmail.com
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="text-primaryBlue mb-2 block text-base">
+                  <a href="#" className="text-primaryOrange mb-2 block text-base">
                     931-554-657
                   </a>
                 </li>

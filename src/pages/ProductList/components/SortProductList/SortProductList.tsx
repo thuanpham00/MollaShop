@@ -1,5 +1,5 @@
 import { Link, createSearchParams, useNavigate } from "react-router-dom"
-import { queryParamConfig } from "../ProductList"
+import { queryParamConfig } from "../../ProductList"
 import { path } from "src/constants/path"
 import { sortBy } from "src/constants/product"
 import { ProductListConfig } from "src/types/product.type"
@@ -54,36 +54,36 @@ export default function SortProductList({ queryConfig, page_size }: Props) {
         <div className="flex items-center flex-wrap gap-2">
           <span>Sắp xếp theo</span>
           <button
-            className={classNames("px-4 py-2 rounded-sm shadow-md", {
-              "bg-primaryBlue text-white": isActiveSort(sortBy.view),
-              "bg-[#c9ada7] text-black": !isActiveSort(sortBy.view)
+            className={classNames("px-4 py-2 rounded-sm", {
+              "bg-primaryOrange text-white": isActiveSort(sortBy.view),
+              "border border-black text-black": !isActiveSort(sortBy.view)
             })}
             onClick={() => handleSort(sortBy.view)}
           >
             Phổ biến
           </button>
           <button
-            className={classNames("px-4 py-2 rounded-sm shadow-md", {
-              "bg-primaryBlue text-white": isActiveSort(sortBy.createdAt),
-              "bg-[#c9ada7] text-black": !isActiveSort(sortBy.createdAt)
+            className={classNames("px-4 py-2 rounded-sm", {
+              "bg-primaryOrange text-white": isActiveSort(sortBy.createdAt),
+              "border border-black text-black": !isActiveSort(sortBy.createdAt)
             })}
             onClick={() => handleSort(sortBy.createdAt)}
           >
             Mới nhất
           </button>
           <button
-            className={classNames("px-4 py-2 rounded-sm shadow-md", {
-              "bg-primaryBlue text-white": isActiveSort(sortBy.sold),
-              "bg-[#c9ada7] text-black": !isActiveSort(sortBy.sold)
+            className={classNames("px-4 py-2 rounded-sm", {
+              "bg-primaryOrange text-white": isActiveSort(sortBy.sold),
+              "border border-black text-black": !isActiveSort(sortBy.sold)
             })}
             onClick={() => handleSort(sortBy.sold)}
           >
             Bán chạy
           </button>
           <select
-            className={classNames("px-4 py-2 rounded-sm shadow-md outline-none", {
-              "bg-primaryBlue text-white": isActiveSort(sortBy.price),
-              "bg-[#c9ada7] text-black": !isActiveSort(sortBy.price)
+            className={classNames("px-4 py-2 rounded-sm outline-none", {
+              "bg-primaryOrange text-white": isActiveSort(sortBy.price),
+              "border border-black text-black": !isActiveSort(sortBy.price)
             })}
             value={order || ""}
             onChange={(event) => handleOrderPrice(event.target.value as Exclude<ProductListConfig["order"], undefined>)}

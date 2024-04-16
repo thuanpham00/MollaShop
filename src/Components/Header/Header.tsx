@@ -26,17 +26,17 @@ export default function Header() {
 
   return (
     <header>
-      <div className="bg-primaryBlue">
+      <div className="bg-[#f2f2f2]">
         <div className="container">
           <div className="flex items-center justify-between py-2">
-            <div className="text-white text-base sm hidden md:block lg:block">
+            <div className="text-grayText text-base sm hidden md:block lg:block">
               <span className="font-normal">24/7 Customer service</span>
-              <span className="ml-2 font-semibold">931-554-657</span>
+              <span className="ml-2 font-medium">931-554-657</span>
             </div>
 
             <div className="flex items-center gap-x-6">
               <Popover
-                className="flex items-center gap-x-1 py-1 text-white text-base hover:text-white/70 cursor-pointer"
+                className="flex items-center gap-x-1 py-1 text-grayText text-base hover:text-grayText/70 cursor-pointer"
                 renderPopover={
                   <div className="bg-white relative shadow-md rounded-sm border border-gray-200">
                     <div className="flex flex-col">
@@ -75,7 +75,7 @@ export default function Header() {
 
               {isAuthenticated && (
                 <Popover
-                  className="flex items-center gap-x-1 py-1 text-white text-base hover:text-white/70 cursor-pointer"
+                  className="flex items-center gap-x-1 py-1 text-grayText text-base hover:text-grayText/70 cursor-pointer"
                   renderPopover={
                     <div className="bg-white relative shadow-md rounded-sm border border-gray-200">
                       <div className="flex flex-col">
@@ -105,10 +105,10 @@ export default function Header() {
 
               {!isAuthenticated && (
                 <div className="flex items-center gap-x-4">
-                  <Link to={path.register} className="text-white text-base hover:text-white/80 cursor-pointer">
+                  <Link to={path.register} className="text-grayText text-base hover:text-grayText/80 cursor-pointer">
                     Đăng ký
                   </Link>
-                  <Link to={path.login} className="text-white text-base hover:text-white/80 cursor-pointer">
+                  <Link to={path.login} className="text-grayText text-base hover:text-grayText/80 cursor-pointer">
                     Đăng nhập
                   </Link>
                 </div>
@@ -118,19 +118,15 @@ export default function Header() {
         </div>
       </div>
 
-      <div className="bg-secondBlue">
+      <div className="bg-[#fff]">
         <div className="container">
-          <div className="grid grid-cols-12 gap-4 py-5 items-center">
+          <div className="grid grid-cols-12 gap-4 py-4 items-center">
             <Link to="/" className="col-span-2">
-              <img
-                src="https://websitedemos.net/electronic-store-04/wp-content/uploads/sites/1055/2022/03/electronic-store-logo.svg"
-                className="w-full"
-                alt="Electronic Store"
-              />
+              <span className="w-full text-3xl font-extrabold">Brand Shop</span>
             </Link>
 
             <form className="col-span-8 col-start-4 shadow-sm">
-              <div className="bg-white p-1 flex items-center round-sm">
+              <div className="bg-white p-1 flex items-center round-sm border border-gray-300">
                 <input type="text" placeholder="Search product..." className="flex-grow outline-none p-2 text-base" />
                 <div className="flex-shrink-0 pr-2 cursor-pointer">
                   <svg
@@ -280,14 +276,14 @@ export default function Header() {
                   </div>
                 }
               >
-                <Link to="/">
+                <Link to="/" className="w-11 h-11 bg-primaryOrange flex items-center justify-center">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
                     viewBox="0 0 24 24"
                     strokeWidth={1.5}
                     stroke="white"
-                    className="w-10 h-8"
+                    className="w-6 h-6"
                   >
                     <path
                       strokeLinecap="round"
@@ -302,36 +298,41 @@ export default function Header() {
         </div>
       </div>
 
-      <div className="bg-secondBlue border-[#faedcd] border-t-2">
+      <div className="bg-primaryOrange">
         <div className="container">
           <div className="flex items-center justify-center py-2 flex-wrap gap-x-20">
+            <Link to={path.home}>
+              <span className="text-base text-white font-medium hover:text-white/70 d-font-medium-300 capitalize">
+                Home
+              </span>
+            </Link>
             <Link to={path.productList}>
-              <span className="text-base text-gray-700 font-medium hover:text-gray-700/70 duration-300 capitalize">
+              <span className="text-base text-white font-medium hover:text-white/70 d-font-medium-300 capitalize">
                 All products
               </span>
             </Link>
             <Link to={`${`/productList?page=1&limit=15&sort_by=view&category=60afacca6ef5b902180aacaf`}`}>
-              <span className="text-base text-gray-700 font-medium hover:text-gray-700/70 duration-300 capitalize">
+              <span className="text-base text-white font-medium hover:text-white/70 d-font-medium-300 capitalize">
                 Đồng hồ
               </span>
             </Link>
             <Link to={`${`/productList?page=1&limit=15&category=60aba4e24efcc70f8892e1c6&sort_by=view`}`}>
-              <span className="text-base text-gray-700 font-medium hover:text-gray-700/70 duration-300 capitalize">
+              <span className="text-base text-white font-medium hover:text-white/70 d-font-medium-300 capitalize">
                 Áo thun
               </span>
             </Link>
             <Link to={`${`/productList?page=1&limit=15&category=60afafe76ef5b902180aacb5&sort_by=view`}`}>
-              <span className="text-base text-gray-700 font-medium hover:text-gray-700/70 duration-300 capitalize">
+              <span className="text-base text-white font-medium hover:text-white/70 d-font-medium-300 capitalize">
                 Điện thoại
               </span>
             </Link>
             <Link to={path.productList}>
-              <span className="text-base text-gray-700 font-medium hover:text-gray-700/70 duration-300 capitalize">
+              <span className="text-base text-white font-medium hover:text-white/70 d-font-medium-300 capitalize">
                 Điện thoại và Phụ kiện
               </span>
             </Link>
             <Link to={path.productList}>
-              <span className="text-base text-gray-700 font-medium hover:text-gray-700/70 duration-300 capitalize">
+              <span className="text-base text-white font-medium hover:text-white/70 d-font-medium-300 capitalize">
                 Khuyến mãi
               </span>
             </Link>

@@ -1,7 +1,7 @@
 import { keepPreviousData, useQuery } from "@tanstack/react-query"
-import AsideFilter from "./AsideFilter"
-import Product from "./Product/Product"
-import SortProductList from "./SortProductList"
+import AsideFilter from "./components/AsideFilter"
+import Product from "./components/Product/Product"
+import SortProductList from "./components/SortProductList"
 import { productApi } from "src/apis/products.api"
 import { ProductListConfig } from "src/types/product.type"
 import useQueryParams from "src/Hooks/useSearchParams"
@@ -27,7 +27,7 @@ export default function ProductList() {
       order: queryParams.order,
       rating_filter: queryParams.rating_filter,
       price_max: queryParams.price_max,
-      price_min: queryParams.price_min,
+      price_min: queryParams.price_min
     },
     isUndefined // loại giá trị undefined ra
   )
@@ -60,8 +60,8 @@ export default function ProductList() {
                 <AsideFilter queryConfig={queryConfig} categories={getCategoriesQuery.data?.data.data || []} />
               </div>
 
-              <div className="w-[1px] h-[2000px] bg-gray-300 ml-[40px] rounded-md shadow-md"></div>
-              
+              <div className="w-[1px] h-[1000px] bg-gray-300 ml-[40px] rounded-md shadow-md"></div>
+
               <div className="col-span-9 col-start-4">
                 <SortProductList queryConfig={queryConfig} page_size={data.pagination.page_size} />
 
