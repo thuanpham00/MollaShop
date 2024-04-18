@@ -27,3 +27,7 @@ export function formatNumberToSocialStyle(value: number) {
 export type NoUndefinedField<T> = {
   [P in keyof T]-?: NoUndefinedField<NonNullable<T[P]>> // loại bỏ giá trị undefined của 1 type
 }
+
+export function rateSale(original: number, sale: number) {
+  return (100 - Math.round((sale / original) * 100)) + "%"
+}

@@ -9,6 +9,7 @@ import { useContext } from "react"
 import { AppContext } from "./contexts/auth.context"
 import Home from "./pages/Home"
 import ProductList from "./pages/ProductList"
+import ProductDetail from "./pages/ProductDetail"
 
 // <Outlet /> giúp truy cập vào route con
 // <Navigate /> điều hướng trang khi xử lý bằng js
@@ -43,6 +44,15 @@ export default function useRouterElements() {
       element: (
         <MainLayout>
           <ProductList />
+        </MainLayout>
+      )
+    },
+    {
+      path: path.productDetail,
+      index: true,
+      element: (
+        <MainLayout>
+          <ProductDetail />
         </MainLayout>
       )
     },

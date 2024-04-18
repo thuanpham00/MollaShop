@@ -6,6 +6,7 @@ import { useContext } from "react"
 import { AppContext } from "src/contexts/auth.context"
 import { useMutation } from "@tanstack/react-query"
 import avatar from "../../img/minhthuan.jpg"
+import logo from "../../img/Black Simple Clothing Brand Logo.png"
 
 export default function Header() {
   const { isAuthenticated, setIsAuthenticated, isProfile, setIsProfile } = useContext(AppContext)
@@ -122,11 +123,11 @@ export default function Header() {
         <div className="container">
           <div className="grid grid-cols-12 gap-4 py-4 items-center">
             <Link to="/" className="col-span-2">
-              <span className="w-full text-3xl font-extrabold">Brand Shop</span>
+              <img src={logo} className="object-cover w-full h-[50px]" alt="logo" />
             </Link>
 
             <form className="col-span-8 col-start-4 shadow-sm">
-              <div className="bg-white p-1 flex items-center round-sm border border-gray-300">
+              <div className="bg-white p-1 flex items-center round-sm border border-gray-400">
                 <input type="text" placeholder="Search product..." className="flex-grow outline-none p-2 text-base" />
                 <div className="flex-shrink-0 pr-2 cursor-pointer">
                   <svg
