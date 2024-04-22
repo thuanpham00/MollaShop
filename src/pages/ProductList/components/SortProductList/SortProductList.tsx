@@ -1,10 +1,10 @@
 import { Link, createSearchParams, useNavigate } from "react-router-dom"
-import { queryParamConfig } from "../../ProductList"
 import { path } from "src/constants/path"
 import { sortBy } from "src/constants/product"
 import { ProductListConfig } from "src/types/product.type"
 import classNames from "classnames"
 import { omit } from "lodash"
+import { queryParamConfig } from "src/Hooks/useQueryConfig"
 interface Props {
   queryConfig: queryParamConfig
   page_size: number
@@ -28,7 +28,7 @@ export default function SortProductList({ queryConfig, page_size }: Props) {
             ...queryConfig,
             sort_by: sortByValue
           },
-          ["order"]
+          ["order"] // loại bỏ config order
         )
       ).toString()
     }) // ...queryConfig có nghĩa là khi fetch data thì nó sẽ lưu lại các param đang sẵn có (clone lại hết)

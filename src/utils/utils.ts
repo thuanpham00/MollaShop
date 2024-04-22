@@ -29,5 +29,21 @@ export type NoUndefinedField<T> = {
 }
 
 export function rateSale(original: number, sale: number) {
-  return (100 - Math.round((sale / original) * 100)) + "%"
+  return 100 - Math.round((sale / original) * 100) + "%"
 }
+
+const removeSpecialCharacter = (str: string) =>
+  // eslint-disable-next-line no-useless-escape
+  str.replace(/!|@|%|\^|\*|\(|\)|\+|\=|\<|\>|\?|\/|,|\.|\:|\;|\'|\"|\&|\#|\[|\]|~|\$|_|`|-|{|}|\||\\/g, "") // loại bỏ kí tự đặc biệt
+
+
+export const generateNameId = ({name, id}: {name: string, id: string}) =>{
+  return removeSpecialCharacter(name).replace(/\s/g, "-") + `-i-${id}` // thay khoảng trắng == "-"
+}
+
+export const getIdFromNameId = (nameId: string) => {
+  const arr = nameId.split("-i-") 
+  return arr[arr.length - 1]
+}
+
+// ví dụ chuỗi "thuan-i.427138492384" nó tách ra ["thuan", "427138492384"] và length = 2 nó trừ 1 để lấy phần tử cuối - lấy ra ID

@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom"
+import { Link, createSearchParams, useNavigate } from "react-router-dom"
 import Popover from "../Popover"
 import { path } from "src/constants/path"
 import { loginApi } from "src/apis/login.api"
@@ -7,8 +7,27 @@ import { AppContext } from "src/contexts/auth.context"
 import { useMutation } from "@tanstack/react-query"
 import avatar from "../../img/minhthuan.jpg"
 import logo from "../../img/Black Simple Clothing Brand Logo.png"
+import useQueryConfig from "src/Hooks/useQueryConfig"
+import { useForm } from "react-hook-form"
+import { SchemaType, schema } from "src/utils/rules"
+import { yupResolver } from "@hookform/resolvers/yup"
+import { omit } from "lodash"
+
+type FormData = Pick<SchemaType, "name">
+const nameSchema = schema.pick(["name"])
 
 export default function Header() {
+  const navigate = useNavigate()
+  const queryConfig = useQueryConfig()
+  //console.log(queryConfig)
+
+  const { handleSubmit, register } = useForm<FormData>({
+    resolver: yupResolver(nameSchema), // validate
+    defaultValues: {
+      name: ""
+    }
+  })
+
   const { isAuthenticated, setIsAuthenticated, isProfile, setIsProfile } = useContext(AppContext)
 
   const logoutAccountMutation = useMutation({
@@ -24,6 +43,25 @@ export default function Header() {
   const handleLogout = () => {
     logoutAccountMutation.mutate()
   }
+
+  const onSubmitSearch = handleSubmit((data) => {
+    const config = queryConfig.order
+      ? omit(
+          {
+            ...queryConfig,
+            name: data.name
+          },
+          ["order", "sort_by"]
+        )
+      : {
+          ...queryConfig,
+          name: data.name
+        }
+    navigate({
+      pathname: path.productList,
+      search: createSearchParams(config).toString()
+    })
+  })
 
   return (
     <header>
@@ -123,12 +161,17 @@ export default function Header() {
         <div className="container">
           <div className="grid grid-cols-12 gap-4 py-4 items-center">
             <Link to="/" className="col-span-2">
-              <img src={logo} className="object-cover w-full h-[50px]" alt="logo" />
+              <img src={logo} className="object-cover w-full h-[49px]" alt="logo" />
             </Link>
 
-            <form className="col-span-8 col-start-4 shadow-sm">
+            <form onSubmit={onSubmitSearch} className="col-span-8 col-start-4 shadow-sm">
               <div className="bg-white p-1 flex items-center round-sm border border-gray-400">
-                <input type="text" placeholder="Search product..." className="flex-grow outline-none p-2 text-base" />
+                <input
+                  type="text"
+                  placeholder="Search product..."
+                  className="flex-grow outline-none p-2 text-base"
+                  {...register("name")}
+                />
                 <div className="flex-shrink-0 pr-2 cursor-pointer">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"

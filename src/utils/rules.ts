@@ -39,7 +39,8 @@ export const schema = yup
         }
         return price_max !== "" || price_min !== ""
       }
-    }).defined() // defined giúp loại bỏ giá trị undefined mà không cần dùng required
+    }).defined(),
+    name: yup.string().trim().required("Tên sản phẩm là bắt buộc") // defined giúp loại bỏ giá trị undefined mà không cần dùng required
   })
   .required()
 // định dạng form (validate form)

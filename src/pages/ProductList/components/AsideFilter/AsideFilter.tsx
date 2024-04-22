@@ -1,7 +1,6 @@
 import { Link, createSearchParams, useNavigate } from "react-router-dom"
 import Button from "src/Components/Button"
 import { path } from "src/constants/path"
-import { queryParamConfig } from "../../ProductList"
 import { Categories } from "src/types/categories.type"
 import classNames from "classnames"
 import { Controller, useForm } from "react-hook-form"
@@ -10,6 +9,7 @@ import { SchemaType, schema } from "src/utils/rules"
 import { yupResolver } from "@hookform/resolvers/yup"
 import RatingStar from "../RatingStar"
 import { omit } from "lodash"
+import { queryParamConfig } from "src/Hooks/useQueryConfig"
 
 interface Props {
   categories: Categories[]

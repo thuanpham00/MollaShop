@@ -1,5 +1,5 @@
 import { createSearchParams, useNavigate } from "react-router-dom"
-import { queryParamConfig } from "../../ProductList"
+import { queryParamConfig } from "src/Hooks/useQueryConfig"
 import { path } from "src/constants/path"
 
 /**

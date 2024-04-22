@@ -4,34 +4,31 @@ import Product from "./components/Product/Product"
 import SortProductList from "./components/SortProductList"
 import { productApi } from "src/apis/products.api"
 import { ProductListConfig } from "src/types/product.type"
-import useQueryParams from "src/Hooks/useSearchParams"
 import Pagination from "src/Components/Pagination"
-import { isUndefined, omitBy } from "lodash"
 import { Fragment } from "react/jsx-runtime"
 import { categoriesApi } from "src/apis/categories"
-
-export type queryParamConfig = {
-  [key in keyof ProductListConfig]: string
-} // lấy ra các key của ProductListConfig và gán lại bằng value "string"
+import useQueryConfig from "src/Hooks/useQueryConfig"
 
 export default function ProductList() {
-  const queryParams: queryParamConfig = useQueryParams() // lấy query params từ url truyền xuống rồi fetch data ra
-  const queryConfig: queryParamConfig = omitBy(
-    {
-      page: queryParams.page || "1", // mặc định
-      limit: queryParams.limit || "15", // mặc định - lấy từ url xuống
-      sort_by: queryParams.sort_by || "view", // mặc định
-      category: queryParams.category,
-      exclude: queryParams.exclude,
-      name: queryParams.name,
-      order: queryParams.order,
-      rating_filter: queryParams.rating_filter,
-      price_max: queryParams.price_max,
-      price_min: queryParams.price_min
-    },
-    isUndefined // loại giá trị undefined ra
-  )
+  const queryConfig = useQueryConfig() // lấy tham số truy vấn
   //console.log(queryConfig)
+
+  // bản chất của nó:
+  /**
+   * Lấy các tham số truy vấn từ URL - queryConfig
+   * truyền queryConfig vào productList fetch lại data
+   */
+
+  /**
+   * Và khi click vào các sort hay filter thì nó điều hướng trang (navigate) => ...queryConfig, name:
+   * và nó thêm param vào name
+   */
+
+  /**
+   * và nó tiếp tục lấy các tham số từ URL xuống 
+   * productList fetch lại data
+   */
+  // cơ chế hoạt động
 
   const getProductListQuery = useQuery({
     queryKey: ["productList", queryConfig], // định danh

@@ -5,10 +5,11 @@ import { useParams } from "react-router-dom"
 import InputNumber from "src/Components/InputNumber"
 import ProductRating from "src/Components/ProductRating"
 import { productApi } from "src/apis/products.api"
-import { formatCurrency, formatNumberToSocialStyle, rateSale } from "src/utils/utils"
+import { formatCurrency, formatNumberToSocialStyle, getIdFromNameId, rateSale } from "src/utils/utils"
 
 export default function ProductDetail() {
-  const { id } = useParams() // lấy id từ url
+  const { nameId } = useParams() // lấy id từ url
+  const id = getIdFromNameId(nameId as string)
   const getProductDetailQuery = useQuery({
     queryKey: ["product", id],
     queryFn: () => {
