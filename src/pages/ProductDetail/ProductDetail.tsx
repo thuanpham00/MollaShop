@@ -2,12 +2,16 @@ import { useQuery } from "@tanstack/react-query"
 import DOMPurify from "dompurify"
 import { useEffect, useMemo, useRef, useState } from "react"
 import { useParams } from "react-router-dom"
-import InputNumber from "src/Components/InputNumber"
 import ProductRating from "src/Components/ProductRating"
+import { queryParamConfig } from "src/Hooks/useQueryConfig"
 import { productApi } from "src/apis/products.api"
+import { ProductItem, ProductListConfig } from "src/types/product.type"
 import { formatCurrency, formatNumberToSocialStyle, getIdFromNameId, rateSale } from "src/utils/utils"
+import Product from "../ProductList/components/Product"
+import QuantityController from "src/Components/QuantityController"
 
 export default function ProductDetail() {
+  const [buyCount, setBuyCount] = useState(1)
   const { nameId } = useParams() // lấy id từ url
   const id = getIdFromNameId(nameId as string)
   const getProductDetailQuery = useQuery({
@@ -17,6 +21,29 @@ export default function ProductDetail() {
     }
   })
   const product = getProductDetailQuery.data?.data.data
+  //console.log(product)
+
+  useEffect(() => {
+    if (product && product.images.length > 0) {
+      setActiveImage(product.images[0])
+    }
+  }, [product])
+
+  const queryConfig: queryParamConfig = {
+    page: "1",
+    limit: "20",
+    category: product?.category._id
+  }
+  const getProductListQuery = useQuery({
+    queryKey: ["productList", queryConfig], // định danh
+    queryFn: () => {
+      return productApi.getProductList(queryConfig as ProductListConfig)
+    }, // api (url) nhận vào params và params truyền xuống - lấy ra và fetch lại data theo yêu cầu
+    enabled: Boolean(product), // khi product có data cái query mới được gọi
+    staleTime: 5 * 60 * 1000 // dưới 5 phút nó không gọi lại api
+  })
+  //console.log(getProductListQuery.data?.data.data.products)
+
   const [currentImagesIndex, setCurrentImagesIndex] = useState([0, 5])
   const [activeImage, setActiveImage] = useState("")
   const currentImages = useMemo(
@@ -27,16 +54,8 @@ export default function ProductDetail() {
   // product thay đổi useMemo mới chạy - còn không - thì không re-render
   const refImg = useRef<HTMLImageElement>(null) // truy cập dom - truy cập đến element
 
-  useEffect(() => {
-    if (product && product.images.length > 0) {
-      setActiveImage(product.images[0])
-    }
-  }, [product])
-
-  if (!product) return null
-
   const next = () => {
-    if (currentImagesIndex[1] < product?.images.length) {
+    if (currentImagesIndex[1] < (product as ProductItem).images.length) {
       setCurrentImagesIndex((prev) => [prev[0] + 1, prev[1] + 1])
     }
   }
@@ -56,7 +75,7 @@ export default function ProductDetail() {
     const image = refImg.current as HTMLImageElement
     const { naturalWidth, naturalHeight } = image // width và height ảnh gốc
     const { offsetX, offsetY } = event.nativeEvent // tọa độ thay đổi liên tục
-    console.log(offsetX, offsetY)
+    //console.log(offsetX, offsetY)
     if (image) {
       image.style.width = naturalWidth + "px" // zoom ảnh to lên khi mouse move
       image.style.height = naturalHeight + "px"
@@ -81,6 +100,11 @@ export default function ProductDetail() {
     }
   }
 
+  const handleBuyCount = (value: number) => {
+    setBuyCount(value)
+  }
+
+  if (!product) return null
   return (
     <div className="bg-gray-100 py-6">
       <div className="container">
@@ -169,40 +193,8 @@ export default function ProductDetail() {
 
               <div className="mt-8 flex items-center">
                 <div className="capitalize text-gray-500">số lượng</div>
-                <div className="ml-10 flex items-center">
-                  <button className="h-8 w-8 flex items-center border border-gray-200 justify-center hover:bg-gray-200 duration-100 rounded-tl rounded-bl">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      strokeWidth={1.5}
-                      stroke="currentColor"
-                      className="w-3 h-3"
-                    >
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M5 12h14" />
-                    </svg>
-                  </button>
 
-                  <InputNumber
-                    value={1}
-                    className=""
-                    classNameError="hidden"
-                    classNameInput="h-8 w-14 border-t border-b border-gray-300 p-1 text-center outline-none"
-                  />
-
-                  <button className="h-8 w-8 flex items-center border border-gray-200 justify-center hover:bg-gray-200 duration-100 rounded-tr rounded-br">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      strokeWidth={1.5}
-                      stroke="currentColor"
-                      className="w-3 h-3"
-                    >
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-                    </svg>
-                  </button>
-                </div>
+                <QuantityController onDecrease={handleBuyCount} onIncrease={handleBuyCount} onType={handleBuyCount} value={buyCount} max={product.quantity}/>
 
                 <div className="ml-5 text-gray-500 text-sm">
                   <span>{product.quantity}</span>
@@ -244,6 +236,19 @@ export default function ProductDetail() {
                 __html: DOMPurify.sanitize(product.description)
               }}
             />
+          </div>
+        </div>
+
+        <div className="mt-5 bg-white p-4 shadow">
+          <span className="block px-3 py-4 uppercase text-lg rounded bg-gray-50">co thể bạn cũng thích</span>
+          <div className="text-sm grid grid-cols-4 md:grid-cols-5 lg:grid-cols-6 mt-4 gap-10">
+            {getProductListQuery.data?.data.data.products.map((item) => {
+              return (
+                <div className="col-span-1" key={item._id}>
+                  <Product item={item} key={item._id} />
+                </div>
+              )
+            })}
           </div>
         </div>
       </div>

@@ -25,7 +25,7 @@ export default function ProductList() {
    */
 
   /**
-   * và nó tiếp tục lấy các tham số từ URL xuống 
+   * và nó tiếp tục lấy các tham số từ URL xuống
    * productList fetch lại data
    */
   // cơ chế hoạt động
@@ -35,7 +35,8 @@ export default function ProductList() {
     queryFn: () => {
       return productApi.getProductList(queryConfig as ProductListConfig)
     }, // api (url) nhận vào params và params truyền xuống - lấy ra và fetch lại data theo yêu cầu
-    placeholderData: keepPreviousData
+    placeholderData: keepPreviousData,
+    staleTime: 5 * 60 * 1000 // dưới 5 phút nó không gọi lại api
   })
 
   const getCategoriesQuery = useQuery({

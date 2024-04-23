@@ -46,4 +46,4 @@ export const getIdFromNameId = (nameId: string) => {
   return arr[arr.length - 1]
 }
 
-// ví dụ chuỗi "thuan-i.427138492384" nó tách ra ["thuan", "427138492384"] và length = 2 nó trừ 1 để lấy phần tử cuối - lấy ra ID
+// ví dụ chuỗi "thuan-i.427138492384" nó tách ra ["thuan", "427138492384"] và length = 2 nó trừ 1 để lấy phần tử cuối - 1 lấy ra ID

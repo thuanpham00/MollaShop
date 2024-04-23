@@ -12,3 +12,5 @@ export const productApi = {
     return Http.get<SuccessResponse<ProductItem>>(`products/${id}`)
   }
 }
+
+// api backend

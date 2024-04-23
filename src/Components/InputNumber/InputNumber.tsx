@@ -1,12 +1,12 @@
 import { InputHTMLAttributes, forwardRef } from "react"
 
-interface PropsType extends InputHTMLAttributes<HTMLInputElement> {
+export interface InputNumberProp extends InputHTMLAttributes<HTMLInputElement> {
   messageInputError?: string
   classNameInput?: string // ko nhất thiết phải truyền vào props
   classNameError?: string // ko nhất thiết phải truyền vào props
 }
 // nó sẽ thừa kế lại các attribute của thẻ input
-const InputNumber = forwardRef<HTMLInputElement, PropsType>(function InputNumberRef(
+const InputNumber = forwardRef<HTMLInputElement, InputNumberProp>(function InputNumberRef(
   {
     className,
     messageInputError,

@@ -7,3 +7,5 @@ export const categoriesApi = {
     return Http.get<SuccessResponse<Categories[]>>("categories")
   }
 }
+
+// api backend

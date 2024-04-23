@@ -7,7 +7,7 @@ import { formatCurrency, formatNumberToSocialStyle, generateNameId } from "src/u
 interface Props {
   item: ProductItem
 }
-
+// ${generateNameId({name: item.name, id: item._id})}
 export default function Product({item}: Props) {
   return (
     <Link to={`${path.home}${generateNameId({name: item.name, id: item._id})}`}>
