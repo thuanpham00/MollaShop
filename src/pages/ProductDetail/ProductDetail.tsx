@@ -1,4 +1,4 @@
-import { useQuery } from "@tanstack/react-query"
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query"
 import DOMPurify from "dompurify"
 import { useEffect, useMemo, useRef, useState } from "react"
 import { useParams } from "react-router-dom"
@@ -6,11 +6,25 @@ import ProductRating from "src/Components/ProductRating"
 import { queryParamConfig } from "src/Hooks/useQueryConfig"
 import { productApi } from "src/apis/products.api"
 import { ProductItem, ProductListConfig } from "src/types/product.type"
-import { formatCurrency, formatNumberToSocialStyle, getIdFromNameId, rateSale } from "src/utils/utils"
+import {
+  formatCurrency,
+  formatNumberToSocialStyle,
+  getIdFromNameId,
+  rateSale
+} from "src/utils/utils"
 import Product from "../ProductList/components/Product"
 import QuantityController from "src/Components/QuantityController"
+import { purchaseApi } from "src/apis/purchase.api"
+import { purchaseStatus } from "src/constants/purchaseStatus"
+import { toast } from "react-toastify"
+
+type AddToCart = {
+  product_id: string
+  buy_count: number
+}
 
 export default function ProductDetail() {
+  const queryClient = useQueryClient()
   const [buyCount, setBuyCount] = useState(1)
   const { nameId } = useParams() // lấy id từ url
   const id = getIdFromNameId(nameId as string)
@@ -43,6 +57,26 @@ export default function ProductDetail() {
     staleTime: 5 * 60 * 1000 // dưới 5 phút nó không gọi lại api
   })
   //console.log(getProductListQuery.data?.data.data.products)
+
+  const addToCartMutation = useMutation({
+    mutationFn: (body: AddToCart) => {
+      return purchaseApi.addToCart(body)
+    }
+  })
+
+  const addToCart = () => {
+    addToCartMutation.mutate(
+      { buy_count: buyCount, product_id: product?._id as string },
+      {
+        onSuccess: () => {
+          queryClient.invalidateQueries({
+            queryKey: ["purchaseList", { status: purchaseStatus.inCart }] // addToCart - cập nhật data query
+          }),
+            toast.success("Thêm sản phẩm vào giỏ hàng thành công")
+        }
+      }
+    )
+  }
 
   const [currentImagesIndex, setCurrentImagesIndex] = useState([0, 5])
   const [activeImage, setActiveImage] = useState("")
@@ -136,13 +170,21 @@ export default function ProductDetail() {
                     stroke="currentColor"
                     className="w-5 h-5"
                   >
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M15.75 19.5 8.25 12l7.5-7.5"
+                    />
                   </svg>
                 </button>
                 {currentImages.map((img, index) => {
                   const isActive = img === activeImage
                   return (
-                    <div className="relative w-full pt-[100%]" key={index} onMouseEnter={() => chooseActive(img)}>
+                    <div
+                      className="relative w-full pt-[100%]"
+                      key={index}
+                      onMouseEnter={() => chooseActive(img)}
+                    >
                       <img
                         src={img}
                         alt={product.name}
@@ -165,7 +207,11 @@ export default function ProductDetail() {
                     stroke="currentColor"
                     className="w-5 h-5"
                   >
-                    <path strokeLinecap="round" strokeLinejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="m8.25 4.5 7.5 7.5-7.5 7.5"
+                    />
                   </svg>
                 </button>
               </div>
@@ -175,7 +221,9 @@ export default function ProductDetail() {
               <h1 className="font-medium uppercase text-xl">{product.name}</h1>
               <div className="mt-2 flex items-center gap-4">
                 <div className="flex items-center gap-1">
-                  <span className="border-b-orange-500 border-b text-orange-500">{product.rating}</span>
+                  <span className="border-b-orange-500 border-b text-orange-500">
+                    {product.rating}
+                  </span>
                   <ProductRating rating={product.rating} />
                 </div>
                 <div>
@@ -184,8 +232,12 @@ export default function ProductDetail() {
                 </div>
               </div>
               <div className="mt-8 flex items-center bg-gray-50 px-4 py-3">
-                <div className="text-gray-500 line-through">${formatCurrency(product.price_before_discount)}</div>
-                <div className="ml-4 text-3xl font-medium text-orange-500">${formatCurrency(product.price)}</div>
+                <div className="text-gray-500 line-through">
+                  ${formatCurrency(product.price_before_discount)}
+                </div>
+                <div className="ml-4 text-3xl font-medium text-orange-500">
+                  ${formatCurrency(product.price)}
+                </div>
                 <div className="ml-4 w-[100px] h-[40px] bg-orange-500 text-white flex items-center justify-center">
                   {rateSale(product.price_before_discount, product.price)} GIẢM
                 </div>
@@ -194,7 +246,13 @@ export default function ProductDetail() {
               <div className="mt-8 flex items-center">
                 <div className="capitalize text-gray-500">số lượng</div>
 
-                <QuantityController onDecrease={handleBuyCount} onIncrease={handleBuyCount} onType={handleBuyCount} value={buyCount} max={product.quantity}/>
+                <QuantityController
+                  onDecrease={handleBuyCount}
+                  onIncrease={handleBuyCount}
+                  onType={handleBuyCount}
+                  value={buyCount}
+                  max={product.quantity}
+                />
 
                 <div className="ml-5 text-gray-500 text-sm">
                   <span>{product.quantity}</span>
@@ -203,7 +261,10 @@ export default function ProductDetail() {
               </div>
 
               <div className="mt-8 flex items-center gap-5">
-                <button className="flex h-12 items-center justify-center gap-2 capitalize border border-orange-500 text-orange-500 px-4 py-3 bg-orange-50 rounded">
+                <button
+                  onClick={addToCart}
+                  className="flex h-12 items-center justify-center gap-2 capitalize border border-orange-500 text-orange-500 px-4 py-3 bg-orange-50 rounded"
+                >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
@@ -229,7 +290,9 @@ export default function ProductDetail() {
           </div>
         </div>
         <div className="mt-5 bg-white p-4 shadow">
-          <span className="block px-3 py-4 uppercase text-lg rounded bg-gray-50">mô tả sản phẩm</span>
+          <span className="block px-3 py-4 uppercase text-lg rounded bg-gray-50">
+            mô tả sản phẩm
+          </span>
           <div className="mx-4 mt-5 leading-loose text-sm">
             <div
               dangerouslySetInnerHTML={{
@@ -240,7 +303,9 @@ export default function ProductDetail() {
         </div>
 
         <div className="mt-5 bg-white p-4 shadow">
-          <span className="block px-3 py-4 uppercase text-lg rounded bg-gray-50">co thể bạn cũng thích</span>
+          <span className="block px-3 py-4 uppercase text-lg rounded bg-gray-50">
+            co thể bạn cũng thích
+          </span>
           <div className="text-sm grid grid-cols-4 md:grid-cols-5 lg:grid-cols-6 mt-4 gap-10">
             {getProductListQuery.data?.data.data.products.map((item) => {
               return (

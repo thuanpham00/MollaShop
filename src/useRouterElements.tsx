@@ -10,6 +10,7 @@ import { AppContext } from "./contexts/auth.context"
 import Home from "./pages/Home"
 import ProductList from "./pages/ProductList"
 import ProductDetail from "./pages/ProductDetail"
+import Cart from "./pages/Cart"
 
 // <Outlet /> giúp truy cập vào route con
 // <Navigate /> điều hướng trang khi xử lý bằng js
@@ -30,6 +31,8 @@ function RejectedRouter() {
 export default function useRouterElements() {
   const elementRouter = useRoutes([
     // nó là 1 tập hợp array gồm các route
+    // điều hướng trang - url
+    // nhập url theo path có thể điều hướng trang
     {
       path: path.home,
       index: true,
@@ -65,6 +68,14 @@ export default function useRouterElements() {
           element: (
             <MainLayout>
               <Profile />
+            </MainLayout>
+          )
+        },
+        {
+          path: path.cart,
+          element: (
+            <MainLayout>
+              <Cart />
             </MainLayout>
           )
         }

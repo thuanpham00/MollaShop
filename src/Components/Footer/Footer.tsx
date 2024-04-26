@@ -92,7 +92,7 @@ export default function Footer() {
                 </li>
                 <li>
                   <a href="#" className="text-primaryOrange mb-2 block text-base">
-                    931-554-657
+                    +84-931-554-657
                   </a>
                 </li>
               </ul>

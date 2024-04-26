@@ -5,7 +5,8 @@ export const path = {
   profile: "/profile",
   login: "/login",
   register: "/register",
-  logout: "/logout"
+  logout: "/logout",
+  cart: "/cart"
 } as const
 
 // chỉ có home, productList, productDetail không cần đăng nhập

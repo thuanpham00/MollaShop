@@ -10,6 +10,7 @@ import { yupResolver } from "@hookform/resolvers/yup"
 import RatingStar from "../RatingStar"
 import { omit } from "lodash"
 import { queryParamConfig } from "src/Hooks/useQueryConfig"
+import InputV2 from "src/Components/InputV2"
 
 interface Props {
   categories: Categories[]
@@ -52,7 +53,9 @@ export default function AsideFilter({ categories, queryConfig }: Props) {
   const handleDeleteConfig = () => {
     navigate({
       pathname: path.productList,
-      search: createSearchParams(omit(queryConfig, ["price_max", "price_min", "category", "rating_filter"])).toString()
+      search: createSearchParams(
+        omit(queryConfig, ["price_max", "price_min", "category", "rating_filter"])
+      ).toString()
     })
     // omit giúp loại bỏ giá trị
     // queryConfig giữ lại các config cần
@@ -62,9 +65,12 @@ export default function AsideFilter({ categories, queryConfig }: Props) {
     <div className="mt-3">
       <Link
         to={path.productList}
-        className={classNames("flex items-center gap-x-2 text-gray-500 duration-200 uppercase font-semibold text-md", {
-          "text-primaryOrange": !category
-        })}
+        className={classNames(
+          "flex items-center gap-x-2 text-gray-500 duration-200 uppercase font-semibold text-md",
+          {
+            "text-primaryOrange": !category
+          }
+        )}
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -102,7 +108,10 @@ export default function AsideFilter({ categories, queryConfig }: Props) {
                 })}
               >
                 {isActive && (
-                  <svg viewBox="0 0 4 7" className="h-2 w-2 fill-current absolute top-1 left-[-12px]">
+                  <svg
+                    viewBox="0 0 4 7"
+                    className="h-2 w-2 fill-current absolute top-1 left-[-12px]"
+                  >
                     <polygon points="4 3.5 0 0 0 7"></polygon>
                   </svg>
                 )}
@@ -157,7 +166,22 @@ export default function AsideFilter({ categories, queryConfig }: Props) {
                 )
               }}
             />
+
+            {/* <InputV2
+              control={control}
+              name="price_min"
+              type="number"
+              placeholder="đ Từ"
+              autoComplete="on"
+              classNameInput="p-1 text-sm w-full outline-none border border-gray-300 focus:border-gray-500 rounded-sm focus:shadow-sm"
+              className="grow"
+              onChange={() => {
+                trigger("price_max")
+              }}
+            /> */}
+
             <div className="flex flex-shrink-0 mx-2 mt-3">-</div>
+
             <Controller
               control={control}
               name="price_max"
@@ -179,7 +203,9 @@ export default function AsideFilter({ categories, queryConfig }: Props) {
             />
           </div>
 
-          <div className="mt-1 text-red-500 min-h-[1.25rem] text-sm text-center">{errors.price_min?.message}</div>
+          <div className="mt-1 text-red-500 min-h-[1.25rem] text-sm text-center">
+            {errors.price_min?.message}
+          </div>
 
           <Button classInput="flex items-center justify-center w-full bg-primaryOrange text-white py-3 px-2 uppercase hover:bg-primaryOrange/80 duration-300 text-sm">
             Áp dụng

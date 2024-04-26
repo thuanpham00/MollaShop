@@ -2,9 +2,9 @@ import { Link, createSearchParams, useNavigate } from "react-router-dom"
 import Popover from "../Popover"
 import { path } from "src/constants/path"
 import { loginApi } from "src/apis/login.api"
-import { useContext } from "react"
+import { Fragment, useContext } from "react"
 import { AppContext } from "src/contexts/auth.context"
-import { useMutation } from "@tanstack/react-query"
+import { useMutation, useQuery } from "@tanstack/react-query"
 import avatar from "../../img/minhthuan.jpg"
 import logo from "../../img/Black Simple Clothing Brand Logo.png"
 import useQueryConfig from "src/Hooks/useQueryConfig"
@@ -12,9 +12,16 @@ import { useForm } from "react-hook-form"
 import { SchemaType, schema } from "src/utils/rules"
 import { yupResolver } from "@hookform/resolvers/yup"
 import { omit } from "lodash"
+import { purchaseApi } from "src/apis/purchase.api"
+import { purchaseStatus } from "src/constants/purchaseStatus"
+import { formatCurrency } from "src/utils/utils"
+import cartImg from "src/img/cart.png"
+import { queryClient } from "src/main"
 
 type FormData = Pick<SchemaType, "name">
 const nameSchema = schema.pick(["name"])
+
+const MAX_PURCHASES = 5
 
 export default function Header() {
   const navigate = useNavigate()
@@ -37,6 +44,7 @@ export default function Header() {
     onSuccess: () => {
       setIsAuthenticated(false)
       setIsProfile(null)
+      queryClient.removeQueries({ queryKey: ["purchaseList", { status: purchaseStatus.inCart }] }) // clear data query
     }
   })
 
@@ -63,6 +71,20 @@ export default function Header() {
     })
   })
 
+  // khi chúng ta chuyển trang thì Header chỉ bị re-render
+  // chứ không bị unmount - mounting again
+  // (tất nhiên là trừ trường hợp logout rồi nhảy sang RegisterLayout rồi nhảy vào lại)
+  // nên các query này sẽ ko bị inactive => ko bị gọi lại => ko cần thiết phải set stale: Infinity
+  const getPurchaseListQuery = useQuery({
+    queryKey: ["purchaseList", { status: purchaseStatus.inCart }],
+    queryFn: () => {
+      return purchaseApi.getPurchases({ status: purchaseStatus.inCart })
+    },
+    enabled: isAuthenticated // nó chỉ được chạy khi có isAuthenticated (true)
+  })
+
+  const purchasesInCart = getPurchaseListQuery.data?.data.data
+  console.log(purchasesInCart)
   return (
     <header>
       <div className="bg-[#f2f2f2]">
@@ -79,8 +101,12 @@ export default function Header() {
                 renderPopover={
                   <div className="bg-white relative shadow-md rounded-sm border border-gray-200">
                     <div className="flex flex-col">
-                      <button className="px-8 py-3 hover:text-orange-600 hover:bg-slate-200">Tiếng việt</button>
-                      <button className="px-8 py-3 hover:text-orange-600 hover:bg-slate-200 mt-2">Tiếng anh</button>
+                      <button className="px-8 py-3 hover:text-orange-600 hover:bg-slate-200">
+                        Tiếng việt
+                      </button>
+                      <button className="px-8 py-3 hover:text-orange-600 hover:bg-slate-200 mt-2">
+                        Tiếng anh
+                      </button>
                     </div>
                   </div>
                 }
@@ -108,7 +134,11 @@ export default function Header() {
                   stroke="currentColor"
                   className="w-5 h-5"
                 >
-                  <path strokeLinecap="round" strokeLinejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="m19.5 8.25-7.5 7.5-7.5-7.5"
+                  />
                 </svg>
               </Popover>
 
@@ -118,10 +148,16 @@ export default function Header() {
                   renderPopover={
                     <div className="bg-white relative shadow-md rounded-sm border border-gray-200">
                       <div className="flex flex-col">
-                        <Link to={path.profile} className="p-3 hover:text-orange-600 hover:bg-slate-200">
+                        <Link
+                          to={path.profile}
+                          className="p-3 hover:text-orange-600 hover:bg-slate-200"
+                        >
                           Tài khoản của tôi
                         </Link>
-                        <Link to={path.home} className="p-3 hover:text-orange-600 hover:bg-slate-200">
+                        <Link
+                          to={path.home}
+                          className="p-3 hover:text-orange-600 hover:bg-slate-200"
+                        >
                           Đơn mua
                         </Link>
                         <button
@@ -144,10 +180,16 @@ export default function Header() {
 
               {!isAuthenticated && (
                 <div className="flex items-center gap-x-4">
-                  <Link to={path.register} className="text-grayText text-base hover:text-grayText/80 cursor-pointer">
+                  <Link
+                    to={path.register}
+                    className="text-grayText text-base hover:text-grayText/80 cursor-pointer"
+                  >
                     Đăng ký
                   </Link>
-                  <Link to={path.login} className="text-grayText text-base hover:text-grayText/80 cursor-pointer">
+                  <Link
+                    to={path.login}
+                    className="text-grayText text-base hover:text-grayText/80 cursor-pointer"
+                  >
                     Đăng nhập
                   </Link>
                 </div>
@@ -195,139 +237,69 @@ export default function Header() {
               <Popover
                 renderPopover={
                   <div className="mt-1 w-[400px] bg-white p-5 shadow-md rounded-sm">
-                    <span className="text-gray-500 text-base font-semibold">Sản phẩm mới thêm</span>
+                    {purchasesInCart ? (
+                      <Fragment>
+                        <span className="text-gray-500 text-base font-semibold">
+                          Sản phẩm mới thêm
+                        </span>
 
-                    <div className="mt-5">
-                      <div className="mt-4 flex">
-                        <div className="flex-shrink-0">
-                          <img
-                            src="https://down-vn.img.susercontent.com/file/vn-11134207-7qukw-lj5dxqxpr28c83_tn"
-                            alt="Ảnh"
-                            className="w-11 h-11 object-cover"
-                          />
+                        <div className="mt-5">
+                          {purchasesInCart.slice(0, MAX_PURCHASES).map((item) => {
+                            return (
+                              <div className="mt-2 py-2 flex hover:bg-gray-200" key={item._id}>
+                                <div className="flex-shrink-0">
+                                  <img
+                                    src={item.product.image}
+                                    alt={item.product.name}
+                                    className="w-11 h-11 object-cover"
+                                  />
+                                </div>
+                                <div className="ml-2 flex-grow overflow-hidden">
+                                  <div className="truncate">{item.product.name}</div>
+                                </div>
+                                <div className="ml-2 flex-shrink-0">
+                                  <span className="text-red-500">$</span>
+                                  <span className="text-red-500">
+                                    {formatCurrency(item.product.price)}
+                                  </span>
+                                </div>
+                              </div>
+                            )
+                          })}
                         </div>
-                        <div className="ml-2 flex-grow overflow-hidden">
-                          <div className="truncate">
-                            Băng đô rửa mặt bờm cute cài tóc dễ thương chống trơn trượt, lông mềm mại phong cách Hàn
-                            Quốc trẻ em, người lớn
-                          </div>
+
+                        <div className="flex items-center justify-between">
+                          <span className="text-gray-500 text-sm">
+                            {purchasesInCart.length > MAX_PURCHASES
+                              ? purchasesInCart.length - MAX_PURCHASES
+                              : ""}{" "}
+                            Thêm vào giỏ hàng
+                          </span>
+                          <Link to={path.cart} className="p-3 bg-red-500 hover:bg-red/80 duration-300 text-white">
+                            Xem giỏ hàng
+                          </Link>
                         </div>
-                        <div className="ml-2 flex-shrink-0">
-                          <span className="text-red-500">$469.000đ</span>
-                        </div>
+                      </Fragment>
+                    ) : (
+                      <div className="p-2 flex items-center justify-center flex-col">
+                        <img src={cartImg} alt="ảnh lỗi" className="w-[200px]" />
+                        <h1>Chưa có sản phẩm!</h1>
                       </div>
-
-                      <div className="mt-4 flex">
-                        <div className="flex-shrink-0">
-                          <img
-                            src="https://down-vn.img.susercontent.com/file/vn-11134207-7qukw-lj5dxqxpr28c83_tn"
-                            alt="Ảnh"
-                            className="w-11 h-11 object-cover"
-                          />
-                        </div>
-                        <div className="ml-2 flex-grow overflow-hidden">
-                          <div className="truncate">
-                            Băng đô rửa mặt bờm cute cài tóc dễ thương chống trơn trượt, lông mềm mại phong cách Hàn
-                            Quốc trẻ em, người lớn
-                          </div>
-                        </div>
-                        <div className="ml-2 flex-shrink-0">
-                          <span className="text-red-500">$469.000đ</span>
-                        </div>
-                      </div>
-
-                      <div className="mt-4 flex">
-                        <div className="flex-shrink-0">
-                          <img
-                            src="https://down-vn.img.susercontent.com/file/vn-11134207-7qukw-lj5dxqxpr28c83_tn"
-                            alt="Ảnh"
-                            className="w-11 h-11 object-cover"
-                          />
-                        </div>
-                        <div className="ml-2 flex-grow overflow-hidden">
-                          <div className="truncate">
-                            Băng đô rửa mặt bờm cute cài tóc dễ thương chống trơn trượt, lông mềm mại phong cách Hàn
-                            Quốc trẻ em, người lớn
-                          </div>
-                        </div>
-                        <div className="ml-2 flex-shrink-0">
-                          <span className="text-red-500">$469.000đ</span>
-                        </div>
-                      </div>
-
-                      <div className="mt-4 flex">
-                        <div className="flex-shrink-0">
-                          <img
-                            src="https://down-vn.img.susercontent.com/file/vn-11134207-7qukw-lj5dxqxpr28c83_tn"
-                            alt="Ảnh"
-                            className="w-11 h-11 object-cover"
-                          />
-                        </div>
-                        <div className="ml-2 flex-grow overflow-hidden">
-                          <div className="truncate">
-                            Băng đô rửa mặt bờm cute cài tóc dễ thương chống trơn trượt, lông mềm mại phong cách Hàn
-                            Quốc trẻ em, người lớn
-                          </div>
-                        </div>
-                        <div className="ml-2 flex-shrink-0">
-                          <span className="text-red-500">$469.000đ</span>
-                        </div>
-                      </div>
-
-                      <div className="mt-4 flex">
-                        <div className="flex-shrink-0">
-                          <img
-                            src="https://down-vn.img.susercontent.com/file/vn-11134207-7qukw-lj5dxqxpr28c83_tn"
-                            alt="Ảnh"
-                            className="w-11 h-11 object-cover"
-                          />
-                        </div>
-                        <div className="ml-2 flex-grow overflow-hidden">
-                          <div className="truncate">
-                            Băng đô rửa mặt bờm cute cài tóc dễ thương chống trơn trượt, lông mềm mại phong cách Hàn
-                            Quốc trẻ em, người lớn
-                          </div>
-                        </div>
-                        <div className="ml-2 flex-shrink-0">
-                          <span className="text-red-500">$469.000đ</span>
-                        </div>
-                      </div>
-
-                      <div className="mt-4 flex">
-                        <div className="flex-shrink-0">
-                          <img
-                            src="https://down-vn.img.susercontent.com/file/vn-11134207-7qukw-lj5dxqxpr28c83_tn"
-                            alt="Ảnh"
-                            className="w-11 h-11 object-cover"
-                          />
-                        </div>
-                        <div className="ml-2 flex-grow overflow-hidden">
-                          <div className="truncate">
-                            Băng đô rửa mặt bờm cute cài tóc dễ thương chống trơn trượt, lông mềm mại phong cách Hàn
-                            Quốc trẻ em, người lớn
-                          </div>
-                        </div>
-                        <div className="ml-2 flex-shrink-0">
-                          <span className="text-red-500">$469.000đ</span>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="flex items-center justify-between">
-                      <span className="text-gray-500 text-sm">Thêm vào giỏ hàng</span>
-                      <button className="p-3 bg-red-500 hover:bg-red/80 duration-300 text-white">Xem giỏ hàng</button>
-                    </div>
+                    )}
                   </div>
                 }
               >
-                <Link to="/" className="w-11 h-11 bg-primaryOrange flex items-center justify-center">
+                <Link
+                  to="/"
+                  className="w-12 h-12 flex items-center justify-center rounded-sm relative"
+                >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
                     viewBox="0 0 24 24"
                     strokeWidth={1.5}
-                    stroke="white"
-                    className="w-6 h-6"
+                    stroke="black"
+                    className="w-11 h-11"
                   >
                     <path
                       strokeLinecap="round"
@@ -335,6 +307,11 @@ export default function Header() {
                       d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 0 0-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 0 0-16.536-1.84M7.5 14.25 5.106 5.272M6 20.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Zm12.75 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z"
                     />
                   </svg>
+                  {isAuthenticated && (
+                    <span className="h-5 w-6 text-white bg-primaryOrange rounded-full absolute top-0 -right-2 text-[12px] flex items-center justify-center">
+                      {purchasesInCart?.length}
+                    </span>
+                  )}
                 </Link>
               </Popover>
             </div>
@@ -355,17 +332,23 @@ export default function Header() {
                 All products
               </span>
             </Link>
-            <Link to={`${`/productList?page=1&limit=15&sort_by=view&category=60afacca6ef5b902180aacaf`}`}>
+            <Link
+              to={`${`/productList?page=1&limit=15&sort_by=view&category=60afacca6ef5b902180aacaf`}`}
+            >
               <span className="text-base text-white font-medium hover:text-white/70 d-font-medium-300 capitalize">
                 Đồng hồ
               </span>
             </Link>
-            <Link to={`${`/productList?page=1&limit=15&category=60aba4e24efcc70f8892e1c6&sort_by=view`}`}>
+            <Link
+              to={`${`/productList?page=1&limit=15&category=60aba4e24efcc70f8892e1c6&sort_by=view`}`}
+            >
               <span className="text-base text-white font-medium hover:text-white/70 d-font-medium-300 capitalize">
                 Áo thun
               </span>
             </Link>
-            <Link to={`${`/productList?page=1&limit=15&category=60afafe76ef5b902180aacb5&sort_by=view`}`}>
+            <Link
+              to={`${`/productList?page=1&limit=15&category=60afafe76ef5b902180aacb5&sort_by=view`}`}
+            >
               <span className="text-base text-white font-medium hover:text-white/70 d-font-medium-300 capitalize">
                 Điện thoại
               </span>

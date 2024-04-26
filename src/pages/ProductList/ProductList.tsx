@@ -48,6 +48,10 @@ export default function ProductList() {
 
   const data = getProductListQuery.data?.data.data
 
+  const handleStartScroll = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" })
+  }
+
   return (
     <div className="bg-[#fff] py-6">
       <div className="container">
@@ -71,7 +75,11 @@ export default function ProductList() {
                   ))}
                 </div>
 
-                <Pagination queryConfig={queryConfig} page_size={data.pagination.page_size} />
+                <Pagination
+                  scroll={handleStartScroll}
+                  queryConfig={queryConfig}
+                  page_size={data.pagination.page_size}
+                />
               </div>
             </Fragment>
           )}

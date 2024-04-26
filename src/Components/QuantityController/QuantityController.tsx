@@ -33,7 +33,7 @@ export default function QuantityController({
     if (max !== undefined && _value > max) {
       _value = max
     }
-    onIncrease && onIncrease(_value)
+    onIncrease && onIncrease(_value) // gán hàm này vô onClick đồng thời truyền value vào props // để component cha nhận được
   }
 
   const decrease = () => {
@@ -41,12 +41,25 @@ export default function QuantityController({
     if (_value < 1) {
       _value = 1
     }
-    onDecrease && onDecrease(_value)
+    onDecrease && onDecrease(_value) // gán hàm này vô onClick đồng thời truyền value vào props // để component cha nhận được
   }
+
+  /**
+   * <QuantityController
+        onDecrease={handleBuyCount}
+        onIncrease={handleBuyCount}
+        onType={handleBuyCount}
+        value={buyCount}
+        max={product.quantity}
+      />
+   */
 
   return (
     <div className={`flex items-center ` + classNameWrapper}>
-      <button onClick={decrease} className="h-8 w-8 flex items-center border border-gray-200 justify-center hover:bg-gray-200 duration-100 rounded-tl rounded-bl">
+      <button
+        onClick={decrease}
+        className="h-8 w-8 flex items-center border border-gray-200 justify-center hover:bg-gray-200 duration-100 rounded-tl rounded-bl"
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -68,7 +81,10 @@ export default function QuantityController({
         {...rest}
       />
 
-      <button onClick={increase} className="h-8 w-8 flex items-center border border-gray-200 justify-center hover:bg-gray-200 duration-100 rounded-tr rounded-br">
+      <button
+        onClick={increase}
+        className="h-8 w-8 flex items-center border border-gray-200 justify-center hover:bg-gray-200 duration-100 rounded-tr rounded-br"
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"

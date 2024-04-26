@@ -6,11 +6,12 @@ import { queryParamConfig } from "src/Hooks/useQueryConfig"
 interface Props {
   queryConfig: queryParamConfig
   page_size: number
+  scroll: () => void
 }
 
 const range = 2
 
-export default function Pagination({ queryConfig, page_size }: Props) {
+export default function Pagination({ queryConfig, page_size, scroll }: Props) {
   const page = Number(queryConfig.page) // lấy từ url xuống và url nhận vào các params
   const renderPagination = () => {
     let dotAfter = false
@@ -64,6 +65,7 @@ export default function Pagination({ queryConfig, page_size }: Props) {
         }
         return (
           <Link
+            onClick={scroll}
             key={index}
             to={{
               pathname: path.productList,
