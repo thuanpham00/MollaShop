@@ -11,6 +11,7 @@ import Home from "./pages/Home"
 import ProductList from "./pages/ProductList"
 import ProductDetail from "./pages/ProductDetail"
 import Cart from "./pages/Cart"
+import CartLayout from "./Layouts/CartLayout"
 
 // <Outlet /> giúp truy cập vào route con
 // <Navigate /> điều hướng trang khi xử lý bằng js
@@ -74,9 +75,9 @@ export default function useRouterElements() {
         {
           path: path.cart,
           element: (
-            <MainLayout>
+            <CartLayout>
               <Cart />
-            </MainLayout>
+            </CartLayout>
           )
         }
       ]

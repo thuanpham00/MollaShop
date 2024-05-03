@@ -14,6 +14,8 @@
   },
   "dependencies": {
     "@floating-ui/react": "^0.26.11",
+    "@fortawesome/fontawesome-svg-core": "^6.5.2",
+    "@fortawesome/react-fontawesome": "^0.2.0",
     "@hookform/resolvers": "^3.3.4",
     "@tailwindcss/line-clamp": "^0.4.4",
     "@tanstack/react-query": "^5.29.0",
@@ -24,6 +26,7 @@
     "classnames": "^2.5.1",
     "dompurify": "^3.1.0",
     "framer-motion": "^11.0.25",
+    "immer": "^10.0.4",
     "lodash": "^4.17.21",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -31,6 +34,7 @@
     "react-router-dom": "^6.22.3",
     "react-slideshow-image": "^4.3.1",
     "react-toastify": "^10.0.5",
+    "styled-component": "^2.8.0",
     "vite-plugin-rewrite-all": "^1.0.2",
     "yup": "^1.4.0"
   },

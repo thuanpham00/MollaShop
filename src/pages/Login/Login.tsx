@@ -24,14 +24,14 @@ type FormData = Pick<SchemaType, "email" | "password">
 const schemaPick = schema.pick(["email", "password"])
 
 export default function Login() {
-  const { setIsAuthenticated, setIsProfile } = useContext(AppContext)
+  const { setIsAuthenticated, setIsProfile, darkMode } = useContext(AppContext)
   const navigate = useNavigate()
   const {
     formState: { errors },
+    setError,
     register,
     watch,
-    handleSubmit,
-    setError
+    handleSubmit
   } = useForm<FormData>({ resolver: yupResolver(schemaPick) })
 
   const loginAccountMutation = useMutation({
@@ -50,7 +50,7 @@ export default function Login() {
         // - đăng nhập xong -> nó set lại isAuthenticated = true ->
         // - nó set lại isAuthenticated = true và set lại isProfile
         // - truyền lên và lưu vào LS
-        console.log(data)
+        // console.log(data)
       },
       onError: (error) => {
         console.log(error) // lỗi 422 xuất hiện khi đăng nhập không đúng
@@ -76,11 +76,15 @@ export default function Login() {
   console.log(watchForm)
 
   return (
-    <div className="bg-slate-200">
+    <div className={`${darkMode ? "bg-[#000]" : "bg-slate-200"}`}>
       <div className="container">
         <div className="grid grid-cols-1 lg:grid-cols-5 py-12 lg:pr-10">
           <div className="hidden lg:block lg:col-span-3 ml-14">
-            <img src={image} alt="" className="rounded-sm shadow-md object-cover w-[550px] h-[470px]" />
+            <img
+              src={image}
+              alt=""
+              className="rounded-sm shadow-md object-cover w-[550px] h-[470px]"
+            />
           </div>
           <div className="lg:col-span-2">
             <div className="bg-white py-10 px-8 rounded shadow-md">

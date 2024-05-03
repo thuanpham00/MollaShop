@@ -21,3 +21,11 @@ export const clearLS = () => {
   localStorage.removeItem("access_token")
   localStorage.removeItem("profile")
 }
+
+export const setDarkModeToLs = (darkMode: string) => {
+  return localStorage.setItem("darkMode", darkMode)
+}
+
+export const getDarkModeToLs = () => {
+  return localStorage.getItem("darkMode") || ""
+}

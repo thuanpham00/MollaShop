@@ -1,6 +1,8 @@
+import { useContext } from "react"
 import { Link } from "react-router-dom"
 import ProductRating from "src/Components/ProductRating"
 import { path } from "src/constants/path"
+import { AppContext } from "src/contexts/auth.context"
 import { ProductItem } from "src/types/product.type"
 import { formatCurrency, formatNumberToSocialStyle, generateNameId } from "src/utils/utils"
 
@@ -9,6 +11,7 @@ interface Props {
 }
 // ${generateNameId({name: item.name, id: item._id})}
 export default function Product({item}: Props) {
+  const {darkMode} = useContext(AppContext)
   return (
     <Link to={`${path.home}${generateNameId({name: item.name, id: item._id})}`}>
       <div className="duration-300 rounded-sm hover:translate-y-[-3px] transition-transform overflow-hidden">
@@ -34,12 +37,12 @@ export default function Product({item}: Props) {
 
         <div className="mt-2 flex items-center">
           <div className="flex items-center text-gray-500 line-through">
-            <span className="text-sm">$</span>
             <span>{formatCurrency(item.price_before_discount)}</span>
+            <span className="text-sm">đ</span>
           </div>
-          <div className="flex items-center text-black ml-2">
-            <span className="text-base">$</span>
-            <span className="text-lg font-medium">{formatCurrency(item.price)}</span>
+          <div className={`flex items-center ml-2 font-medium ${darkMode ? "text-white" : "text-black"}`}>
+            <span className="text-lg">{formatCurrency(item.price)}</span>
+            <span className="text-base">đ</span>
           </div>
         </div>
       </div>

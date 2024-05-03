@@ -1,6 +1,6 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query"
 import DOMPurify from "dompurify"
-import { useEffect, useMemo, useRef, useState } from "react"
+import { useContext, useEffect, useMemo, useRef, useState } from "react"
 import { useParams } from "react-router-dom"
 import ProductRating from "src/Components/ProductRating"
 import { queryParamConfig } from "src/Hooks/useQueryConfig"
@@ -17,6 +17,7 @@ import QuantityController from "src/Components/QuantityController"
 import { purchaseApi } from "src/apis/purchase.api"
 import { purchaseStatus } from "src/constants/purchaseStatus"
 import { toast } from "react-toastify"
+import { AppContext } from "src/contexts/auth.context"
 
 type AddToCart = {
   product_id: string
@@ -24,6 +25,7 @@ type AddToCart = {
 }
 
 export default function ProductDetail() {
+  const { darkMode } = useContext(AppContext)
   const queryClient = useQueryClient()
   const [buyCount, setBuyCount] = useState(1)
   const { nameId } = useParams() // lấy id từ url
@@ -140,9 +142,9 @@ export default function ProductDetail() {
 
   if (!product) return null
   return (
-    <div className="bg-gray-100 py-6">
+    <div className={`${darkMode ? "bg-[#000]" : "bg-gray-100"} py-6`}>
       <div className="container">
-        <div className="bg-white p-4 shadow">
+        <div className={`${darkMode ? "bg-[#252323]" : "bg-white"} p-4 shadow`}>
           <div className="grid grid-cols-12 gap-9">
             <div className="col-span-5">
               <div
@@ -218,8 +220,10 @@ export default function ProductDetail() {
             </div>
 
             <div className="col-span-7">
-              <h1 className="font-medium uppercase text-xl">{product.name}</h1>
-              <div className="mt-2 flex items-center gap-4">
+              <h1 className={`font-medium uppercase text-xl ${darkMode ? "text-white" : ""}`}>
+                {product.name}
+              </h1>
+              <div className={`mt-2 flex items-center gap-4 ${darkMode ? "text-white" : ""}`}>
                 <div className="flex items-center gap-1">
                   <span className="border-b-orange-500 border-b text-orange-500">
                     {product.rating}
@@ -231,7 +235,9 @@ export default function ProductDetail() {
                   <span className="ml-1">Đã bán</span>
                 </div>
               </div>
-              <div className="mt-8 flex items-center bg-gray-50 px-4 py-3">
+              <div
+                className={`mt-8 flex items-center px-4 py-3 ${darkMode ? "bg-[#252323]" : "bg-gray-50"}`}
+              >
                 <div className="text-gray-500 line-through">
                   ${formatCurrency(product.price_before_discount)}
                 </div>
@@ -289,8 +295,11 @@ export default function ProductDetail() {
             </div>
           </div>
         </div>
-        <div className="mt-5 bg-white p-4 shadow">
-          <span className="block px-3 py-4 uppercase text-lg rounded bg-gray-50">
+
+        <div className={`${darkMode ? "bg-[#252323] text-white" : "bg-white"} mt-5 p-4 shadow`}>
+          <span
+            className={`block px-3 py-4 uppercase text-lg rounded ${darkMode ? "bg-gray-700" : "bg-gray-50"}`}
+          >
             mô tả sản phẩm
           </span>
           <div className="mx-4 mt-5 leading-loose text-sm">
@@ -302,9 +311,11 @@ export default function ProductDetail() {
           </div>
         </div>
 
-        <div className="mt-5 bg-white p-4 shadow">
-          <span className="block px-3 py-4 uppercase text-lg rounded bg-gray-50">
-            co thể bạn cũng thích
+        <div className={`${darkMode ? "bg-[#252323] text-white" : "bg-white"} mt-5 p-4 shadow`}>
+          <span
+            className={`block px-3 py-4 uppercase text-lg rounded ${darkMode ? "bg-gray-700" : "bg-gray-50"}`}
+          >
+            có thể bạn cũng thích
           </span>
           <div className="text-sm grid grid-cols-4 md:grid-cols-5 lg:grid-cols-6 mt-4 gap-10">
             {getProductListQuery.data?.data.data.products.map((item) => {

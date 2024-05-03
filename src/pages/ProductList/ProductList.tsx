@@ -8,8 +8,11 @@ import Pagination from "src/Components/Pagination"
 import { Fragment } from "react/jsx-runtime"
 import { categoriesApi } from "src/apis/categories"
 import useQueryConfig from "src/Hooks/useQueryConfig"
+import { useContext } from "react"
+import { AppContext } from "src/contexts/auth.context"
 
 export default function ProductList() {
+  const { darkMode } = useContext(AppContext)
   const queryConfig = useQueryConfig() // lấy tham số truy vấn
   //console.log(queryConfig)
 
@@ -53,13 +56,16 @@ export default function ProductList() {
   }
 
   return (
-    <div className="bg-[#fff] py-6">
+    <div className={`${darkMode ? "bg-[#000] text-gray-200" : "bg-[#fff]"} py-6 duration-200`}>
       <div className="container">
         <div className="grid grid-cols-12">
           {data && (
             <Fragment>
               <div className="col-span-2">
-                <AsideFilter queryConfig={queryConfig} categories={getCategoriesQuery.data?.data.data || []} />
+                <AsideFilter
+                  queryConfig={queryConfig}
+                  categories={getCategoriesQuery.data?.data.data || []}
+                />
               </div>
 
               <div className="w-[1px] h-[1000px] bg-gray-300 ml-[40px] rounded-md shadow-md"></div>

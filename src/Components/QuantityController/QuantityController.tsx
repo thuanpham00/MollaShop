@@ -1,10 +1,13 @@
+import { useContext } from "react"
 import InputNumber, { InputNumberProp } from "../InputNumber"
+import { AppContext } from "src/contexts/auth.context"
 
 interface Props extends InputNumberProp {
   max?: number
   onIncrease?: (value: number) => void
   onDecrease?: (value: number) => void
   onType?: (value: number) => void
+  onFocusOut?: (value: number) => void
   classNameWrapper?: string
 }
 
@@ -15,8 +18,10 @@ export default function QuantityController({
   classNameWrapper = "ml-10",
   value,
   onType,
+  onFocusOut,
   ...rest
 }: Props) {
+  const { darkMode } = useContext(AppContext)
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     let _value = Number(event.target.value)
     if (max !== undefined && _value > max) {
@@ -44,6 +49,10 @@ export default function QuantityController({
     onDecrease && onDecrease(_value) // gán hàm này vô onClick đồng thời truyền value vào props // để component cha nhận được
   }
 
+  const handleBlur = (event: React.FocusEvent<HTMLInputElement, Element>) => {
+    onFocusOut && onFocusOut(Number(event.target.value))
+  }
+
   /**
    * <QuantityController
         onDecrease={handleBuyCount}
@@ -58,14 +67,14 @@ export default function QuantityController({
     <div className={`flex items-center ` + classNameWrapper}>
       <button
         onClick={decrease}
-        className="h-8 w-8 flex items-center border border-gray-200 justify-center hover:bg-gray-200 duration-100 rounded-tl rounded-bl"
+        className={`h-8 w-8 flex items-center border border-gray-200 justify-center duration-200 rounded-tl rounded-bl ${darkMode ? "hover:bg-[#000]/70" : "hover:bg-gray-200"}`}
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
           viewBox="0 0 24 24"
           strokeWidth={1.5}
-          stroke="currentColor"
+          stroke={`${darkMode ? "white" : "black"}`}
           className="w-3 h-3"
         >
           <path strokeLinecap="round" strokeLinejoin="round" d="M5 12h14" />
@@ -75,22 +84,23 @@ export default function QuantityController({
       <InputNumber
         className=""
         classNameError="hidden"
-        classNameInput="h-8 w-14 border-t border-b border-gray-300 p-1 text-center outline-none"
+        classNameInput={`duration-200 h-8 w-14 border-t border-b border-gray-300 p-1 text-center outline-none ${darkMode ? "bg-transparent text-white" : ""}`}
         onChange={handleChange}
+        onBlur={handleBlur}
         value={value}
         {...rest}
       />
 
       <button
         onClick={increase}
-        className="h-8 w-8 flex items-center border border-gray-200 justify-center hover:bg-gray-200 duration-100 rounded-tr rounded-br"
+        className={`h-8 w-8 flex items-center border border-gray-200 justify-center duration-200 rounded-tr rounded-br ${darkMode ? "hover:bg-[#000]/70" : "hover:bg-gray-200"}`}
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
           viewBox="0 0 24 24"
           strokeWidth={1.5}
-          stroke="currentColor"
+          stroke={`${darkMode ? "white" : "black"}`}
           className="w-3 h-3"
         >
           <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />

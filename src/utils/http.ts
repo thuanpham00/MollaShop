@@ -39,6 +39,7 @@ class http {
           this.accessToken = data.data.access_token // check url === "login" thì lưu access_token vào LS
           setAccessTokenToLs(this.accessToken)
           setProfileToLs(data.data.user)
+          console.log(response);
         } else if (response.config.url === "logout") {
           // check url === "logout" thì remove access_token ra khỏi LS
           this.accessToken = ""

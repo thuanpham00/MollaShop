@@ -10,6 +10,8 @@ import { ErrorResponse } from "src/types/utils.type"
 import { SchemaType, schema } from "src/utils/rules"
 import { isError422 } from "src/utils/utils"
 import image from "../../img/image_register.jpg"
+import { useContext } from "react"
+import { AppContext } from "src/contexts/auth.context"
 
 type FormData = Pick<SchemaType, "email" | "password" | "confirm_password"> // giữ nguyên 3 type
 
@@ -18,6 +20,7 @@ type FormDataOmitConfirmPass = Pick<SchemaType, "email" | "password">
 const schemaPick = schema.pick(["email", "password", "confirm_password"])
 
 export default function Register() {
+  const { darkMode } = useContext(AppContext)
   const navigate = useNavigate()
   const {
     formState: { errors },
@@ -65,11 +68,15 @@ export default function Register() {
   //console.log(errors)
 
   return (
-    <div className="bg-slate-200">
+    <div className={`${darkMode ? "bg-[#000]" : "bg-slate-200"}`}>
       <div className="container">
         <div className="grid grid-cols-1 lg:grid-cols-5 py-12 lg:pr-10">
           <div className="hidden lg:block lg:col-span-3 ml-14">
-            <img src={image} alt="" className="rounded-sm shadow-md object-cover w-[550px] h-[470px]" />
+            <img
+              src={image}
+              alt=""
+              className="rounded-sm shadow-md object-cover w-[550px] h-[470px]"
+            />
           </div>
           <div className="lg:col-span-2">
             <div className="bg-white py-10 px-8 rounded shadow-md">

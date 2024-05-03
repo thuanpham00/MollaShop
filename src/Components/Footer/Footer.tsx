@@ -1,12 +1,18 @@
+import { useContext } from "react"
 import { Link } from "react-router-dom"
+import { AppContext } from "src/contexts/auth.context"
 
 export default function Footer() {
+  const { darkMode } = useContext(AppContext)
+
   return (
     <footer>
-      <div className="bg-[#fff] border-t-2 border-gray-300">
+      <div
+        className={`${darkMode ? "bg-[#000]" : "bg-[#fff]"} duration-200 border-t-2 border-gray-300`}
+      >
         <div className="container">
           <div className="pt-10 pb-8 lg:flex lg:items-start lg:justify-between gap-4">
-            <Link to="/" className="lg:flex-1 mt-5">
+            <Link to="/" className="lg:flex-1 mt-2 md:mt-5">
               <img
                 srcSet="https://websitedemos.net/electronic-store-04/wp-content/uploads/sites/1055/2022/03/electronic-store-logo-mono.svg "
                 src="https://websitedemos.net/electronic-store-04/wp-content/uploads/sites/1055/2022/03/electronic-store-logo-mono.svg"
@@ -16,30 +22,34 @@ export default function Footer() {
             </Link>
 
             <div className="lg:flex-1 mt-5">
-              <h3 className="text-[#27232f] text-2xl font-semibold">Shop</h3>
-              <ul className="mt-10">
+              <h3
+                className={`${darkMode ? "text-[#f2f2f2]" : "text-[#27232f]"} text-xl md:text-2xl font-semibold`}
+              >
+                Shop
+              </h3>
+              <ul className="mt-2 md:mt-10">
                 <li>
-                  <a href="#" className="text-primaryOrange mb-2 block text-base">
+                  <a href="#" className="text-primaryOrange mb-2 block text-xs md:text-base">
                     Hot deals
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="text-primaryOrange mb-2 block text-base">
+                  <a href="#" className="text-primaryOrange mb-2 block text-xs md:text-base">
                     Categories
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="text-primaryOrange mb-2 block text-base">
+                  <a href="#" className="text-primaryOrange mb-2 block text-xs md:text-base">
                     Brands
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="text-primaryOrange mb-2 block text-base">
+                  <a href="#" className="text-primaryOrange mb-2 block text-xs md:text-base">
                     Rebates
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="text-primaryOrange mb-2 block text-base">
+                  <a href="#" className="text-primaryOrange mb-2 block text-xs md:text-base">
                     Weekly deals
                   </a>
                 </li>
@@ -47,30 +57,34 @@ export default function Footer() {
             </div>
 
             <div className="lg:flex-1 mt-5">
-              <h3 className="text-[#27232f] text-2xl font-semibold">Need help?</h3>
-              <ul className="mt-10">
+              <h3
+                className={`${darkMode ? "text-[#f2f2f2]" : "text-[#27232f]"} text-xl md:text-2xl font-semibold`}
+              >
+                Need help?
+              </h3>
+              <ul className="mt-2 md:mt-10">
                 <li>
-                  <a href="#" className="text-primaryOrange mb-2 block text-base">
+                  <a href="#" className="text-primaryOrange mb-2 block text-xs md:text-base">
                     Contact
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="text-primaryOrange mb-2 block text-base">
+                  <a href="#" className="text-primaryOrange mb-2 block text-xs md:text-base">
                     Order tracking
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="text-primaryOrange mb-2 block text-base">
+                  <a href="#" className="text-primaryOrange mb-2 block text-xs md:text-base">
                     FAQs
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="text-primaryOrange mb-2 block text-base">
+                  <a href="#" className="text-primaryOrange mb-2 block text-xs md:text-base">
                     Return policy
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="text-primaryOrange mb-2 block text-base">
+                  <a href="#" className="text-primaryOrange mb-2 block text-xs md:text-base">
                     Privacy policy
                   </a>
                 </li>
@@ -78,20 +92,24 @@ export default function Footer() {
             </div>
 
             <div className="lg:flex-1 mt-5">
-              <h3 className="text-[#27232f] text-2xl font-semibold">Contact</h3>
-              <ul className="mt-10">
+              <h3
+                className={`${darkMode ? "text-[#f2f2f2]" : "text-[#27232f]"} text-xl md:text-2xl font-semibold`}
+              >
+                Contact
+              </h3>
+              <ul className="mt-2 md:mt-10">
                 <li>
-                  <a href="#" className="text-primaryOrange mb-2 block text-base">
+                  <a href="#" className="text-primaryOrange mb-2 block text-xs md:text-base">
                     23/46 NHT, Tan Phu, Ho Chi Minh city
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="text-primaryOrange mb-2 block text-base">
+                  <a href="#" className="text-primaryOrange mb-2 block text-xs md:text-base">
                     phamminhthuan912@gmail.com
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="text-primaryOrange mb-2 block text-base">
+                  <a href="#" className="text-primaryOrange mb-2 block text-xs md:text-base">
                     +84-931-554-657
                   </a>
                 </li>
@@ -103,8 +121,10 @@ export default function Footer() {
 
       <div className="bg-primaryGray">
         <div className="container">
-          <div className="py-10 flex items-center justify-between flex-wrap gap-4">
-            <span className="text-[#9ca7ab]">@2024 Electronic Store. Power by Electronic Store</span>
+          <div className="py-5 md:py-10 flex items-center justify-between flex-wrap gap-4">
+            <span className="text-[#9ca7ab]">
+              @2024 Electronic Store. Power by Electronic Store
+            </span>
 
             <div className="flex items-center gap-x-5">
               <div>
