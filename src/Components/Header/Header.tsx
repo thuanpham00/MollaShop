@@ -1,57 +1,23 @@
-import { Link, createSearchParams, useNavigate } from "react-router-dom"
+import { Link } from "react-router-dom"
 import Popover from "../Popover"
 import { path } from "src/constants/path"
 import { Fragment, useContext } from "react"
 import { AppContext } from "src/contexts/auth.context"
 import { useQuery } from "@tanstack/react-query"
-import useQueryConfig from "src/Hooks/useQueryConfig"
-import { useForm } from "react-hook-form"
-import { SchemaType, schema } from "src/utils/rules"
-import { yupResolver } from "@hookform/resolvers/yup"
-import { omit } from "lodash"
 import { purchaseApi } from "src/apis/purchase.api"
 import { purchaseStatus } from "src/constants/purchaseStatus"
 import { formatCurrency } from "src/utils/utils"
 import cartImg from "src/img/cart.png"
-
 import NavHeader from "../NavHeader"
-
-type FormData = Pick<SchemaType, "name">
-const nameSchema = schema.pick(["name"])
+import useSearchProduct from "src/Hooks/useSearchProduct"
+import { Purchase } from "src/types/purchase.type"
 
 const MAX_PURCHASES = 5
 
 export default function Header() {
   const { isAuthenticated, darkMode } = useContext(AppContext)
-  const navigate = useNavigate()
-  const queryConfig = useQueryConfig()
-  //console.log(queryConfig)
 
-  const { handleSubmit, register } = useForm<FormData>({
-    resolver: yupResolver(nameSchema), // validate
-    defaultValues: {
-      name: ""
-    }
-  })
-
-  const onSubmitSearch = handleSubmit((data) => {
-    const config = queryConfig.order // nếu có order thì loại bỏ
-      ? omit(
-          {
-            ...queryConfig,
-            name: data.name
-          },
-          ["order", "sort_by"]
-        )
-      : {
-          ...queryConfig,
-          name: data.name
-        }
-    navigate({
-      pathname: path.productList,
-      search: createSearchParams(config).toString()
-    })
-  })
+  const { onSubmitSearch, register } = useSearchProduct() // destructuring
 
   // khi chúng ta chuyển trang thì Header chỉ bị re-render
   // chứ không bị unmount - mounting again
@@ -66,7 +32,7 @@ export default function Header() {
   })
 
   const purchasesInCart = getPurchaseListQuery.data?.data.data
-  //console.log(purchasesInCart)
+  console.log(purchasesInCart)
 
   return (
     <header>
@@ -131,7 +97,7 @@ export default function Header() {
               <Popover
                 renderPopover={
                   <div className="mt-1 w-[400px] bg-white p-5 shadow-md rounded-sm">
-                    {purchasesInCart ? (
+                    {purchasesInCart && purchasesInCart.length > 0 ? (
                       <Fragment>
                         <span className="text-gray-500 text-base font-semibold">
                           Sản phẩm mới thêm
@@ -204,7 +170,7 @@ export default function Header() {
                       d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 0 0-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 0 0-16.536-1.84M7.5 14.25 5.106 5.272M6 20.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Zm12.75 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z"
                     />
                   </svg>
-                  {isAuthenticated && (
+                  {isAuthenticated && (purchasesInCart as Purchase[])?.length > 0 && (
                     <span className="h-5 w-6 text-white bg-primaryOrange rounded-full absolute top-0 -right-2 text-[12px] flex items-center justify-center">
                       {purchasesInCart?.length}
                     </span>

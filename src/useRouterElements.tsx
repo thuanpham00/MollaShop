@@ -4,7 +4,7 @@ import Login from "./pages/Login"
 import Register from "./pages/Register"
 import RegisterLayout from "./Layouts/RegisterLayout"
 import MainLayout from "./Layouts/MainLayout"
-import Profile from "./pages/Profile"
+import Profile from "src/pages/User/Pages/Profile"
 import { useContext } from "react"
 import { AppContext } from "./contexts/auth.context"
 import Home from "./pages/Home"
@@ -12,6 +12,9 @@ import ProductList from "./pages/ProductList"
 import ProductDetail from "./pages/ProductDetail"
 import Cart from "./pages/Cart"
 import CartLayout from "./Layouts/CartLayout"
+import UserLayout from "./pages/User/Layouts/UserLayout"
+import ChangePassword from "./pages/User/Pages/ChangePassword"
+import HistoryPurchase from "./pages/User/Pages/HistoryPurchase"
 
 // <Outlet /> giúp truy cập vào route con
 // <Navigate /> điều hướng trang khi xử lý bằng js
@@ -65,20 +68,47 @@ export default function useRouterElements() {
       element: <ProjectedRouter />, // thêm 1 lớp check điều kiện authenticated
       children: [
         {
-          path: path.profile,
-          element: (
-            <MainLayout>
-              <Profile />
-            </MainLayout>
-          )
-        },
-        {
           path: path.cart,
           element: (
             <CartLayout>
               <Cart />
             </CartLayout>
           )
+        },
+        {
+          path: path.user,
+          children: [
+            {
+              path: path.profile,
+              element: (
+                <MainLayout>
+                  <UserLayout>
+                    <Profile />
+                  </UserLayout>
+                </MainLayout>
+              )
+            },
+            {
+              path: path.changePassword,
+              element: (
+                <MainLayout>
+                  <UserLayout>
+                    <ChangePassword />
+                  </UserLayout>
+                </MainLayout>
+              )
+            },
+            {
+              path: path.historyPurchase,
+              element: (
+                <MainLayout>
+                  <UserLayout>
+                    <HistoryPurchase />
+                  </UserLayout>
+                </MainLayout>
+              )
+            }
+          ]
         }
       ]
     },

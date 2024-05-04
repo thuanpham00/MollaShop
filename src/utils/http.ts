@@ -4,6 +4,7 @@ import { toast } from "react-toastify"
 import { isAxiosError } from "./utils"
 import { clearLS, getAccessTokenToLs, setAccessTokenToLs, setProfileToLs } from "./auth"
 import { AuthResponse } from "src/types/auth.type"
+import { HttpStatusCode } from "src/constants/httpStatusCode.enum"
 
 class http {
   instance: AxiosInstance
@@ -54,6 +55,11 @@ class http {
           const message = data?.message || error.message
           toast.error(message)
         }
+        toast.error(error.message)
+        if(error.response?.status === HttpStatusCode.Unauthorized ) {
+          clearLS() 
+          // window.location.reload()
+        } // khi nó 401 thì tự logout // lỗi 401 - hết hạn token // sai token
         return Promise.reject(error)
       }
     )

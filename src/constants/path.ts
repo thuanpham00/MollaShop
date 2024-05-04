@@ -2,7 +2,10 @@ export const path = {
   home: "/", // trang chủ
   productList: "/productList",
   productDetail: ":nameId",
-  profile: "/profile",
+  user: "/user",
+  profile: "/user/profile",
+  changePassword: "/user/password",
+  historyPurchase: "/user/purchase",
   login: "/login",
   register: "/register",
   logout: "/logout",

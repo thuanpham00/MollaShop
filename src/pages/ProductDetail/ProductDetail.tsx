@@ -1,7 +1,7 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query"
 import DOMPurify from "dompurify"
 import { useContext, useEffect, useMemo, useRef, useState } from "react"
-import { useParams } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 import ProductRating from "src/Components/ProductRating"
 import { queryParamConfig } from "src/Hooks/useQueryConfig"
 import { productApi } from "src/apis/products.api"
@@ -18,6 +18,7 @@ import { purchaseApi } from "src/apis/purchase.api"
 import { purchaseStatus } from "src/constants/purchaseStatus"
 import { toast } from "react-toastify"
 import { AppContext } from "src/contexts/auth.context"
+import { path } from "src/constants/path"
 
 type AddToCart = {
   product_id: string
@@ -27,6 +28,7 @@ type AddToCart = {
 export default function ProductDetail() {
   const { darkMode } = useContext(AppContext)
   const queryClient = useQueryClient()
+  const navigate = useNavigate()
   const [buyCount, setBuyCount] = useState(1)
   const { nameId } = useParams() // lấy id từ url
   const id = getIdFromNameId(nameId as string)
@@ -78,6 +80,18 @@ export default function ProductDetail() {
         }
       }
     )
+  }
+
+  const buyNow = async () => {
+    const response = await addToCartMutation.mutateAsync({buy_count: buyCount, product_id: product?._id as string})
+    // dùng mutateAsync chức năng tương tự mutate
+    const purchase = response.data.data
+    navigate(path.cart, {
+      state: {
+        purchaseId: purchase._id // điều hướng trang -> cart - đồng thời truyền state ở trang hiện tại sang trang mới
+      }
+    })
+    console.log(purchase);
   }
 
   const [currentImagesIndex, setCurrentImagesIndex] = useState([0, 5])
@@ -288,7 +302,7 @@ export default function ProductDetail() {
                   thêm vào giỏ hàng
                 </button>
 
-                <button className="h-12 min-w-[5rem] bg-orange-500 text-white px-4 py-3 rounded hover:bg-orange-500/50 duration-400 outline-none">
+                <button onClick={buyNow} className="h-12 min-w-[5rem] bg-orange-500 text-white px-4 py-3 rounded hover:bg-orange-500/50 duration-400 outline-none">
                   Mua ngay
                 </button>
               </div>

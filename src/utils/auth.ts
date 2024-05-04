@@ -17,9 +17,13 @@ export const getProfileToLs = () => {
   return result ? JSON.parse(result) : null
 }
 
+export const LocalStorageEventTarget = new EventTarget()
+
 export const clearLS = () => {
   localStorage.removeItem("access_token")
   localStorage.removeItem("profile")
+  const ClearLSEvent = new Event("ClearLS")
+  LocalStorageEventTarget.dispatchEvent(ClearLSEvent)
 }
 
 export const setDarkModeToLs = (darkMode: string) => {

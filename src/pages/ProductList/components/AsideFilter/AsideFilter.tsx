@@ -10,7 +10,6 @@ import { yupResolver } from "@hookform/resolvers/yup"
 import RatingStar from "../RatingStar"
 import { omit } from "lodash"
 import { queryParamConfig } from "src/Hooks/useQueryConfig"
-import InputV2 from "src/Components/InputV2"
 
 interface Props {
   categories: Categories[]

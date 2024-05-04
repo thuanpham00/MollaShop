@@ -39,7 +39,7 @@ export default function Register() {
   const onSubmit = handleSubmit((data) => {
     registerAccountMutation.mutate(data, {
       onSuccess: () => {
-        navigate("/login") // đăng kí xong chuyển tới trang đăng nhập
+        navigate(path.login) // đăng kí xong chuyển tới trang đăng nhập
       },
       onError: (error) => {
         console.log(error) // lỗi 422 xuất hiện khi đăng ký 1 tài khoản 2 lần

@@ -1,4 +1,5 @@
 import { createContext, useEffect, useState } from "react"
+import { ExtendedPurchase } from "src/types/purchase.type"
 import { User } from "src/types/user.type"
 import {
   getAccessTokenToLs,
@@ -18,6 +19,9 @@ interface TypeInitialState {
   setIsProfile: React.Dispatch<React.SetStateAction<User | null>>
   darkMode: boolean
   setDarkMode: React.Dispatch<React.SetStateAction<boolean>>
+  extendedPurchase: ExtendedPurchase[]
+  setExtendedPurchase: React.Dispatch<React.SetStateAction<ExtendedPurchase[]>>,
+  reset: () => void
 }
 
 const initialState: TypeInitialState = {
@@ -25,13 +29,17 @@ const initialState: TypeInitialState = {
   setIsAuthenticated: () => null,
   isProfile: getProfileToLs(),
   setIsProfile: () => null,
-  darkMode: getDarkModeToLs() === "true" ? (true) : (false),
-  setDarkMode: () => null
+  darkMode: getDarkModeToLs() === "true" ? true : false,
+  setDarkMode: () => null,
+  extendedPurchase: [],
+  setExtendedPurchase: () => null,
+  reset: () => null
 }
 
 export const AppContext = createContext<TypeInitialState>(initialState)
 
-export const AppProvider = ({ children  }: Props) => {
+// global state - context api - state toàn cục
+export const AppProvider = ({ children }: Props) => {
   const [darkMode, setDarkMode] = useState<boolean>(initialState.darkMode)
   useEffect(() => {
     setDarkModeToLs(darkMode.toString())
@@ -44,6 +52,13 @@ export const AppProvider = ({ children  }: Props) => {
 
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(initialState.isAuthenticated)
   const [isProfile, setIsProfile] = useState<User | null>(initialState.isProfile)
+  const [extendedPurchase, setExtendedPurchase] = useState<ExtendedPurchase[]>(initialState.extendedPurchase)
+
+  const reset = () => {
+    setIsAuthenticated(false)
+    setIsProfile(null)
+    setExtendedPurchase([])
+  }
 
   return (
     <AppContext.Provider
@@ -53,7 +68,10 @@ export const AppProvider = ({ children  }: Props) => {
         isProfile,
         setIsProfile,
         darkMode,
-        setDarkMode
+        setDarkMode,
+        extendedPurchase,
+        setExtendedPurchase,
+        reset
       }}
     >
       {children}

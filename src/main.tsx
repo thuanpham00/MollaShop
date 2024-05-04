@@ -7,10 +7,11 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools"
 import { AppProvider } from "./contexts/auth.context.tsx"
 
-export const queryClient = new QueryClient({
+const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
-      refetchOnWindowFocus: false // chặn refetch api khi chuyển tab
+      refetchOnWindowFocus: false, // chặn refetch api khi chuyển tab
+      retry: 0 // gọi lỗi 1 lần khi bị 401 (hết hạn token - sai token)
     }
   }
 })

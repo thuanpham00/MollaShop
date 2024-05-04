@@ -5,11 +5,13 @@ import { Link } from "react-router-dom"
 import { path } from "src/constants/path"
 import avatar from "../../img/minhthuan.jpg"
 import { loginApi } from "src/apis/login.api"
-import { useMutation } from "@tanstack/react-query"
-import { queryClient } from "src/main"
+import { useMutation, useQueryClient } from "@tanstack/react-query"
+
 import { purchaseStatus } from "src/constants/purchaseStatus"
+import { getNameFromeEmail } from "src/utils/utils"
 
 export default function NavHeader() {
+  const queryClient = useQueryClient()
   const { isAuthenticated, setIsAuthenticated, isProfile, setIsProfile, darkMode, setDarkMode } =
     useContext(AppContext)
 
@@ -195,7 +197,9 @@ export default function NavHeader() {
                 <div className="w-5 h-5">
                   <img src={avatar} alt="" className="w-full h-full rounded-full object-cover" />
                 </div>
-                <span className="text-sm lg:text-base font-normal">{isProfile?.email}</span>
+                <span className="text-sm lg:text-base font-semibold font_name">
+                  {getNameFromeEmail(isProfile?.email as string)}
+                </span>
               </Popover>
             )}
 

@@ -1,8 +1,58 @@
 import { useContext } from "react"
 import { AppContext } from "src/contexts/auth.context"
+import img1 from "src/img/banner1.png"
+import img2 from "src/img/banner2.png"
+import img3 from "src/img/banner3.png"
+import img4 from "src/img/banner4.png"
+import { Slide } from "react-slideshow-image"
+import "react-slideshow-image/dist/styles.css"
+
+const buttonStyle = {
+  width: "30px",
+  height: "30px",
+  background: "none",
+  border: "1px solid white",
+  borderRadius: "999px",
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center"
+}
+
+const properties = {
+  prevArrow: (
+    <button style={{ ...buttonStyle }} className="ml-3">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        strokeWidth={1.5}
+        stroke="white"
+        className="w-6 h-6"
+      >
+        <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
+      </svg>
+    </button>
+  ),
+  nextArrow: (
+    <button style={{ ...buttonStyle }} className="mr-3">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        strokeWidth={1.5}
+        stroke="white"
+        className="w-6 h-6"
+      >
+        <path strokeLinecap="round" strokeLinejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+      </svg>
+    </button>
+  )
+}
 
 export default function Home() {
   const { darkMode } = useContext(AppContext)
+
+  const imageList = [img1, img2, img3, img4]
 
   return (
     <div className={`${darkMode ? "bg-[#000]" : "bg-[#fff]"} duration-200`}>
@@ -14,9 +64,9 @@ export default function Home() {
         />
       </div>
 
-      <div className="container relative">
+      <div className="container">
         <div
-          className={`${darkMode ? "bg-[#000]" : "bg-[#fff]"} w-full absolute left-0 -bottom-24 md:-bottom-44 lg:-bottom-16 duration-200 pt-2 md:pt-5 pb-2 md:pb-8 px-3 z-10 shadow-lg border border-gray-200`}
+          className={`${darkMode ? "bg-[#000]" : "bg-[#fff]"} mt-5 w-full duration-200 pt-2 md:pt-5 pb-2 md:pb-8 px-3 z-10 shadow-lg border border-gray-200`}
         >
           <div className="grid grid-cols-12 gap-4 flex-wrap">
             <div className="col-span-6 lg:col-span-3 border-r-2 border-gray-300 md:p-2">
@@ -38,7 +88,11 @@ export default function Home() {
                   </svg>
                 </div>
                 <div>
-                  <span className="font-semibold text-xs md:text-lg md:line-clamp-1">Free shipping</span>
+                  <span
+                    className={`${darkMode ? "text-white" : "text-black"} font-semibold text-xs md:text-lg md:line-clamp-1`}
+                  >
+                    Free shipping
+                  </span>
                   <span className="block font-light text-[10px] md:text-sm text-gray-500">
                     When you spend $80 or more
                   </span>
@@ -64,7 +118,11 @@ export default function Home() {
                   </svg>
                 </div>
                 <div>
-                  <span className="font-semibold text-xs md:text-lg md:line-clamp-1">We are available 24/7</span>
+                  <span
+                    className={`${darkMode ? "text-white" : "text-black"} font-semibold text-xs md:text-lg md:line-clamp-1`}
+                  >
+                    We are available 24/7
+                  </span>
                   <span className="block font-light text-[10px] md:text-sm text-gray-500">
                     Need help? contact us anytime
                   </span>
@@ -90,7 +148,11 @@ export default function Home() {
                   </svg>
                 </div>
                 <div>
-                  <span className="font-semibold text-xs md:text-lg md:line-clamp-1">Satisfied or return</span>
+                  <span
+                    className={`${darkMode ? "text-white" : "text-black"} font-semibold text-xs md:text-lg md:line-clamp-1`}
+                  >
+                    Satisfied or return
+                  </span>
                   <span className="block font-light text-[10px] md:text-sm text-gray-500">
                     Easy 30-day return policy
                   </span>
@@ -116,7 +178,11 @@ export default function Home() {
                   </svg>
                 </div>
                 <div>
-                  <span className="font-semibold text-xs md:text-lg md:line-clamp-1">100% secure payments</span>
+                  <span
+                    className={`${darkMode ? "text-white" : "text-black"} font-semibold text-xs md:text-lg md:line-clamp-1`}
+                  >
+                    100% secure payments
+                  </span>
                   <span className="block font-light text-[10px] md:text-sm text-gray-500">
                     Visa, Mastercard, Stripe, PayPal
                   </span>
@@ -125,50 +191,97 @@ export default function Home() {
             </div>
           </div>
         </div>
-      </div>
 
-      <div
-        className={`container mt-28 md:mt-44 lg:mt-20 shadow-lg border border-gray-200 ${darkMode ? "bg-[#000]" : "bg-[#fff]"}`}
-      >
-        <div className="w-full py-8 px-4">
-          <div className="grid grid-cols-12 gap-4">
-            <div className="col-span-4">
-              <div className="w-full">
-                <img
-                  src="https://chawkbazar.vercel.app/_next/image?url=%2Fassets%2Fimages%2Fproducts%2Fp-30-md.png&w=384&q=100"
-                  alt="ảnh"
-                  className="w-full object-cover"
-                />
-                <span className="mt-4 block text-center uppercase text-[8px] md:text-sm text-gray-500 font-semibold">
-                  5 sản phẩm
-                </span>
+        <div
+          className={`${darkMode ? "bg-[#000]" : "bg-[#fff]"} w-full mt-4 lg:mt-12 shadow-lg border border-gray-200`}
+        >
+          <div className="w-full py-4 md:py-8 px-4">
+            <div className="grid grid-cols-12 gap-4">
+              <div className="col-span-4">
+                <div className="w-full">
+                  <img
+                    src="https://chawkbazar.vercel.app/_next/image?url=%2Fassets%2Fimages%2Fproducts%2Fp-30-md.png&w=384&q=100"
+                    alt="ảnh"
+                    className="w-full object-cover"
+                  />
+                  <span
+                    className={`mt-4 block text-center uppercase font-light text-[8px] md:text-sm md:font-semibold ${darkMode ? "text-[#fff]" : "text-gray-500"}`}
+                  >
+                    5 sản phẩm
+                  </span>
+                </div>
               </div>
-            </div>
-            <div className="col-span-4">
-              <div className="w-full">
-                <img
-                  src="https://websitedemos.net/electronic-store-04/wp-content/uploads/sites/1055/2022/03/electronic-store-category-image-02.jpg"
-                  alt="ảnh"
-                  className="w-full object-cover"
-                />
-                <span className="mt-4 block text-center uppercase text-[8px] md:text-sm text-gray-500 font-semibold">
-                  5 sản phẩm
-                </span>
+              <div className="col-span-4">
+                <div className="w-full">
+                  <img
+                    src="https://websitedemos.net/electronic-store-04/wp-content/uploads/sites/1055/2022/03/electronic-store-category-image-02.jpg"
+                    alt="ảnh"
+                    className="w-full object-cover"
+                  />
+                  <span
+                    className={`mt-4 block text-center uppercase font-light text-[8px] md:text-sm md:font-semibold ${darkMode ? "text-[#fff]" : "text-gray-500"}`}
+                  >
+                    5 sản phẩm
+                  </span>
+                </div>
               </div>
-            </div>
-            <div className="col-span-4">
-              <div className="w-full">
-                <img
-                  src="https://chawkbazar.vercel.app/_next/image?url=%2Fassets%2Fimages%2Fproducts%2Fp-16-md.png&w=384&q=100"
-                  alt="ảnh"
-                  className="w-full object-cover"
-                />
-                <span className="mt-4 block text-center uppercase text-[8px] md:text-sm text-gray-500 font-semibold">
-                  35 sản phẩm
-                </span>
+              <div className="col-span-4">
+                <div className="w-full">
+                  <img
+                    src="https://chawkbazar.vercel.app/_next/image?url=%2Fassets%2Fimages%2Fproducts%2Fp-16-md.png&w=384&q=100"
+                    alt="ảnh"
+                    className="w-full object-cover"
+                  />
+                  <span
+                    className={`mt-4 block text-center uppercase font-light text-[8px] md:text-sm md:font-semibold ${darkMode ? "text-[#fff]" : "text-gray-500"}`}
+                  >
+                    35 sản phẩm
+                  </span>
+                </div>
               </div>
             </div>
           </div>
+        </div>
+
+        <div className="mt-4 lg:mt-12 p-4">
+          <Slide {...properties}>
+            <div className="each-slide-effect">
+              <div
+                style={{
+                  backgroundImage: `url(${imageList[0]})`,
+                  objectFit: "contain",
+                  borderRadius: "5px"
+                }}
+              ></div>
+            </div>
+            <div className="each-slide-effect">
+              <div
+                style={{
+                  backgroundImage: `url(${imageList[1]})`,
+                  objectFit: "contain",
+                  borderRadius: "5px"
+                }}
+              ></div>
+            </div>
+            <div className="each-slide-effect">
+              <div
+                style={{
+                  backgroundImage: `url(${imageList[2]})`,
+                  objectFit: "contain",
+                  borderRadius: "5px"
+                }}
+              ></div>
+            </div>
+            <div className="each-slide-effect">
+              <div
+                style={{
+                  backgroundImage: `url(${imageList[3]})`,
+                  objectFit: "contain",
+                  borderRadius: "5px"
+                }}
+              ></div>
+            </div>
+          </Slide>
         </div>
       </div>
     </div>
