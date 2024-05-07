@@ -77,7 +77,7 @@ export default function Login() {
   console.log(watchForm)
 
   return (
-    <div className={`${darkMode ? "bg-[#000]" : "bg-slate-200"}`}>
+    <div className={`${darkMode ? "bg-gradient-to-r from-[#232526] to-[#414345]" : "bg-slate-200"}`}>
       <div className="container">
         <div className="grid grid-cols-1 lg:grid-cols-5 py-12 lg:pr-10">
           <div className="hidden lg:block lg:col-span-3 ml-14">

@@ -36,3 +36,20 @@ body {
   background: #efefef;
   text-align: center;
 }
+
+@keyframes sweet {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+.animation {
+  animation: sweet 0.5s linear 1;
+}
+
+
+
+

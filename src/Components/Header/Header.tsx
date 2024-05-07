@@ -31,14 +31,14 @@ export default function Header() {
     enabled: isAuthenticated // nó chỉ được chạy khi có isAuthenticated (true)
   })
 
-  const purchasesInCart = getPurchaseListQuery.data?.data.data
-  console.log(purchasesInCart)
+  const purchasesInCart = getPurchaseListQuery.data?.data.data // chỉ chạy khi có isAuthenticated
+  //console.log(purchasesInCart)
 
   return (
     <header>
       <NavHeader />
 
-      <div className={`${darkMode ? "bg-[#000]" : "bg-white"} duration-200`}>
+      <div className={`${darkMode ? "bg-gradient-to-r from-[#232526] to-[#414345]" : "bg-white"} duration-200`}>
         <div className="container">
           <div className="grid grid-cols-7 md:grid-cols-12 gap-4 py-4 items-center">
             <Link to="/" className="col-span-2 md:col-span-3 lg:col-span-2 rounded-md">
@@ -170,7 +170,7 @@ export default function Header() {
                       d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 0 0-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 0 0-16.536-1.84M7.5 14.25 5.106 5.272M6 20.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Zm12.75 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z"
                     />
                   </svg>
-                  {isAuthenticated && (purchasesInCart as Purchase[])?.length > 0 && (
+                  {(purchasesInCart as Purchase[])?.length > 0 && (
                     <span className="h-5 w-6 text-white bg-primaryOrange rounded-full absolute top-0 -right-2 text-[12px] flex items-center justify-center">
                       {purchasesInCart?.length}
                     </span>
@@ -199,31 +199,31 @@ export default function Header() {
               to={`${`/productList?page=1&limit=15&sort_by=view&category=60afacca6ef5b902180aacaf`}`}
             >
               <span className="text-xs md:text-base text-white font-medium hover:text-white/70 d-font-medium-300 capitalize">
-                Đồng hồ
+                Watch
               </span>
             </Link>
             <Link
               to={`${`/productList?page=1&limit=15&category=60aba4e24efcc70f8892e1c6&sort_by=view`}`}
             >
               <span className="text-xs md:text-base text-white font-medium hover:text-white/70 d-font-medium-300 capitalize">
-                Áo thun
+                Clothes
               </span>
             </Link>
             <Link
               to={`${`/productList?page=1&limit=15&category=60afafe76ef5b902180aacb5&sort_by=view`}`}
             >
               <span className="text-xs md:text-base text-white font-medium hover:text-white/70 d-font-medium-300 capitalize">
-                Điện thoại
+                Phone
               </span>
             </Link>
             <Link to={path.productList}>
               <span className="text-xs md:text-base text-white font-medium hover:text-white/70 d-font-medium-300 capitalize">
-                Điện thoại và Phụ kiện
+              Phones and accessories
               </span>
             </Link>
             <Link to={path.productList}>
               <span className="text-xs md:text-base text-white font-medium hover:text-white/70 d-font-medium-300 capitalize">
-                Khuyến mãi
+                Hot's deal
               </span>
             </Link>
           </div>

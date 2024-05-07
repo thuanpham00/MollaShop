@@ -83,7 +83,10 @@ export default function ProductDetail() {
   }
 
   const buyNow = async () => {
-    const response = await addToCartMutation.mutateAsync({buy_count: buyCount, product_id: product?._id as string})
+    const response = await addToCartMutation.mutateAsync({
+      buy_count: buyCount,
+      product_id: product?._id as string
+    })
     // dùng mutateAsync chức năng tương tự mutate
     const purchase = response.data.data
     navigate(path.cart, {
@@ -91,7 +94,7 @@ export default function ProductDetail() {
         purchaseId: purchase._id // điều hướng trang -> cart - đồng thời truyền state ở trang hiện tại sang trang mới
       }
     })
-    console.log(purchase);
+    console.log(purchase)
   }
 
   const [currentImagesIndex, setCurrentImagesIndex] = useState([0, 5])
@@ -156,7 +159,9 @@ export default function ProductDetail() {
 
   if (!product) return null
   return (
-    <div className={`${darkMode ? "bg-[#000]" : "bg-gray-100"} py-6`}>
+    <div
+      className={`${darkMode ? "bg-gradient-to-r from-[#232526] to-[#414345]" : "bg-gray-100"} py-6`}
+    >
       <div className="container">
         <div className={`${darkMode ? "bg-[#252323]" : "bg-white"} p-4 shadow`}>
           <div className="grid grid-cols-12 gap-9">
@@ -302,7 +307,10 @@ export default function ProductDetail() {
                   thêm vào giỏ hàng
                 </button>
 
-                <button onClick={buyNow} className="h-12 min-w-[5rem] bg-orange-500 text-white px-4 py-3 rounded hover:bg-orange-500/50 duration-400 outline-none">
+                <button
+                  onClick={buyNow}
+                  className="h-12 min-w-[5rem] bg-orange-500 text-white px-4 py-3 rounded hover:bg-orange-500/50 duration-400 outline-none"
+                >
                   Mua ngay
                 </button>
               </div>
@@ -312,7 +320,7 @@ export default function ProductDetail() {
 
         <div className={`${darkMode ? "bg-[#252323] text-white" : "bg-white"} mt-5 p-4 shadow`}>
           <span
-            className={`block px-3 py-4 uppercase text-lg rounded ${darkMode ? "bg-gray-700" : "bg-gray-50"}`}
+            className={`block px-3 py-4 uppercase text-lg rounded ${darkMode ? "bg-gradient-to-r from-[#232526] to-[#414345]" : "bg-gray-50"}`}
           >
             mô tả sản phẩm
           </span>
@@ -327,7 +335,7 @@ export default function ProductDetail() {
 
         <div className={`${darkMode ? "bg-[#252323] text-white" : "bg-white"} mt-5 p-4 shadow`}>
           <span
-            className={`block px-3 py-4 uppercase text-lg rounded ${darkMode ? "bg-gray-700" : "bg-gray-50"}`}
+            className={`block px-3 py-4 uppercase text-lg rounded ${darkMode ? "bg-gradient-to-r from-[#232526] to-[#414345]" : "bg-gray-50"}`}
           >
             có thể bạn cũng thích
           </span>

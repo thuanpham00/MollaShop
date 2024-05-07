@@ -181,7 +181,7 @@ export default function Cart() {
 
   if (!purchaseList) return null
   return (
-    <div className={`${darkMode ? "bg-[#000]" : "bg-neutral-100"} py-4 duration-200`}>
+    <div className={`${darkMode ? "bg-gradient-to-r from-[#232526] to-[#414345]" : "bg-neutral-100"} py-4 duration-200`}>
       <div className="container">
         {extendedPurchase && extendedPurchase.length > 0 ? (
           <Fragment>

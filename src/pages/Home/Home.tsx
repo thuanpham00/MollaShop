@@ -1,26 +1,23 @@
-import { useContext } from "react"
+import { useContext, useEffect, useState } from "react"
 import { AppContext } from "src/contexts/auth.context"
-import img1 from "src/img/banner1.png"
+import img1 from "src/img/banner4.png"
 import img2 from "src/img/banner2.png"
 import img3 from "src/img/banner3.png"
-import img4 from "src/img/banner4.png"
+import slide1 from "src/img/slide1.jpg"
+import slide2 from "src/img/slide2.jpg"
 import { Slide } from "react-slideshow-image"
 import "react-slideshow-image/dist/styles.css"
+import { Link } from "react-router-dom"
+import { path } from "src/constants/path"
+import { queryParamConfig } from "src/Hooks/useQueryConfig"
+import { useQuery } from "@tanstack/react-query"
+import { productApi } from "src/apis/products.api"
+import { ProductListConfig } from "src/types/product.type"
+import ProductItem from "./components/ProductItem"
 
-const buttonStyle = {
-  width: "30px",
-  height: "30px",
-  background: "none",
-  border: "1px solid white",
-  borderRadius: "999px",
-  display: "flex",
-  justifyContent: "center",
-  alignItems: "center"
-}
-
-const properties = {
+const buttonImageList = {
   prevArrow: (
-    <button style={{ ...buttonStyle }} className="ml-3">
+    <button className="ml-3">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
@@ -34,7 +31,7 @@ const properties = {
     </button>
   ),
   nextArrow: (
-    <button style={{ ...buttonStyle }} className="mr-3">
+    <button className="mr-3">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
@@ -49,24 +46,141 @@ const properties = {
   )
 }
 
+const buttonSlideList = {
+  prevArrow: (
+    <button className="ml-3">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        strokeWidth={1.5}
+        stroke="#14213d"
+        className="w-5 h-5 md:w-10 md:h-10"
+      >
+        <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
+      </svg>
+    </button>
+  ),
+  nextArrow: (
+    <button className="mr-3">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        strokeWidth={1.5}
+        stroke="#14213d"
+        className="w-5 h-5 md:w-10 md:h-10"
+      >
+        <path strokeLinecap="round" strokeLinejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+      </svg>
+    </button>
+  )
+}
+
+const slideImages = [slide1, slide2]
+
+const imageList = [img1, img2, img3]
+
 export default function Home() {
   const { darkMode } = useContext(AppContext)
 
-  const imageList = [img1, img2, img3, img4]
+  const [scrollYPosition, setScrollYPosition] = useState<number>(0)
 
+  const handleScroll = () => {
+    const currentScrollY = window.scrollY
+    setScrollYPosition(currentScrollY)
+  }
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll)
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll)
+    }
+  }, [])
+
+  const [modeAnimation, setModeAnimation] = useState<boolean>(true)
+  useEffect(() => {
+    if (scrollYPosition < 600) {
+      setModeAnimation(true)
+    } else {
+      setModeAnimation(false)
+    }
+  }, [scrollYPosition]) // khi nào scrollYPosition thay đổi tham chiếu nó chạy lại hàm này
+
+  const queryConfigView: queryParamConfig = {
+    page: "1",
+    limit: "4",
+    sort_by: "view"
+  }
+  const getProductListViewQuery = useQuery({
+    queryKey: ["productListHome", queryConfigView],
+    queryFn: () => {
+      return productApi.getProductList(queryConfigView as ProductListConfig)
+    }
+  })
+
+  const queryConfigSold: queryParamConfig = {
+    page: "1",
+    limit: "4",
+    sort_by: "sold"
+  }
+  const getProductListSoldQuery = useQuery({
+    queryKey: ["productListHome", queryConfigSold],
+    queryFn: () => {
+      return productApi.getProductList(queryConfigSold as ProductListConfig)
+    }
+  })
+
+  const productListView = getProductListViewQuery.data?.data.data.products
+  const productListSold = getProductListSoldQuery.data?.data.data.products
+
+  if (!productListView) return null
+  if (!productListSold) return null
   return (
-    <div className={`${darkMode ? "bg-[#000]" : "bg-[#fff]"} duration-200`}>
-      <div className="w-full flex justify-center">
-        <img
-          src="https://websitedemos.net/electronic-store-04/wp-content/uploads/sites/1055/2022/03/electronic-store-hero-image.jpg"
-          alt="Ảnh"
-          className="w-full min-h-[120px] object-contain"
-        />
+    <div className={`${darkMode ? "bg-gradient-to-r from-[#232526] to-[#414345]" : "bg-[#fff]"} duration-200`}>
+      <div className="w-full relative">
+        <Slide {...buttonSlideList}>
+          {slideImages.map((item, index) => {
+            return (
+              <div className="w-full h-[350px] md:h-[550px] lg:h-[750px]" key={index}>
+                <div
+                  style={{
+                    backgroundImage: `url(${item})`,
+                    backgroundSize: "cover",
+                    backgroundPosition: "center"
+                  }}
+                  className="w-full h-full"
+                ></div>
+              </div>
+            )
+          })}
+        </Slide>
+
+        <div className="absolute left-1/2 top-[30%] -translate-x-1/2 -translate-y-[30%]">
+          <div
+            className={`${modeAnimation ? "animation" : ""} flex justify-center items-center flex-col`}
+          >
+            <h1 className="font_logo text-3xl md:text-8xl text-[#403d30]">Molla</h1>
+            <h2 className="tracking-wider font_logo capitalize mt-0 md:mt-4 block text-black text-2xl md:text-5xl">
+              New Fashion
+            </h2>
+            <h3 className="text-xs md:text-xl text-gray-600 mt-0 md:mt-4 text-center">
+              Your style evolution starts here: Fashion, watches, and smartphones
+            </h3>
+            <Link
+              to={path.productList}
+              className="text-xs md:text-base tracking-widest uppercase mt-4 py-2 px-3 md:py-5 md:px-6 bg-primaryOrange hover:bg-primaryOrange/80 duration-200 rounded-sm shadow-sm text-white"
+            >
+              Shop now!
+            </Link>
+          </div>
+        </div>
       </div>
 
       <div className="container">
         <div
-          className={`${darkMode ? "bg-[#000]" : "bg-[#fff]"} mt-5 w-full duration-200 pt-2 md:pt-5 pb-2 md:pb-8 px-3 z-10 shadow-lg border border-gray-200`}
+          className={`${darkMode ? "bg-[#252323]" : "bg-[#fff]"} mt-5 w-full duration-200 pt-2 md:pt-5 pb-2 md:pb-8 px-3 z-10 shadow-lg border border-gray-200`}
         >
           <div className="grid grid-cols-12 gap-4 flex-wrap">
             <div className="col-span-6 lg:col-span-3 border-r-2 border-gray-300 md:p-2">
@@ -193,7 +307,7 @@ export default function Home() {
         </div>
 
         <div
-          className={`${darkMode ? "bg-[#000]" : "bg-[#fff]"} w-full mt-4 lg:mt-12 shadow-lg border border-gray-200`}
+          className={`${darkMode ? "bg-[#252323]" : "bg-[#fff]"} w-full mt-4 lg:mt-12 shadow-lg border border-gray-200`}
         >
           <div className="w-full py-4 md:py-8 px-4">
             <div className="grid grid-cols-12 gap-4">
@@ -207,7 +321,7 @@ export default function Home() {
                   <span
                     className={`mt-4 block text-center uppercase font-light text-[8px] md:text-sm md:font-semibold ${darkMode ? "text-[#fff]" : "text-gray-500"}`}
                   >
-                    5 sản phẩm
+                    5 products
                   </span>
                 </div>
               </div>
@@ -221,7 +335,7 @@ export default function Home() {
                   <span
                     className={`mt-4 block text-center uppercase font-light text-[8px] md:text-sm md:font-semibold ${darkMode ? "text-[#fff]" : "text-gray-500"}`}
                   >
-                    5 sản phẩm
+                    5 products
                   </span>
                 </div>
               </div>
@@ -235,7 +349,7 @@ export default function Home() {
                   <span
                     className={`mt-4 block text-center uppercase font-light text-[8px] md:text-sm md:font-semibold ${darkMode ? "text-[#fff]" : "text-gray-500"}`}
                   >
-                    35 sản phẩm
+                    35 products
                   </span>
                 </div>
               </div>
@@ -243,45 +357,55 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="mt-4 lg:mt-12 p-4">
-          <Slide {...properties}>
-            <div className="each-slide-effect">
-              <div
-                style={{
-                  backgroundImage: `url(${imageList[0]})`,
-                  objectFit: "contain",
-                  borderRadius: "5px"
-                }}
-              ></div>
-            </div>
-            <div className="each-slide-effect">
-              <div
-                style={{
-                  backgroundImage: `url(${imageList[1]})`,
-                  objectFit: "contain",
-                  borderRadius: "5px"
-                }}
-              ></div>
-            </div>
-            <div className="each-slide-effect">
-              <div
-                style={{
-                  backgroundImage: `url(${imageList[2]})`,
-                  objectFit: "contain",
-                  borderRadius: "5px"
-                }}
-              ></div>
-            </div>
-            <div className="each-slide-effect">
-              <div
-                style={{
-                  backgroundImage: `url(${imageList[3]})`,
-                  objectFit: "contain",
-                  borderRadius: "5px"
-                }}
-              ></div>
-            </div>
+        <div className="mt-4 lg:mt-8 p-4">
+          <Slide {...buttonImageList}>
+            {imageList.map((item, index) => (
+              <div className="each-slide-effect" key={index}>
+                <div
+                  style={{
+                    backgroundImage: `url(${item})`,
+                    borderRadius: "5px",
+                    backgroundSize: "cover",
+                    backgroundPosition: "center"
+                  }}
+                ></div>
+              </div>
+            ))}
           </Slide>
+        </div>
+
+        <div className="mt-4 lg:mt-8 p-4">
+          <h2
+            className={`uppercase text-3xl font-light ${darkMode ? "text-[#fff]/80" : "text-[#000]"} text-center`}
+          >
+            best seller
+          </h2>
+          <h3 className={`text-xl ${darkMode ? "text-[#fff]/70" : "text-[#000]"} uppercase text-center mt-1`}>top view in this week</h3>
+
+          <div className="mt-4 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            {productListView.map((item, index) => (
+              <div key={index} className="col-span-1">
+                <ProductItem item={item} />
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="mt-4 lg:mt-8 p-4">
+          <h2
+            className={`uppercase text-3xl font-light ${darkMode ? "text-[#fff]/80" : "text-[#000]"} text-center`}
+          >
+            best seller
+          </h2>
+          <h3 className={`text-xl ${darkMode ? "text-[#fff]/70" : "text-[#000]"} uppercase text-center mt-1`}>top sold in this week</h3>
+
+          <div className="mt-4 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            {productListSold.map((item, index) => (
+              <div key={index} className="col-span-1">
+                <ProductItem item={item} />
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </div>

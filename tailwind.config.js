@@ -32,6 +32,7 @@ module.exports = {
         }
       })
     }),
-    require("@tailwindcss/line-clamp") // thêm lớp line-clamp quá số dòng thì ...
+    require("@tailwindcss/line-clamp")
+    // thêm lớp line-clamp quá số dòng thì ...
   ]
 }

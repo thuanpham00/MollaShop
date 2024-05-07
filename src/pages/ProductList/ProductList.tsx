@@ -56,7 +56,7 @@ export default function ProductList() {
   }
 
   return (
-    <div className={`${darkMode ? "bg-[#000] text-gray-200" : "bg-[#fff]"} py-6 duration-200`}>
+    <div className={`${darkMode ? "bg-gradient-to-r from-[#232526] to-[#414345] text-gray-200" : "bg-[#fff]"} py-6 duration-200`}>
       <div className="container">
         <div className="grid grid-cols-12">
           {data && (

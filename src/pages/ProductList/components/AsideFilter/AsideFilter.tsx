@@ -34,7 +34,7 @@ export default function AsideFilter({ categories, queryConfig }: Props) {
       price_max: "",
       price_min: ""
     },
-    shouldFocusError: true
+    shouldFocusError: true // tự động focus
   })
   const navigate = useNavigate()
 
