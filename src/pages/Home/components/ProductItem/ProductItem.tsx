@@ -35,7 +35,7 @@ export default function ProductItem({ item }: Props) {
       >
         <img src={currentImg} alt={item.name} />
       </div>
-      <div className="py-6 text-center">
+      <div className="py-3 text-center">
         <span className={`mt-1 ${darkMode ? "text-[#fff]" : "text-gray-400"} block`}>
           {item.category.name}
         </span>

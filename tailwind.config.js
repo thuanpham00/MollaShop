@@ -9,9 +9,9 @@ module.exports = {
     container: false // tắt class container mặc định
   },
   theme: {
-    extend: {
+    extend: { // ee4a00
       colors: {
-        primaryOrange: "#ee4a00",
+        primaryOrange: "#0077b6",
         primaryGray: "#27323f",
         grayText: "#4d4d4d"
       }

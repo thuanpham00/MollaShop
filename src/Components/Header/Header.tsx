@@ -38,7 +38,9 @@ export default function Header() {
     <header>
       <NavHeader />
 
-      <div className={`${darkMode ? "bg-gradient-to-r from-[#232526] to-[#414345]" : "bg-white"} duration-200`}>
+      <div
+        className={`${darkMode ? "bg-gradient-to-r from-[#232526] to-[#414345]" : "bg-white"} duration-200`}
+      >
         <div className="container">
           <div className="grid grid-cols-7 md:grid-cols-12 gap-4 py-4 items-center">
             <Link to="/" className="col-span-2 md:col-span-3 lg:col-span-2 rounded-md">
@@ -187,43 +189,43 @@ export default function Header() {
           <div className="flex items-center justify-center py-2 flex-wrap gap-x-4 md:gap-x-20">
             <Link to={path.home}>
               <span className="text-xs md:text-base text-white font-medium hover:text-white/70 d-font-medium-300 capitalize">
-                Home
+                Trang chủ
               </span>
             </Link>
             <Link to={path.productList}>
               <span className="text-xs md:text-base text-white font-medium hover:text-white/70 d-font-medium-300 capitalize">
-                All products
+                Tất cả sản phẩm
               </span>
             </Link>
             <Link
               to={`${`/productList?page=1&limit=15&sort_by=view&category=60afacca6ef5b902180aacaf`}`}
             >
               <span className="text-xs md:text-base text-white font-medium hover:text-white/70 d-font-medium-300 capitalize">
-                Watch
+                Đồng hồ
               </span>
             </Link>
             <Link
               to={`${`/productList?page=1&limit=15&category=60aba4e24efcc70f8892e1c6&sort_by=view`}`}
             >
               <span className="text-xs md:text-base text-white font-medium hover:text-white/70 d-font-medium-300 capitalize">
-                Clothes
+                Quần áo
               </span>
             </Link>
             <Link
               to={`${`/productList?page=1&limit=15&category=60afafe76ef5b902180aacb5&sort_by=view`}`}
             >
               <span className="text-xs md:text-base text-white font-medium hover:text-white/70 d-font-medium-300 capitalize">
-                Phone
+                Điện thoại
               </span>
             </Link>
             <Link to={path.productList}>
               <span className="text-xs md:text-base text-white font-medium hover:text-white/70 d-font-medium-300 capitalize">
-              Phones and accessories
+                Điện thoại và phụ kiện
               </span>
             </Link>
             <Link to={path.productList}>
               <span className="text-xs md:text-base text-white font-medium hover:text-white/70 d-font-medium-300 capitalize">
-                Hot's deal
+                Khuyến mãi
               </span>
             </Link>
           </div>

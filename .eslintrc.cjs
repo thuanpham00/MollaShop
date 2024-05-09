@@ -6,11 +6,11 @@ module.exports = {
     // Chúng ta sẽ dùng các rule mặc định từ các plugin mà chúng ta đã cài.
     "eslint:recommended",
     "plugin:react/recommended",
-    "plugin:react-hooks/recommended",
     "plugin:import/recommended",
     "plugin:import/typescript",
     "plugin:jsx-a11y/recommended",
     "plugin:@typescript-eslint/recommended",
+    "plugin:react-hooks/recommended",
     // Disable các rule mà eslint xung đột với prettier.
     // Để cái này ở dưới để nó override các rule phía trên!.
     "eslint-config-prettier",

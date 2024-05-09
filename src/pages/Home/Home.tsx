@@ -321,7 +321,7 @@ export default function Home() {
                   <span
                     className={`mt-4 block text-center uppercase font-light text-[8px] md:text-sm md:font-semibold ${darkMode ? "text-[#fff]" : "text-gray-500"}`}
                   >
-                    5 products
+                    5 sản phẩm
                   </span>
                 </div>
               </div>
@@ -335,7 +335,7 @@ export default function Home() {
                   <span
                     className={`mt-4 block text-center uppercase font-light text-[8px] md:text-sm md:font-semibold ${darkMode ? "text-[#fff]" : "text-gray-500"}`}
                   >
-                    5 products
+                    5 sản phẩm
                   </span>
                 </div>
               </div>
@@ -349,7 +349,7 @@ export default function Home() {
                   <span
                     className={`mt-4 block text-center uppercase font-light text-[8px] md:text-sm md:font-semibold ${darkMode ? "text-[#fff]" : "text-gray-500"}`}
                   >
-                    35 products
+                    35 sản phẩm
                   </span>
                 </div>
               </div>

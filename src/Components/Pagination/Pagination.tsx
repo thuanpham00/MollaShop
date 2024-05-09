@@ -2,6 +2,8 @@ import { Link, createSearchParams } from "react-router-dom"
 import classNames from "classnames"
 import { path } from "src/constants/path"
 import { queryParamConfig } from "src/Hooks/useQueryConfig"
+import { useContext } from "react"
+import { AppContext } from "src/contexts/auth.context"
 
 interface Props {
   queryConfig: queryParamConfig
@@ -12,6 +14,7 @@ interface Props {
 const range = 2
 
 export default function Pagination({ queryConfig, page_size, scroll }: Props) {
+  const {darkMode} = useContext(AppContext)
   const page = Number(queryConfig.page) // lấy từ url xuống và url nhận vào các params
   const renderPagination = () => {
     let dotAfter = false
@@ -74,9 +77,9 @@ export default function Pagination({ queryConfig, page_size, scroll }: Props) {
                 page: pageNumber.toString()
               }).toString()
             }}
-            className={classNames("py-2 px-3 flex items-center justify-center hover:bg-red-300", {
-              "bg-red-500": isActive,
-              "bg-gray-200": !isActive
+            className={classNames("py-2 px-3 flex items-center justify-center border border-primaryOrange hover:bg-red-300", {
+              "bg-primaryOrange": isActive,
+              "bg-transparent": !isActive
             })}
           >
             {pageNumber}
@@ -87,7 +90,7 @@ export default function Pagination({ queryConfig, page_size, scroll }: Props) {
   return (
     <div className="flex items-center justify-center gap-2 mt-10">
       {page === 1 ? (
-        <span className="cursor-not-allowed py-2 px-3 bg-gray-200 rounded-sm hover:bg-gray-300 duration-100">Prev</span>
+        <span className={`cursor-not-allowed py-2 px-3 ${darkMode ? "bg-black/50 hover:bg-black/30" : "bg-gray-200 hover:bg-gray-300"} rounded-sm duration-200`}>Prev</span>
       ) : (
         <Link
           to={{
@@ -97,7 +100,7 @@ export default function Pagination({ queryConfig, page_size, scroll }: Props) {
               page: (page - 1).toString()
             }).toString()
           }}
-          className="py-2 px-3 bg-gray-200 rounded-sm hover:bg-gray-300 duration-100"
+          className={`py-2 px-3 ${darkMode ? "bg-black/50 hover:bg-black/30" : "bg-gray-200 hover:bg-gray-300"} rounded-sm duration-200`}
         >
           Prev
         </Link>
@@ -106,7 +109,7 @@ export default function Pagination({ queryConfig, page_size, scroll }: Props) {
       {renderPagination()}
 
       {page === page_size ? (
-        <span className="cursor-not-allowed py-2 px-3 bg-gray-200 rounded-sm hover:bg-gray-300 duration-100">Next</span>
+        <span className={`cursor-not-allowed py-2 px-3 ${darkMode ? "bg-black/50 hover:bg-black/30" : "bg-gray-200 hover:bg-gray-300"} rounded-sm duration-200`}>Next</span>
       ) : (
         <Link
           to={{
@@ -116,7 +119,7 @@ export default function Pagination({ queryConfig, page_size, scroll }: Props) {
               page: (page + 1).toString()
             }).toString()
           }}
-          className="py-2 px-3 bg-gray-100 rounded-sm hover:bg-gray-300 duration-100"
+          className={`py-2 px-3 ${darkMode ? "bg-black/50 hover:bg-black/30" : "bg-gray-200 hover:bg-gray-300"} rounded-sm duration-200`}
         >
           Next
         </Link>

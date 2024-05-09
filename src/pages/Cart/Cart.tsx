@@ -314,7 +314,7 @@ export default function Cart() {
             </div>
 
             <div
-              className={`sticky left-0 bottom-0 z-10 flex flex-col items-start sm:flex-row sm:items-center rounded-sm p-5 shadow border border-gray-200 mt-10 ${darkMode ? "bg-[#252323] text-white" : "bg-white"}`}
+              className={`sticky left-0 bottom-0 z-10 flex flex-col items-start sm:flex-row sm:items-center rounded-sm p-5 pr-10 shadow border border-gray-200 mt-10 ${darkMode ? "bg-[#252323] text-white" : "bg-white"}`}
             >
               <div className="flex items-center">
                 <div className="flex flex-shrink-0 items-center justify-center">
