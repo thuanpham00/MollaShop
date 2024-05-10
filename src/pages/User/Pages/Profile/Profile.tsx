@@ -1,23 +1,34 @@
 import { yupResolver } from "@hookform/resolvers/yup"
-import { useQuery } from "@tanstack/react-query"
-import { useContext, useEffect } from "react"
+import { useMutation, useQuery } from "@tanstack/react-query"
+import { useContext, useEffect, useMemo, useRef, useState } from "react"
 import { Controller, useForm } from "react-hook-form"
 import { Fragment } from "react/jsx-runtime"
 import Button from "src/Components/Button"
 import Input from "src/Components/Input"
 import InputNumber from "src/Components/InputNumber"
-import userApi from "src/apis/user.api"
+import userApi, { BodyUpdateProfile } from "src/apis/user.api"
 import { AppContext } from "src/contexts/auth.context"
-import avatar from "src/img/minhthuan.jpg"
 import { UserSchemaType, userSchema } from "src/utils/rules"
 import DateSelect from "../../Components/DateSelect"
+import { toast } from "react-toastify"
+import { setProfileToLs } from "src/utils/auth"
+import { getAvatarUrl, isError422 } from "src/utils/utils"
+import { ErrorResponse } from "src/types/utils.type"
 
-type FormData = Pick<UserSchemaType, "name" | "address" | "avatar" | "phone" | "dateOfBirth">
-
-const profileSchema = userSchema.pick(["name", "address", "avatar", "phone", "dateOfBirth"])
+type FormData1 = Pick<UserSchemaType, "name" | "address" | "avatar" | "phone" | "date_of_birth">
+type FormDataString = {
+  [key in keyof FormData1]: string
+}
+const profileSchema = userSchema.pick(["name", "address", "avatar", "phone", "date_of_birth"])
 
 export default function Profile() {
-  const { darkMode } = useContext(AppContext)
+  const { darkMode, setIsProfile } = useContext(AppContext)
+  const [file, setFile] = useState<File>()
+
+  const previewImage = useMemo(() => {
+    return file ? URL.createObjectURL(file) : ""
+  }, [file])
+
   const {
     register,
     control,
@@ -26,19 +37,15 @@ export default function Profile() {
     setValue,
     watch,
     setError
-  } = useForm<FormData>({
+  } = useForm<FormData1>({
     resolver: yupResolver(profileSchema),
     defaultValues: {
       name: "",
       phone: "",
       address: "",
       avatar: "",
-      dateOfBirth: new Date(1990, 0, 1) // 1/1/1990 -- tháng bắt đầu từ số 0 - tháng 1
+      date_of_birth: new Date(1990, 0, 1) // 1/1/1990 -- tháng bắt đầu từ số 0 - tháng 1
     }
-  })
-
-  const onSubmit = handleSubmit((data) => {
-    console.log(data)
   })
 
   const getProfileQuery = useQuery({
@@ -49,7 +56,7 @@ export default function Profile() {
   })
 
   const profile = getProfileQuery.data?.data.data
-  console.log(profile)
+  //console.log(profile)
 
   useEffect(() => {
     if (profile) {
@@ -57,9 +64,101 @@ export default function Profile() {
       setValue("address", profile.address)
       setValue("phone", profile.phone)
       setValue("avatar", profile.avatar)
-      setValue("dateOfBirth", profile.date_of_birth ? new Date(profile.date_of_birth) : new Date())
+      setValue(
+        "date_of_birth",
+        profile.date_of_birth ? new Date(profile.date_of_birth) : new Date()
+      )
     }
   }, [profile, setValue])
+
+  const updateProfileMutation = useMutation({
+    mutationFn: (body: BodyUpdateProfile) => {
+      return userApi.updateProfile(body)
+    }
+  })
+
+  type formData = FormData
+  const uploadAvatarMutation = useMutation({
+    mutationFn: (body: formData) => {
+      return userApi.uploadAvatar(body)
+    }
+  })
+
+  // Flow 1:
+  // Nhấn upload: upload lên server luôn => server trả về url ảnh
+  // Nhấn submit thì gửi url ảnh cộng với data lên server
+
+  // Flow 2:
+  // Nhấn upload: không upload lên server
+  // Nhấn submit thì tiến hành upload lên server, nếu upload thành công thì tiến hành gọi api updateProfile - sử dụng flow 2 - chạy 2 lần api
+
+  // submit với các hàm mutation dùng mutateAsync - kết hợp try catch - bắt lỗi
+  const onSubmit = handleSubmit(async (data) => {
+    try {
+      let avatarName = avatarWatch
+      if (file) {
+        const form = new FormData()
+        form.append("image", file) // sử dụng để thêm một cặp tên/giá trị vào đối tượng FormData.
+        const res = await uploadAvatarMutation.mutateAsync(form)
+        avatarName = res.data.data
+        setValue("avatar", avatarName) // cập nhật vào form
+      }
+      const res = await updateProfileMutation.mutateAsync({
+        ...data,
+        date_of_birth: data.date_of_birth?.toISOString(),
+        avatar: avatarName
+      })
+      getProfileQuery.refetch()
+      toast.success(res.data.message)
+      setIsProfile(res.data.data)
+      setProfileToLs(res.data.data) // update ở profile (api) đồng thời update ở Ls
+    } catch (error) {
+      console.log(error)
+      if (isError422<ErrorResponse<FormDataString>>(error)) {
+        const formData = error.response?.data.data
+        console.log(formData)
+        if (formData?.avatar) {
+          setError("avatar", {
+            message: formData.avatar,
+            type: "server"
+          })
+        }
+      }
+    }
+  })
+
+  // submit với các hàm mutation dùng mutate (bình thường) - kết hợp then catch - bắt lỗi
+  // const onSubmit = handleSubmit((data) => {
+  //   console.log(data)
+  //   updateProfileMutation.mutate(
+  //     {
+  //       ...data,
+  //       date_of_birth: data.date_of_birth?.toISOString()
+  //     },
+  //     {
+  //       onSuccess: (data) => {
+  //         getProfileQuery.refetch()
+  //         toast.success(data.data.message)
+  //         setIsProfile(data.data.data)
+  //       }
+  //     }
+  //   )
+  // })
+
+  const hiddenInput = useRef<HTMLInputElement>(null)
+
+  const changeInputImage = () => {
+    // truy cập dom tới phần tử input
+    // console.log(hiddenInput.current)
+    hiddenInput.current?.click() // khi click vào phần tử button nó trigger đến input đã ẩn và click vào (sk)
+  }
+
+  const onFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const fileFormLocal = event.target.files?.[0]
+    setFile(fileFormLocal)
+  }
+
+  const avatarWatch = watch("avatar")
 
   return (
     <Fragment>
@@ -102,8 +201,9 @@ export default function Profile() {
                 render={({ field }) => {
                   return (
                     <InputNumber
-                      className="mb-6"
+                      className="mb-2"
                       classNameInput="w-full px-3 py-2 border border-gray-200 outline-none text-black text-sm font-normal"
+                      classNameError="block mt-1 min-h-[1.25rem] text-red-500 text-sm"
                       placeholder="Số điện thoại"
                       messageInputError={errors.phone?.message}
                       {...field}
@@ -114,7 +214,7 @@ export default function Profile() {
               />
             </div>
           </div>
-          
+
           <div className="sm:mt-2 flex flex-wrap flex-col sm:flex-row">
             <div className="sm:w-[20%] truncate pt-3 sm:text-right">Địa chỉ</div>
             <div className="w-[80%] sm:pl-5">
@@ -128,14 +228,26 @@ export default function Profile() {
             </div>
           </div>
 
-          <DateSelect />
+          <Controller
+            control={control}
+            name="date_of_birth"
+            render={({ field }) => {
+              return (
+                <DateSelect
+                  errorMessage={errors.date_of_birth?.message}
+                  onChange={field.onChange}
+                  value={field.value}
+                />
+              )
+            }}
+          />
 
           <div className="sm:mt-2 flex flex-wrap flex-col sm:flex-row">
             <div className="sm:w-[20%] truncate pt-3 sm:text-right"></div>
             <div className="sm:w-[80%] sm:pl-5">
               <Button
                 type="submit"
-                className="mt-4"
+                className="mt-0"
                 classInput="px-5 h-9 flex items-center bg-primaryOrange text-white text-sm rounded-sm hover:bg-primaryOrange/80 duration-200"
               >
                 Lưu
@@ -147,10 +259,21 @@ export default function Profile() {
         <div className="flex justify-center md:w-72 md:border-l-2 md:border-l-gray-300">
           <div className="flex flex-col items-center">
             <div className="my-5 h-24 w-24">
-              <img src={avatar} alt="avatar" className="object-cover w-full h-full rounded-full" />
+              <img
+                src={previewImage || getAvatarUrl(avatarWatch as string)}
+                alt="avatar"
+                className="object-cover w-full h-full rounded-full"
+              />
             </div>
-            <input className="hidden" type="file" accept=".jpg,.jpeg,.png" />
+            <input
+              ref={hiddenInput}
+              onChange={onFileChange}
+              className="hidden"
+              type="file"
+              accept=".jpg,.jpeg,.png"
+            />
             <button
+              onClick={changeInputImage}
               type="button"
               className="px-5 py-2 border border-black-20 rounded-sm shadow hover:bg-gray-100 duration-200"
             >

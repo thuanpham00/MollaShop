@@ -12,7 +12,9 @@ export default function CartHeader() {
     <div>
       <NavHeader />
 
-      <div className={`${darkMode ? "bg-gradient-to-r from-[#232526] to-[#414345]" : "bg-white"} duration-200`}>
+      <div
+        className={`${darkMode ? "bg-gradient-to-r from-[#232526] to-[#414345]" : "bg-white"} duration-200`}
+      >
         <div className="container">
           <div className="py-4 flex flex-wrap items-center justify-between gap-4 md:grid md:grid-cols-12">
             <div className="md:col-span-4 lg:col-span-4">

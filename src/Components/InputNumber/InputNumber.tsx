@@ -19,7 +19,7 @@ const InputNumber = forwardRef<HTMLInputElement, InputNumberProp>(function Input
   ref
 ) {
   const [localValue, setLocalValue] = useState<string>(value as string)
-  
+
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const valueInput = event.target.value
     if (/^\d+$/.test(valueInput) || valueInput === "") {

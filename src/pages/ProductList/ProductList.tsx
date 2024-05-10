@@ -42,6 +42,8 @@ export default function ProductList() {
     staleTime: 5 * 60 * 1000 // dưới 5 phút nó không gọi lại api
   })
 
+  const data = getProductListQuery.data?.data.data
+
   const getCategoriesQuery = useQuery({
     queryKey: ["categories"],
     queryFn: () => {
@@ -49,14 +51,14 @@ export default function ProductList() {
     }
   })
 
-  const data = getProductListQuery.data?.data.data
-
   const handleStartScroll = () => {
     window.scrollTo({ top: 0, behavior: "smooth" })
   }
 
   return (
-    <div className={`${darkMode ? "bg-gradient-to-r from-[#232526] to-[#414345] text-gray-200" : "bg-[#fff]"} py-6 duration-200`}>
+    <div
+      className={`${darkMode ? "bg-gradient-to-r from-[#232526] to-[#414345] text-gray-200" : "bg-[#fff]"} py-6 duration-200`}
+    >
       <div className="container">
         <div className="grid grid-cols-12">
           {data && (

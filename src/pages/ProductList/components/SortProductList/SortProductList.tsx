@@ -59,7 +59,7 @@ export default function SortProductList({ queryConfig, page_size }: Props) {
           <button
             className={classNames("px-4 py-2 rounded-sm", {
               "bg-primaryOrange text-white": isActiveSort(sortBy.view),
-              "border": !isActiveSort(sortBy.view),
+              border: !isActiveSort(sortBy.view),
               "border-black text-black": !darkMode && !isActiveSort(sortBy.view),
               "border-white text-white": darkMode && !isActiveSort(sortBy.view)
             })}
@@ -70,7 +70,7 @@ export default function SortProductList({ queryConfig, page_size }: Props) {
           <button
             className={classNames("px-4 py-2 rounded-sm", {
               "bg-primaryOrange text-white": isActiveSort(sortBy.createdAt),
-              "border": !isActiveSort(sortBy.createdAt),
+              border: !isActiveSort(sortBy.createdAt),
               "border-black text-black": !darkMode && !isActiveSort(sortBy.createdAt),
               "border-white text-white": darkMode && !isActiveSort(sortBy.createdAt)
             })}
@@ -81,7 +81,7 @@ export default function SortProductList({ queryConfig, page_size }: Props) {
           <button
             className={classNames("px-4 py-2 rounded-sm", {
               "bg-primaryOrange text-white": isActiveSort(sortBy.sold),
-              "border": !isActiveSort(sortBy.sold),
+              border: !isActiveSort(sortBy.sold),
               "border-black text-black": !darkMode && !isActiveSort(sortBy.sold),
               "border-white text-white": darkMode && !isActiveSort(sortBy.sold)
             })}
@@ -92,7 +92,7 @@ export default function SortProductList({ queryConfig, page_size }: Props) {
           <select
             className={classNames("px-4 py-2 rounded-sm outline-none", {
               "bg-primaryOrange text-white": isActiveSort(sortBy.price),
-              "border": !isActiveSort(sortBy.price),
+              border: !isActiveSort(sortBy.price),
               "border-black text-black bg-transparent": !darkMode && !isActiveSort(sortBy.price),
               "border-white text-white bg-transparent": darkMode && !isActiveSort(sortBy.price)
             })}

@@ -20,7 +20,7 @@ interface TypeInitialState {
   darkMode: boolean
   setDarkMode: React.Dispatch<React.SetStateAction<boolean>>
   extendedPurchase: ExtendedPurchase[]
-  setExtendedPurchase: React.Dispatch<React.SetStateAction<ExtendedPurchase[]>>,
+  setExtendedPurchase: React.Dispatch<React.SetStateAction<ExtendedPurchase[]>>
   reset: () => void
 }
 
@@ -52,7 +52,10 @@ export const AppProvider = ({ children }: Props) => {
 
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(initialState.isAuthenticated)
   const [isProfile, setIsProfile] = useState<User | null>(initialState.isProfile)
-  const [extendedPurchase, setExtendedPurchase] = useState<ExtendedPurchase[]>(initialState.extendedPurchase)
+  // eslint-disable-next-line prettier/prettier
+  const [extendedPurchase, setExtendedPurchase] = useState<ExtendedPurchase[]>(
+    initialState.extendedPurchase
+  )
 
   const reset = () => {
     setIsAuthenticated(false)

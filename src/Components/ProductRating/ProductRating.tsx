@@ -2,7 +2,7 @@ interface Props {
   rating: number
 }
 
-export default function ProductRating({rating} : Props) {
+export default function ProductRating({ rating }: Props) {
   const handleWidth = (order: number) => {
     // thuộc toán rating
     // rating = 3.4
@@ -11,13 +11,13 @@ export default function ProductRating({rating} : Props) {
     // 3 <= 3.4 => 100%
     // 4 > 3.4 => 40% (4 - 3.4 < 1)
     // 5 > 3.4 => 0% (5 - 3.4 > 1)
-    if(order <= rating) {
+    if (order <= rating) {
       return "100%"
     }
-    if(order > rating && order - rating < 1) {
+    if (order > rating && order - rating < 1) {
       return (rating - Math.floor(rating)) * 100 + "%"
-    } 
-    if(order > rating && order - rating > 1) {
+    }
+    if (order > rating && order - rating > 1) {
       return "0%"
     }
   }
@@ -28,9 +28,12 @@ export default function ProductRating({rating} : Props) {
         .map((_, index) => {
           return (
             <div className="relative" key={index}>
-              <div className="absolute top-0 left-0 h-full overflow-hidden" style={{
-                width: handleWidth(index + 1)
-              }}>
+              <div
+                className="absolute top-0 left-0 h-full overflow-hidden"
+                style={{
+                  width: handleWidth(index + 1)
+                }}
+              >
                 <svg
                   enableBackground="new 0 0 15 15"
                   viewBox="0 0 15 15"

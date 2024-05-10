@@ -43,7 +43,7 @@ export default function Login() {
   const onSubmit = handleSubmit((data) => {
     loginAccountMutation.mutate(data, {
       onSuccess: (data) => {
-        console.log(data);
+        console.log(data)
         navigate(path.home) // đăng nhập xong chuyển tới trang chủ
         setIsAuthenticated(true)
         setIsProfile(data.data.data.user)
@@ -77,7 +77,9 @@ export default function Login() {
   console.log(watchForm)
 
   return (
-    <div className={`${darkMode ? "bg-gradient-to-r from-[#232526] to-[#414345]" : "bg-slate-200"}`}>
+    <div
+      className={`${darkMode ? "bg-gradient-to-r from-[#232526] to-[#414345]" : "bg-slate-200"}`}
+    >
       <div className="container">
         <div className="grid grid-cols-1 lg:grid-cols-5 py-12 lg:pr-10">
           <div className="hidden lg:block lg:col-span-3 ml-14">

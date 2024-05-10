@@ -12,7 +12,6 @@ export type Purchase = {
   updatedAt: string
 }
 
-
 export type PurchaseItemStatus = -1 | 1 | 2 | 3 | 4 | 5
 
 export type PurchasListStatus = PurchaseItemStatus | 0

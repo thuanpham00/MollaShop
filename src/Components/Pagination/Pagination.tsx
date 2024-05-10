@@ -14,7 +14,7 @@ interface Props {
 const range = 2
 
 export default function Pagination({ queryConfig, page_size, scroll }: Props) {
-  const {darkMode} = useContext(AppContext)
+  const { darkMode } = useContext(AppContext)
   const page = Number(queryConfig.page) // lấy từ url xuống và url nhận vào các params
   const renderPagination = () => {
     let dotAfter = false
@@ -55,7 +55,11 @@ export default function Pagination({ queryConfig, page_size, scroll }: Props) {
       .map((_, index) => {
         const pageNumber = index + 1
         const isActive = pageNumber === page
-        if (page <= range * 2 + 1 && pageNumber > page + range && pageNumber < page_size - range + 1) {
+        if (
+          page <= range * 2 + 1 &&
+          pageNumber > page + range &&
+          pageNumber < page_size - range + 1
+        ) {
           return renderDotAfter(index)
         } else if (page > range * 2 + 1 && page < page_size - range * 2) {
           if (pageNumber < page - range && pageNumber > range) {
@@ -63,7 +67,11 @@ export default function Pagination({ queryConfig, page_size, scroll }: Props) {
           } else if (pageNumber > page + range && pageNumber < page_size - range + 1) {
             return renderDotAfter(index)
           }
-        } else if (pageNumber < page - range && pageNumber > range && page >= page_size - range * 2) {
+        } else if (
+          pageNumber < page - range &&
+          pageNumber > range &&
+          page >= page_size - range * 2
+        ) {
           return renderDotBefore(index)
         }
         return (
@@ -77,10 +85,13 @@ export default function Pagination({ queryConfig, page_size, scroll }: Props) {
                 page: pageNumber.toString()
               }).toString()
             }}
-            className={classNames("py-2 px-3 flex items-center justify-center border border-primaryOrange hover:bg-red-300", {
-              "bg-primaryOrange": isActive,
-              "bg-transparent": !isActive
-            })}
+            className={classNames(
+              "py-2 px-3 flex items-center justify-center border border-primaryOrange hover:bg-red-300",
+              {
+                "bg-primaryOrange": isActive,
+                "bg-transparent": !isActive
+              }
+            )}
           >
             {pageNumber}
           </Link>
@@ -90,7 +101,11 @@ export default function Pagination({ queryConfig, page_size, scroll }: Props) {
   return (
     <div className="flex items-center justify-center gap-2 mt-10">
       {page === 1 ? (
-        <span className={`cursor-not-allowed py-2 px-3 ${darkMode ? "bg-black/50 hover:bg-black/30" : "bg-gray-200 hover:bg-gray-300"} rounded-sm duration-200`}>Prev</span>
+        <span
+          className={`cursor-not-allowed py-2 px-3 ${darkMode ? "bg-black/50 hover:bg-black/30" : "bg-gray-200 hover:bg-gray-300"} rounded-sm duration-200`}
+        >
+          Prev
+        </span>
       ) : (
         <Link
           to={{
@@ -109,7 +124,11 @@ export default function Pagination({ queryConfig, page_size, scroll }: Props) {
       {renderPagination()}
 
       {page === page_size ? (
-        <span className={`cursor-not-allowed py-2 px-3 ${darkMode ? "bg-black/50 hover:bg-black/30" : "bg-gray-200 hover:bg-gray-300"} rounded-sm duration-200`}>Next</span>
+        <span
+          className={`cursor-not-allowed py-2 px-3 ${darkMode ? "bg-black/50 hover:bg-black/30" : "bg-gray-200 hover:bg-gray-300"} rounded-sm duration-200`}
+        >
+          Next
+        </span>
       ) : (
         <Link
           to={{

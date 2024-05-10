@@ -17,7 +17,7 @@ export default function Popover({
   as: Element = "div",
   initialOpen,
   renderPopover,
-  PlacementInitialState = "bottom-end" 
+  PlacementInitialState = "bottom-end"
 }: Props) {
   const arrowRef = useRef<HTMLElement>(null)
   const [isOpen, setIsOpen] = useState<boolean>(initialOpen || false)
@@ -35,7 +35,12 @@ export default function Popover({
   }
 
   return (
-    <Element className={className} ref={refs.setReference} onMouseEnter={showPopover} onMouseLeave={hidePopover}>
+    <Element
+      className={className}
+      ref={refs.setReference}
+      onMouseEnter={showPopover}
+      onMouseLeave={hidePopover}
+    >
       {children}
 
       <FloatingPortal>
@@ -75,4 +80,4 @@ export default function Popover({
 // ref={refs.setReference} làm mốc cố định
 // ref={refs.setFloating} định vị theo
 // shift giup không mất text khi co lại
-// offset định vị lại 
+// offset định vị lại

@@ -50,7 +50,7 @@ export default function Cart() {
         }) || []
       )
     })
-  }, [purchaseList, chosenPurchaseFromLocation]) // purchaseList mở rộng thêm 2 thuộc tính checked và disable khi thực hiện tăng số lượng
+  }, [purchaseList, chosenPurchaseFromLocation, setExtendedPurchase]) // purchaseList mở rộng thêm 2 thuộc tính checked và disable khi thực hiện tăng số lượng
 
   useEffect(() => {
     return () => {
@@ -181,7 +181,9 @@ export default function Cart() {
 
   if (!purchaseList) return null
   return (
-    <div className={`${darkMode ? "bg-gradient-to-r from-[#232526] to-[#414345]" : "bg-neutral-100"} py-4 duration-200`}>
+    <div
+      className={`${darkMode ? "bg-gradient-to-r from-[#232526] to-[#414345]" : "bg-neutral-100"} py-4 duration-200`}
+    >
       <div className="container">
         {extendedPurchase && extendedPurchase.length > 0 ? (
           <Fragment>
@@ -363,7 +365,10 @@ export default function Cart() {
             <div className="p-2 flex items-center justify-center flex-col">
               <img src={cartImg} alt="ảnh lỗi" className="w-[200px]" />
               <h1>Chưa có sản phẩm!</h1>
-              <Link to={path.productList} className="uppercase px-5 py-3 bg-primaryOrange hover:bg-primaryOrange/80 duration-200 transition-all text-white mt-5">
+              <Link
+                to={path.productList}
+                className="uppercase px-5 py-3 bg-primaryOrange hover:bg-primaryOrange/80 duration-200 transition-all text-white mt-5"
+              >
                 Mua hàng
               </Link>
             </div>

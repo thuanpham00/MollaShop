@@ -48,28 +48,28 @@ const buttonImageList = {
 
 const buttonSlideList = {
   prevArrow: (
-    <button className="ml-3">
+    <button className="ml-3 w-8 h-8 rounded-full border border-gray-700 hover:bg-gray-100 duration-200 flex items-center justify-center">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
         viewBox="0 0 24 24"
         strokeWidth={1.5}
         stroke="#14213d"
-        className="w-5 h-5 md:w-10 md:h-10"
+        className="w-5 h-5"
       >
         <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
       </svg>
     </button>
   ),
   nextArrow: (
-    <button className="mr-3">
+    <button className="mr-3 w-8 h-8 rounded-full border border-gray-700 hover:bg-gray-100 duration-200 flex items-center justify-center">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
         viewBox="0 0 24 24"
         strokeWidth={1.5}
         stroke="#14213d"
-        className="w-5 h-5 md:w-10 md:h-10"
+        className="w-5 h-5"
       >
         <path strokeLinecap="round" strokeLinejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
       </svg>
@@ -132,13 +132,29 @@ export default function Home() {
     }
   })
 
+  const queryConfigSold2: queryParamConfig = {
+    page: "1",
+    limit: "8",
+    sort_by: "sold"
+  }
+  const getProductListSoldQuery2 = useQuery({
+    queryKey: ["productListHome", queryConfigSold2],
+    queryFn: () => {
+      return productApi.getProductList(queryConfigSold2 as ProductListConfig)
+    }
+  })
+
   const productListView = getProductListViewQuery.data?.data.data.products
   const productListSold = getProductListSoldQuery.data?.data.data.products
+  const productListSold2 = getProductListSoldQuery2.data?.data.data.products
 
   if (!productListView) return null
   if (!productListSold) return null
+  if (!productListSold2) return null
   return (
-    <div className={`${darkMode ? "bg-gradient-to-r from-[#232526] to-[#414345]" : "bg-[#fff]"} duration-200`}>
+    <div
+      className={`${darkMode ? "bg-gradient-to-r from-[#232526] to-[#414345]" : "bg-[#fff]"} duration-200`}
+    >
       <div className="w-full relative">
         <Slide {...buttonSlideList}>
           {slideImages.map((item, index) => {
@@ -205,10 +221,10 @@ export default function Home() {
                   <span
                     className={`${darkMode ? "text-white" : "text-black"} font-semibold text-xs md:text-lg md:line-clamp-1`}
                   >
-                    Free shipping
+                    Miễn phí vận chuyển
                   </span>
                   <span className="block font-light text-[10px] md:text-sm text-gray-500">
-                    When you spend $80 or more
+                    Khi bạn mua từ 2tr trở lên
                   </span>
                 </div>
               </div>
@@ -235,10 +251,10 @@ export default function Home() {
                   <span
                     className={`${darkMode ? "text-white" : "text-black"} font-semibold text-xs md:text-lg md:line-clamp-1`}
                   >
-                    We are available 24/7
+                    Chúng tôi luôn sẵn sàng 24/7
                   </span>
                   <span className="block font-light text-[10px] md:text-sm text-gray-500">
-                    Need help? contact us anytime
+                    Cần giúp đỡ? Liên hệ với chúng tôi bất cứ lúc nào
                   </span>
                 </div>
               </div>
@@ -265,10 +281,10 @@ export default function Home() {
                   <span
                     className={`${darkMode ? "text-white" : "text-black"} font-semibold text-xs md:text-lg md:line-clamp-1`}
                   >
-                    Satisfied or return
+                    Hài lòng hoặc quay trở lại
                   </span>
                   <span className="block font-light text-[10px] md:text-sm text-gray-500">
-                    Easy 30-day return policy
+                    Chính sách hoàn trả 30 ngày dễ dàng
                   </span>
                 </div>
               </div>
@@ -295,7 +311,7 @@ export default function Home() {
                   <span
                     className={`${darkMode ? "text-white" : "text-black"} font-semibold text-xs md:text-lg md:line-clamp-1`}
                   >
-                    100% secure payments
+                    Thanh toán an toàn 100%
                   </span>
                   <span className="block font-light text-[10px] md:text-sm text-gray-500">
                     Visa, Mastercard, Stripe, PayPal
@@ -375,12 +391,19 @@ export default function Home() {
         </div>
 
         <div className="mt-4 lg:mt-8 p-4">
-          <h2
-            className={`uppercase text-3xl font-light ${darkMode ? "text-[#fff]/80" : "text-[#000]"} text-center`}
+          <div className="flex items-center gap-4">
+            <h2
+              className={`flex-shrink-0 uppercase text-3xl font-semibold ${darkMode ? "text-[#fff]/80" : "text-[#000]"} text-left -tracking-tighter`}
+            >
+              best seller
+            </h2>
+            <div className="flex-grow h-[1px] bg-gray-300"></div>
+          </div>
+          <h3
+            className={`text-sm ${darkMode ? "text-[#fff]/70" : "text-gray-500"} capitalize mt-1`}
           >
-            best seller
-          </h2>
-          <h3 className={`text-xl ${darkMode ? "text-[#fff]/70" : "text-[#000]"} uppercase text-center mt-1`}>top view in this week</h3>
+            top view in this week
+          </h3>
 
           <div className="mt-4 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
             {productListView.map((item, index) => (
@@ -392,15 +415,47 @@ export default function Home() {
         </div>
 
         <div className="mt-4 lg:mt-8 p-4">
-          <h2
-            className={`uppercase text-3xl font-light ${darkMode ? "text-[#fff]/80" : "text-[#000]"} text-center`}
+          <div className="flex items-center gap-4">
+            <h2
+              className={`flex-shrink-0 uppercase text-3xl font-semibold ${darkMode ? "text-[#fff]/80" : "text-[#000]"} text-left -tracking-tighter`}
+            >
+              best seller
+            </h2>
+            <div className="flex-grow h-[1px] bg-gray-300"></div>
+          </div>
+          <h3
+            className={`text-base ${darkMode ? "text-[#fff]/70" : "text-gray-500"} capitalize mt-1`}
           >
-            best seller
-          </h2>
-          <h3 className={`text-xl ${darkMode ? "text-[#fff]/70" : "text-[#000]"} uppercase text-center mt-1`}>top sold in this week</h3>
+            top sold in this week
+          </h3>
 
           <div className="mt-4 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
             {productListSold.map((item, index) => (
+              <div key={index} className="col-span-1">
+                <ProductItem item={item} />
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="mt-4 lg:mt-8 p-4">
+          <div className="flex items-center gap-4">
+            <h2
+              className={`flex-shrink-0 uppercase text-3xl font-semibold ${darkMode ? "text-[#fff]/80" : "text-[#000]"} text-left -tracking-tighter`}
+            >
+              Tin tức
+            </h2>
+            <div className="flex-grow h-[1px] bg-gray-300"></div>
+          </div>
+          <h3
+            className={`text-sm ${darkMode ? "text-[#fff]/70" : "text-gray-500"} capitalize mt-1`}
+          >
+            Chúng tôi sẵn sàng cập nhật những kiến thức, thời trang, công nghệ mới nhất dành cho các
+            bạn
+          </h3>
+
+          <div className="mt-4 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 overflow-scroll flex-nowrap">
+            {productListSold2.map((item, index) => (
               <div key={index} className="col-span-1">
                 <ProductItem item={item} />
               </div>

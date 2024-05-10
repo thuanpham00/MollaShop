@@ -32,7 +32,10 @@ export default function RatingStar({ queryConfig }: Props) {
         .map((_, index) => {
           return (
             <li key={index}>
-              <div onClick={() => handleRatingStar(5 - index)} className="flex items-center mt-1 w-full">
+              <div
+                onClick={() => handleRatingStar(5 - index)}
+                className="flex items-center mt-1 w-full"
+              >
                 {Array(5)
                   .fill(0)
                   .map((_, indexStar) => {
@@ -40,7 +43,13 @@ export default function RatingStar({ queryConfig }: Props) {
                       return (
                         <svg viewBox="0 0 9.5 8" className="h-3 w-3" key={indexStar}>
                           <defs>
-                            <linearGradient id="ratingStarGradient" x1="50%" x2="50%" y1="0%" y2="100%">
+                            <linearGradient
+                              id="ratingStarGradient"
+                              x1="50%"
+                              x2="50%"
+                              y1="0%"
+                              y2="100%"
+                            >
                               <stop offset="{0}" stopColor="#ffca11" />
                               <stop offset="{1}" stopColor="#ffad27" />
                             </linearGradient>
@@ -55,7 +64,11 @@ export default function RatingStar({ queryConfig }: Props) {
                                 <g transform="translate(600 29)">
                                   <g transform="translate(10 239)">
                                     <g transform="translate(101 10)">
-                                      <use stroke="#ffa727" strokeWidth=".5" xlinkHref="#ratingStar" />
+                                      <use
+                                        stroke="#ffa727"
+                                        strokeWidth=".5"
+                                        xlinkHref="#ratingStar"
+                                      />
                                     </g>
                                   </g>
                                 </g>
@@ -68,7 +81,13 @@ export default function RatingStar({ queryConfig }: Props) {
                     return (
                       <svg key={indexStar} viewBox="0 0 30 30" className="h-3 w-3">
                         <defs>
-                          <linearGradient id="star__hollow" x1="50%" x2="50%" y1="0%" y2="99.0177926%">
+                          <linearGradient
+                            id="star__hollow"
+                            x1="50%"
+                            x2="50%"
+                            y1="0%"
+                            y2="99.0177926%"
+                          >
                             <stop offset="0%" stopColor="#FFD211" />
                             <stop offset="100%" stopColor="#FFAD27" />
                           </linearGradient>

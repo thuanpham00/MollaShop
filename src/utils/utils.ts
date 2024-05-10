@@ -1,7 +1,10 @@
 import axios, { AxiosError } from "axios"
+import { config } from "src/constants/config"
 import { HttpStatusCode } from "src/constants/httpStatusCode.enum"
+import minhthuan from "src/img/minhthuan.jpg"
 
 export function isAxiosError<T>(error: unknown): error is AxiosError<T> {
+  // eslint-disable-next-line import/no-named-as-default-member
   return axios.isAxiosError<T>(error)
 }
 
@@ -34,15 +37,18 @@ export function rateSale(original: number, sale: number) {
 
 const removeSpecialCharacter = (str: string) =>
   // eslint-disable-next-line no-useless-escape
-  str.replace(/!|@|%|\^|\*|\(|\)|\+|\=|\<|\>|\?|\/|,|\.|\:|\;|\'|\"|\&|\#|\[|\]|~|\$|_|`|-|{|}|\||\\/g, "") // loại bỏ kí tự đặc biệt
+  str.replace(
+    // eslint-disable-next-line no-useless-escape
+    /!|@|%|\^|\*|\(|\)|\+|\=|\<|\>|\?|\/|,|\.|\:|\;|\'|\"|\&|\#|\[|\]|~|\$|_|`|-|{|}|\||\\/g,
+    ""
+  ) // loại bỏ kí tự đặc biệt
 
-
-export const generateNameId = ({name, id}: {name: string, id: string}) =>{
+export const generateNameId = ({ name, id }: { name: string; id: string }) => {
   return removeSpecialCharacter(name).replace(/\s/g, "-") + `-i-${id}` // thay khoảng trắng == "-"
 }
 
 export const getIdFromNameId = (nameId: string) => {
-  const arr = nameId.split("-i-") 
+  const arr = nameId.split("-i-")
   return arr[arr.length - 1]
 }
 
@@ -54,3 +60,11 @@ export const getNameFromeEmail = (email: string) => {
 }
 
 // ví dụ chuỗi phamminhthuan912@gmail.com => lấy được phamminhthuan912
+
+export const getAvatarUrl = (avatarName: string) => {
+  if (avatarName) {
+    return `${config.baseUrl}images/${avatarName}`
+  } else {
+    return minhthuan
+  }
+}

@@ -5,33 +5,35 @@ import { isAxiosError } from "./utils"
 import { clearLS, getAccessTokenToLs, setAccessTokenToLs, setProfileToLs } from "./auth"
 import { AuthResponse } from "src/types/auth.type"
 import { HttpStatusCode } from "src/constants/httpStatusCode.enum"
+import { config } from "src/constants/config"
 
 class http {
   instance: AxiosInstance
   private accessToken: string
   constructor() {
-    this.accessToken = getAccessTokenToLs() // lấy ra và gửi lên server
+    this.accessToken = getAccessTokenToLs()
+    // lấy ra và gửi lên server
     this.instance = axios.create({
-      baseURL: "https://api-ecom.duthanhduoc.com/", // kết nối tới server
+      baseURL: config.baseUrl, // kết nối tới server
       timeout: 10000, // thời gian chờ
       headers: {
         "Content-Type": "application/json" // yêu cầu server trả về kết quả json
       }
-    }),
-      // interceptors : trung gian khi client gửi lên server và server gửi kết quả về client đều đi qua nó
-      // sau khi login xong thì server gửi về access_token
-      this.instance.interceptors.request.use(
-        (config) => {
-          if (this.accessToken && config.headers) {
-            config.headers.authorization = this.accessToken
-            return config
-          }
+    })
+    // interceptors : trung gian khi client gửi lên server và server gửi kết quả về client đều đi qua nó
+    // sau khi login xong thì server gửi về access_token
+    this.instance.interceptors.request.use(
+      (config) => {
+        if (this.accessToken && config.headers) {
+          config.headers.authorization = this.accessToken
           return config
-        },
-        (error) => {
-          console.log(error)
         }
-      ) // việc gửi access_token lên server để xác thực người dùng, bảo mật, phân quyền
+        return config
+      },
+      (error) => {
+        return Promise.reject(error)
+      }
+    ) // việc gửi access_token lên server để xác thực người dùng, bảo mật, phân quyền
     this.instance.interceptors.response.use(
       (response) => {
         //console.log(response)
@@ -40,7 +42,7 @@ class http {
           this.accessToken = data.data.access_token // check url === "login" thì lưu access_token vào LS
           setAccessTokenToLs(this.accessToken)
           setProfileToLs(data.data.user)
-          console.log(response);
+          console.log(response)
         } else if (response.config.url === "logout") {
           // check url === "logout" thì remove access_token ra khỏi LS
           this.accessToken = ""
@@ -51,13 +53,14 @@ class http {
       function (error) {
         // lỗi 404 khi lỗi đường dẫn
         if (isAxiosError(error) && error.response?.status === 404) {
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
           const data: any | undefined = error.response?.data
           const message = data?.message || error.message
           toast.error(message)
         }
         toast.error(error.message)
-        if(error.response?.status === HttpStatusCode.Unauthorized ) {
-          clearLS() 
+        if (error.response?.status === HttpStatusCode.Unauthorized) {
+          clearLS()
           // window.location.reload()
         } // khi nó 401 thì tự logout // lỗi 401 - hết hạn token // sai token
         return Promise.reject(error)

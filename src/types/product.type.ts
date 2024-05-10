@@ -20,9 +20,9 @@ export type ProductItem = {
 }
 
 export type ProductList = {
-  products: ProductItem[],
+  products: ProductItem[]
   pagination: {
-    page: number,
+    page: number
     limit: number
     page_size: number
   }

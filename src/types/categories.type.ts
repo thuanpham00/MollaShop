@@ -1,4 +1,4 @@
 export type Categories = {
-  _id: string,
+  _id: string
   name: string
 }

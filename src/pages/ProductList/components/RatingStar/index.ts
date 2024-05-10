@@ -1,3 +1,3 @@
-import RatingStar from "./RatingStar";
+import RatingStar from "./RatingStar"
 
 export default RatingStar

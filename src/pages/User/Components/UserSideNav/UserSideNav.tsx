@@ -1,9 +1,9 @@
+/* eslint-disable jsx-a11y/alt-text */
 import { useContext } from "react"
 import { Link } from "react-router-dom"
 import { path } from "src/constants/path"
 import { AppContext } from "src/contexts/auth.context"
-import avatar from "src/img/minhthuan.jpg"
-import { getNameFromeEmail } from "src/utils/utils"
+import { getAvatarUrl, getNameFromeEmail } from "src/utils/utils"
 
 export default function UserSideNav() {
   const { darkMode, isProfile } = useContext(AppContext)
@@ -11,7 +11,11 @@ export default function UserSideNav() {
     <div>
       <div className="py-6 flex items-center gap-4 border-b border-b-gray-200">
         <Link to={path.profile} className="flex-shrink-0 w-14 h-14 overflow-hidden">
-          <img src={avatar} alt="" className="w-full h-full rounded-full object-cover" />
+          <img
+            src={getAvatarUrl(isProfile?.avatar as string)}
+            alt=""
+            className="w-full h-full rounded-full object-cover"
+          />
         </Link>
         <div className="flex-grow">
           <div
