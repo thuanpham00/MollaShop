@@ -14,6 +14,7 @@ import { useQuery } from "@tanstack/react-query"
 import { productApi } from "src/apis/products.api"
 import { ProductListConfig } from "src/types/product.type"
 import ProductItem from "./components/ProductItem"
+import SlideListProduct from "./components/SideListProduct"
 
 const buttonImageList = {
   prevArrow: (
@@ -108,21 +109,21 @@ export default function Home() {
     }
   }, [scrollYPosition]) // khi nào scrollYPosition thay đổi tham chiếu nó chạy lại hàm này
 
-  const queryConfigView: queryParamConfig = {
+  const queryConfigCreatedAt: queryParamConfig = {
     page: "1",
-    limit: "4",
-    sort_by: "view"
+    limit: "8",
+    sort_by: "createdAt"
   }
-  const getProductListViewQuery = useQuery({
-    queryKey: ["productListHome", queryConfigView],
+  const getProductListCreatedAtQuery = useQuery({
+    queryKey: ["productListHome", queryConfigCreatedAt],
     queryFn: () => {
-      return productApi.getProductList(queryConfigView as ProductListConfig)
+      return productApi.getProductList(queryConfigCreatedAt as ProductListConfig)
     }
   })
 
   const queryConfigSold: queryParamConfig = {
     page: "1",
-    limit: "4",
+    limit: "8",
     sort_by: "sold"
   }
   const getProductListSoldQuery = useQuery({
@@ -132,25 +133,11 @@ export default function Home() {
     }
   })
 
-  const queryConfigSold2: queryParamConfig = {
-    page: "1",
-    limit: "8",
-    sort_by: "sold"
-  }
-  const getProductListSoldQuery2 = useQuery({
-    queryKey: ["productListHome", queryConfigSold2],
-    queryFn: () => {
-      return productApi.getProductList(queryConfigSold2 as ProductListConfig)
-    }
-  })
-
-  const productListView = getProductListViewQuery.data?.data.data.products
+  const productListCreatedAt = getProductListCreatedAtQuery.data?.data.data.products
   const productListSold = getProductListSoldQuery.data?.data.data.products
-  const productListSold2 = getProductListSoldQuery2.data?.data.data.products
 
-  if (!productListView) return null
+  if (!productListCreatedAt) return null
   if (!productListSold) return null
-  if (!productListSold2) return null
   return (
     <div
       className={`${darkMode ? "bg-gradient-to-r from-[#232526] to-[#414345]" : "bg-[#fff]"} duration-200`}
@@ -390,78 +377,29 @@ export default function Home() {
           </Slide>
         </div>
 
-        <div className="mt-4 lg:mt-8 p-4">
-          <div className="flex items-center gap-4">
-            <h2
-              className={`flex-shrink-0 uppercase text-3xl font-semibold ${darkMode ? "text-[#fff]/80" : "text-[#000]"} text-left -tracking-tighter`}
-            >
-              best seller
-            </h2>
-            <div className="flex-grow h-[1px] bg-gray-300"></div>
-          </div>
-          <h3
-            className={`text-sm ${darkMode ? "text-[#fff]/70" : "text-gray-500"} capitalize mt-1`}
-          >
-            top view in this week
-          </h3>
+        <SlideListProduct
+          title="Sản phẩm mới nhất"
+          desc="Những sản phẩm mới nhất trong tuần này"
+          timeScroll={3000}
+        >
+          {productListCreatedAt.map((item, index) => (
+            <div key={index} className="flex-1 max-w-[290px]">
+              <ProductItem item={item} />
+            </div>
+          ))}
+        </SlideListProduct>
 
-          <div className="mt-4 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-            {productListView.map((item, index) => (
-              <div key={index} className="col-span-1">
-                <ProductItem item={item} />
-              </div>
-            ))}
-          </div>
-        </div>
-
-        <div className="mt-4 lg:mt-8 p-4">
-          <div className="flex items-center gap-4">
-            <h2
-              className={`flex-shrink-0 uppercase text-3xl font-semibold ${darkMode ? "text-[#fff]/80" : "text-[#000]"} text-left -tracking-tighter`}
-            >
-              best seller
-            </h2>
-            <div className="flex-grow h-[1px] bg-gray-300"></div>
-          </div>
-          <h3
-            className={`text-base ${darkMode ? "text-[#fff]/70" : "text-gray-500"} capitalize mt-1`}
-          >
-            top sold in this week
-          </h3>
-
-          <div className="mt-4 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-            {productListSold.map((item, index) => (
-              <div key={index} className="col-span-1">
-                <ProductItem item={item} />
-              </div>
-            ))}
-          </div>
-        </div>
-
-        <div className="mt-4 lg:mt-8 p-4">
-          <div className="flex items-center gap-4">
-            <h2
-              className={`flex-shrink-0 uppercase text-3xl font-semibold ${darkMode ? "text-[#fff]/80" : "text-[#000]"} text-left -tracking-tighter`}
-            >
-              Tin tức
-            </h2>
-            <div className="flex-grow h-[1px] bg-gray-300"></div>
-          </div>
-          <h3
-            className={`text-sm ${darkMode ? "text-[#fff]/70" : "text-gray-500"} capitalize mt-1`}
-          >
-            Chúng tôi sẵn sàng cập nhật những kiến thức, thời trang, công nghệ mới nhất dành cho các
-            bạn
-          </h3>
-
-          <div className="mt-4 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 overflow-scroll flex-nowrap">
-            {productListSold2.map((item, index) => (
-              <div key={index} className="col-span-1">
-                <ProductItem item={item} />
-              </div>
-            ))}
-          </div>
-        </div>
+        <SlideListProduct
+          title="Sản phẩm bán chạy"
+          desc="Những sản phẩm bán chạy nhất trong tuần này"
+          timeScroll={2000}
+        >
+          {productListSold.map((item, index) => (
+            <div key={index} className="flex-1 max-w-[290px]">
+              <ProductItem item={item} />
+            </div>
+          ))}
+        </SlideListProduct>
       </div>
     </div>
   )

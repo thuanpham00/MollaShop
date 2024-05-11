@@ -36,7 +36,7 @@ export default function NavHeader() {
     setDarkMode(true)
   }
 
-  console.log(isProfile)
+  // console.log(isProfile)
 
   return (
     <div className={`${darkMode ? "bg-[#252323]" : "bg-[#f2f2f2]"} duration-200`}>

@@ -1,6 +1,6 @@
 import { yupResolver } from "@hookform/resolvers/yup"
 import { useMutation, useQuery } from "@tanstack/react-query"
-import { useContext, useEffect, useMemo, useRef, useState } from "react"
+import { useContext, useEffect, useMemo, useState } from "react"
 import { Controller, useForm } from "react-hook-form"
 import { Fragment } from "react/jsx-runtime"
 import Button from "src/Components/Button"
@@ -14,6 +14,7 @@ import { toast } from "react-toastify"
 import { setProfileToLs } from "src/utils/auth"
 import { getAvatarUrl, isError422 } from "src/utils/utils"
 import { ErrorResponse } from "src/types/utils.type"
+import InputFileImage from "../../Components/InputFileImage"
 
 type FormData1 = Pick<UserSchemaType, "name" | "address" | "avatar" | "phone" | "date_of_birth">
 type FormDataString = {
@@ -145,20 +146,11 @@ export default function Profile() {
   //   )
   // })
 
-  const hiddenInput = useRef<HTMLInputElement>(null)
-
-  const changeInputImage = () => {
-    // truy cập dom tới phần tử input
-    // console.log(hiddenInput.current)
-    hiddenInput.current?.click() // khi click vào phần tử button nó trigger đến input đã ẩn và click vào (sk)
-  }
-
-  const onFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const fileFormLocal = event.target.files?.[0]
-    setFile(fileFormLocal)
-  }
-
   const avatarWatch = watch("avatar")
+
+  const handleChange = (file?: File) => {
+    setFile(file)
+  }
 
   return (
     <Fragment>
@@ -265,20 +257,8 @@ export default function Profile() {
                 className="object-cover w-full h-full rounded-full"
               />
             </div>
-            <input
-              ref={hiddenInput}
-              onChange={onFileChange}
-              className="hidden"
-              type="file"
-              accept=".jpg,.jpeg,.png"
-            />
-            <button
-              onClick={changeInputImage}
-              type="button"
-              className="px-5 py-2 border border-black-20 rounded-sm shadow hover:bg-gray-100 duration-200"
-            >
-              Chọn ảnh
-            </button>
+            <InputFileImage onChange={handleChange} />
+
             <div className={`${darkMode ? "text-white/80" : "text-gray-500"} mt-3 text-left`}>
               <div>Dụng lượng file tối đa 1 MB</div>
               <div>Định dạng:.JPEG, .PNG</div>
