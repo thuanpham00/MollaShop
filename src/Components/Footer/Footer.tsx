@@ -8,7 +8,7 @@ export default function Footer() {
   return (
     <footer>
       <div
-        className={`${darkMode ? "bg-gradient-to-r from-[#232526] to-[#414345]" : "bg-[#fff]"} duration-200 border-t-2 border-gray-300`}
+        className={`${darkMode ? "bg-gradient-to-r from-[#232526] to-[#414345]" : "bg-[#fff]"} duration-200 border-t border-gray-500`}
       >
         <div className="container">
           <div className="pt-10 pb-8 lg:flex lg:items-start lg:justify-between gap-4">
@@ -29,29 +29,29 @@ export default function Footer() {
               </h3>
               <ul className="mt-2 md:mt-10">
                 <li>
-                  <a href="#" className="text-primaryOrange mb-2 block text-xs md:text-base">
+                  <Link to="" className="text-primaryOrange mb-2 block text-xs md:text-base">
                     Hot deals
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="#" className="text-primaryOrange mb-2 block text-xs md:text-base">
+                  <Link to="" className="text-primaryOrange mb-2 block text-xs md:text-base">
                     Categories
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="#" className="text-primaryOrange mb-2 block text-xs md:text-base">
+                  <Link to="" className="text-primaryOrange mb-2 block text-xs md:text-base">
                     Brands
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="#" className="text-primaryOrange mb-2 block text-xs md:text-base">
+                  <Link to="" className="text-primaryOrange mb-2 block text-xs md:text-base">
                     Rebates
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="#" className="text-primaryOrange mb-2 block text-xs md:text-base">
+                  <Link to="" className="text-primaryOrange mb-2 block text-xs md:text-base">
                     Weekly deals
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>
@@ -64,29 +64,29 @@ export default function Footer() {
               </h3>
               <ul className="mt-2 md:mt-10">
                 <li>
-                  <a href="#" className="text-primaryOrange mb-2 block text-xs md:text-base">
+                  <Link to="" className="text-primaryOrange mb-2 block text-xs md:text-base">
                     Contact
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="#" className="text-primaryOrange mb-2 block text-xs md:text-base">
+                  <Link to="" className="text-primaryOrange mb-2 block text-xs md:text-base">
                     Order tracking
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="#" className="text-primaryOrange mb-2 block text-xs md:text-base">
+                  <Link to="" className="text-primaryOrange mb-2 block text-xs md:text-base">
                     FAQs
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="#" className="text-primaryOrange mb-2 block text-xs md:text-base">
+                  <Link to="" className="text-primaryOrange mb-2 block text-xs md:text-base">
                     Return policy
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="#" className="text-primaryOrange mb-2 block text-xs md:text-base">
+                  <Link to="" className="text-primaryOrange mb-2 block text-xs md:text-base">
                     Privacy policy
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>
@@ -99,19 +99,19 @@ export default function Footer() {
               </h3>
               <ul className="mt-2 md:mt-10">
                 <li>
-                  <a href="#" className="text-primaryOrange mb-2 block text-xs md:text-base">
+                  <Link to="" className="text-primaryOrange mb-2 block text-xs md:text-base">
                     23/46 NHT, Tan Phu, Ho Chi Minh city
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="#" className="text-primaryOrange mb-2 block text-xs md:text-base">
+                  <Link to="" className="text-primaryOrange mb-2 block text-xs md:text-base">
                     phamminhthuan912@gmail.com
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="#" className="text-primaryOrange mb-2 block text-xs md:text-base">
+                  <Link to="" className="text-primaryOrange mb-2 block text-xs md:text-base">
                     +84-931-554-657
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>

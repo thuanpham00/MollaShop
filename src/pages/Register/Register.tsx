@@ -9,9 +9,12 @@ import { path } from "src/constants/path"
 import { ErrorResponse } from "src/types/utils.type"
 import { SchemaType, schema } from "src/utils/rules"
 import { isError422 } from "src/utils/utils"
-import image from "../../img/image_register.jpg"
-import { useContext } from "react"
+import { useContext, useEffect, useState } from "react"
 import { AppContext } from "src/contexts/auth.context"
+import image1 from "src/img/shoppingBG.jpg"
+import image2 from "src/img/image_register.jpg"
+
+const imageList = [image1, image2]
 
 type FormData = Pick<SchemaType, "email" | "password" | "confirm_password"> // giữ nguyên 3 type
 
@@ -67,6 +70,21 @@ export default function Register() {
 
   //console.log(errors)
 
+  const [imageItem, setImageItem] = useState<string>(imageList[0])
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      imageList.map((item) => {
+        setImageItem(item)
+      })
+      if (imageItem === imageList[1]) {
+        setImageItem(imageList[0])
+      }
+    }, 3000)
+
+    return () => clearInterval(interval)
+  }, [imageItem])
+
   return (
     <div
       className={`${darkMode ? "bg-gradient-to-r from-[#232526] to-[#414345]" : "bg-slate-200"}`}
@@ -75,7 +93,7 @@ export default function Register() {
         <div className="grid grid-cols-1 lg:grid-cols-5 py-12 lg:pr-10">
           <div className="hidden lg:block lg:col-span-3 ml-14">
             <img
-              src={image}
+              src={imageItem}
               alt=""
               className="rounded-sm shadow-md object-cover w-[550px] h-[470px]"
             />

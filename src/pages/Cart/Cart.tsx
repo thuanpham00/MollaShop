@@ -107,6 +107,7 @@ export default function Cart() {
     setExtendedPurchase((prev) => prev.map((purchase) => ({ ...purchase, checked: !isAllChecked })))
   }
   // extendedPurchase đã bao gồm purchaseList
+  // 1 danh sách duyệt qua từng phần tử, trong mỗi phần tử duyệt vào từng thuộc tính để thực thi
 
   const updatePurchaseMutation = useMutation({
     mutationFn: (body: PurchaseType) => {

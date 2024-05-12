@@ -1,7 +1,7 @@
 import { yupResolver } from "@hookform/resolvers/yup"
 import { useMutation, useQuery } from "@tanstack/react-query"
 import { useContext, useEffect, useMemo, useState } from "react"
-import { Controller, useForm } from "react-hook-form"
+import { Controller, FormProvider, useForm, useFormContext } from "react-hook-form"
 import { Fragment } from "react/jsx-runtime"
 import Button from "src/Components/Button"
 import Input from "src/Components/Input"
@@ -22,6 +22,54 @@ type FormDataString = {
 }
 const profileSchema = userSchema.pick(["name", "address", "avatar", "phone", "date_of_birth"])
 
+// form phức tạp thì dùng useForm kết hợp useFormContext - tách nhỏ ra rồi 1 thằng component cha (useForm) quản lý truyền xuống
+// Profile truyền xuống Info
+function Info() {
+  const {
+    register,
+    formState: { errors },
+    control
+  } = useFormContext<FormData1>()
+  return (
+    <Fragment>
+      <div className="sm:mt-6 flex flex-wrap flex-col sm:flex-row">
+        <div className="sm:w-[20%] truncate pt-3 sm:text-right">Tên</div>
+        <div className="w-[80%] sm:pl-5">
+          <Input
+            classNameInput="w-full px-3 py-2 border border-gray-200 outline-none text-black text-sm font-normal"
+            register={register}
+            name="name"
+            placeholder="Tên"
+            messageInputError={errors.name?.message}
+          />
+        </div>
+      </div>
+      <div className="sm:mt-2 flex flex-wrap flex-col sm:flex-row">
+        <div className="sm:w-[20%] truncate pt-3 sm:text-right">Số điện thoại</div>
+        <div className="w-[80%] sm:pl-5">
+          <Controller
+            control={control}
+            name="phone"
+            render={({ field }) => {
+              return (
+                <InputNumber
+                  className="mb-2"
+                  classNameInput="w-full px-3 py-2 border border-gray-200 outline-none text-black text-sm font-normal"
+                  classNameError="block mt-1 min-h-[1.25rem] text-red-500 text-sm"
+                  placeholder="Số điện thoại"
+                  messageInputError={errors.phone?.message}
+                  {...field}
+                  onChange={field.onChange}
+                />
+              )
+            }}
+          />
+        </div>
+      </div>
+    </Fragment>
+  )
+}
+
 export default function Profile() {
   const { darkMode, setIsProfile } = useContext(AppContext)
   const [file, setFile] = useState<File>()
@@ -30,15 +78,7 @@ export default function Profile() {
     return file ? URL.createObjectURL(file) : ""
   }, [file])
 
-  const {
-    register,
-    control,
-    formState: { errors },
-    handleSubmit,
-    setValue,
-    watch,
-    setError
-  } = useForm<FormData1>({
+  const methods = useForm<FormData1>({
     resolver: yupResolver(profileSchema),
     defaultValues: {
       name: "",
@@ -48,6 +88,16 @@ export default function Profile() {
       date_of_birth: new Date(1990, 0, 1) // 1/1/1990 -- tháng bắt đầu từ số 0 - tháng 1
     }
   })
+
+  const {
+    register,
+    control,
+    formState: { errors },
+    handleSubmit,
+    setValue,
+    watch,
+    setError
+  } = methods
 
   const getProfileQuery = useQuery({
     queryKey: ["profile"],
@@ -162,110 +212,81 @@ export default function Profile() {
         </h1>
         <span className="text-sm">Quản lý thông tin hồ sơ để bảo mật tài khoản</span>
       </div>
-      <form onSubmit={onSubmit} className="mt-6 flex flex-col-reverse md:flex-row md:items-start">
-        <div className="flex-grow mt-6 md:mt-0 pr-12">
-          <div className="flex flex-wrap flex-col sm:flex-row">
-            <div className="sm:w-[20%] truncate pt-3 sm:text-right">Email</div>
-            <div className="w-[80%] sm:pl-5">
-              <div className={`pt-3 ${darkMode ? "text-white" : "text-gray-700"}`}>
-                {profile?.email}
+
+      <FormProvider {...methods}>
+        <form onSubmit={onSubmit} className="mt-6 flex flex-col-reverse md:flex-row md:items-start">
+          <div className="flex-grow mt-6 md:mt-0 pr-12">
+            <div className="flex flex-wrap flex-col sm:flex-row">
+              <div className="sm:w-[20%] truncate pt-3 sm:text-right">Email</div>
+              <div className="w-[80%] sm:pl-5">
+                <div className={`pt-3 ${darkMode ? "text-white" : "text-gray-700"}`}>
+                  {profile?.email}
+                </div>
+              </div>
+            </div>
+
+            <Info />
+
+            <div className="sm:mt-2 flex flex-wrap flex-col sm:flex-row">
+              <div className="sm:w-[20%] truncate pt-3 sm:text-right">Địa chỉ</div>
+              <div className="w-[80%] sm:pl-5">
+                <Input
+                  classNameInput="w-full px-3 py-2 border border-gray-200 outline-none text-black text-sm font-normal"
+                  register={register}
+                  name="address"
+                  placeholder="Địa chỉ"
+                  messageInputError={errors.address?.message}
+                />
+              </div>
+            </div>
+
+            <Controller
+              control={control}
+              name="date_of_birth"
+              render={({ field }) => {
+                return (
+                  <DateSelect
+                    errorMessage={errors.date_of_birth?.message}
+                    onChange={field.onChange}
+                    value={field.value}
+                  />
+                )
+              }}
+            />
+
+            <div className="sm:mt-2 flex flex-wrap flex-col sm:flex-row">
+              <div className="sm:w-[20%] truncate pt-3 sm:text-right"></div>
+              <div className="sm:w-[80%] sm:pl-5">
+                <Button
+                  type="submit"
+                  className="mt-0"
+                  classInput="px-5 h-9 flex items-center bg-primaryOrange text-white text-sm rounded-sm hover:bg-primaryOrange/80 duration-200"
+                >
+                  Lưu
+                </Button>
               </div>
             </div>
           </div>
-          <div className="sm:mt-6 flex flex-wrap flex-col sm:flex-row">
-            <div className="sm:w-[20%] truncate pt-3 sm:text-right">Tên</div>
-            <div className="w-[80%] sm:pl-5">
-              <Input
-                classNameInput="w-full px-3 py-2 border border-gray-200 outline-none text-black text-sm font-normal"
-                register={register}
-                name="name"
-                placeholder="Tên"
-                messageInputError={errors.name?.message}
-              />
-            </div>
-          </div>
-          <div className="sm:mt-2 flex flex-wrap flex-col sm:flex-row">
-            <div className="sm:w-[20%] truncate pt-3 sm:text-right">Số điện thoại</div>
-            <div className="w-[80%] sm:pl-5">
-              <Controller
-                control={control}
-                name="phone"
-                render={({ field }) => {
-                  return (
-                    <InputNumber
-                      className="mb-2"
-                      classNameInput="w-full px-3 py-2 border border-gray-200 outline-none text-black text-sm font-normal"
-                      classNameError="block mt-1 min-h-[1.25rem] text-red-500 text-sm"
-                      placeholder="Số điện thoại"
-                      messageInputError={errors.phone?.message}
-                      {...field}
-                      onChange={field.onChange}
-                    />
-                  )
-                }}
-              />
-            </div>
-          </div>
 
-          <div className="sm:mt-2 flex flex-wrap flex-col sm:flex-row">
-            <div className="sm:w-[20%] truncate pt-3 sm:text-right">Địa chỉ</div>
-            <div className="w-[80%] sm:pl-5">
-              <Input
-                classNameInput="w-full px-3 py-2 border border-gray-200 outline-none text-black text-sm font-normal"
-                register={register}
-                name="address"
-                placeholder="Địa chỉ"
-                messageInputError={errors.address?.message}
-              />
-            </div>
-          </div>
-
-          <Controller
-            control={control}
-            name="date_of_birth"
-            render={({ field }) => {
-              return (
-                <DateSelect
-                  errorMessage={errors.date_of_birth?.message}
-                  onChange={field.onChange}
-                  value={field.value}
+          <div className="flex justify-center md:w-72 md:border-l-2 md:border-l-gray-300">
+            <div className="flex flex-col items-center">
+              <div className="my-5 h-24 w-24">
+                <img
+                  src={previewImage || getAvatarUrl(avatarWatch as string)}
+                  alt="avatar"
+                  className="object-cover w-full h-full rounded-full"
                 />
-              )
-            }}
-          />
+              </div>
+              <InputFileImage onChange={handleChange} />
 
-          <div className="sm:mt-2 flex flex-wrap flex-col sm:flex-row">
-            <div className="sm:w-[20%] truncate pt-3 sm:text-right"></div>
-            <div className="sm:w-[80%] sm:pl-5">
-              <Button
-                type="submit"
-                className="mt-0"
-                classInput="px-5 h-9 flex items-center bg-primaryOrange text-white text-sm rounded-sm hover:bg-primaryOrange/80 duration-200"
-              >
-                Lưu
-              </Button>
+              <div className={`${darkMode ? "text-white/80" : "text-gray-500"} mt-3 text-left`}>
+                <div>Dụng lượng file tối đa 1 MB</div>
+                <div>Định dạng:.JPEG, .PNG</div>
+              </div>
             </div>
           </div>
-        </div>
-
-        <div className="flex justify-center md:w-72 md:border-l-2 md:border-l-gray-300">
-          <div className="flex flex-col items-center">
-            <div className="my-5 h-24 w-24">
-              <img
-                src={previewImage || getAvatarUrl(avatarWatch as string)}
-                alt="avatar"
-                className="object-cover w-full h-full rounded-full"
-              />
-            </div>
-            <InputFileImage onChange={handleChange} />
-
-            <div className={`${darkMode ? "text-white/80" : "text-gray-500"} mt-3 text-left`}>
-              <div>Dụng lượng file tối đa 1 MB</div>
-              <div>Định dạng:.JPEG, .PNG</div>
-            </div>
-          </div>
-        </div>
-      </form>
+        </form>
+      </FormProvider>
     </Fragment>
   )
 }

@@ -3,7 +3,7 @@ import { Link, useMatch } from "react-router-dom"
 export default function RegisterHeader() {
   const isLogin = useMatch("/login") // dùng để check trang login và register nào match trùng thì xử lý
   return (
-    <header className="bg-primaryOrange">
+    <header className="bg-gradient-to-r from-[#667db6] via-[#0082c8] to-[#667db6]">
       <div className="container">
         <div className="py-10 flex items-center">
           <Link to="/">

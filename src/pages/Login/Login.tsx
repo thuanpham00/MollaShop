@@ -1,6 +1,6 @@
 import { yupResolver } from "@hookform/resolvers/yup"
 import { useMutation } from "@tanstack/react-query"
-import { useContext } from "react"
+import { useContext, useEffect, useState } from "react"
 import { useForm } from "react-hook-form"
 import { Link, useNavigate } from "react-router-dom"
 import Button from "src/Components/Button"
@@ -11,7 +11,8 @@ import { AppContext } from "src/contexts/auth.context"
 import { ErrorResponse } from "src/types/utils.type"
 import { SchemaType, schema } from "src/utils/rules"
 import { isError422 } from "src/utils/utils"
-import image from "../../img/image_register.jpg"
+import image1 from "src/img/shoppingBG.jpg"
+import image2 from "src/img/image_register.jpg"
 
 // type FormData = Omit<SchemaType, "confirm_password"> // không cần confirm_password
 // // dùng Omit để loại bỏ bớt thuộc tính
@@ -23,6 +24,9 @@ import image from "../../img/image_register.jpg"
 type FormData = Pick<SchemaType, "email" | "password">
 const schemaPick = schema.pick(["email", "password"])
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const imageList = [image1, image2]
+
 export default function Login() {
   const { setIsAuthenticated, setIsProfile, darkMode } = useContext(AppContext)
   const navigate = useNavigate()
@@ -30,7 +34,7 @@ export default function Login() {
     formState: { errors },
     setError,
     register,
-    watch,
+    // watch,
     handleSubmit
   } = useForm<FormData>({ resolver: yupResolver(schemaPick) })
 
@@ -73,8 +77,23 @@ export default function Login() {
     })
   })
 
-  const watchForm = watch()
-  console.log(watchForm)
+  //const watchForm = watch()
+  //console.log(watchForm)
+
+  const [imageItem, setImageItem] = useState<string>(imageList[0])
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      imageList.map((item) => {
+        setImageItem(item)
+      })
+      if (imageItem === imageList[1]) {
+        setImageItem(imageList[0])
+      }
+    }, 3000)
+
+    return () => clearInterval(interval)
+  }, [imageItem])
 
   return (
     <div
@@ -84,8 +103,8 @@ export default function Login() {
         <div className="grid grid-cols-1 lg:grid-cols-5 py-12 lg:pr-10">
           <div className="hidden lg:block lg:col-span-3 ml-14">
             <img
-              src={image}
-              alt=""
+              src={imageItem}
+              alt="ảnh"
               className="rounded-sm shadow-md object-cover w-[550px] h-[470px]"
             />
           </div>

@@ -27,7 +27,9 @@ export default function ProductItem({ item }: Props) {
   }
 
   return (
-    <div className="w-full border border-gray-50 p-5 rounded-sm shadow-sm">
+    <div
+      className={`w-full border ${darkMode ? "border-gray-500" : ""} p-5 rounded-sm hover:shadow-xl`}
+    >
       <div
         onMouseEnter={handleChangeImgNew}
         onMouseLeave={handleChangeImgOld}

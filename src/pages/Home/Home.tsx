@@ -183,7 +183,7 @@ export default function Home() {
 
       <div className="container">
         <div
-          className={`${darkMode ? "bg-[#252323]" : "bg-[#fff]"} mt-5 w-full duration-200 pt-2 md:pt-5 pb-2 md:pb-8 px-3 z-10 shadow-lg border border-gray-200`}
+          className={`${darkMode ? "bg-[#252323] border-gray-500" : "bg-[#fff]"} mt-5 w-full duration-200 pt-2 md:pt-5 pb-2 md:pb-8 px-3 z-10 shadow-sm border`}
         >
           <div className="grid grid-cols-12 gap-4 flex-wrap">
             <div className="col-span-6 lg:col-span-3 border-r-2 border-gray-300 md:p-2">
@@ -310,7 +310,7 @@ export default function Home() {
         </div>
 
         <div
-          className={`${darkMode ? "bg-[#252323]" : "bg-[#fff]"} w-full mt-4 lg:mt-12 shadow-lg border border-gray-200`}
+          className={`${darkMode ? "bg-[#252323] border-gray-500" : "bg-[#fff]"} w-full mt-4 lg:mt-12 shadow-sm border`}
         >
           <div className="w-full py-4 md:py-8 px-4">
             <div className="grid grid-cols-12 gap-4">

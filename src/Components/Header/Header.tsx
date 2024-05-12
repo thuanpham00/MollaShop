@@ -184,7 +184,7 @@ export default function Header() {
         </div>
       </div>
 
-      <div className="bg-primaryOrange">
+      <div className="bg-gradient-to-r from-[#667db6] via-[#0082c8] to-[#667db6]">
         <div className="container">
           <div className="flex items-center justify-center py-2 flex-wrap gap-x-4 md:gap-x-20">
             <Link to={path.home}>
