@@ -30,7 +30,8 @@ export default function ProductDetail() {
   const queryClient = useQueryClient()
   const navigate = useNavigate()
   const [buyCount, setBuyCount] = useState(1)
-  const { nameId } = useParams() // lấy id từ url
+  const { nameId } = useParams() // lấy id từ url - tham số định danh
+  //const value = productId.value
   const id = getIdFromNameId(nameId as string)
   const getProductDetailQuery = useQuery({
     queryKey: ["product", id],

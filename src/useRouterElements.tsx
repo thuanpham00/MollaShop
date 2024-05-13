@@ -1,21 +1,32 @@
 import { Navigate, Outlet, useRoutes } from "react-router-dom"
 import { path } from "./constants/path"
-import Login from "./pages/Login"
-import Register from "./pages/Register"
+// import Login from "./pages/Login"
+// import Register from "./pages/Register"
 import RegisterLayout from "./Layouts/RegisterLayout"
 import MainLayout from "./Layouts/MainLayout"
-import Profile from "src/pages/User/Pages/Profile"
-import { useContext } from "react"
+//import Profile from "src/pages/User/Pages/Profile"
+import { useContext, lazy, Suspense } from "react"
 import { AppContext } from "./contexts/auth.context"
-import Home from "./pages/Home"
-import ProductList from "./pages/ProductList"
-import ProductDetail from "./pages/ProductDetail"
-import Cart from "./pages/Cart"
+//import Home from "./pages/Home"
+//import ProductList from "./pages/ProductList"
+//import ProductDetail from "./pages/ProductDetail"
+//import Cart from "./pages/Cart"
 import CartLayout from "./Layouts/CartLayout"
 import UserLayout from "./pages/User/Layouts/UserLayout"
-import ChangePassword from "./pages/User/Pages/ChangePassword"
-import HistoryPurchase from "./pages/User/Pages/HistoryPurchase"
+//import ChangePassword from "./pages/User/Pages/ChangePassword"
+//import HistoryPurchase from "./pages/User/Pages/HistoryPurchase"
+//import NotFound from "./pages/NotFound"
 
+const Login = lazy(() => import("./pages/Login")) // - dùng kĩ thuật Lazy load - lướt tới đâu load tới đó
+const Register = lazy(() => import("./pages/Register")) // - dùng kĩ thuật Lazy load - lướt tới đâu load tới đó
+const Home = lazy(() => import("./pages/Home"))
+const ProductList = lazy(() => import("./pages/ProductList"))
+const ProductDetail = lazy(() => import("./pages/ProductDetail"))
+const Cart = lazy(() => import("./pages/Cart"))
+const Profile = lazy(() => import("src/pages/User/Pages/Profile"))
+const ChangePassword = lazy(() => import("./pages/User/Pages/ChangePassword"))
+const HistoryPurchase = lazy(() => import("./pages/User/Pages/HistoryPurchase"))
+const NotFound = lazy(() => import("./pages/NotFound"))
 // <Outlet /> giúp truy cập vào route con
 // <Navigate /> điều hướng trang khi xử lý bằng js
 function ProjectedRouter() {
@@ -37,12 +48,15 @@ export default function useRouterElements() {
     // nó là 1 tập hợp array gồm các route
     // điều hướng trang - url
     // nhập url theo path có thể điều hướng trang
+    // component <Suspenses></Suspenses> - dùng kĩ thuật Lazy load - lướt tới đâu load tới đó
     {
       path: path.home,
       index: true,
       element: (
         <MainLayout>
-          <Home />
+          <Suspense>
+            <Home />
+          </Suspense>
         </MainLayout>
       )
     },
@@ -50,7 +64,9 @@ export default function useRouterElements() {
       path: path.productList,
       element: (
         <MainLayout>
-          <ProductList />
+          <Suspense>
+            <ProductList />
+          </Suspense>
         </MainLayout>
       )
     },
@@ -59,7 +75,9 @@ export default function useRouterElements() {
       index: true,
       element: (
         <MainLayout>
-          <ProductDetail />
+          <Suspense>
+            <ProductDetail />
+          </Suspense>
         </MainLayout>
       )
     },
@@ -71,7 +89,9 @@ export default function useRouterElements() {
           path: path.cart,
           element: (
             <CartLayout>
-              <Cart />
+              <Suspense>
+                <Cart />
+              </Suspense>
             </CartLayout>
           )
         },
@@ -83,7 +103,9 @@ export default function useRouterElements() {
               element: (
                 <MainLayout>
                   <UserLayout>
-                    <Profile />
+                    <Suspense>
+                      <Profile />
+                    </Suspense>
                   </UserLayout>
                 </MainLayout>
               )
@@ -93,7 +115,9 @@ export default function useRouterElements() {
               element: (
                 <MainLayout>
                   <UserLayout>
-                    <ChangePassword />
+                    <Suspense>
+                      <ChangePassword />
+                    </Suspense>
                   </UserLayout>
                 </MainLayout>
               )
@@ -103,7 +127,9 @@ export default function useRouterElements() {
               element: (
                 <MainLayout>
                   <UserLayout>
-                    <HistoryPurchase />
+                    <Suspense>
+                      <HistoryPurchase />
+                    </Suspense>
                   </UserLayout>
                 </MainLayout>
               )
@@ -120,7 +146,9 @@ export default function useRouterElements() {
           path: path.login,
           element: (
             <RegisterLayout>
-              <Login />
+              <Suspense>
+                <Login />
+              </Suspense>
             </RegisterLayout>
           )
         },
@@ -128,11 +156,23 @@ export default function useRouterElements() {
           path: path.register,
           element: (
             <RegisterLayout>
-              <Register />
+              <Suspense>
+                <Register />
+              </Suspense>
             </RegisterLayout>
           )
         }
       ]
+    },
+    {
+      path: "*",
+      element: (
+        <MainLayout>
+          <Suspense>
+            <NotFound />
+          </Suspense>
+        </MainLayout>
+      )
     }
   ])
   return elementRouter

@@ -112,7 +112,8 @@ export default function Register() {
                   register={register}
                 />
                 <Input
-                  className="mt-2"
+                  className="mt-2 relative"
+                  classNameEye="w-5 h-5 absolute top-[12px] right-[10px] cursor-pointer"
                   type="password"
                   name="password"
                   placeholder="Password"
@@ -121,7 +122,8 @@ export default function Register() {
                   register={register}
                 />
                 <Input
-                  className="mt-2"
+                  className="mt-2 relative"
+                  classNameEye="w-5 h-5 absolute top-[12px] right-[10px] cursor-pointer"
                   type="password"
                   name="confirm_password"
                   placeholder="Confirm password"
