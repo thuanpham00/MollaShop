@@ -1,18 +1,18 @@
 import { Navigate, Outlet, useRoutes } from "react-router-dom"
 import { path } from "./constants/path"
-// import Login from "./pages/Login"
-// import Register from "./pages/Register"
-import RegisterLayout from "./Layouts/RegisterLayout"
-import MainLayout from "./Layouts/MainLayout"
-//import Profile from "src/pages/User/Pages/Profile"
 import { useContext, lazy, Suspense } from "react"
 import { AppContext } from "./contexts/auth.context"
+import RegisterLayout from "./Layouts/RegisterLayout"
+import MainLayout from "./Layouts/MainLayout"
+import CartLayout from "./Layouts/CartLayout"
+import UserLayout from "./pages/User/Layouts/UserLayout"
+// import Login from "./pages/Login"
+// import Register from "./pages/Register"
+//import Cart from "./pages/Cart"
+//import Profile from "src/pages/User/Pages/Profile"
 //import Home from "./pages/Home"
 //import ProductList from "./pages/ProductList"
 //import ProductDetail from "./pages/ProductDetail"
-//import Cart from "./pages/Cart"
-import CartLayout from "./Layouts/CartLayout"
-import UserLayout from "./pages/User/Layouts/UserLayout"
 //import ChangePassword from "./pages/User/Pages/ChangePassword"
 //import HistoryPurchase from "./pages/User/Pages/HistoryPurchase"
 //import NotFound from "./pages/NotFound"
@@ -27,6 +27,7 @@ const Profile = lazy(() => import("src/pages/User/Pages/Profile"))
 const ChangePassword = lazy(() => import("./pages/User/Pages/ChangePassword"))
 const HistoryPurchase = lazy(() => import("./pages/User/Pages/HistoryPurchase"))
 const NotFound = lazy(() => import("./pages/NotFound"))
+
 // <Outlet /> giúp truy cập vào route con
 // <Navigate /> điều hướng trang khi xử lý bằng js
 function ProjectedRouter() {

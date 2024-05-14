@@ -1,4 +1,6 @@
-import { range } from "lodash"
+// import { range } from "lodash"
+import range from "lodash/range" // giảm kích thước file
+
 import { useEffect, useState } from "react"
 
 interface Props {

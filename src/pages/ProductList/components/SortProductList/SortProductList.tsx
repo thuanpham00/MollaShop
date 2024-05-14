@@ -3,7 +3,10 @@ import { path } from "src/constants/path"
 import { sortBy } from "src/constants/product"
 import { ProductListConfig } from "src/types/product.type"
 import classNames from "classnames"
-import { omit } from "lodash"
+
+// import { omit } from "lodash"
+import omit from "lodash/omit"
+
 import { queryParamConfig } from "src/Hooks/useQueryConfig"
 import { useContext } from "react"
 import { AppContext } from "src/contexts/auth.context"

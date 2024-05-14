@@ -8,8 +8,9 @@ import InputNumber from "src/Components/InputNumber"
 import { SchemaType, schema } from "src/utils/rules"
 import { yupResolver } from "@hookform/resolvers/yup"
 import RatingStar from "../RatingStar"
-import { omit } from "lodash"
 import { queryParamConfig } from "src/Hooks/useQueryConfig"
+// import { omit } from "lodash"
+import omit from "lodash/omit" // giảm kích thước file
 
 interface Props {
   categories: Categories[]

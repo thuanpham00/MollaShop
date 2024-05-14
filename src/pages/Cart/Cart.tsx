@@ -9,7 +9,13 @@ import { purchaseStatus } from "src/constants/purchaseStatus"
 import { formatCurrency, generateNameId } from "src/utils/utils"
 import { produce } from "immer"
 import { AppContext } from "src/contexts/auth.context"
-import { keyBy } from "lodash"
+
+// không có tính năng tree-shaking
+//import { keyBy } from "lodash"
+
+import keyBy from "lodash/keyBy"
+// import chỉ mỗi function keyBy // giảm kích thước file
+
 import { toast } from "react-toastify"
 import cartImg from "src/img/cart.png"
 

@@ -4,7 +4,8 @@ import { SchemaType, schema } from "src/utils/rules"
 import useQueryConfig from "./useQueryConfig"
 import { createSearchParams, useNavigate } from "react-router-dom"
 import { path } from "src/constants/path"
-import { omit } from "lodash"
+// import { omit } from "lodash"
+import omit from "lodash/omit" // giảm kích thước file
 
 type FormData = Pick<SchemaType, "name">
 const nameSchema = schema.pick(["name"])

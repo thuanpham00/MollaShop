@@ -1,4 +1,7 @@
-import { isUndefined, omitBy } from "lodash"
+// import { isUndefined, omitBy } from "lodash"
+import isUndefined from "lodash/isUndefined" // giảm kích thước file
+import omitBy from "lodash/omitBy" // giảm kích thước file
+
 import { ProductListConfig } from "src/types/product.type"
 import useQueryParams from "./useSearchParams"
 
