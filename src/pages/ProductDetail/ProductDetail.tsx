@@ -340,7 +340,7 @@ export default function ProductDetail() {
           >
             có thể bạn cũng thích
           </span>
-          <div className="text-sm grid grid-cols-4 md:grid-cols-5 lg:grid-cols-6 mt-4 gap-10">
+          <div className="text-sm grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 mt-4 gap-10">
             {getProductListQuery.data?.data.data.products.map((item) => {
               return (
                 <div className="col-span-1" key={item._id}>
