@@ -45,7 +45,7 @@ export default function ProductItem({ item }: Props) {
           <ProductRating rating={item.rating} />
         </div>
         <div
-          className={`mt-1 w-full font-medium text-sm ${darkMode ? "text-[#fff]" : "text-[#000]"} block px-10 truncate `}
+          className={`mt-1 w-full font-medium text-xs md:text-sm ${darkMode ? "text-[#fff]" : "text-[#000]"} block px-10 truncate `}
         >
           {" "}
           {item.name}

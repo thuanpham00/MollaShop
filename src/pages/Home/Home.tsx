@@ -15,6 +15,13 @@ import { productApi } from "src/apis/products.api"
 import { ProductListConfig } from "src/types/product.type"
 import ProductItem from "./components/ProductItem"
 import SlideListProduct from "./components/SideListProduct"
+import ProductItem2 from "./components/ProductItem2"
+// image product
+import productItem1 from "src/img/productItem1.png"
+import productItem2 from "src/img/productItem2.png"
+import productItem3 from "src/img/productItem3.png"
+import productItem4 from "src/img/productItem4.png"
+import productItem5 from "src/img/productItem5.png"
 
 const buttonImageList = {
   prevArrow: (
@@ -49,28 +56,28 @@ const buttonImageList = {
 
 const buttonSlideList = {
   prevArrow: (
-    <button className="ml-3 w-8 h-8 rounded-full border border-gray-700 hover:bg-gray-100 duration-200 flex items-center justify-center">
+    <button className="ml-3 flex items-center justify-center">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
         viewBox="0 0 24 24"
         strokeWidth={1.5}
         stroke="#14213d"
-        className="w-5 h-5"
+        className="w-5 h-5 lg:h-8 lg:w-8"
       >
         <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
       </svg>
     </button>
   ),
   nextArrow: (
-    <button className="mr-3 w-8 h-8 rounded-full border border-gray-700 hover:bg-gray-100 duration-200 flex items-center justify-center">
+    <button className="mr-3 flex items-center justify-center">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
         viewBox="0 0 24 24"
         strokeWidth={1.5}
         stroke="#14213d"
-        className="w-5 h-5"
+        className="w-5 h-5 lg:w-8 lg:h-8"
       >
         <path strokeLinecap="round" strokeLinejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
       </svg>
@@ -81,6 +88,52 @@ const buttonSlideList = {
 const slideImages = [slide1, slide2]
 
 const imageList = [img1, img2, img3]
+
+export type ProductFeatured = {
+  img: string
+  name: string
+  sold: number
+  price: number
+  priceBeforeDiscount: number
+}
+
+const productFeatured: ProductFeatured[] = [
+  {
+    img: productItem1,
+    name: "Điện thoại Apple Iphone 12 64GB - Hàng chính hãng VNA",
+    sold: 482,
+    price: 20990000,
+    priceBeforeDiscount: 26990000
+  },
+  {
+    img: productItem2,
+    name: "Đồng Hồ Nam CRRJU CR8940 Dây Thép Cao Cấp",
+    sold: 2400,
+    price: 300000,
+    priceBeforeDiscount: 450000
+  },
+  {
+    img: productItem3,
+    name: "Áo thun nam cổ tròn siêu đẹp- Áo phông nam với chất liệu thun lạnh cực kì mát mẻ",
+    sold: 0,
+    price: 106000,
+    priceBeforeDiscount: 189000
+  },
+  {
+    img: productItem4,
+    name: "Điện Thoại Xiaomi Redmi 9A 2GB/32GB - Hàng Chính Hãng",
+    sold: 1000,
+    price: 1949000,
+    priceBeforeDiscount: 1990000
+  },
+  {
+    img: productItem5,
+    name: "Áo thun nam nữ cotton co giãn unisex Giisel phông trơn basic tee tay lỡ oversize form rộng 10 màu",
+    sold: 523,
+    price: 98350,
+    priceBeforeDiscount: 189000
+  }
+]
 
 export default function Home() {
   const { darkMode } = useContext(AppContext)
@@ -135,6 +188,9 @@ export default function Home() {
 
   const productListCreatedAt = getProductListCreatedAtQuery.data?.data.data.products
   const productListSold = getProductListSoldQuery.data?.data.data.products
+
+  const productListViewItem_one = productFeatured.slice(0, 1)
+  const productListViewItem_four = productFeatured.slice(1, 5)
 
   if (!productListCreatedAt) return null
   if (!productListSold) return null
@@ -309,52 +365,35 @@ export default function Home() {
           </div>
         </div>
 
-        <div
-          className={`${darkMode ? "bg-[#252323] border-gray-500" : "bg-[#fff]"} w-full mt-4 lg:mt-12 shadow-sm border`}
-        >
-          <div className="w-full py-4 md:py-8 px-4">
-            <div className="grid grid-cols-12 gap-4">
-              <div className="col-span-4">
-                <div className="w-full">
-                  <img
-                    src="https://chawkbazar.vercel.app/_next/image?url=%2Fassets%2Fimages%2Fproducts%2Fp-30-md.png&w=384&q=100"
-                    alt="ảnh"
-                    className="w-full object-cover"
-                  />
-                  <span
-                    className={`mt-4 block text-center uppercase font-light text-[8px] md:text-sm md:font-semibold ${darkMode ? "text-[#fff]" : "text-gray-500"}`}
-                  >
-                    5 sản phẩm
-                  </span>
+        <div className="mt-4 lg:mt-8 p-4">
+          <div className="flex items-center gap-4">
+            <h2
+              className={`flex-shrink-0 uppercase text-xl md:text-3xl font-semibold ${darkMode ? "text-[#fff]/80" : "text-[#000]"} text-left -tracking-normal`}
+            >
+              Sản phẩm phổ biến
+            </h2>
+            <div className="flex-grow h-[1px] bg-gray-300"></div>
+          </div>
+          <div className="mt-8 grid grid-cols-1 md:grid md:grid-cols-12 items-center gap-2 md:gap-4">
+            <div className="col-span-6">
+              {productListViewItem_one?.map((item, index) => (
+                <div key={index}>
+                  <ProductItem2 item={item} />
                 </div>
-              </div>
-              <div className="col-span-4">
-                <div className="w-full">
-                  <img
-                    src="https://websitedemos.net/electronic-store-04/wp-content/uploads/sites/1055/2022/03/electronic-store-category-image-02.jpg"
-                    alt="ảnh"
-                    className="w-full object-cover"
-                  />
-                  <span
-                    className={`mt-4 block text-center uppercase font-light text-[8px] md:text-sm md:font-semibold ${darkMode ? "text-[#fff]" : "text-gray-500"}`}
-                  >
-                    5 sản phẩm
-                  </span>
-                </div>
-              </div>
-              <div className="col-span-4">
-                <div className="w-full">
-                  <img
-                    src="https://chawkbazar.vercel.app/_next/image?url=%2Fassets%2Fimages%2Fproducts%2Fp-16-md.png&w=384&q=100"
-                    alt="ảnh"
-                    className="w-full object-cover"
-                  />
-                  <span
-                    className={`mt-4 block text-center uppercase font-light text-[8px] md:text-sm md:font-semibold ${darkMode ? "text-[#fff]" : "text-gray-500"}`}
-                  >
-                    35 sản phẩm
-                  </span>
-                </div>
+              ))}
+            </div>
+            <div className="col-span-6">
+              <div className="grid grid-cols-6 gap-2 md:gap-4">
+                {productListViewItem_four.map((item, index) => (
+                  <div className="col-span-3" key={index}>
+                    <ProductItem2
+                      item={item}
+                      className="h-[220px] md:h-[300px] bg-[#f9f9f9] flex flex-col pt-8 items-center rounded-sm shadow-sm px-4 py-2"
+                      classNameImage="h-[80px] md:h-[150px] object-cover"
+                      classNameTitle="mt-2 mr-auto font-medium text-sm line-clamp-2 h-[40px]"
+                    />
+                  </div>
+                ))}
               </div>
             </div>
           </div>
@@ -363,13 +402,14 @@ export default function Home() {
         <div className="mt-4 lg:mt-8 p-4">
           <Slide {...buttonImageList}>
             {imageList.map((item, index) => (
-              <div className="each-slide-effect" key={index}>
+              <div className="each-slide-effect rounded-md" key={index}>
                 <div
                   style={{
                     backgroundImage: `url(${item})`,
-                    borderRadius: "5px",
+                    borderRadius: "6px",
                     backgroundSize: "cover",
-                    backgroundPosition: "center"
+                    backgroundPosition: "center",
+                    height: "350px"
                   }}
                 ></div>
               </div>
@@ -383,7 +423,7 @@ export default function Home() {
           timeScroll={3000}
         >
           {productListCreatedAt.map((item, index) => (
-            <div key={index} className="flex-1 max-w-[290px]">
+            <div key={index} className="flex-1 max-w-[150px] md:max-w-[290px]">
               <ProductItem item={item} />
             </div>
           ))}
@@ -395,7 +435,7 @@ export default function Home() {
           timeScroll={2000}
         >
           {productListSold.map((item, index) => (
-            <div key={index} className="flex-1 max-w-[290px]">
+            <div key={index} className="flex-1 max-w-[150px] md:max-w-[290px]">
               <ProductItem item={item} />
             </div>
           ))}
