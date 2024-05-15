@@ -423,7 +423,7 @@ export default function Home() {
           timeScroll={3000}
         >
           {productListCreatedAt.map((item, index) => (
-            <div key={index} className="flex-1 max-w-[150px] md:max-w-[290px]">
+            <div key={index} className="flex-1 max-w-[160px] md:max-w-[290px]">
               <ProductItem item={item} />
             </div>
           ))}
@@ -435,7 +435,7 @@ export default function Home() {
           timeScroll={2000}
         >
           {productListSold.map((item, index) => (
-            <div key={index} className="flex-1 max-w-[150px] md:max-w-[290px]">
+            <div key={index} className="flex-1 max-w-[160px] md:max-w-[290px]">
               <ProductItem item={item} />
             </div>
           ))}
