@@ -264,7 +264,7 @@ export default function ProductDetail() {
                 <div className="ml-4 text-3xl font-medium text-orange-500">
                   ${formatCurrency(product.price)}
                 </div>
-                <div className="pl-4 md:pl-0 ml-4 w-[100px] h-[40px] bg-orange-500 text-white flex items-center justify-center">
+                <div className="px-2 md:px-0 ml-4 w-[100px] h-[40px] bg-orange-500 text-white flex items-center justify-center">
                   {rateSale(product.price_before_discount, product.price)} GIẢM
                 </div>
               </div>
