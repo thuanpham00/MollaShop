@@ -95,6 +95,7 @@ export type ProductFeatured = {
   sold: number
   price: number
   priceBeforeDiscount: number
+  link: string
 }
 
 const productFeatured: ProductFeatured[] = [
@@ -103,35 +104,40 @@ const productFeatured: ProductFeatured[] = [
     name: "Điện thoại Apple Iphone 12 64GB - Hàng chính hãng VNA",
     sold: 482,
     price: 20990000,
-    priceBeforeDiscount: 26990000
+    priceBeforeDiscount: 26990000,
+    link: "/Điện-thoại-Apple-Iphone-12-64GB--Hàng-chính-hãng-VNA-i-60afb1c56ef5b902180aacb8"
   },
   {
     img: productItem2,
     name: "Đồng Hồ Nam CRRJU CR8940 Dây Thép Cao Cấp",
     sold: 2400,
     price: 300000,
-    priceBeforeDiscount: 450000
+    priceBeforeDiscount: 450000,
+    link: "/Đồng-Hồ-Nam-CRRJU-CR8940-Dây-Thép-Cao-Cấp-i-60afaf286ef5b902180aacb3"
   },
   {
     img: productItem3,
     name: "Áo thun nam cổ tròn siêu đẹp- Áo phông nam với chất liệu thun lạnh cực kì mát mẻ",
     sold: 0,
     price: 106000,
-    priceBeforeDiscount: 189000
+    priceBeforeDiscount: 189000,
+    link: "/Áo-thun-nam-cổ-tròn-POLOMAN-vải-Cotton-co-giãndày-dặn-form-regular-fit-thoải-mái-i-60abb7acdbfa6e153cb99630"
   },
   {
     img: productItem4,
     name: "Điện Thoại Xiaomi Redmi 9A 2GB/32GB - Hàng Chính Hãng",
     sold: 1000,
     price: 1949000,
-    priceBeforeDiscount: 1990000
+    priceBeforeDiscount: 1990000,
+    link: "/Điện-Thoại-Xiaomi-Redmi-9A-2GB32GB--Hàng-Chính-Hãng-i-60afb07e6ef5b902180aacb6"
   },
   {
     img: productItem5,
     name: "Áo thun nam nữ cotton co giãn unisex Giisel phông trơn basic tee tay lỡ oversize form rộng 10 màu",
     sold: 523,
     price: 98350,
-    priceBeforeDiscount: 189000
+    priceBeforeDiscount: 189000,
+    link: "/Áo-thun-nam-nữ-cotton-co-giãn-unisex-Giisel-phông-trơn-basic-tee-tay-lỡ-oversize-form-rộng-10-màu-i-60ad03872fb52902585972ab"
   }
 ]
 
@@ -239,7 +245,7 @@ export default function Home() {
 
       <div className="container">
         <div
-          className={`${darkMode ? "bg-[#252323] border-gray-500" : "bg-[#fff]"} mt-5 w-full duration-200 pt-2 md:pt-5 pb-2 md:pb-8 px-3 z-10 shadow-sm border`}
+          className={`${darkMode ? "bg-[#252323] border-gray-500" : "bg-[#fff]"} mt-5 w-full duration-200 pt-2 md:pt-5 pb-2 md:pb-4 px-3 z-10 shadow-sm border`}
         >
           <div className="grid grid-cols-12 gap-4 flex-wrap">
             <div className="col-span-6 lg:col-span-3 border-r-2 border-gray-300 md:p-2">
@@ -388,7 +394,7 @@ export default function Home() {
                   <div className="col-span-3" key={index}>
                     <ProductItem2
                       item={item}
-                      className="h-[220px] md:h-[300px] bg-[#f9f9f9] flex flex-col pt-8 items-center rounded-sm shadow-sm px-4 py-2"
+                      className={`h-[220px] md:h-[300px] flex flex-col pt-8 items-center rounded-sm shadow-sm px-4 py-2 ${darkMode ? " bg-[#252323]" : " bg-[#f9f9f9]"}`}
                       classNameImage="h-[80px] md:h-[150px] object-cover"
                       classNameTitle="mt-2 mr-auto font-medium text-sm line-clamp-2 h-[40px]"
                     />

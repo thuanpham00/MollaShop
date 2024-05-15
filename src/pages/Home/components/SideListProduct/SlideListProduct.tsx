@@ -83,7 +83,7 @@ export default function SlideListProduct({
     <div className={className}>
       <div className="flex items-center gap-4">
         <h2
-          className={`flex-shrink-0 uppercase text-xl md:text-3xl font-semibold ${darkMode ? "text-[#fff]/80" : "text-[#000]"} text-left -tracking-normal`}
+          className={`flex-shrink-0 uppercase text-xl md:text-3xl font-semibold ${darkMode ? "text-[#fff]/90" : "text-[#000]"} text-left -tracking-normal`}
         >
           {title}
         </h2>

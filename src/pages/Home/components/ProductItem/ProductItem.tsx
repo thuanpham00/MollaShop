@@ -35,7 +35,7 @@ export default function ProductItem({ item }: Props) {
         onMouseLeave={handleChangeImgOld}
         className="duration-200 transition"
       >
-        <img src={currentImg} alt={item.name} />
+        <img src={currentImg} alt={item.name} className="cursor-not-allowed" />
       </div>
       <div className="py-3 text-center">
         <span className={`mt-1 ${darkMode ? "text-[#fff]" : "text-gray-400"} block`}>
