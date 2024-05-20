@@ -1,0 +1,31 @@
+{
+  "header": {
+    "customerService": "24/7 Dịch vụ khách hàng",
+    "mode": "Sáng",
+    "mode2": "Tối",
+    "modeLight": "Chế độ sáng",
+    "modeDark": "Chế độ tối",
+    "login": "Đăng nhập",
+    "register": "Đăng ký",
+    "descRegister": "Bạn đã có tài khoản?",
+    "descLogin": "Bạn chưa có tài khoản?",
+    "headerList": {
+      "home": "Trang chủ",
+      "productList": "Tất cả sản phẩm",
+      "watch": "Đồng hồ",
+      "clothes": "Quần áo",
+      "phone": "Điện thoại",
+      "phone2": "Điện thoại và phụ kiện",
+      "deal": "Khuyến mãi"
+    },
+    "search": "Tìm kiếm sản phẩm...",
+    "cart": {
+      "title": "Sản phẩm mới thêm",
+      "add": "Thêm vào giỏ hàng",
+      "see": "Xem giỏ hàng"
+    },
+    "myAccount": "Tài khoản của tôi",
+    "purchase": "Đơn mua",
+    "logout": "Đăng xuất"
+  }
+}

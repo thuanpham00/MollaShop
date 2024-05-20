@@ -13,6 +13,7 @@ import { useContext, useEffect, useState } from "react"
 import { AppContext } from "src/contexts/auth.context"
 import image1 from "src/img/shoppingBG.jpg"
 import image2 from "src/img/image_register.jpg"
+import { useTranslation } from "react-i18next"
 
 const imageList = [image1, image2]
 
@@ -23,6 +24,7 @@ type FormDataOmitConfirmPass = Pick<SchemaType, "email" | "password">
 const schemaPick = schema.pick(["email", "password", "confirm_password"])
 
 export default function Register() {
+  const { t } = useTranslation("header")
   const { darkMode } = useContext(AppContext)
   const navigate = useNavigate()
   const {
@@ -90,17 +92,17 @@ export default function Register() {
       className={`${darkMode ? "bg-gradient-to-r from-[#232526] to-[#414345]" : "bg-slate-200"}`}
     >
       <div className="container">
-        <div className="grid grid-cols-1 lg:grid-cols-5 py-12 lg:pr-10">
+        <div className="grid grid-cols-1 lg:grid-cols-5 py-12 lg:pr-10 gap-2">
           <div className="hidden lg:block lg:col-span-3 ml-14">
             <img
               src={imageItem}
-              alt=""
-              className="rounded-sm shadow-md object-cover w-[550px] h-[470px]"
+              alt="ảnh"
+              className="rounded-sm shadow-md object-cover w-[600px] h-[470px]"
             />
           </div>
           <div className="lg:col-span-2">
             <div className="bg-white py-10 px-8 rounded shadow-md">
-              <h1 className="text-primaryGray text-3xl font-normal">Đăng ký</h1>
+              <h1 className="text-primaryGray text-3xl font-normal">{t("header.register")}</h1>
               <form onSubmit={onSubmit} noValidate className="mt-5">
                 <Input
                   className="mt-8"
@@ -137,13 +139,13 @@ export default function Register() {
                   disabled={registerAccountMutation.isPending}
                   isLoading={registerAccountMutation.isPending}
                 >
-                  Đăng ký
+                  {t("header.register")}
                 </Button>
               </form>
               <div className="flex justify-center mt-5">
-                <span className="text-gray-500">Bạn đã có tài khoản?</span>
+                <span className="text-gray-500">{t("header.descRegister")}</span>
                 <Link to={path.login} className="ml-1 text-red-500">
-                  Đăng nhập
+                  {t("header.login")}
                 </Link>
               </div>
             </div>

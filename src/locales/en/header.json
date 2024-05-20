@@ -1,0 +1,31 @@
+{
+  "header": {
+    "customerService": "24/7 Customer service",
+    "mode": "Light",
+    "mode2": "Dark",
+    "modeLight": "Light mode",
+    "modeDark": "Dark mode",
+    "login": "Login",
+    "register": "Register",
+    "descRegister": "Do you already have an account?",
+    "descLogin": "Do not have an account?",
+    "headerList": {
+      "home": "Home",
+      "productList": "Product list",
+      "watch": "Watch",
+      "clothes": "Clothes",
+      "phone": "Phone",
+      "phone2": "Phones and accessories",
+      "deal": "Hot deal"
+    },
+    "search": "Search product...",
+    "cart": {
+      "title": "New products added",
+      "add": "Add to cart",
+      "see": "View cart"
+    },
+    "myAccount": "My account",
+    "purchase": "Purchase order",
+    "logout": "Logout"
+  }
+}

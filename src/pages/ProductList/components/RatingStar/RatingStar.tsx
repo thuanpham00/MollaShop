@@ -32,7 +32,7 @@ export default function RatingStar({ queryConfig }: Props) {
         .map((_, index) => {
           return (
             <li key={index}>
-              <div
+              <button
                 onClick={() => handleRatingStar(5 - index)}
                 className="flex items-center mt-1 w-full"
               >
@@ -103,7 +103,7 @@ export default function RatingStar({ queryConfig }: Props) {
                     )
                   })}
                 {index !== 0 && <span className="pl-5">Trở lên</span>}
-              </div>
+              </button>
             </li>
           )
         })}

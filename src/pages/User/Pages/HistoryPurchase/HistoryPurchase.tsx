@@ -1,6 +1,7 @@
 import { keepPreviousData, useQuery } from "@tanstack/react-query"
 import classNames from "classnames"
 import { useContext } from "react"
+import { useTranslation } from "react-i18next"
 import { Link, createSearchParams } from "react-router-dom"
 import useQueryParams from "src/Hooks/useSearchParams"
 import { purchaseApi } from "src/apis/purchase.api"
@@ -42,6 +43,7 @@ const purchaseTab = [
 // và đồng thời status từ url truyền vô query fetch ra data
 
 export default function HistoryPurchase() {
+  const { t } = useTranslation("profile")
   const { darkMode } = useContext(AppContext)
   const queryParam: { status?: string } = useQueryParams() // đọc từ url lấy xuống
   const status: number = Number(queryParam.status) || purchaseStatus.all
@@ -51,10 +53,10 @@ export default function HistoryPurchase() {
     queryFn: () => {
       return purchaseApi.getPurchases({ status: status as PurchasListStatus }) //
     },
-    placeholderData: keepPreviousData
+    placeholderData: keepPreviousData // giữ lại giá trị cũ
   })
   const purchaseList = getPurchasesListQuery.data?.data.data
-  console.log(purchaseList)
+  // console.log(purchaseList)
 
   // nhỏ hơn 700px xuất hiện thanh scroll ngang
   return (
@@ -115,7 +117,7 @@ export default function HistoryPurchase() {
                   </div>
                 </Link>
                 <div className="flex items-center justify-end">
-                  <span>Tổng giá tiền: </span>
+                  <span>{t("historyPurchase.totalPrice")} </span>
                   <span className="ml-3 text-xl text-red-500">
                     {formatCurrency(item.product.price * item.buy_count)}đ
                   </span>

@@ -1,10 +1,11 @@
 import { useContext } from "react"
+import { useTranslation } from "react-i18next"
 import { Link } from "react-router-dom"
 import { AppContext } from "src/contexts/auth.context"
 
 export default function Footer() {
   const { darkMode } = useContext(AppContext)
-
+  const { t } = useTranslation("footer")
   return (
     <footer>
       <div
@@ -27,65 +28,30 @@ export default function Footer() {
               >
                 Shop
               </h3>
-              <ul className="mt-2 md:mt-10">
+              <ul className="mt-2 md:mt-5">
                 <li>
                   <Link to="" className="text-primaryOrange mb-2 block text-xs md:text-base">
-                    Hot deals
+                    {t("shop.hotDeal")}
                   </Link>
                 </li>
                 <li>
                   <Link to="" className="text-primaryOrange mb-2 block text-xs md:text-base">
-                    Categories
+                    {t("shop.categories")}
                   </Link>
                 </li>
                 <li>
                   <Link to="" className="text-primaryOrange mb-2 block text-xs md:text-base">
-                    Brands
+                    {t("shop.brands")}
                   </Link>
                 </li>
                 <li>
                   <Link to="" className="text-primaryOrange mb-2 block text-xs md:text-base">
-                    Rebates
+                    {t("shop.rebates")}
                   </Link>
                 </li>
                 <li>
                   <Link to="" className="text-primaryOrange mb-2 block text-xs md:text-base">
-                    Weekly deals
-                  </Link>
-                </li>
-              </ul>
-            </div>
-
-            <div className="lg:flex-1 mt-5">
-              <h3
-                className={`${darkMode ? "text-[#f2f2f2]" : "text-[#27232f]"} text-xl md:text-2xl font-semibold`}
-              >
-                Need help?
-              </h3>
-              <ul className="mt-2 md:mt-10">
-                <li>
-                  <Link to="" className="text-primaryOrange mb-2 block text-xs md:text-base">
-                    Contact
-                  </Link>
-                </li>
-                <li>
-                  <Link to="" className="text-primaryOrange mb-2 block text-xs md:text-base">
-                    Order tracking
-                  </Link>
-                </li>
-                <li>
-                  <Link to="" className="text-primaryOrange mb-2 block text-xs md:text-base">
-                    FAQs
-                  </Link>
-                </li>
-                <li>
-                  <Link to="" className="text-primaryOrange mb-2 block text-xs md:text-base">
-                    Return policy
-                  </Link>
-                </li>
-                <li>
-                  <Link to="" className="text-primaryOrange mb-2 block text-xs md:text-base">
-                    Privacy policy
+                    {t("shop.weeklyDeal")}
                   </Link>
                 </li>
               </ul>
@@ -95,9 +61,44 @@ export default function Footer() {
               <h3
                 className={`${darkMode ? "text-[#f2f2f2]" : "text-[#27232f]"} text-xl md:text-2xl font-semibold`}
               >
-                Contact
+                {t("needHelps.title")}
               </h3>
-              <ul className="mt-2 md:mt-10">
+              <ul className="mt-2 md:mt-5">
+                <li>
+                  <Link to="" className="text-primaryOrange mb-2 block text-xs md:text-base">
+                    {t("needHelps.contact")}
+                  </Link>
+                </li>
+                <li>
+                  <Link to="" className="text-primaryOrange mb-2 block text-xs md:text-base">
+                    {t("needHelps.orderTracking")}
+                  </Link>
+                </li>
+                <li>
+                  <Link to="" className="text-primaryOrange mb-2 block text-xs md:text-base">
+                    {t("needHelps.FAQS")}
+                  </Link>
+                </li>
+                <li>
+                  <Link to="" className="text-primaryOrange mb-2 block text-xs md:text-base">
+                    {t("needHelps.returnPolicy")}
+                  </Link>
+                </li>
+                <li>
+                  <Link to="" className="text-primaryOrange mb-2 block text-xs md:text-base">
+                    {t("needHelps.privacyPolicy")}
+                  </Link>
+                </li>
+              </ul>
+            </div>
+
+            <div className="lg:flex-1 mt-5">
+              <h3
+                className={`${darkMode ? "text-[#f2f2f2]" : "text-[#27232f]"} text-xl md:text-2xl font-semibold`}
+              >
+                {t("needHelps.contact")}
+              </h3>
+              <ul className="mt-2 md:mt-5">
                 <li>
                   <Link to="" className="text-primaryOrange mb-2 block text-xs md:text-base">
                     23/46 NHT, Tan Phu, Ho Chi Minh city
@@ -122,9 +123,7 @@ export default function Footer() {
       <div className="bg-primaryGray">
         <div className="container">
           <div className="py-5 md:py-10 flex items-center justify-between flex-wrap gap-4">
-            <span className="text-[#9ca7ab]">
-              @2024 Electronic Store. Power by Electronic Store
-            </span>
+            <span className="text-[#9ca7ab]">@2024 Molla Store. Power by Molla Store</span>
 
             <div className="flex items-center gap-x-5">
               <div>

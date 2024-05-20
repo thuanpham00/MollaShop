@@ -13,6 +13,12 @@ body {
   /* độ dày chữ : 400 mặc định */
 }
 
+.text-gradient {
+  background: linear-gradient(to right, #667db6, #0082c8, #667db6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
 .font_logo {
   font-family: "Roboto";
 }
@@ -48,4 +54,27 @@ body {
 
 .animation {
   animation: sweet 0.5s linear 1;
+}
+
+.slide-enter {
+  transform: translateX(100%);
+  opacity: 0;
+}
+.slide-enter-active {
+  transform: translateX(0);
+  opacity: 1;
+  transition:
+    transform 500ms ease-in-out,
+    opacity 500ms ease-in-out;
+}
+.slide-exit {
+  transform: translateX(0);
+  opacity: 1;
+}
+.slide-exit-active {
+  transform: translateX(-100%);
+  opacity: 0;
+  transition:
+    transform 500ms ease-in-out,
+    opacity 500ms ease-in-out;
 }

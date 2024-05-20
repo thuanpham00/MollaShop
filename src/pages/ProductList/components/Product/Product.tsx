@@ -35,14 +35,14 @@ export default function Product({ item }: Props) {
 
         <div className="mt-2 flex items-center">
           <div className="flex items-center text-gray-500 line-through">
-            <span>{formatCurrency(item.price_before_discount)}</span>
-            <span className="text-sm">đ</span>
+            <span className="text-xs md:text-sm">{formatCurrency(item.price_before_discount)}</span>
+            <span className="text-xs md:text-sm">đ</span>
           </div>
           <div
-            className={`flex items-center ml-2 font-medium ${darkMode ? "text-white" : "text-black"}`}
+            className={`flex items-center ml-2 font-medium ${darkMode ? "text-[#fff]" : "text-[#000]"}`}
           >
-            <span className="text-lg">{formatCurrency(item.price)}</span>
-            <span className="text-base">đ</span>
+            <span className="text-sm md:text-lg">{formatCurrency(item.price)}</span>
+            <span className="text-sm md:text-lg">đ</span>
           </div>
         </div>
       </div>

@@ -15,6 +15,7 @@ import { setProfileToLs } from "src/utils/auth"
 import { getAvatarUrl, isError422 } from "src/utils/utils"
 import { ErrorResponse } from "src/types/utils.type"
 import InputFileImage from "../../Components/InputFileImage"
+import { useTranslation } from "react-i18next"
 
 type FormData1 = Pick<UserSchemaType, "name" | "address" | "avatar" | "phone" | "date_of_birth">
 type FormDataString = {
@@ -25,6 +26,7 @@ const profileSchema = userSchema.pick(["name", "address", "avatar", "phone", "da
 // form phức tạp thì dùng useForm kết hợp useFormContext - tách nhỏ ra rồi 1 thằng component cha (useForm) quản lý truyền xuống
 // Profile truyền xuống Info
 function Info() {
+  const { t } = useTranslation("profile")
   const {
     register,
     formState: { errors },
@@ -33,19 +35,19 @@ function Info() {
   return (
     <Fragment>
       <div className="sm:mt-6 flex flex-wrap flex-col sm:flex-row">
-        <div className="sm:w-[20%] truncate pt-3 sm:text-right">Tên</div>
+        <div className="sm:w-[20%] truncate pt-3 sm:text-right">{t("profile.name")}</div>
         <div className="w-[80%] sm:pl-5">
           <Input
             classNameInput="w-full px-3 py-2 border border-gray-200 outline-none text-black text-sm font-normal"
             register={register}
             name="name"
-            placeholder="Tên"
+            placeholder={t("profile.name")}
             messageInputError={errors.name?.message}
           />
         </div>
       </div>
       <div className="sm:mt-2 flex flex-wrap flex-col sm:flex-row">
-        <div className="sm:w-[20%] truncate pt-3 sm:text-right">Số điện thoại</div>
+        <div className="sm:w-[20%] truncate pt-3 sm:text-right">{t("profile.phone")}</div>
         <div className="w-[80%] sm:pl-5">
           <Controller
             control={control}
@@ -56,7 +58,7 @@ function Info() {
                   className="mb-2"
                   classNameInput="w-full px-3 py-2 border border-gray-200 outline-none text-black text-sm font-normal"
                   classNameError="block mt-1 min-h-[1.25rem] text-red-500 text-sm"
-                  placeholder="Số điện thoại"
+                  placeholder={t("profile.phone")}
                   messageInputError={errors.phone?.message}
                   {...field}
                   onChange={field.onChange}
@@ -71,6 +73,7 @@ function Info() {
 }
 
 export default function Profile() {
+  const { t } = useTranslation("profile")
   const { darkMode, setIsProfile } = useContext(AppContext)
   const [file, setFile] = useState<File>()
 
@@ -208,9 +211,9 @@ export default function Profile() {
         <h1
           className={`${darkMode ? "text-white" : "text-black"} text-lg font-semibold capitalize`}
         >
-          Hồ sơ của tôi
+          {t("profile.title")}
         </h1>
-        <span className="text-sm">Quản lý thông tin hồ sơ để bảo mật tài khoản</span>
+        <span className="text-sm">{t("profile.desc")}</span>
       </div>
 
       <FormProvider {...methods}>
@@ -228,13 +231,13 @@ export default function Profile() {
             <Info />
 
             <div className="sm:mt-2 flex flex-wrap flex-col sm:flex-row">
-              <div className="sm:w-[20%] truncate pt-3 sm:text-right">Địa chỉ</div>
+              <div className="sm:w-[20%] truncate pt-3 sm:text-right">{t("profile.address")}</div>
               <div className="w-[80%] sm:pl-5">
                 <Input
                   classNameInput="w-full px-3 py-2 border border-gray-200 outline-none text-black text-sm font-normal"
                   register={register}
                   name="address"
-                  placeholder="Địa chỉ"
+                  placeholder={t("profile.address")}
                   messageInputError={errors.address?.message}
                 />
               </div>
@@ -262,7 +265,7 @@ export default function Profile() {
                   className="mt-0"
                   classInput="px-5 h-9 flex items-center bg-primaryOrange text-white text-sm rounded-sm hover:bg-primaryOrange/80 duration-200"
                 >
-                  Lưu
+                  {t("save")}
                 </Button>
               </div>
             </div>
@@ -280,8 +283,8 @@ export default function Profile() {
               <InputFileImage onChange={handleChange} />
 
               <div className={`${darkMode ? "text-white/80" : "text-gray-500"} mt-3 text-left`}>
-                <div>Dụng lượng file tối đa 1 MB</div>
-                <div>Định dạng:.JPEG, .PNG</div>
+                <div>{t("profile.maxMB")}</div>
+                <div>{t("profile.maxMB2")}</div>
               </div>
             </div>
           </div>

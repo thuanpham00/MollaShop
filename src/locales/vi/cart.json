@@ -1,0 +1,13 @@
+{
+  "title": "Giỏ hàng",
+  "product": "Sản phẩm",
+  "unitPrice": "Đơn giá",
+  "quantity": "Số lượng",
+  "price": "Giá tiền",
+  "operation": "Thao tác",
+  "delete": "Xóa",
+  "selectAll": "Chọn tất cả",
+  "totalPayment": "Tổng thanh toán",
+  "save": "Tiết kiệm",
+  "noProduct": "Chưa có sản phẩm!"
+}

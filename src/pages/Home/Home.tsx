@@ -5,6 +5,7 @@ import img2 from "src/img/banner2.png"
 import img3 from "src/img/banner3.png"
 import slide1 from "src/img/slide1.jpg"
 import slide2 from "src/img/slide2.jpg"
+import slide3 from "src/img/slide4.jpg"
 import { Slide } from "react-slideshow-image"
 import "react-slideshow-image/dist/styles.css"
 import { Link } from "react-router-dom"
@@ -13,7 +14,6 @@ import { queryParamConfig } from "src/Hooks/useQueryConfig"
 import { useQuery } from "@tanstack/react-query"
 import { productApi } from "src/apis/products.api"
 import { ProductListConfig } from "src/types/product.type"
-import ProductItem from "./components/ProductItem"
 import SlideListProduct from "./components/SideListProduct"
 import ProductItem2 from "./components/ProductItem2"
 // image product
@@ -22,6 +22,7 @@ import productItem2 from "src/img/productItem2.png"
 import productItem3 from "src/img/productItem3.png"
 import productItem4 from "src/img/productItem4.png"
 import productItem5 from "src/img/productItem5.png"
+import { useTranslation } from "react-i18next"
 
 const buttonImageList = {
   prevArrow: (
@@ -85,7 +86,7 @@ const buttonSlideList = {
   )
 }
 
-const slideImages = [slide1, slide2]
+const slideImages = [slide1, slide2, slide3]
 
 const imageList = [img1, img2, img3]
 
@@ -142,6 +143,7 @@ const productFeatured: ProductFeatured[] = [
 ]
 
 export default function Home() {
+  const { t } = useTranslation(["header", "home"])
   const { darkMode } = useContext(AppContext)
 
   const [scrollYPosition, setScrollYPosition] = useState<number>(0)
@@ -195,7 +197,7 @@ export default function Home() {
   const productListCreatedAt = getProductListCreatedAtQuery.data?.data.data.products
   const productListSold = getProductListSoldQuery.data?.data.data.products
 
-  const productListViewItem_one = productFeatured.slice(0, 1)
+  const productListViewItem_one = productFeatured.slice(0, 1) // cắt từ mảng gốc
   const productListViewItem_four = productFeatured.slice(1, 5)
 
   if (!productListCreatedAt) return null
@@ -208,14 +210,14 @@ export default function Home() {
         <Slide {...buttonSlideList}>
           {slideImages.map((item, index) => {
             return (
-              <div className="w-full h-[350px] md:h-[550px] lg:h-[750px]" key={index}>
+              <div className="w-full h-[350px] md:h-[600px]" key={index}>
                 <div
                   style={{
                     backgroundImage: `url(${item})`,
                     backgroundSize: "cover",
                     backgroundPosition: "center"
                   }}
-                  className="w-full h-full"
+                  className="w-full h-full object-cover"
                 ></div>
               </div>
             )
@@ -228,16 +230,16 @@ export default function Home() {
           >
             <h1 className="font_logo text-3xl md:text-8xl text-[#403d30]">Molla</h1>
             <h2 className="tracking-wider font_logo capitalize mt-0 md:mt-4 block text-black text-2xl md:text-5xl">
-              New Fashion
+              {t("home:title")}
             </h2>
-            <h3 className="text-xs md:text-xl text-gray-600 mt-0 md:mt-4 text-center">
-              Your style evolution starts here: Fashion, watches, and smartphones
+            <h3 className="text-xs md:text-xl text-gray-600 mt-0 md:mt-4 font-medium text-center">
+              {t("home:desc")}
             </h3>
             <Link
               to={path.productList}
               className="text-xs md:text-base tracking-widest uppercase mt-4 py-2 px-3 md:py-5 md:px-6 bg-primaryOrange hover:bg-primaryOrange/80 duration-200 rounded-sm shadow-sm text-white"
             >
-              Shop now!
+              {t("home:buy")}
             </Link>
           </div>
         </div>
@@ -270,10 +272,10 @@ export default function Home() {
                   <span
                     className={`${darkMode ? "text-white" : "text-black"} font-semibold text-xs md:text-lg md:line-clamp-1`}
                   >
-                    Miễn phí vận chuyển
+                    {t("home:service.service_1.title")}
                   </span>
                   <span className="block font-light text-[10px] md:text-sm text-gray-500">
-                    Khi bạn mua từ 2tr trở lên
+                    {t("home:service.service_1.desc")}
                   </span>
                 </div>
               </div>
@@ -300,10 +302,10 @@ export default function Home() {
                   <span
                     className={`${darkMode ? "text-white" : "text-black"} font-semibold text-xs md:text-lg md:line-clamp-1`}
                   >
-                    Chúng tôi luôn sẵn sàng 24/7
+                    {t("home:service.service_2.title")}
                   </span>
                   <span className="block font-light text-[10px] md:text-sm text-gray-500">
-                    Cần giúp đỡ? Liên hệ với chúng tôi bất cứ lúc nào
+                  {t("home:service.service_2.desc")}
                   </span>
                 </div>
               </div>
@@ -330,10 +332,10 @@ export default function Home() {
                   <span
                     className={`${darkMode ? "text-white" : "text-black"} font-semibold text-xs md:text-lg md:line-clamp-1`}
                   >
-                    Hài lòng hoặc quay trở lại
+                    {t("home:service.service_3.title")}
                   </span>
                   <span className="block font-light text-[10px] md:text-sm text-gray-500">
-                    Chính sách hoàn trả 30 ngày dễ dàng
+                  {t("home:service.service_3.desc")}
                   </span>
                 </div>
               </div>
@@ -360,10 +362,10 @@ export default function Home() {
                   <span
                     className={`${darkMode ? "text-white" : "text-black"} font-semibold text-xs md:text-lg md:line-clamp-1`}
                   >
-                    Thanh toán an toàn 100%
+                    {t("home:service.service_4.title")}
                   </span>
                   <span className="block font-light text-[10px] md:text-sm text-gray-500">
-                    Visa, Mastercard, Stripe, PayPal
+                  {t("home:service.service_4.desc")}
                   </span>
                 </div>
               </div>
@@ -376,7 +378,7 @@ export default function Home() {
             <h2
               className={`flex-shrink-0 uppercase text-xl md:text-3xl font-semibold ${darkMode ? "text-[#fff]/80" : "text-[#000]"} text-left -tracking-normal`}
             >
-              Sản phẩm phổ biến
+              {t("home:productView")}
             </h2>
             <div className="flex-grow h-[1px] bg-gray-300"></div>
           </div>
@@ -424,28 +426,18 @@ export default function Home() {
         </div>
 
         <SlideListProduct
-          title="Sản phẩm mới nhất"
-          desc="Những sản phẩm mới nhất trong tuần này"
+          title={t("home:productCreatedAt")}
+          desc={t("home:productCreatedAtDesc")}
+          productList={productListCreatedAt}
           timeScroll={3000}
-        >
-          {productListCreatedAt.map((item, index) => (
-            <div key={index} className="flex-1 max-w-[160px] md:max-w-[290px]">
-              <ProductItem item={item} />
-            </div>
-          ))}
-        </SlideListProduct>
+        />
 
         <SlideListProduct
-          title="Sản phẩm bán chạy"
-          desc="Những sản phẩm bán chạy nhất trong tuần này"
+          title={t("home:productSold")}
+          desc={t("home:productSoldDesc")}
+          productList={productListSold}
           timeScroll={2000}
-        >
-          {productListSold.map((item, index) => (
-            <div key={index} className="flex-1 max-w-[160px] md:max-w-[290px]">
-              <ProductItem item={item} />
-            </div>
-          ))}
-        </SlideListProduct>
+        />
       </div>
     </div>
   )

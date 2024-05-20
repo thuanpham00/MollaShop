@@ -1,83 +1,68 @@
-import { useContext, useEffect, useRef, useState } from "react"
+import { useContext, useEffect, useMemo, useState } from "react"
 import { AppContext } from "src/contexts/auth.context"
+import { ProductItem as ProductItemType } from "src/types/product.type"
+import ProductItem from "../ProductItem"
+import { CSSTransition, TransitionGroup } from "react-transition-group"
 
 interface Props {
-  children: React.ReactNode
   title: string
   desc: string
   className?: string
+  productList: ProductItemType[]
   timeScroll: number
 }
 
 export default function SlideListProduct({
-  children,
   title,
   desc,
   className = "mt-4 lg:mt-8 p-4",
+  productList,
   timeScroll
 }: Props) {
   const { darkMode } = useContext(AppContext)
-  const listScroll = useRef<HTMLDivElement>(null)
-
-  const [offsetLeft, setOffsetLeft] = useState<number>(0)
   const [scrollAuto, setScrollAuto] = useState<boolean>(true)
-
-  const width = listScroll.current?.offsetWidth as number
+  const [currentImageIndex, setCurrentImageIndex] = useState([0, 4])
+  const currentImages = useMemo(
+    () => (productList ? productList.slice(...currentImageIndex) : []),
+    [currentImageIndex, productList]
+  )
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  let lastCheckTime: number = 0
-  const handleClickOffsetDec = () => {
-    const mark = offsetLeft - 304
-    if (mark <= 0) {
-      listScroll.current?.scroll({ left: width, behavior: "smooth" })
-      setOffsetLeft(width)
-    } else {
-      listScroll.current?.scroll({ left: mark, behavior: "smooth" })
-      setOffsetLeft(mark)
+  let lastTimeClick: number = 0
+  const handlePrevImg = () => {
+    if (currentImageIndex[0] > 0) {
+      setCurrentImageIndex((prev) => [prev[0] - 1, prev[1] - 1])
     }
     setScrollAuto(false)
-    lastCheckTime = Date.now()
+    lastTimeClick = Date.now()
   }
 
-  const handleClickOffsetInc = () => {
-    const mark = offsetLeft + 304
-    if (mark <= width) {
-      listScroll.current?.scroll({ left: mark, behavior: "smooth" })
-      setOffsetLeft(mark)
-    } else {
-      listScroll.current?.scroll({ left: 0, behavior: "smooth" })
-      setOffsetLeft(0)
+  const handleNextImg = () => {
+    if (currentImageIndex[1] < productList.length) {
+      setCurrentImageIndex((prev) => [prev[0] + 1, prev[1] + 1])
     }
     setScrollAuto(false)
-    lastCheckTime = Date.now() // lưu time lần cuối click
+    lastTimeClick = Date.now()
   }
 
-  // w = 1216
   useEffect(() => {
     if (scrollAuto) {
-      const intervalId = setInterval(() => {
-        const mark = offsetLeft + 304
-        if (mark <= width) {
-          listScroll.current?.scroll({ left: mark, behavior: "smooth" })
-          setOffsetLeft(mark)
-        } else if (mark >= width) {
-          listScroll.current?.scroll({ left: 0, behavior: "smooth" })
-          setOffsetLeft(0)
+      const interval = setInterval(() => {
+        if (currentImageIndex[1] < productList.length) {
+          setCurrentImageIndex((prev) => [prev[0] + 1, prev[1] + 1])
+        } else if (currentImageIndex[1] === productList.length) {
+          setCurrentImageIndex([0, 4])
         }
-        // eslint-disable-next-line @typescript-eslint/no-unused-vars
       }, timeScroll)
 
-      return () => clearInterval(intervalId)
-      // gọi setInterval xong thì nhớ clear
+      return () => clearInterval(interval) // giải phóng bộ nhớ khi không dùng
     }
-
-    const currentTime: number = Date.now()
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const time: number = currentTime - lastCheckTime // thời gian hiện tại
-    if (time >= 3000) {
-      setScrollAuto(true)
+    const time = Date.now()
+    const timeScrollContinue = time - lastTimeClick
+    if (timeScrollContinue > 3000) {
+      setScrollAuto(true) // quá 3s ko click nữa nó tự động chạy
     }
-  }, [offsetLeft, width, timeScroll, scrollAuto, lastCheckTime])
+  }, [timeScroll, currentImageIndex, productList.length, lastTimeClick, scrollAuto])
 
   return (
     <div className={className}>
@@ -95,8 +80,8 @@ export default function SlideListProduct({
 
       <div className="mt-4 flex relative">
         <button
-          onClick={handleClickOffsetDec}
-          className="absolute top-1/2 left-0 flex-shrink-0 w-8 h-8 rounded-lg bg-gray-200 flex items-center justify-center"
+          onClick={handlePrevImg}
+          className="absolute top-1/2 left-0 flex-shrink-0 w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center hover:bg-gray-400 duration-200"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -110,13 +95,21 @@ export default function SlideListProduct({
           </svg>
         </button>
 
-        <div ref={listScroll} className="overflow-x-hidden">
-          <div className="flex items-center flex-nowrap gap-4">{children}</div>
+        <div className="flex items-center flex-nowrap gap-4 overflow-hidden">
+          <TransitionGroup component={null}>
+            {currentImages.map((item) => (
+              <CSSTransition key={item._id} timeout={500} classNames="slide">
+                <div className="flex-1 max-w-[160px] md:max-w-[290px]">
+                  <ProductItem item={item} />
+                </div>
+              </CSSTransition>
+            ))}
+          </TransitionGroup>
         </div>
 
         <button
-          onClick={handleClickOffsetInc}
-          className="absolute top-1/2 right-0 flex-shrink-0 w-8 h-8 rounded-lg bg-gray-200 flex items-center justify-center"
+          onClick={handleNextImg}
+          className="absolute top-1/2 right-0 flex-shrink-0 w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center hover:bg-gray-400 duration-200"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"

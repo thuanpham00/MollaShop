@@ -1,6 +1,8 @@
+import { useTranslation } from "react-i18next"
 import { Link, useMatch } from "react-router-dom"
 
 export default function RegisterHeader() {
+  const { t } = useTranslation("header")
   const isLogin = useMatch("/login") // dùng để check trang login và register nào match trùng thì xử lý
   return (
     <header className="bg-gradient-to-r from-[#667db6] via-[#0082c8] to-[#667db6]">
@@ -25,7 +27,10 @@ export default function RegisterHeader() {
               <div className="font_logo">Molla</div>
             </div>
           </Link>
-          <h1 className="text-white ml-5 text-3xl">{isLogin ? "Đăng nhập" : "Đăng ký"}</h1>
+
+          <h1 className="text-white ml-5 text-3xl">
+            {isLogin ? `${t("header.login")}` : `${t("header.register")}`}
+          </h1>
         </div>
       </div>
     </header>

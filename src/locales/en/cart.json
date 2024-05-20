@@ -1,0 +1,13 @@
+{
+  "title": "Cart",
+  "product": "Product",
+  "unitPrice": "Unit price",
+  "quantity": "Quantity",
+  "price": "Price",
+  "operation": "Operation",
+  "delete": "Remove",
+  "selectAll": "Select all",
+  "totalPayment": "Total payment",
+  "save": "Save money",
+  "noProduct": "No product!"
+}

@@ -1,0 +1,28 @@
+{
+  "title": "Thời trang mới",
+  "desc": "Sự phát triển phong cách của bạn bắt đầu từ đây: Thời trang, đồng hồ và điện thoại thông minh",
+  "buy": "Mua ngay!",
+  "service": {
+    "service_1": {
+      "title": "Miễn phí vận chuyển",
+      "desc": "Khi bạn mua từ 2tr trở lên"
+    },
+    "service_2": {
+      "title": "Chúng tôi luôn sẵn sàng 24/7",
+      "desc": "Cần giúp đỡ? Liên hệ với chúng tôi bất cứ lúc nào"
+    },
+    "service_3": {
+      "title": "Hài lòng hoặc quay trở lại",
+      "desc": "Chính sách hoàn trả 30 ngày dễ dàng"
+    },
+    "service_4": {
+      "title": "Thanh toán an toàn 100%",
+      "desc": "Visa, Mastercard, Stripe, PayPal"
+    }
+  },
+  "productView": "Sản phẩm phổ biến",
+  "productCreatedAt": "Sản phẩm mới nhất",
+  "productCreatedAtDesc": "Những Sản Phẩm Mới Nhất Trong Tuần Này",
+  "productSold": "Sản phẩm bán chạy",
+  "productSoldDesc": "Những Sản Phẩm Bán Chạy Nhất Trong Tuần Này"
+}

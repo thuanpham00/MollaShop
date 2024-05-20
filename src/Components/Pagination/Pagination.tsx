@@ -4,6 +4,7 @@ import { path } from "src/constants/path"
 import { queryParamConfig } from "src/Hooks/useQueryConfig"
 import { useContext } from "react"
 import { AppContext } from "src/contexts/auth.context"
+import { useTranslation } from "react-i18next"
 
 interface Props {
   queryConfig: queryParamConfig
@@ -14,6 +15,7 @@ interface Props {
 const range = 2
 
 export default function Pagination({ queryConfig, page_size, scroll }: Props) {
+  const { t } = useTranslation("productList")
   const { darkMode } = useContext(AppContext)
   const page = Number(queryConfig.page) // lấy từ url xuống và url nhận vào các params
   const renderPagination = () => {
@@ -104,7 +106,7 @@ export default function Pagination({ queryConfig, page_size, scroll }: Props) {
         <span
           className={`cursor-not-allowed py-2 px-3 ${darkMode ? "bg-black/50 hover:bg-black/30" : "bg-gray-200 hover:bg-gray-300"} rounded-sm duration-200`}
         >
-          Prev
+          {t("prev")}
         </span>
       ) : (
         <Link
@@ -117,7 +119,7 @@ export default function Pagination({ queryConfig, page_size, scroll }: Props) {
           }}
           className={`py-2 px-3 ${darkMode ? "bg-black/50 hover:bg-black/30" : "bg-gray-200 hover:bg-gray-300"} rounded-sm duration-200`}
         >
-          Prev
+          {t("prev")}
         </Link>
       )}
 
@@ -127,7 +129,7 @@ export default function Pagination({ queryConfig, page_size, scroll }: Props) {
         <span
           className={`cursor-not-allowed py-2 px-3 ${darkMode ? "bg-black/50 hover:bg-black/30" : "bg-gray-200 hover:bg-gray-300"} rounded-sm duration-200`}
         >
-          Next
+          {t("next")}
         </span>
       ) : (
         <Link
@@ -140,7 +142,7 @@ export default function Pagination({ queryConfig, page_size, scroll }: Props) {
           }}
           className={`py-2 px-3 ${darkMode ? "bg-black/50 hover:bg-black/30" : "bg-gray-200 hover:bg-gray-300"} rounded-sm duration-200`}
         >
-          Next
+          {t("next")}
         </Link>
       )}
     </div>

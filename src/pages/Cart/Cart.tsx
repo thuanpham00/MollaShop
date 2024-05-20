@@ -18,6 +18,7 @@ import keyBy from "lodash/keyBy"
 
 import { toast } from "react-toastify"
 import cartImg from "src/img/cart.png"
+import { useTranslation } from "react-i18next"
 
 type PurchaseType = {
   product_id: string
@@ -25,6 +26,7 @@ type PurchaseType = {
 }
 
 export default function Cart() {
+  const { t } = useTranslation(["cart", "productDetail"])
   const location = useLocation()
   const chosenPurchaseFromLocation = (location.state as { purchaseId: string } | null)?.purchaseId
   //console.log(chosenPurchaseFromLocation)
@@ -213,16 +215,16 @@ export default function Cart() {
                       <div
                         className={`flex-grow duration-200 ${darkMode ? "text-white" : "text-black"}`}
                       >
-                        Sản phẩm
+                        {t("product")}
                       </div>
                     </div>
                   </div>
                   <div className="col-span-6">
                     <div className="grid grid-cols-5 text-center">
-                      <div className="col-span-2">Đơn giá</div>
-                      <div className="col-span-1">Số lượng</div>
-                      <div className="col-span-1">Số tiền</div>
-                      <div className="col-span-1">Thao tác</div>
+                      <div className="col-span-2">{t("unitPrice")}</div>
+                      <div className="col-span-1">{t("quantity")}</div>
+                      <div className="col-span-1">{t("price")}</div>
+                      <div className="col-span-1">{t("operation")}</div>
                     </div>
                   </div>
                 </div>
@@ -310,7 +312,7 @@ export default function Cart() {
                                 onClick={handleDelete(index)} // do dùng currying nên sẽ return lại (hàm chưa được gọi)
                                 className={`${darkMode ? "text-white" : "text-black"} bg-none duration-200 transition-colors hover:text-orange-500`}
                               >
-                                Xóa
+                                {t("delete")}
                               </button>
                             </div>
                           </div>
@@ -336,23 +338,23 @@ export default function Cart() {
                   />
                 </div>
                 <button className="bg-none mx-3 border-none">
-                  Chọn tất cả ({extendedPurchase.length})
+                  {t("selectAll")} ({extendedPurchase.length})
                 </button>
                 <button onClick={handleDeleteMany} className="bg-none mx-3 border-none">
-                  Xóa
+                  {t("delete")}
                 </button>
               </div>
               <div className="ml-auto flex flex-col items-start sm:flex-row sm:items-center mt-5 sm:mt-0">
                 <div>
                   <div className="flex items-center justify-end">
-                    <div>Tổng thanh toán ({checkedPurchasesCount} sản phẩm): </div>
+                    <div>{`${t("totalPayment")} (${checkedPurchasesCount}) ${t("cart:product")}`}</div>
                     <div className="ml-2 text-2xl text-orange-500">
                       {formatCurrency(checkedPriceTotal)}đ
                     </div>
                   </div>
                   <div className="flex items-center justify-end text-sm">
                     <div className={`${darkMode ? "text-white font-light" : "text-gray-500"}`}>
-                      Tiết kiệm
+                      {t("cart:save")}
                     </div>
                     <div className="ml-6 text-orange-500">{formatCurrency(checkedPriceSave)}đ</div>
                   </div>
@@ -362,7 +364,7 @@ export default function Cart() {
                   disabled={buyProductMutation.isPending}
                   classInput="sm:ml-4 mt-5 sm:mt-0 h-10 w-52 flex items-center justify-center gap-x-2 w-full bg-primaryOrange text-white uppercase hover:bg-primaryOrange/80 duration-300"
                 >
-                  Mua hàng
+                  {t("productDetail:buyNow")}
                 </Button>
               </div>
             </div>
@@ -371,12 +373,12 @@ export default function Cart() {
           <Fragment>
             <div className="p-2 flex items-center justify-center flex-col">
               <img src={cartImg} alt="ảnh lỗi" className="w-[200px]" />
-              <h1>Chưa có sản phẩm!</h1>
+              <h1>{t("cart:noProduct")}</h1>
               <Link
                 to={path.productList}
                 className="uppercase px-5 py-3 bg-primaryOrange hover:bg-primaryOrange/80 duration-200 transition-all text-white mt-5"
               >
-                Mua hàng
+                {t("productDetail:buyNow")}
               </Link>
             </div>
           </Fragment>

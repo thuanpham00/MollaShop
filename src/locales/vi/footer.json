@@ -1,0 +1,17 @@
+{
+  "shop": {
+    "hotDeal": "Thỏa thuận hấp dẫn",
+    "categories": "Thể loại",
+    "brands": "Nhãn hiệu",
+    "rebates": "Giảm giá",
+    "weeklyDeal": "Giao dịch hàng tuần"
+  },
+  "needHelps": {
+    "title": "Cần giúp đỡ",
+    "contact": "Liên hệ",
+    "orderTracking": "Theo dõi đơn hàng",
+    "FAQS": "Câu hỏi thường gặp",
+    "returnPolicy": "Chính sách hoàn trả",
+    "privacyPolicy": "Chính sách bảo mật"
+  }
+}

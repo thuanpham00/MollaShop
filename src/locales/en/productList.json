@@ -1,0 +1,21 @@
+{
+  "asideFilter": {
+    "allCategories": "All categories",
+    "filterSearch": "Filter search",
+    "priceRange": "Price range",
+    "apply": "Apply",
+    "rating": "Rating",
+    "delete": "Delete all"
+  },
+  "sortByProduct": {
+    "desc": "Sort by:",
+    "view": "View",
+    "createdAt": "Created at",
+    "sold": "Sold",
+    "price": "Price",
+    "ascOrderby": "low to high price",
+    "descOrderby": "Price high to low"
+  },
+  "next": "Next",
+  "prev": "Prev"
+}

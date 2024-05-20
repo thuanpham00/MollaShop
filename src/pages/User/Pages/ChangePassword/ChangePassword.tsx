@@ -6,6 +6,7 @@ import omit from "lodash/omit" /// giảm kích thước file
 
 import { useContext } from "react"
 import { useForm } from "react-hook-form"
+import { useTranslation } from "react-i18next"
 import { toast } from "react-toastify"
 import { Fragment } from "react/jsx-runtime"
 import Button from "src/Components/Button"
@@ -24,6 +25,7 @@ type FormData = NoUndefinedField<
 >
 
 export default function ChangePassword() {
+  const { t } = useTranslation("profile")
   const { darkMode } = useContext(AppContext)
   const {
     register,
@@ -70,15 +72,15 @@ export default function ChangePassword() {
         <h1
           className={`${darkMode ? "text-white" : "text-black"} text-lg font-semibold capitalize`}
         >
-          Hồ sơ của tôi
+          {t("profile.title")}
         </h1>
-        <span className="text-sm">Quản lý thông tin hồ sơ để bảo mật tài khoản</span>
+        <span className="text-sm"> {t("profile.desc")}</span>
       </div>
 
       <form onSubmit={onSubmit} className="mt-6 mr-auto max-w-2xl">
         <div className="flex-grow mt-6 md:mt-0 pr-12">
           <div className="sm:mt-2 flex flex-wrap flex-col sm:flex-row">
-            <div className="sm:w-[20%] truncate pt-3 sm:text-right">Mật khẩu cũ</div>
+            <div className="sm:w-[20%] truncate pt-3 sm:text-right">{t("changePass.password")}</div>
             <div className="w-[80%] sm:pl-5">
               <Input
                 className="relative"
@@ -86,14 +88,16 @@ export default function ChangePassword() {
                 register={register}
                 name="password"
                 type="password"
-                placeholder="Mật khẩu cũ"
+                placeholder={t("changePass.password")}
                 messageInputError={errors.password?.message}
               />
             </div>
           </div>
 
           <div className="sm:mt-2 flex flex-wrap flex-col sm:flex-row">
-            <div className="sm:w-[20%] truncate pt-3 sm:text-right">Mật khẩu mới</div>
+            <div className="sm:w-[20%] truncate pt-3 sm:text-right">
+              {t("changePass.newPassword")}
+            </div>
             <div className="w-[80%] sm:pl-5">
               <Input
                 className="relative"
@@ -101,14 +105,16 @@ export default function ChangePassword() {
                 register={register}
                 name="new_password"
                 type="password"
-                placeholder="Mật khẩu mới"
+                placeholder={t("changePass.newPassword")}
                 messageInputError={errors.new_password?.message}
               />
             </div>
           </div>
 
           <div className="sm:mt-2 flex flex-wrap flex-col sm:flex-row">
-            <div className="sm:w-[20%] truncate pt-3 sm:text-right">Nhập lại mật khẩu mới</div>
+            <div className="sm:w-[20%] truncate pt-3 sm:text-right">
+              {t("changePass.confirmPassword")}
+            </div>
             <div className="w-[80%] sm:pl-5">
               <Input
                 className="relative"
@@ -116,7 +122,7 @@ export default function ChangePassword() {
                 register={register}
                 name="confirm_password"
                 type="password"
-                placeholder="Nhập lại mật khẩu mới"
+                placeholder={t("changePass.confirmPassword")}
                 messageInputError={errors.confirm_password?.message}
               />
             </div>
@@ -130,7 +136,7 @@ export default function ChangePassword() {
                 className="mt-0"
                 classInput="px-5 h-9 flex items-center bg-primaryOrange text-white text-sm rounded-sm hover:bg-primaryOrange/80 duration-200"
               >
-                Lưu
+                {t("save")}
               </Button>
             </div>
           </div>

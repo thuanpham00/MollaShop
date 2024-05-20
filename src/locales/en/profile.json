@@ -1,0 +1,34 @@
+{
+  "userSideNav": {
+    "editProfile": "Edit profile",
+    "myAccount": "My account",
+    "changePassword": "Change password",
+    "historyPurchase": "History purchase"
+  },
+  "profile": {
+    "title": "My profile",
+    "desc": "Manage profile information for account security",
+    "name": "Name",
+    "phone": "Phone",
+    "address": "Address",
+    "date": "Date of birth",
+    "chooseImg": "Choose image",
+    "maxMB": "Maximum file size is 1 MB",
+    "maxMB2": "Format: .JPEG, .PNG"
+  },
+  "changePass": {
+    "password": "Password",
+    "newPassword": "Password new",
+    "confirmPassword": "Confirm password"
+  },
+  "historyPurchase": {
+    "all": "All",
+    "waitForConfirmation": "Wait for confirmation",
+    "waitingForDelivery": "Waiting for delivery",
+    "inProgress": "In progress",
+    "delivered": "Delivered",
+    "cancelled": "Cancelled",
+    "totalPrice": "Total price:"
+  },
+  "save": "Save"
+}

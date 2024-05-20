@@ -1,4 +1,5 @@
 import { useRef } from "react"
+import { useTranslation } from "react-i18next"
 import { toast } from "react-toastify"
 import { Fragment } from "react/jsx-runtime"
 import { config } from "src/constants/config"
@@ -8,6 +9,7 @@ interface Props {
 }
 
 export default function InputFileImage({ onChange }: Props) {
+  const { t } = useTranslation("profile")
   const hiddenInput = useRef<HTMLInputElement>(null)
 
   const changeInputImage = () => {
@@ -46,7 +48,7 @@ export default function InputFileImage({ onChange }: Props) {
         type="button"
         className="px-5 py-2 border border-black-20 rounded-sm shadow hover:bg-gray-100 duration-200"
       >
-        Chọn ảnh
+        {t("profile.chooseImg")}
       </button>
     </Fragment>
   )

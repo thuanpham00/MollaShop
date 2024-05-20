@@ -3,10 +3,12 @@ import NavHeader from "../NavHeader"
 import { AppContext } from "src/contexts/auth.context"
 import { Link } from "react-router-dom"
 import useSearchProduct from "src/Hooks/useSearchProduct"
+import { useTranslation } from "react-i18next"
 
 export default function CartHeader() {
+  const { t } = useTranslation(["cart", "header"])
   const { darkMode } = useContext(AppContext)
-  const { onSubmitSearch, register } = useSearchProduct() // destructoring
+  const { onSubmitSearch, register } = useSearchProduct() // destructuring
 
   return (
     <div>
@@ -16,20 +18,18 @@ export default function CartHeader() {
         className={`${darkMode ? "bg-gradient-to-r from-[#232526] to-[#414345]" : "bg-white"} duration-200`}
       >
         <div className="container">
-          <div className="py-4 flex flex-wrap items-center justify-between gap-4 md:grid md:grid-cols-12">
+          <div className="py-2 flex flex-wrap items-center justify-between gap-4 md:grid md:grid-cols-12">
             <div className="md:col-span-4 lg:col-span-4">
               <div className="flex items-center">
                 <Link to="/">
-                  <div
-                    className={`flex w-full lg:w-full text-[28px] md:text-3xl lg:text-5xl ${darkMode ? "text-[#f8edeb]" : "text-[#403d39]"}`}
-                  >
+                  <div className="flex items-center w-full lg:w-full text-[28px] md:text-3xl lg:text-5xl">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       fill="none"
                       viewBox="0 0 24 24"
                       strokeWidth={1.5}
-                      stroke={`${darkMode ? "#f8edeb" : "#403d39"}`}
-                      className="w-7 h-7 md:w-13 md:h-13 lg:w-11 lg:h-11"
+                      stroke="#667db6"
+                      className="w-7 h-7 md:w-13 md:h-13 lg:w-10 lg:h-10"
                     >
                       <path
                         strokeLinecap="round"
@@ -37,13 +37,14 @@ export default function CartHeader() {
                         d="M15.75 10.5V6a3.75 3.75 0 1 0-7.5 0v4.5m11.356-1.993 1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 0 1-1.12-1.243l1.264-12A1.125 1.125 0 0 1 5.513 7.5h12.974c.576 0 1.059.435 1.119 1.007ZM8.625 10.5a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm7.5 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z"
                       />
                     </svg>
-                    <div className="font_logo">Molla</div>
+                    <div className="font_logo text-gradient">Molla</div>
                   </div>
                 </Link>
+
                 <h1
                   className={`${darkMode ? "text-[#f8edeb]" : "text-[#403d39]"} ml-5 text-lg md:text-2xl lg:text-3xl font_logo border-l-2 border-l-gray-500 pl-5`}
                 >
-                  Giỏ hàng
+                  {t("title")}
                 </h1>
               </div>
             </div>
@@ -55,7 +56,7 @@ export default function CartHeader() {
               <div className="w-[420px] md:w-full bg-white p-1 flex items-center round-sm border border-gray-400">
                 <input
                   type="text"
-                  placeholder="Search product..."
+                  placeholder={t("header:header.search")}
                   className="w-full md:flex-grow outline-none p-2 text-base"
                   {...register("name")}
                 />

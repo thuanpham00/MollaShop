@@ -11,6 +11,7 @@ import RatingStar from "../RatingStar"
 import { queryParamConfig } from "src/Hooks/useQueryConfig"
 // import { omit } from "lodash"
 import omit from "lodash/omit" // giảm kích thước file
+import { useTranslation } from "react-i18next"
 
 interface Props {
   categories: Categories[]
@@ -23,6 +24,7 @@ const schemaPick = schema.pick(["price_max", "price_min"])
 
 export default function AsideFilter({ categories, queryConfig }: Props) {
   const { category } = queryConfig
+  const { t } = useTranslation(["productList", "header"]) // sử i18next ngôn ngữ
 
   const {
     control,
@@ -66,7 +68,7 @@ export default function AsideFilter({ categories, queryConfig }: Props) {
       <Link
         to={path.productList}
         className={classNames(
-          "flex items-center gap-x-2 text-gray-500 duration-200 uppercase font-semibold text-md",
+          "flex items-center gap-x-2 text-gray-500 duration-200 capitalize font-semibold text-md",
           {
             "text-primaryOrange": !category
           }
@@ -86,7 +88,8 @@ export default function AsideFilter({ categories, queryConfig }: Props) {
             d="M8.25 6.75h12M8.25 12h12m-12 5.25h12M3.75 6.75h.007v.008H3.75V6.75Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0ZM3.75 12h.007v.008H3.75V12Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm-.375 5.25h.007v.008H3.75v-.008Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z"
           />
         </svg>
-        Categories
+        {t("asideFilter.allCategories")}
+        {/* truyền key vào */}
       </Link>
 
       <ul className="mt-5">
@@ -137,11 +140,11 @@ export default function AsideFilter({ categories, queryConfig }: Props) {
             d="M12 3c2.755 0 5.455.232 8.083.678.533.09.917.556.917 1.096v1.044a2.25 2.25 0 0 1-.659 1.591l-5.432 5.432a2.25 2.25 0 0 0-.659 1.591v2.927a2.25 2.25 0 0 1-1.244 2.013L9.75 21v-6.568a2.25 2.25 0 0 0-.659-1.591L3.659 7.409A2.25 2.25 0 0 1 3 5.818V4.774c0-.54.384-1.006.917-1.096A48.32 48.32 0 0 1 12 3Z"
           />
         </svg>
-        <div className="uppercase font-semibold text-md">bộ lọc tìm kiếm</div>
+        <div className="capitalize font-semibold text-md">{t("asideFilter.filterSearch")}</div>
       </div>
 
       <div className="mt-5">
-        <span>Khoảng giá</span>
+        <span>{t("asideFilter.priceRange")}</span>
 
         <form onSubmit={onSubmit} className="mt-2">
           <div className="flex items-center">
@@ -208,14 +211,14 @@ export default function AsideFilter({ categories, queryConfig }: Props) {
           </div>
 
           <Button classInput="flex items-center justify-center w-full bg-primaryOrange text-white py-3 px-2 uppercase hover:bg-primaryOrange/80 duration-300 text-sm">
-            Áp dụng
+            {t("asideFilter.apply")}
           </Button>
         </form>
       </div>
 
       <div className="mt-10 mb-4">
         <span className="flex items-center gap-x-2 hover:text-gray-500 duration-200 uppercase font-semibold text-md">
-          Đánh giá
+          {t("asideFilter.rating")}
         </span>
 
         <RatingStar queryConfig={queryConfig} />
@@ -225,7 +228,7 @@ export default function AsideFilter({ categories, queryConfig }: Props) {
         onClick={handleDeleteConfig}
         classInput="flex items-center justify-center w-full bg-primaryOrange text-white py-3 px-2 uppercase hover:bg-primaryOrange/80 duration-300 text-sm"
       >
-        Xóa tất cả
+        {t("asideFilter.delete")}
       </Button>
     </div>
   )

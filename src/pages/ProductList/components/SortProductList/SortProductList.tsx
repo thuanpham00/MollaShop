@@ -10,12 +10,14 @@ import omit from "lodash/omit"
 import { queryParamConfig } from "src/Hooks/useQueryConfig"
 import { useContext } from "react"
 import { AppContext } from "src/contexts/auth.context"
+import { useTranslation } from "react-i18next"
 interface Props {
   queryConfig: queryParamConfig
   page_size: number
 }
 
 export default function SortProductList({ queryConfig, page_size }: Props) {
+  const { t } = useTranslation("productList")
   const { darkMode } = useContext(AppContext)
   const page = Number(queryConfig.page)
   const { sort_by = sortBy.view, order } = queryConfig
@@ -58,7 +60,7 @@ export default function SortProductList({ queryConfig, page_size }: Props) {
     <div className={`${darkMode ? "bg-[#252323]" : "bg-gray-100"} py-4 px-2`}>
       <div className="flex items-center justify-between">
         <div className="flex items-center flex-wrap gap-2">
-          <span>Sắp xếp theo</span>
+          <span>{t("sortByProduct.desc")}</span>
           <button
             className={classNames("px-4 py-2 rounded-sm", {
               "bg-primaryOrange text-white": isActiveSort(sortBy.view),
@@ -68,7 +70,7 @@ export default function SortProductList({ queryConfig, page_size }: Props) {
             })}
             onClick={() => handleSort(sortBy.view)}
           >
-            Phổ biến
+            {t("sortByProduct.view")}
           </button>
           <button
             className={classNames("px-4 py-2 rounded-sm", {
@@ -79,7 +81,7 @@ export default function SortProductList({ queryConfig, page_size }: Props) {
             })}
             onClick={() => handleSort(sortBy.createdAt)}
           >
-            Mới nhất
+            {t("sortByProduct.createdAt")}
           </button>
           <button
             className={classNames("px-4 py-2 rounded-sm", {
@@ -90,7 +92,7 @@ export default function SortProductList({ queryConfig, page_size }: Props) {
             })}
             onClick={() => handleSort(sortBy.sold)}
           >
-            Bán chạy
+            {t("sortByProduct.sold")}
           </button>
           <select
             className={classNames("px-4 py-2 rounded-sm outline-none", {
@@ -105,13 +107,13 @@ export default function SortProductList({ queryConfig, page_size }: Props) {
             }
           >
             <option value="" disabled className="bg-white text-black">
-              Giá
+              {t("sortByProduct.price")}
             </option>
             <option value="asc" className="bg-white text-black">
-              Giá: thấp đến cao
+              {t("sortByProduct.ascOrderby")}
             </option>
             <option value="desc" className="bg-white text-black">
-              Giá: cao đến thấp
+              {t("sortByProduct.descOrderby")}
             </option>
           </select>
         </div>

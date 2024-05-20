@@ -2,6 +2,7 @@ import axios, { AxiosError } from "axios"
 import { config } from "src/constants/config"
 import { HttpStatusCode } from "src/constants/httpStatusCode.enum"
 import minhthuan from "src/img/minhthuan.jpg"
+import { ErrorResponse } from "src/types/utils.type"
 
 export function isAxiosError<T>(error: unknown): error is AxiosError<T> {
   // eslint-disable-next-line import/no-named-as-default-member
@@ -10,6 +11,19 @@ export function isAxiosError<T>(error: unknown): error is AxiosError<T> {
 
 export function isError422<FormError>(error: unknown): error is AxiosError<FormError> {
   return isAxiosError(error) && error.response?.status === HttpStatusCode.UnprocessableEntity
+}
+
+export function isError401<FormError>(error: unknown): error is AxiosError<FormError> {
+  return isAxiosError(error) && error.response?.status === HttpStatusCode.Unauthorized
+}
+
+export function isAxiosExpiredTokenError<FormError>(
+  error: unknown
+): error is AxiosError<FormError> {
+  return (
+    isError401<ErrorResponse<{ name: string; message: string }>>(error) &&
+    error.response?.data?.data?.name === "EXPIRED_TOKEN"
+  )
 }
 
 export function formatCurrency(current: number) {

@@ -1,0 +1,18 @@
+{
+  "shop": {
+    "hotDeal": "Hot deal",
+    "categories": "Categories",
+    "brands": "Brands",
+    "rebates": "Rebates",
+    "weeklyDeal": "Weekly Deal"
+  },
+  "needHelps": {
+    "title": "Need helps",
+    "contact": "Contact",
+    "orderTracking": "Order Tracking",
+    "FAQS": "FAQS",
+    "returnPolicy": "Return policy",
+    "privacyPolicy": "Privacy policy"
+  }
+}
+

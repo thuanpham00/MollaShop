@@ -8,7 +8,13 @@ import { useMutation, useQueryClient } from "@tanstack/react-query"
 import { purchaseStatus } from "src/constants/purchaseStatus"
 import { getAvatarUrl, getNameFromeEmail } from "src/utils/utils"
 
+import { locales } from "src/i18n/i18n"
+import { useTranslation } from "react-i18next"
+
 export default function NavHeader() {
+  const { i18n, t } = useTranslation("header") // sử dụng đổi ngôn ngữ
+  const currentLanguage = locales[i18n.language as keyof typeof locales]
+
   const queryClient = useQueryClient()
   const { isAuthenticated, setIsAuthenticated, isProfile, setIsProfile, darkMode, setDarkMode } =
     useContext(AppContext)
@@ -36,16 +42,18 @@ export default function NavHeader() {
     setDarkMode(true)
   }
 
-  // console.log(isProfile)
+  const changeLanguage = (lng: string) => {
+    i18n.changeLanguage(lng)
+  }
 
   return (
     <div className={`${darkMode ? "bg-[#252323]" : "bg-[#f2f2f2]"} duration-200`}>
       <div className="container">
-        <div className="flex items-center justify-end lg:justify-between py-2">
+        <div className="flex items-center justify-end lg:justify-between py-1">
           <div
             className={`${darkMode ? "text-[#f2f2f2]" : "text-grayText"} text-base hidden lg:block`}
           >
-            <span className="font-normal">24/7 Customer service</span>
+            <span className="font-normal">{t("header.customerService")}</span>
             <span className="ml-2 font-medium">931-554-657</span>
           </div>
 
@@ -59,7 +67,7 @@ export default function NavHeader() {
                       onClick={toggleLight}
                       className="flex items-center justify-between px-5 py-3 hover:text-orange-600 hover:bg-slate-200"
                     >
-                      Chế độ sáng
+                      {t("header.modeLight")}
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         fill="none"
@@ -79,7 +87,7 @@ export default function NavHeader() {
                       onClick={toggleDark}
                       className="flex items-center justify-start gap-5 px-5 py-3 hover:text-orange-600 hover:bg-slate-200 mt-2"
                     >
-                      Chế độ tối
+                      {t("header.modeDark")}
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         fill="none"
@@ -131,11 +139,17 @@ export default function NavHeader() {
               renderPopover={
                 <div className="bg-white relative shadow-md rounded-sm border border-gray-200">
                   <div className="flex flex-col">
-                    <button className="px-8 py-3 hover:text-orange-600 hover:bg-slate-200">
+                    <button
+                      className="px-8 py-3 hover:text-orange-600 hover:bg-slate-200"
+                      onClick={() => changeLanguage("vi")}
+                    >
                       Tiếng việt
                     </button>
-                    <button className="px-8 py-3 hover:text-orange-600 hover:bg-slate-200 mt-2">
-                      Tiếng anh
+                    <button
+                      className="px-8 py-3 hover:text-orange-600 hover:bg-slate-200 mt-2"
+                      onClick={() => changeLanguage("en")}
+                    >
+                      English
                     </button>
                   </div>
                 </div>
@@ -155,7 +169,7 @@ export default function NavHeader() {
                   d="M12 21a9.004 9.004 0 0 0 8.716-6.747M12 21a9.004 9.004 0 0 1-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 0 1 7.843 4.582M12 3a8.997 8.997 0 0 0-7.843 4.582m15.686 0A11.953 11.953 0 0 1 12 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0 1 21 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0 1 12 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 0 1 3 12c0-1.605.42-3.113 1.157-4.418"
                 />
               </svg>
-              <span className="text-sm lg:text-base">Tiếng việt</span>
+              <span className="text-sm lg:text-base">{currentLanguage}</span>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -178,25 +192,24 @@ export default function NavHeader() {
                         to={path.profile}
                         className="p-3 hover:text-orange-600 hover:bg-slate-200"
                       >
-                        Tài khoản của tôi
+                        {t("header.myAccount")}
                       </Link>
                       <Link
                         to={path.historyPurchase}
                         className="p-3 hover:text-orange-600 hover:bg-slate-200"
                       >
-                        Đơn mua
+                        {t("header.purchase")}
                       </Link>
                       <button
                         onClick={handleLogout}
                         className="p-3 hover:text-orange-600 hover:bg-slate-200 text-left"
                       >
-                        Đăng xuất
+                        {t("header.logout")}
                       </button>
                     </div>
                   </div>
                 }
               >
-                {" "}
                 <div className="w-5 h-5">
                   <img
                     src={getAvatarUrl(isProfile?.avatar as string)}
@@ -216,13 +229,13 @@ export default function NavHeader() {
                   to={path.register}
                   className={`${darkMode ? "text-[#f2f2f2] hover:text-[#f2f2f2]/70" : "text-grayText hover:text-grayText/70"} text-base cursor-pointer`}
                 >
-                  Đăng ký
+                  {t("header.register")}
                 </Link>
                 <Link
                   to={path.login}
                   className={`${darkMode ? "text-[#f2f2f2] hover:text-[#f2f2f2]/70" : "text-grayText hover:text-grayText/70"} text-base cursor-pointer`}
                 >
-                  Đăng nhập
+                  {t("header.login")}
                 </Link>
               </div>
             )}

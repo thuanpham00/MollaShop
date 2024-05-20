@@ -13,6 +13,7 @@ import { SchemaType, schema } from "src/utils/rules"
 import { isError422 } from "src/utils/utils"
 import image1 from "src/img/shoppingBG.jpg"
 import image2 from "src/img/image_register.jpg"
+import { useTranslation } from "react-i18next"
 
 // type FormData = Omit<SchemaType, "confirm_password"> // không cần confirm_password
 // // dùng Omit để loại bỏ bớt thuộc tính
@@ -28,6 +29,7 @@ const schemaPick = schema.pick(["email", "password"])
 const imageList = [image1, image2]
 
 export default function Login() {
+  const { t } = useTranslation("header")
   const { setIsAuthenticated, setIsProfile, darkMode } = useContext(AppContext)
   const navigate = useNavigate()
   const {
@@ -58,7 +60,7 @@ export default function Login() {
         // console.log(data)
       },
       onError: (error) => {
-        console.log(error) // lỗi 422 xuất hiện khi đăng nhập không đúng
+        // console.log(error) // lỗi 422 xuất hiện khi đăng nhập không đúng
         if (isError422<ErrorResponse<FormData>>(error)) {
           const formError = error.response?.data.data
           if (formError?.email) {
@@ -100,17 +102,17 @@ export default function Login() {
       className={`${darkMode ? "bg-gradient-to-r from-[#232526] to-[#414345]" : "bg-slate-200"}`}
     >
       <div className="container">
-        <div className="grid grid-cols-1 lg:grid-cols-5 py-12 lg:pr-10">
+        <div className="grid grid-cols-1 lg:grid-cols-5 py-12 lg:pr-10 gap-2">
           <div className="hidden lg:block lg:col-span-3 ml-14">
             <img
               src={imageItem}
               alt="ảnh"
-              className="rounded-sm shadow-md object-cover w-[550px] h-[470px]"
+              className="rounded-sm shadow-md object-cover w-[600px] h-[395px]"
             />
           </div>
           <div className="lg:col-span-2">
             <div className="bg-white py-10 px-8 rounded shadow-md">
-              <h1 className="text-primaryGray text-3xl font-normal">Đăng nhập</h1>
+              <h1 className="text-primaryGray text-3xl font-normal">{t("header.login")}</h1>
               <form onSubmit={onSubmit} noValidate className="mt-5">
                 <Input
                   className="mt-8"
@@ -137,13 +139,13 @@ export default function Login() {
                   disabled={loginAccountMutation.isPending}
                   isLoading={loginAccountMutation.isPending}
                 >
-                  Đăng nhập
+                  {t("header.login")}
                 </Button>
               </form>
               <div className="flex justify-center mt-5">
-                <span className="text-gray-500">Bạn chưa có tài khoản?</span>
+                <span className="text-gray-500"> {t("header.descLogin")}</span>
                 <Link to={path.register} className="ml-1 text-red-500">
-                  Đăng ký
+                  {t("header.register")}
                 </Link>
               </div>
             </div>
