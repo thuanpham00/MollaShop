@@ -6,6 +6,7 @@ import RegisterLayout from "./Layouts/RegisterLayout"
 import MainLayout from "./Layouts/MainLayout"
 import CartLayout from "./Layouts/CartLayout"
 import UserLayout from "./pages/User/Layouts/UserLayout"
+import Test from "./pages/Test"
 // import Login from "./pages/Login"
 // import Register from "./pages/Register"
 //import Cart from "./pages/Cart"
@@ -49,7 +50,12 @@ export default function useRouterElements() {
     // nó là 1 tập hợp array gồm các route
     // điều hướng trang - url
     // nhập url theo path có thể điều hướng trang
+
     // component <Suspenses></Suspenses> - dùng kĩ thuật Lazy load - lướt tới đâu load tới đó
+    {
+      path: "/test",
+      element: <Test />
+    },
     {
       path: path.home,
       index: true,

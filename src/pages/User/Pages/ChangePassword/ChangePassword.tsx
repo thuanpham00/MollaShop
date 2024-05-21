@@ -5,6 +5,7 @@ import { useMutation } from "@tanstack/react-query"
 import omit from "lodash/omit" /// giảm kích thước file
 
 import { useContext } from "react"
+import { Helmet } from "react-helmet"
 import { useForm } from "react-hook-form"
 import { useTranslation } from "react-i18next"
 import { toast } from "react-toastify"
@@ -68,6 +69,11 @@ export default function ChangePassword() {
 
   return (
     <Fragment>
+      <Helmet>
+        <title>Thay đổi mật khẩu</title>
+        <meta name="description" content="Thay đổi mật khẩu | E-commerce shop" />
+      </Helmet>
+
       <div className="border-b border-b-gray-200 pb-6">
         <h1
           className={`${darkMode ? "text-white" : "text-black"} text-lg font-semibold capitalize`}

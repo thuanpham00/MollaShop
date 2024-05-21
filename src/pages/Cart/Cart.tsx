@@ -19,6 +19,7 @@ import keyBy from "lodash/keyBy"
 import { toast } from "react-toastify"
 import cartImg from "src/img/cart.png"
 import { useTranslation } from "react-i18next"
+import { Helmet } from "react-helmet"
 
 type PurchaseType = {
   product_id: string
@@ -193,6 +194,11 @@ export default function Cart() {
     <div
       className={`${darkMode ? "bg-gradient-to-r from-[#232526] to-[#414345]" : "bg-neutral-100"} py-4 duration-200`}
     >
+      <Helmet>
+        <title>Giỏ hàng</title>
+        <meta name="description" content="Giỏ hàng - E-commerce shop" />
+      </Helmet>
+
       <div className="container">
         {extendedPurchase && extendedPurchase.length > 0 ? (
           <Fragment>

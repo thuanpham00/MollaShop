@@ -14,6 +14,7 @@ import { isError422 } from "src/utils/utils"
 import image1 from "src/img/shoppingBG.jpg"
 import image2 from "src/img/image_register.jpg"
 import { useTranslation } from "react-i18next"
+import { Helmet } from "react-helmet"
 
 // type FormData = Omit<SchemaType, "confirm_password"> // không cần confirm_password
 // // dùng Omit để loại bỏ bớt thuộc tính
@@ -101,6 +102,10 @@ export default function Login() {
     <div
       className={`${darkMode ? "bg-gradient-to-r from-[#232526] to-[#414345]" : "bg-slate-200"}`}
     >
+      <Helmet>
+        <title>Đăng nhập</title>
+        <meta name="description" content="Đăng nhập - E-commerce shop" />
+      </Helmet>
       <div className="container">
         <div className="grid grid-cols-1 lg:grid-cols-5 py-12 lg:pr-10 gap-2">
           <div className="hidden lg:block lg:col-span-3 ml-14">

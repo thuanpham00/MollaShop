@@ -10,6 +10,7 @@ import { categoriesApi } from "src/apis/categories"
 import useQueryConfig from "src/Hooks/useQueryConfig"
 import { useContext } from "react"
 import { AppContext } from "src/contexts/auth.context"
+import { Helmet } from "react-helmet"
 
 export default function ProductList() {
   const { darkMode } = useContext(AppContext)
@@ -59,6 +60,11 @@ export default function ProductList() {
     <div
       className={`${darkMode ? "bg-gradient-to-r from-[#232526] to-[#414345] text-gray-200" : "bg-[#fff]"} py-6 duration-200`}
     >
+      <Helmet>
+        <title>Danh sách sản phẩm</title>
+        <meta name="description" content="Danh sách sản phẩm - E-commerce shop" />
+      </Helmet>
+
       <div className="container">
         <div className="grid grid-cols-12">
           {data && (

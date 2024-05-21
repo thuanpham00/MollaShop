@@ -16,6 +16,7 @@ import { getAvatarUrl, isError422 } from "src/utils/utils"
 import { ErrorResponse } from "src/types/utils.type"
 import InputFileImage from "../../Components/InputFileImage"
 import { useTranslation } from "react-i18next"
+import { Helmet } from "react-helmet"
 
 type FormData1 = Pick<UserSchemaType, "name" | "address" | "avatar" | "phone" | "date_of_birth">
 type FormDataString = {
@@ -207,6 +208,11 @@ export default function Profile() {
 
   return (
     <Fragment>
+      <Helmet>
+        <title>Hồ sơ của tôi</title>
+        <meta name="description" content="Hồ sơ của tôi | E-commerce shop" />
+      </Helmet>
+
       <div className="border-b border-b-gray-200 pb-6">
         <h1
           className={`${darkMode ? "text-white" : "text-black"} text-lg font-semibold capitalize`}

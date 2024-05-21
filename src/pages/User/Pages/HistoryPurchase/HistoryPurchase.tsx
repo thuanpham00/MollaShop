@@ -1,6 +1,7 @@
 import { keepPreviousData, useQuery } from "@tanstack/react-query"
 import classNames from "classnames"
 import { useContext } from "react"
+import { Helmet } from "react-helmet"
 import { useTranslation } from "react-i18next"
 import { Link, createSearchParams } from "react-router-dom"
 import useQueryParams from "src/Hooks/useSearchParams"
@@ -61,6 +62,11 @@ export default function HistoryPurchase() {
   // nhỏ hơn 700px xuất hiện thanh scroll ngang
   return (
     <div>
+      <Helmet>
+        <title>Lịch sử mua hàng</title>
+        <meta name="description" content="Lịch sử mua hàng | E-commerce shop" />
+      </Helmet>
+
       <div className="overflow-auto">
         <div className="min-w-[700px]">
           <div className={`${darkMode ? "bg-[#252323]" : "bg-[#fff]"} flex sticky top-0`}>

@@ -1,4 +1,5 @@
 import { useContext } from "react"
+import { Helmet } from "react-helmet"
 import { Link } from "react-router-dom"
 import { AppContext } from "src/contexts/auth.context"
 
@@ -10,6 +11,11 @@ export default function NotFound() {
     <div
       className={`${darkMode ? "bg-gradient-to-r from-[#232526] to-[#414345]" : "bg-[#fff]"} w-full px-16 md:px-0 h-[500px] flex items-center justify-center`}
     >
+      <Helmet>
+        <title>NotFound</title>
+        <meta name="description" content="Không tìm thấy" />
+      </Helmet>
+
       <div className="bg-white border border-gray-200 flex flex-col items-center justify-center px-4 md:px-8 lg:px-24 py-8 rounded-lg shadow-2xl">
         <p className="text-6xl md:text-7xl lg:text-9xl font-bold tracking-wider text-red-600">
           404

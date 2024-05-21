@@ -23,6 +23,7 @@ import productItem3 from "src/img/productItem3.png"
 import productItem4 from "src/img/productItem4.png"
 import productItem5 from "src/img/productItem5.png"
 import { useTranslation } from "react-i18next"
+import { Helmet } from "react-helmet"
 
 const buttonImageList = {
   prevArrow: (
@@ -206,6 +207,11 @@ export default function Home() {
     <div
       className={`${darkMode ? "bg-gradient-to-r from-[#232526] to-[#414345]" : "bg-[#fff]"} duration-200`}
     >
+      <Helmet>
+        <title>Trang chủ</title>
+        <meta name="description" content="Trang chủ - E-commerce shop" />
+      </Helmet>
+
       <div className="w-full relative">
         <Slide {...buttonSlideList}>
           {slideImages.map((item, index) => {
@@ -305,7 +311,7 @@ export default function Home() {
                     {t("home:service.service_2.title")}
                   </span>
                   <span className="block font-light text-[10px] md:text-sm text-gray-500">
-                  {t("home:service.service_2.desc")}
+                    {t("home:service.service_2.desc")}
                   </span>
                 </div>
               </div>
@@ -335,7 +341,7 @@ export default function Home() {
                     {t("home:service.service_3.title")}
                   </span>
                   <span className="block font-light text-[10px] md:text-sm text-gray-500">
-                  {t("home:service.service_3.desc")}
+                    {t("home:service.service_3.desc")}
                   </span>
                 </div>
               </div>
@@ -365,7 +371,7 @@ export default function Home() {
                     {t("home:service.service_4.title")}
                   </span>
                   <span className="block font-light text-[10px] md:text-sm text-gray-500">
-                  {t("home:service.service_4.desc")}
+                    {t("home:service.service_4.desc")}
                   </span>
                 </div>
               </div>

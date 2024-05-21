@@ -20,6 +20,7 @@ import { toast } from "react-toastify"
 import { AppContext } from "src/contexts/auth.context"
 import { path } from "src/constants/path"
 import { useTranslation } from "react-i18next"
+import { Helmet } from "react-helmet"
 
 type AddToCart = {
   product_id: string
@@ -165,6 +166,11 @@ export default function ProductDetail() {
     <div
       className={`${darkMode ? "bg-gradient-to-r from-[#232526] to-[#414345]" : "bg-gray-100"} py-6`}
     >
+      <Helmet>
+        <title>{product.name}</title>
+        <meta name="description" content={product.name} />
+      </Helmet>
+
       <div className="container">
         <div className={`${darkMode ? "bg-[#252323]" : "bg-[#fff]"} p-4 shadow`}>
           <div className="grid grid-cols-1 md:grid-cols-12 gap-9">

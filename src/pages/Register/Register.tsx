@@ -14,6 +14,7 @@ import { AppContext } from "src/contexts/auth.context"
 import image1 from "src/img/shoppingBG.jpg"
 import image2 from "src/img/image_register.jpg"
 import { useTranslation } from "react-i18next"
+import { Helmet } from "react-helmet"
 
 const imageList = [image1, image2]
 
@@ -91,6 +92,11 @@ export default function Register() {
     <div
       className={`${darkMode ? "bg-gradient-to-r from-[#232526] to-[#414345]" : "bg-slate-200"}`}
     >
+      <Helmet>
+        <title>Đăng ký</title>
+        <meta name="description" content="Đăng ký - E-commerce shop" />
+      </Helmet>
+
       <div className="container">
         <div className="grid grid-cols-1 lg:grid-cols-5 py-12 lg:pr-10 gap-2">
           <div className="hidden lg:block lg:col-span-3 ml-14">
