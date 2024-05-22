@@ -60,9 +60,9 @@ export default function SortProductList({ queryConfig, page_size }: Props) {
     <div className={`${darkMode ? "bg-[#252323]" : "bg-gray-100"} py-4 px-2`}>
       <div className="flex items-center justify-between">
         <div className="flex items-center flex-wrap gap-2">
-          <span>{t("sortByProduct.desc")}</span>
+          <span className="hidden md:block md:text-base">{t("sortByProduct.desc")}</span>
           <button
-            className={classNames("px-4 py-2 rounded-sm", {
+            className={classNames("p-[6px] md:px-4 md:h-[40px] text-xs md:text-base rounded-sm", {
               "bg-primaryOrange text-white": isActiveSort(sortBy.view),
               border: !isActiveSort(sortBy.view),
               "border-black text-black": !darkMode && !isActiveSort(sortBy.view),
@@ -73,7 +73,7 @@ export default function SortProductList({ queryConfig, page_size }: Props) {
             {t("sortByProduct.view")}
           </button>
           <button
-            className={classNames("px-4 py-2 rounded-sm", {
+            className={classNames("p-[6px] md:px-4 md:h-[40px] text-xs md:text-base rounded-sm", {
               "bg-primaryOrange text-white": isActiveSort(sortBy.createdAt),
               border: !isActiveSort(sortBy.createdAt),
               "border-black text-black": !darkMode && !isActiveSort(sortBy.createdAt),
@@ -84,7 +84,7 @@ export default function SortProductList({ queryConfig, page_size }: Props) {
             {t("sortByProduct.createdAt")}
           </button>
           <button
-            className={classNames("px-4 py-2 rounded-sm", {
+            className={classNames("p-[6px] md:px-4 md:h-[40px] text-xs md:text-base rounded-sm", {
               "bg-primaryOrange text-white": isActiveSort(sortBy.sold),
               border: !isActiveSort(sortBy.sold),
               "border-black text-black": !darkMode && !isActiveSort(sortBy.sold),
@@ -95,30 +95,43 @@ export default function SortProductList({ queryConfig, page_size }: Props) {
             {t("sortByProduct.sold")}
           </button>
           <select
-            className={classNames("px-4 py-2 rounded-sm outline-none", {
-              "bg-primaryOrange text-white": isActiveSort(sortBy.price),
-              border: !isActiveSort(sortBy.price),
-              "border-black text-black bg-transparent": !darkMode && !isActiveSort(sortBy.price),
-              "border-white text-white bg-transparent": darkMode && !isActiveSort(sortBy.price)
-            })}
+            className={classNames(
+              "p-[6px] w-[60px] md:w-[170px] md:h-[40px] text-xs md:text-base rounded-sm outline-none",
+              {
+                "bg-primaryOrange text-white": isActiveSort(sortBy.price),
+                border: !isActiveSort(sortBy.price),
+                "border-black text-black bg-transparent": !darkMode && !isActiveSort(sortBy.price),
+                "border-white text-white bg-transparent": darkMode && !isActiveSort(sortBy.price)
+              }
+            )}
             value={order || ""}
             onChange={(event) =>
               handleOrderPrice(event.target.value as Exclude<ProductListConfig["order"], undefined>)
             }
           >
-            <option value="" disabled className="bg-white text-black">
+            <option
+              value=""
+              disabled
+              className="bg-white text-black p-2 w-[60px] md:w-[100px] md:h-[40px]"
+            >
               {t("sortByProduct.price")}
             </option>
-            <option value="asc" className="bg-white text-black">
+            <option
+              value="asc"
+              className="bg-white text-black p-2 w-[60px] md:w-[100px] md:h-[40px]"
+            >
               {t("sortByProduct.ascOrderby")}
             </option>
-            <option value="desc" className="bg-white text-black">
+            <option
+              value="desc"
+              className="bg-white text-black p-2 w-[60px] md:w-[100px] md:h-[40px]"
+            >
               {t("sortByProduct.descOrderby")}
             </option>
           </select>
         </div>
 
-        <div className="flex items-center justify-center gap-x-2">
+        <div className="hidden md:flex items-center justify-center gap-x-2">
           <div>
             <span>{page}</span>
             <span>/3</span>

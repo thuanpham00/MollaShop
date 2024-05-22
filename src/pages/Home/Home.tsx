@@ -24,37 +24,7 @@ import productItem4 from "src/img/productItem4.png"
 import productItem5 from "src/img/productItem5.png"
 import { useTranslation } from "react-i18next"
 import { Helmet } from "react-helmet"
-
-const buttonImageList = {
-  prevArrow: (
-    <button className="ml-3">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        fill="none"
-        viewBox="0 0 24 24"
-        strokeWidth={1.5}
-        stroke="white"
-        className="w-6 h-6"
-      >
-        <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
-      </svg>
-    </button>
-  ),
-  nextArrow: (
-    <button className="mr-3">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        fill="none"
-        viewBox="0 0 24 24"
-        strokeWidth={1.5}
-        stroke="white"
-        className="w-6 h-6"
-      >
-        <path strokeLinecap="round" strokeLinejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
-      </svg>
-    </button>
-  )
-}
+import SlideBanner from "./components/SideBanner"
 
 const buttonSlideList = {
   prevArrow: (
@@ -216,7 +186,7 @@ export default function Home() {
         <Slide {...buttonSlideList}>
           {slideImages.map((item, index) => {
             return (
-              <div className="w-full h-[350px] md:h-[600px]" key={index}>
+              <div className="w-full h-[250px] md:h-[600px]" key={index}>
                 <div
                   style={{
                     backgroundImage: `url(${item})`,
@@ -413,23 +383,7 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="mt-4 lg:mt-8 p-4">
-          <Slide {...buttonImageList}>
-            {imageList.map((item, index) => (
-              <div className="each-slide-effect rounded-md" key={index}>
-                <div
-                  style={{
-                    backgroundImage: `url(${item})`,
-                    borderRadius: "6px",
-                    backgroundSize: "cover",
-                    backgroundPosition: "center",
-                    height: "350px"
-                  }}
-                ></div>
-              </div>
-            ))}
-          </Slide>
-        </div>
+        <SlideBanner bannerList={imageList} timeScroll={2000} />
 
         <SlideListProduct
           title={t("home:productCreatedAt")}
@@ -447,4 +401,22 @@ export default function Home() {
       </div>
     </div>
   )
+}
+
+{
+  /* <Slide {...buttonImageList}>
+            {imageList.map((item, index) => (
+              <div className="each-slide-effect rounded-md h-[150px] w-[250px]" key={index}>
+                <div
+                  style={{
+                    backgroundImage: `url(${item})`,
+                    borderRadius: "6px",
+                    backgroundSize: "cover",
+                    backgroundPosition: "center"
+                  }}
+                  className="h-full w-full"
+                ></div>
+              </div>
+            ))}
+          </Slide> */
 }

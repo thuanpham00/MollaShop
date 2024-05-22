@@ -1,30 +1,28 @@
 import { useContext, useEffect, useMemo, useState } from "react"
 import { AppContext } from "src/contexts/auth.context"
-import { ProductItem as ProductItemType } from "src/types/product.type"
-import ProductItem from "../ProductItem"
 import { CSSTransition, TransitionGroup } from "react-transition-group"
 
 interface Props {
   title?: string
   desc?: string
   className?: string
-  productList: ProductItemType[]
+  bannerList: string[]
   timeScroll: number
 }
 
-export default function SlideListProduct({
+export default function SlideBanner({
   title,
   desc,
-  className = "mt-4 lg:mt-8 p-4",
-  productList,
+  className = "p-4",
+  bannerList,
   timeScroll
 }: Props) {
   const { darkMode } = useContext(AppContext)
   const [scrollAuto, setScrollAuto] = useState<boolean>(true)
-  const [currentImageIndex, setCurrentImageIndex] = useState([0, 4])
+  const [currentImageIndex, setCurrentImageIndex] = useState([0, 1])
   const currentListProduct = useMemo(
-    () => (productList ? productList.slice(...currentImageIndex) : []),
-    [currentImageIndex, productList]
+    () => (bannerList ? bannerList.slice(...currentImageIndex) : []),
+    [currentImageIndex, bannerList]
   )
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -38,7 +36,7 @@ export default function SlideListProduct({
   }
 
   const handleNextImg = () => {
-    if (currentImageIndex[1] < (productList as ProductItemType[]).length) {
+    if (currentImageIndex[1] < bannerList.length) {
       setCurrentImageIndex((prev) => [prev[0] + 1, prev[1] + 1])
     }
     setScrollAuto(false)
@@ -48,10 +46,10 @@ export default function SlideListProduct({
   useEffect(() => {
     if (scrollAuto) {
       const interval = setInterval(() => {
-        if (currentImageIndex[1] < (productList as ProductItemType[]).length) {
+        if (currentImageIndex[1] < bannerList.length) {
           setCurrentImageIndex((prev) => [prev[0] + 1, prev[1] + 1])
-        } else if (currentImageIndex[1] === (productList as ProductItemType[]).length) {
-          setCurrentImageIndex([0, 4])
+        } else if (currentImageIndex[1] === bannerList.length) {
+          setCurrentImageIndex([0, 1])
         }
       }, timeScroll)
 
@@ -62,7 +60,7 @@ export default function SlideListProduct({
     if (timeScrollContinue > 3000) {
       setScrollAuto(true) // quá 3s ko click nữa nó tự động chạy
     }
-  }, [timeScroll, currentImageIndex, productList, lastTimeClick, scrollAuto])
+  }, [timeScroll, currentImageIndex, bannerList, lastTimeClick, scrollAuto])
 
   return (
     <div className={className}>
@@ -80,7 +78,7 @@ export default function SlideListProduct({
       <div className="mt-4 flex relative">
         <button
           onClick={handlePrevImg}
-          className="ml-3 absolute top-1/2 left-0 flex-shrink-0 flex items-center justify-center hover:bg-gray-100 duration-200 rounded-full w-10 h-10 hover:text-black/80"
+          className="md:ml-3 absolute top-1/2 left-0 flex-shrink-0 flex items-center justify-center hover:bg-gray-100 duration-200 rounded-full w-10 h-10 hover:text-black/80"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -88,18 +86,22 @@ export default function SlideListProduct({
             viewBox="0 0 24 24"
             strokeWidth={1.5}
             stroke="currentColor"
-            className="w-6 h-6"
+            className="w-4 h-4 md:w-6 md:h-6"
           >
             <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
           </svg>
         </button>
 
-        <div className="flex items-center flex-nowrap gap-4 overflow-hidden">
+        <div className="w-full flex items-center overflow-hidden">
           <TransitionGroup component={null}>
             {currentListProduct.map((item) => (
-              <CSSTransition key={item._id} timeout={500} classNames="slide">
-                <div className="flex-1 max-w-[160px] md:max-w-[290px]">
-                  <ProductItem item={item} />
+              <CSSTransition key={item} timeout={500} classNames="zoom">
+                <div className="w-full">
+                  <img
+                    src={item}
+                    alt="Ảnh lỗi"
+                    className="w-full h-[150px] md:h-[350px] object-cover"
+                  />
                 </div>
               </CSSTransition>
             ))}
@@ -108,7 +110,7 @@ export default function SlideListProduct({
 
         <button
           onClick={handleNextImg}
-          className="mr-3 absolute top-1/2 right-0 flex-shrink-0 flex items-center justify-center hover:bg-gray-400 duration-200 rounded-full w-10 h-10 hover:text-black/80"
+          className="md:mr-3 absolute top-1/2 right-0 flex-shrink-0 flex items-center justify-center hover:bg-gray-400 duration-200 rounded-full w-10 h-10 hover:text-black/80"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -116,7 +118,7 @@ export default function SlideListProduct({
             viewBox="0 0 24 24"
             strokeWidth={1.5}
             stroke="currentColor"
-            className="w-6 h-6"
+            className="w-4 h-4 md:w-6 md:h-6"
           >
             <path strokeLinecap="round" strokeLinejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
           </svg>
@@ -125,17 +127,3 @@ export default function SlideListProduct({
     </div>
   )
 }
-
-/**
- *  <div className={classNameSlideAuto}>
-          <TransitionGroup component={null}>
-            {currentSlideIndex.map((item) => (
-              <CSSTransition key={item} timeout={500} classNames="slide">
-                <div className="w-full h-[150px] md:h-full">
-                  <img src={item} alt="Ảnh" className="w-full h-full object-cover" />
-                </div>
-              </CSSTransition>
-            ))}
-          </TransitionGroup>
-        </div>
- */

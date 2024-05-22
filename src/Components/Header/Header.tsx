@@ -91,13 +91,13 @@ export default function Header() {
 
               <form
                 onSubmit={onSubmitSearch}
-                className="col-start-3 col-span-4 md:col-span-5 md:col-start-5 lg:col-span-8 lg:col-start-4 shadow-sm"
+                className="col-span-4 md:col-span-6 lg:col-span-8 lg:col-start-4 shadow-sm"
               >
-                <div className="w-[210px] md:w-full bg-white p-1 flex items-center round-sm border border-gray-400">
+                <div className="w-[180px] md:w-full bg-white p-1 flex items-center round-sm border border-gray-400">
                   <input
                     type="text"
                     placeholder={t("header.search")}
-                    className="w-full md:flex-grow outline-none p-2 text-base"
+                    className="w-full md:flex-grow outline-none p-1 md:p-2 text-base"
                     {...register("name")}
                   />
                   <div className="flex-shrink-0 pr-2 cursor-pointer">
@@ -119,7 +119,7 @@ export default function Header() {
                 </div>
               </form>
 
-              <div className="md:col-start-12 col-span-1 justify-self-end ">
+              <div className="col-span-1 col-start-7 md:col-start-12 justify-self-end">
                 <Popover
                   renderPopover={
                     <div className="mt-1 w-[400px] bg-white p-5 shadow-md rounded-sm">

@@ -16,13 +16,14 @@ import { useTranslation } from "react-i18next"
 interface Props {
   categories: Categories[]
   queryConfig: queryParamConfig
+  className?: string
 }
 
 type FormData = Pick<SchemaType, "price_max" | "price_min">
 
 const schemaPick = schema.pick(["price_max", "price_min"])
 
-export default function AsideFilter({ categories, queryConfig }: Props) {
+export default function AsideFilter({ categories, queryConfig, className }: Props) {
   const { category } = queryConfig
   const { t } = useTranslation(["productList", "header"]) // sử i18next ngôn ngữ
 
@@ -64,7 +65,7 @@ export default function AsideFilter({ categories, queryConfig }: Props) {
   }
 
   return (
-    <div className="mt-3">
+    <div className={className}>
       <Link
         to={path.productList}
         className={classNames(

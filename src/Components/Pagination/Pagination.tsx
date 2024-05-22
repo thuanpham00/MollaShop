@@ -88,7 +88,7 @@ export default function Pagination({ queryConfig, page_size, scroll }: Props) {
               }).toString()
             }}
             className={classNames(
-              "py-2 px-3 flex items-center justify-center border border-primaryOrange hover:bg-red-300",
+              "text-xs md:test-base py-2 px-3 flex items-center justify-center border border-primaryOrange hover:bg-red-300",
               {
                 "bg-primaryOrange": isActive,
                 "bg-transparent": !isActive
@@ -104,7 +104,7 @@ export default function Pagination({ queryConfig, page_size, scroll }: Props) {
     <div className="flex items-center justify-center gap-2 mt-10">
       {page === 1 ? (
         <span
-          className={`cursor-not-allowed py-2 px-3 ${darkMode ? "bg-black/50 hover:bg-black/30" : "bg-gray-200 hover:bg-gray-300"} rounded-sm duration-200`}
+          className={`cursor-not-allowed text-xs md:test-base py-2 px-3 ${darkMode ? "bg-black/50 hover:bg-black/30" : "bg-gray-200 hover:bg-gray-300"} rounded-sm duration-200`}
         >
           {t("prev")}
         </span>
@@ -117,7 +117,7 @@ export default function Pagination({ queryConfig, page_size, scroll }: Props) {
               page: (page - 1).toString()
             }).toString()
           }}
-          className={`py-2 px-3 ${darkMode ? "bg-black/50 hover:bg-black/30" : "bg-gray-200 hover:bg-gray-300"} rounded-sm duration-200`}
+          className={`text-xs md:test-base py-2 px-3 ${darkMode ? "bg-black/50 hover:bg-black/30" : "bg-gray-200 hover:bg-gray-300"} rounded-sm duration-200`}
         >
           {t("prev")}
         </Link>
@@ -127,7 +127,7 @@ export default function Pagination({ queryConfig, page_size, scroll }: Props) {
 
       {page === page_size ? (
         <span
-          className={`cursor-not-allowed py-2 px-3 ${darkMode ? "bg-black/50 hover:bg-black/30" : "bg-gray-200 hover:bg-gray-300"} rounded-sm duration-200`}
+          className={`cursor-not-allowed text-xs md:test-base py-2 px-3 ${darkMode ? "bg-black/50 hover:bg-black/30" : "bg-gray-200 hover:bg-gray-300"} rounded-sm duration-200`}
         >
           {t("next")}
         </span>
@@ -140,7 +140,7 @@ export default function Pagination({ queryConfig, page_size, scroll }: Props) {
               page: (page + 1).toString()
             }).toString()
           }}
-          className={`py-2 px-3 ${darkMode ? "bg-black/50 hover:bg-black/30" : "bg-gray-200 hover:bg-gray-300"} rounded-sm duration-200`}
+          className={`text-xs md:test-base py-2 px-3 ${darkMode ? "bg-black/50 hover:bg-black/30" : "bg-gray-200 hover:bg-gray-300"} rounded-sm duration-200`}
         >
           {t("next")}
         </Link>

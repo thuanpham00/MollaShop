@@ -11,6 +11,7 @@ import useQueryConfig from "src/Hooks/useQueryConfig"
 import { useContext } from "react"
 import { AppContext } from "src/contexts/auth.context"
 import { Helmet } from "react-helmet"
+import AsideFilter_mobile from "./components/AsideFilter_mobile"
 
 export default function ProductList() {
   const { darkMode } = useContext(AppContext)
@@ -71,12 +72,15 @@ export default function ProductList() {
             <Fragment>
               <div className="col-span-2">
                 <AsideFilter
+                  className="hidden md:block md:mt-3"
                   queryConfig={queryConfig}
                   categories={getCategoriesQuery.data?.data.data || []}
                 />
+
+                <AsideFilter_mobile className="block md:hidden mt-3" />
               </div>
 
-              <div className="w-[1px] h-[1000px] bg-gray-300 ml-[40px] rounded-md shadow-md"></div>
+              <div className="w-0 md:w-[1px] h-[1000px] bg-gray-200 ml-[40px] rounded-md shadow-md"></div>
 
               <div className="col-span-9 col-start-4">
                 <SortProductList queryConfig={queryConfig} page_size={data.pagination.page_size} />

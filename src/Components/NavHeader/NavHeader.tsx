@@ -7,7 +7,6 @@ import { loginApi } from "src/apis/login.api"
 import { useMutation, useQueryClient } from "@tanstack/react-query"
 import { purchaseStatus } from "src/constants/purchaseStatus"
 import { getAvatarUrl, getNameFromeEmail } from "src/utils/utils"
-
 import { locales } from "src/i18n/i18n"
 import { useTranslation } from "react-i18next"
 
@@ -16,8 +15,15 @@ export default function NavHeader() {
   const currentLanguage = locales[i18n.language as keyof typeof locales]
 
   const queryClient = useQueryClient()
-  const { isAuthenticated, setIsAuthenticated, isProfile, setIsProfile, darkMode, setDarkMode } =
-    useContext(AppContext)
+  const {
+    isAuthenticated,
+    setIsAuthenticated,
+    isProfile,
+    setIsProfile,
+    darkMode,
+    setDarkMode,
+    setLanguage
+  } = useContext(AppContext)
 
   const logoutAccountMutation = useMutation({
     mutationFn: () => {
@@ -44,6 +50,7 @@ export default function NavHeader() {
 
   const changeLanguage = (lng: string) => {
     i18n.changeLanguage(lng)
+    setLanguage(lng)
   }
 
   return (
@@ -217,7 +224,7 @@ export default function NavHeader() {
                     className="w-full h-full rounded-full object-cover"
                   />
                 </div>
-                <span className="text-sm lg:text-base font-semibold font_name">
+                <span className="text-xs md:text-base font-semibold font_name">
                   {getNameFromeEmail(isProfile?.email as string)}
                 </span>
               </Popover>

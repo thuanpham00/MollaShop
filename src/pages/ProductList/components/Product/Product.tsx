@@ -26,12 +26,14 @@ export default function Product({ item }: Props) {
         <div className="mt-2 flex items-center justify-between">
           <ProductRating rating={item.rating} />
           <div>
-            <span className="lowercase">{formatNumberToSocialStyle(item.sold)}</span>
-            <span className="ml-1">Đã bán</span>
+            <span className="lowercase text-xs md:text-base">
+              {formatNumberToSocialStyle(item.sold)}
+            </span>
+            <span className="ml-1 text-xs md:text-base">Đã bán</span>
           </div>
         </div>
 
-        <div className="mt-2 line-clamp-2 font-medium text-base">{item.name}</div>
+        <div className="mt-2 line-clamp-2 font-medium text-xs md:text-base">{item.name}</div>
 
         <div className="mt-2 flex items-center">
           <div className="flex items-center text-gray-500 line-through">
@@ -41,8 +43,8 @@ export default function Product({ item }: Props) {
           <div
             className={`flex items-center ml-2 font-medium ${darkMode ? "text-[#fff]" : "text-[#000]"}`}
           >
-            <span className="text-sm md:text-lg">{formatCurrency(item.price)}</span>
-            <span className="text-sm md:text-lg">đ</span>
+            <span className="text-xs md:text-lg">{formatCurrency(item.price)}</span>
+            <span className="text-xs md:text-lg">đ</span>
           </div>
         </div>
       </div>

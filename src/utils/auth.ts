@@ -42,3 +42,11 @@ export const setDarkModeToLs = (darkMode: string) => {
 export const getDarkModeToLs = () => {
   return localStorage.getItem("darkMode") || ""
 }
+
+export const setLanguageToLS = (lng: string) => {
+  return localStorage.setItem("language", lng)
+}
+
+export const getLanguageToLS = () => {
+  return localStorage.getItem("language") || ""
+}
