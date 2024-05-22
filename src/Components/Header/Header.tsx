@@ -212,43 +212,43 @@ export default function Header() {
           <div className="container">
             <div className="flex items-center justify-center py-2 flex-wrap gap-x-4 md:gap-x-20">
               <Link to={path.home}>
-                <span className="text-xs md:text-base text-white font-medium hover:text-white/70 d-font-medium-300 capitalize">
+                <span className="text-sm md:text-lg text-white font-medium hover:text-white/70 d-font-medium-300 capitalize">
                   {t("header.headerList.home")}
                 </span>
               </Link>
               <Link to={path.productList}>
-                <span className="text-xs md:text-base text-white font-medium hover:text-white/70 d-font-medium-300 capitalize">
+                <span className="text-sm md:text-lg text-white font-medium hover:text-white/70 d-font-medium-300 capitalize">
                   {t("header.headerList.productList")}
                 </span>
               </Link>
               <Link
                 to={`${`/productList?page=1&limit=15&sort_by=view&category=60afacca6ef5b902180aacaf`}`}
               >
-                <span className="text-xs md:text-base text-white font-medium hover:text-white/70 d-font-medium-300 capitalize">
+                <span className="text-sm md:text-lg text-white font-medium hover:text-white/70 d-font-medium-300 capitalize">
                   {t("header.headerList.watch")}
                 </span>
               </Link>
               <Link
                 to={`${`/productList?page=1&limit=15&category=60aba4e24efcc70f8892e1c6&sort_by=view`}`}
               >
-                <span className="text-xs md:text-base text-white font-medium hover:text-white/70 d-font-medium-300 capitalize">
+                <span className="text-sm md:text-lg text-white font-medium hover:text-white/70 d-font-medium-300 capitalize">
                   {t("header.headerList.clothes")}
                 </span>
               </Link>
               <Link
                 to={`${`/productList?page=1&limit=15&category=60afafe76ef5b902180aacb5&sort_by=view`}`}
               >
-                <span className="text-xs md:text-base text-white font-medium hover:text-white/70 d-font-medium-300 capitalize">
+                <span className="text-sm md:text-lg text-white font-medium hover:text-white/70 d-font-medium-300 capitalize">
                   {t("header.headerList.phone")}
                 </span>
               </Link>
               <Link to={path.productList}>
-                <span className="text-xs md:text-base text-white font-medium hover:text-white/70 d-font-medium-300 capitalize">
+                <span className="text-sm md:text-lg text-white font-medium hover:text-white/70 d-font-medium-300 capitalize">
                   {t("header.headerList.phone2")}
                 </span>
               </Link>
               <Link to={path.productList}>
-                <span className="text-xs md:text-base text-white font-medium hover:text-white/70 d-font-medium-300 capitalize">
+                <span className="text-sm md:text-lg text-white font-medium hover:text-white/70 d-font-medium-300 capitalize">
                   {t("header.headerList.deal")}
                 </span>
               </Link>

@@ -208,7 +208,7 @@ export default function Home() {
             <h2 className="tracking-wider font_logo capitalize mt-0 md:mt-4 block text-black text-2xl md:text-5xl">
               {t("home:title")}
             </h2>
-            <h3 className="text-xs md:text-xl text-gray-600 mt-0 md:mt-4 font-medium text-center">
+            <h3 className="text-sm md:text-base text-gray-600 mt-0 md:mt-4 font-medium text-center">
               {t("home:desc")}
             </h3>
             <Link
@@ -246,7 +246,7 @@ export default function Home() {
                 </div>
                 <div>
                   <span
-                    className={`${darkMode ? "text-white" : "text-black"} font-semibold text-xs md:text-lg md:line-clamp-1`}
+                    className={`${darkMode ? "text-white" : "text-black"} font-semibold text-sm md:text-lg md:line-clamp-1`}
                   >
                     {t("home:service.service_1.title")}
                   </span>
@@ -276,7 +276,7 @@ export default function Home() {
                 </div>
                 <div>
                   <span
-                    className={`${darkMode ? "text-white" : "text-black"} font-semibold text-xs md:text-lg md:line-clamp-1`}
+                    className={`${darkMode ? "text-white" : "text-black"} font-semibold text-xs md:text-base md:line-clamp-1`}
                   >
                     {t("home:service.service_2.title")}
                   </span>
