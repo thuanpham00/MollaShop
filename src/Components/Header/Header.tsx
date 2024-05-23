@@ -75,6 +75,7 @@ export default function Header() {
           className={`${darkMode ? "bg-gradient-to-r from-[#232526] to-[#414345]" : "bg-white"} duration-200 border-b border-gray-300`}
         >
           <div className="container">
+            {/* header_mobile */}
             <div className="flex items-center justify-between md:hidden gap-4 py-2">
               <div className="flex items-center gap-4">
                 <Sheet>
@@ -372,6 +373,7 @@ export default function Header() {
               </div>
             </form>
 
+            {/* header_desktop */}
             <div className="hidden md:grid grid-cols-12 gap-4 py-4 items-center">
               <div className="col-span-2 flex items-center gap-2">
                 <Sheet>

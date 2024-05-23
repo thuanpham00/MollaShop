@@ -50,7 +50,7 @@ export default function Login() {
   const onSubmit = handleSubmit((data) => {
     loginAccountMutation.mutate(data, {
       onSuccess: (data) => {
-        console.log(data)
+        // console.log(data)
         navigate(path.home) // đăng nhập xong chuyển tới trang chủ
         setIsAuthenticated(true)
         setIsProfile(data.data.data.user)

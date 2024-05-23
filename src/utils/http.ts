@@ -65,7 +65,7 @@ class http {
           setAccessTokenToLs(this.accessToken) // lưu accessToken
           setRefreshTokenToLs(this.refreshToken) // lưu refreshToken
           setProfileToLs(data.data.user)
-          console.log(response)
+          // console.log(response)
         } else if (response.config.url === URL_LOGOUT) {
           // check url === "logout" thì remove access_token và refresh_token ra khỏi LS
           this.accessToken = ""

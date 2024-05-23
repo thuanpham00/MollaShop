@@ -69,8 +69,11 @@ export const getIdFromNameId = (nameId: string) => {
 // ví dụ chuỗi "thuan-i.427138492384" nó tách ra ["thuan", "427138492384"] và length = 2 nó trừ 1 để lấy phần tử cuối - 1 lấy ra ID
 
 export const getNameFromeEmail = (email: string) => {
-  const name = email.split("@")
-  return name[0]
+  if (email) {
+    const name = email.split("@")
+    return name[0]
+  }
+  return null
 }
 
 // ví dụ chuỗi phamminhthuan912@gmail.com => lấy được phamminhthuan912
