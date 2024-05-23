@@ -119,7 +119,7 @@ export default function Header() {
                           to={path.home}
                           className={`py-2 flex items-center justify-between w-[80px] gap-1 ${darkMode ? "text-[#f2f2f2] hover:text-[#f2f2f2]/70" : "text-primaryColor hover:text-primaryColor/70"}`}
                         >
-                          <span className={`text-sm md:text-base font-semibold capitalize`}>
+                          <span className={`textbasee font-semibold capitalize`}>
                             {t("header.headerList.home")}
                           </span>
                           <svg
@@ -141,7 +141,7 @@ export default function Header() {
                           to={path.productList}
                           className={`py-2 flex items-center justify-between w-[80px] gap-1 ${darkMode ? "text-[#f2f2f2] hover:text-[#f2f2f2]/70" : "text-primaryColor hover:text-primaryColor/70"}`}
                         >
-                          <span className="text-sm md:text-base font-semibold capitalize">
+                          <span className="text-base font-semibold capitalize">
                             {t("header.headerList.productList")}
                           </span>
                           <svg
@@ -163,7 +163,7 @@ export default function Header() {
                           to={path.productList}
                           className={`py-2 flex items-center justify-between w-[80px] gap-1 ${darkMode ? "text-[#f2f2f2] hover:text-[#f2f2f2]/70" : "text-primaryColor hover:text-primaryColor/70"}`}
                         >
-                          <span className="text-sm md:text-base font-semibold capitalize">
+                          <span className="text-base font-semibold capitalize">
                             {t("header.headerList.new")}
                           </span>
                           <svg
@@ -185,7 +185,7 @@ export default function Header() {
                           to={`${`/productList?page=1&limit=15&sort_by=view&category=60afacca6ef5b902180aacaf`}`}
                           className={`py-2 flex items-center justify-between w-[80px] gap-1 ${darkMode ? "text-[#f2f2f2] hover:text-[#f2f2f2]/70" : "text-primaryColor hover:text-primaryColor/70"}`}
                         >
-                          <span className="text-sm md:text-base font-semibold capitalize">
+                          <span className="text-base font-semibold capitalize">
                             {t("header.headerList.watch")}
                           </span>
                           <svg
@@ -207,7 +207,7 @@ export default function Header() {
                           to={`${`/productList?page=1&limit=15&category=60aba4e24efcc70f8892e1c6&sort_by=view`}`}
                           className={`py-2 flex items-center justify-between w-[80px] gap-1 ${darkMode ? "text-[#f2f2f2] hover:text-[#f2f2f2]/70" : "text-primaryColor hover:text-primaryColor/70"}`}
                         >
-                          <span className="text-sm md:text-base font-semibold capitalize">
+                          <span className="text-base font-semibold capitalize">
                             {t("header.headerList.clothes")}
                           </span>
                           <svg
@@ -229,7 +229,7 @@ export default function Header() {
                           to={`${`/productList?page=1&limit=15&category=60afafe76ef5b902180aacb5&sort_by=view`}`}
                           className={`py-2 flex items-center justify-between w-[80px] gap-1 ${darkMode ? "text-[#f2f2f2] hover:text-[#f2f2f2]/70" : "text-primaryColor hover:text-primaryColor/70"}`}
                         >
-                          <span className="text-sm md:text-base font-semibold capitalize">
+                          <span className="text-base font-semibold capitalize">
                             {t("header.headerList.phone")}
                           </span>
                           <svg
