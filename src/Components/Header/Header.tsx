@@ -345,7 +345,7 @@ export default function Header() {
               </div>
             </div>
 
-            <form onSubmit={onSubmitSearch} className="w-full md:hidden py-2">
+            <form autoComplete="off" onSubmit={onSubmitSearch} className="w-full md:hidden py-2">
               <div className="w-full bg-[#f1f1f1] p-1 flex items-center rounded-full">
                 <input
                   type="text"
@@ -373,7 +373,7 @@ export default function Header() {
             </form>
 
             <div className="hidden md:grid grid-cols-12 gap-4 py-4 items-center">
-              <div className="col-span-2 flex items-center gap-4">
+              <div className="col-span-2 flex items-center gap-2">
                 <Sheet>
                   <SheetTrigger>
                     <svg
