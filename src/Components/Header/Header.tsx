@@ -6,18 +6,25 @@ import { AppContext } from "src/contexts/auth.context"
 import { useQuery } from "@tanstack/react-query"
 import { purchaseApi } from "src/apis/purchase.api"
 import { purchaseStatus } from "src/constants/purchaseStatus"
-import { formatCurrency } from "src/utils/utils"
+import { formatCurrency, getAvatarUrl, getNameFromeEmail } from "src/utils/utils"
 import cartImg from "src/img/cart.png"
 import NavHeader from "../NavHeader"
 import useSearchProduct from "src/Hooks/useSearchProduct"
 import { Purchase } from "src/types/purchase.type"
 import { useTranslation } from "react-i18next"
+import {
+  Sheet,
+  SheetContent,
+  SheetHeader,
+  SheetTrigger
+  // eslint-disable-next-line import/no-unresolved
+} from "@/ui/sheet"
 
 const MAX_PURCHASES = 5
 
 export default function Header() {
   const { t } = useTranslation(["header", "cart"])
-  const { isAuthenticated, darkMode } = useContext(AppContext)
+  const { isAuthenticated, darkMode, isProfile } = useContext(AppContext)
 
   const { onSubmitSearch, register } = useSearchProduct() // destructuring
 
@@ -65,61 +72,193 @@ export default function Header() {
 
       <div className={`${activeNav ? "" : "sticky top-0 left-0 z-20"}`}>
         <div
-          className={`${darkMode ? "bg-gradient-to-r from-[#232526] to-[#414345]" : "bg-white"} duration-200`}
+          className={`${darkMode ? "bg-gradient-to-r from-[#232526] to-[#414345]" : "bg-white"} duration-200 border-b border-gray-300`}
         >
           <div className="container">
-            <div className="grid grid-cols-7 md:grid-cols-12 gap-4 py-2 items-center">
-              <Link to="/" className="col-span-2 md:col-span-3 lg:col-span-2 rounded-md">
-                <div className="flex items-center w-full lg:w-full text-[28px] md:text-3xl lg:text-5xl">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    strokeWidth={1.5}
-                    stroke="#667db6"
-                    className="w-7 h-7 md:w-13 md:h-13 lg:w-10 lg:h-10"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M15.75 10.5V6a3.75 3.75 0 1 0-7.5 0v4.5m11.356-1.993 1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 0 1-1.12-1.243l1.264-12A1.125 1.125 0 0 1 5.513 7.5h12.974c.576 0 1.059.435 1.119 1.007ZM8.625 10.5a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm7.5 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z"
-                    />
-                  </svg>
-                  <div className="font_logo text-gradient">Molla</div>
-                </div>
-              </Link>
-
-              <form
-                onSubmit={onSubmitSearch}
-                className="col-span-4 md:col-span-6 lg:col-span-8 lg:col-start-4 shadow-sm"
-              >
-                <div className="w-[180px] md:w-full bg-white p-1 flex items-center round-sm border border-gray-400">
-                  <input
-                    type="text"
-                    placeholder={t("header.search")}
-                    className="w-full md:flex-grow outline-none p-1 md:p-2 text-base"
-                    {...register("name")}
-                  />
-                  <div className="flex-shrink-0 pr-2 cursor-pointer">
+            <div className="flex items-center justify-between md:hidden gap-4 py-2">
+              <div className="flex items-center gap-4">
+                <Sheet>
+                  <SheetTrigger>
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       fill="none"
                       viewBox="0 0 24 24"
                       strokeWidth={1.5}
-                      stroke="currentColor"
-                      className="w-6 h-6"
+                      stroke={`${darkMode ? "#f1f1f1" : "#1f1f1f"}`}
+                      className="h-9 w-9"
                     >
                       <path
                         strokeLinecap="round"
                         strokeLinejoin="round"
-                        d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"
+                        d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
                       />
                     </svg>
-                  </div>
-                </div>
-              </form>
+                  </SheetTrigger>
+                  <SheetContent>
+                    <SheetHeader>
+                      <div className="mt-5 flex items-center gap-4">
+                        <div className="w-10 h-10">
+                          <img
+                            src={getAvatarUrl(isProfile?.avatar as string)}
+                            alt=""
+                            className="w-full h-full rounded-full object-cover"
+                          />
+                        </div>
+                        <div className="flex flex-col justify-start items-start">
+                          <span className="text-primaryColor text-sm md:text-xl font-semibold font_name">
+                            {getNameFromeEmail(isProfile?.email as string)}
+                          </span>
+                          <span className="text-primaryColor text-xs md:text-lg font-medium font_name">
+                            {getNameFromeEmail(isProfile?.name as string)}
+                          </span>
+                        </div>
+                      </div>
+                      <div>
+                        <Link
+                          to={path.home}
+                          className={`py-2 flex items-center justify-between w-[80px] gap-1 ${darkMode ? "text-[#f2f2f2] hover:text-[#f2f2f2]/70" : "text-primaryColor hover:text-primaryColor/70"}`}
+                        >
+                          <span className={`text-sm md:text-base font-semibold capitalize`}>
+                            {t("header.headerList.home")}
+                          </span>
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            strokeWidth={1.5}
+                            stroke="currentColor"
+                            className="w-4 h-4"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              d="m19.5 8.25-7.5 7.5-7.5-7.5"
+                            />
+                          </svg>
+                        </Link>
+                        <Link
+                          to={path.productList}
+                          className={`py-2 flex items-center justify-between w-[80px] gap-1 ${darkMode ? "text-[#f2f2f2] hover:text-[#f2f2f2]/70" : "text-primaryColor hover:text-primaryColor/70"}`}
+                        >
+                          <span className="text-sm md:text-base font-semibold capitalize">
+                            {t("header.headerList.productList")}
+                          </span>
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            strokeWidth={1.5}
+                            stroke="currentColor"
+                            className="w-4 h-4"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              d="m19.5 8.25-7.5 7.5-7.5-7.5"
+                            />
+                          </svg>
+                        </Link>
+                        <Link
+                          to={path.productList}
+                          className={`py-2 flex items-center justify-between w-[80px] gap-1 ${darkMode ? "text-[#f2f2f2] hover:text-[#f2f2f2]/70" : "text-primaryColor hover:text-primaryColor/70"}`}
+                        >
+                          <span className="text-sm md:text-base font-semibold capitalize">
+                            {t("header.headerList.new")}
+                          </span>
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            strokeWidth={1.5}
+                            stroke="currentColor"
+                            className="w-4 h-4"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              d="m19.5 8.25-7.5 7.5-7.5-7.5"
+                            />
+                          </svg>
+                        </Link>
+                        <Link
+                          to={`${`/productList?page=1&limit=15&sort_by=view&category=60afacca6ef5b902180aacaf`}`}
+                          className={`py-2 flex items-center justify-between w-[80px] gap-1 ${darkMode ? "text-[#f2f2f2] hover:text-[#f2f2f2]/70" : "text-primaryColor hover:text-primaryColor/70"}`}
+                        >
+                          <span className="text-sm md:text-base font-semibold capitalize">
+                            {t("header.headerList.watch")}
+                          </span>
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            strokeWidth={1.5}
+                            stroke="currentColor"
+                            className="w-4 h-4"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              d="m19.5 8.25-7.5 7.5-7.5-7.5"
+                            />
+                          </svg>
+                        </Link>
+                        <Link
+                          to={`${`/productList?page=1&limit=15&category=60aba4e24efcc70f8892e1c6&sort_by=view`}`}
+                          className={`py-2 flex items-center justify-between w-[80px] gap-1 ${darkMode ? "text-[#f2f2f2] hover:text-[#f2f2f2]/70" : "text-primaryColor hover:text-primaryColor/70"}`}
+                        >
+                          <span className="text-sm md:text-base font-semibold capitalize">
+                            {t("header.headerList.clothes")}
+                          </span>
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            strokeWidth={1.5}
+                            stroke="currentColor"
+                            className="w-4 h-4"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              d="m19.5 8.25-7.5 7.5-7.5-7.5"
+                            />
+                          </svg>
+                        </Link>
+                        <Link
+                          to={`${`/productList?page=1&limit=15&category=60afafe76ef5b902180aacb5&sort_by=view`}`}
+                          className={`py-2 flex items-center justify-between w-[80px] gap-1 ${darkMode ? "text-[#f2f2f2] hover:text-[#f2f2f2]/70" : "text-primaryColor hover:text-primaryColor/70"}`}
+                        >
+                          <span className="text-sm md:text-base font-semibold capitalize">
+                            {t("header.headerList.phone")}
+                          </span>
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            strokeWidth={1.5}
+                            stroke="currentColor"
+                            className="w-4 h-4"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              d="m19.5 8.25-7.5 7.5-7.5-7.5"
+                            />
+                          </svg>
+                        </Link>
+                      </div>
+                    </SheetHeader>
+                  </SheetContent>
+                </Sheet>
+              </div>
 
-              <div className="col-span-1 col-start-7 md:col-start-12 justify-self-end">
+              <div
+                className={`font_logo ${darkMode ? "text-[#f2f2f2]" : "text-primaryColor"} ml-8 text-4xl`}
+              >
+                Molla
+              </div>
+
+              <div className="flex items-center">
                 <Popover
                   renderPopover={
                     <div className="mt-1 w-[400px] bg-white p-5 shadow-md rounded-sm">
@@ -188,7 +327,7 @@ export default function Header() {
                       viewBox="0 0 24 24"
                       strokeWidth={1.5}
                       stroke={`${darkMode ? "white" : "black"}`}
-                      className="w-11 h-11"
+                      className="w-8 h-8"
                     >
                       <path
                         strokeLinecap="round"
@@ -197,7 +336,7 @@ export default function Header() {
                       />
                     </svg>
                     {(purchasesInCart as Purchase[])?.length > 0 && (
-                      <span className="h-5 w-6 text-white bg-primaryOrange rounded-full absolute top-0 -right-2 text-[12px] flex items-center justify-center">
+                      <span className="w-4 h-4 md:h-5 md:w-6 text-white bg-primaryColor rounded-full absolute top-1 md:top-0 right-0 md:-right-2 text-[12px] flex items-center justify-center">
                         {purchasesInCart?.length}
                       </span>
                     )}
@@ -205,53 +344,331 @@ export default function Header() {
                 </Popover>
               </div>
             </div>
-          </div>
-        </div>
 
-        <div className="bg-gradient-to-r from-[#667db6] via-[#0082c8] to-[#667db6]">
-          <div className="container">
-            <div className="flex items-center justify-center py-2 flex-wrap gap-x-4 md:gap-x-20">
-              <Link to={path.home}>
-                <span className="text-sm md:text-lg text-white font-medium hover:text-white/70 d-font-medium-300 capitalize">
-                  {t("header.headerList.home")}
-                </span>
-              </Link>
-              <Link to={path.productList}>
-                <span className="text-sm md:text-lg text-white font-medium hover:text-white/70 d-font-medium-300 capitalize">
-                  {t("header.headerList.productList")}
-                </span>
-              </Link>
-              <Link
-                to={`${`/productList?page=1&limit=15&sort_by=view&category=60afacca6ef5b902180aacaf`}`}
-              >
-                <span className="text-sm md:text-lg text-white font-medium hover:text-white/70 d-font-medium-300 capitalize">
-                  {t("header.headerList.watch")}
-                </span>
-              </Link>
-              <Link
-                to={`${`/productList?page=1&limit=15&category=60aba4e24efcc70f8892e1c6&sort_by=view`}`}
-              >
-                <span className="text-sm md:text-lg text-white font-medium hover:text-white/70 d-font-medium-300 capitalize">
-                  {t("header.headerList.clothes")}
-                </span>
-              </Link>
-              <Link
-                to={`${`/productList?page=1&limit=15&category=60afafe76ef5b902180aacb5&sort_by=view`}`}
-              >
-                <span className="text-sm md:text-lg text-white font-medium hover:text-white/70 d-font-medium-300 capitalize">
-                  {t("header.headerList.phone")}
-                </span>
-              </Link>
-              <Link to={path.productList}>
-                <span className="text-sm md:text-lg text-white font-medium hover:text-white/70 d-font-medium-300 capitalize">
-                  {t("header.headerList.phone2")}
-                </span>
-              </Link>
-              <Link to={path.productList}>
-                <span className="text-sm md:text-lg text-white font-medium hover:text-white/70 d-font-medium-300 capitalize">
-                  {t("header.headerList.deal")}
-                </span>
-              </Link>
+            <form onSubmit={onSubmitSearch} className="w-full md:hidden py-2">
+              <div className="w-full bg-[#f1f1f1] p-1 flex items-center rounded-full">
+                <input
+                  type="text"
+                  placeholder={t("header.search")}
+                  className="w-full md:flex-grow outline-none py-2 px-3 text-sm md:text-base bg-transparent"
+                  {...register("name")}
+                />
+                <div className="flex-shrink-0 pr-2 cursor-pointer">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    strokeWidth={1.5}
+                    stroke="currentColor"
+                    className="w-4 h-4 md:w-6 md:h-6"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"
+                    />
+                  </svg>
+                </div>
+              </div>
+            </form>
+
+            <div className="hidden md:grid grid-cols-12 gap-4 py-4 items-center">
+              <div className="col-span-2 flex items-center gap-4">
+                <Sheet>
+                  <SheetTrigger>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      strokeWidth={1.5}
+                      stroke={`${darkMode ? "#f1f1f1" : "#1f1f1f"}`}
+                      className="h-12 w-12"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+                      />
+                    </svg>
+                  </SheetTrigger>
+                  <SheetContent>
+                    <SheetHeader>
+                      <div className="mt-10 flex items-start gap-4">
+                        <div className="w-28 h-28">
+                          <img
+                            src={getAvatarUrl(isProfile?.avatar as string)}
+                            alt=""
+                            className="w-full h-full rounded-full object-cover"
+                          />
+                        </div>
+                        <div className="flex flex-col justify-start">
+                          <span className="mt-5 text-primaryColor text-xs md:text-xl font-semibold font_name">
+                            {getNameFromeEmail(isProfile?.email as string)}
+                          </span>
+                          <span className="text-primaryColor text-xs md:text-lg font-medium font_name">
+                            {getNameFromeEmail(isProfile?.name as string)}
+                          </span>
+                        </div>
+                      </div>
+                    </SheetHeader>
+                  </SheetContent>
+                </Sheet>
+
+                <form onSubmit={onSubmitSearch} className="w-[180px]">
+                  <div className="w-[180px] md:w-full bg-[#f1f1f1] p-1 flex items-center rounded-full">
+                    <input
+                      type="text"
+                      placeholder={t("header.search")}
+                      className="w-full md:flex-grow outline-none py-2 px-3 text-sm md:text-base bg-transparent"
+                      {...register("name")}
+                    />
+                    <div className="flex-shrink-0 pr-2 cursor-pointer">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        strokeWidth={1.5}
+                        stroke="currentColor"
+                        className="w-4 h-4 md:w-6 md:h-6"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"
+                        />
+                      </svg>
+                    </div>
+                  </div>
+                </form>
+              </div>
+
+              <div className="ml-6 col-span-8 rounded-md">
+                <div className="flex items-center justify-center gap-4">
+                  <Link
+                    to={path.home}
+                    className={`flex items-center gap-1 ${darkMode ? "text-[#f2f2f2] hover:text-[#f2f2f2]/70" : "text-primaryColor hover:text-primaryColor/70"}`}
+                  >
+                    <span className={`text-sm md:text-base font-semibold capitalize`}>
+                      {t("header.headerList.home")}
+                    </span>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      strokeWidth={1.5}
+                      stroke="currentColor"
+                      className="w-4 h-4"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="m19.5 8.25-7.5 7.5-7.5-7.5"
+                      />
+                    </svg>
+                  </Link>
+                  <Link
+                    to={path.productList}
+                    className={`flex items-center justify-center gap-1 ${darkMode ? "text-[#f2f2f2] hover:text-[#f2f2f2]/70" : "text-primaryColor hover:text-primaryColor/70"}`}
+                  >
+                    <span className="text-sm md:text-base font-semibold capitalize">
+                      {t("header.headerList.productList")}
+                    </span>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      strokeWidth={1.5}
+                      stroke="currentColor"
+                      className="w-4 h-4"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="m19.5 8.25-7.5 7.5-7.5-7.5"
+                      />
+                    </svg>
+                  </Link>
+                  <Link
+                    to={path.productList}
+                    className={`flex items-center gap-1 ${darkMode ? "text-[#f2f2f2] hover:text-[#f2f2f2]/70" : "text-primaryColor hover:text-primaryColor/70"}`}
+                  >
+                    <span className="text-sm md:text-base font-semibold capitalize">
+                      {t("header.headerList.new")}
+                    </span>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      strokeWidth={1.5}
+                      stroke="currentColor"
+                      className="w-4 h-4"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="m19.5 8.25-7.5 7.5-7.5-7.5"
+                      />
+                    </svg>
+                  </Link>
+                  <div
+                    className={`font_logo ${darkMode ? "text-[#f2f2f2]" : "text-primaryColor"} text-[28px] md:text-3xl lg:text-5xl`}
+                  >
+                    Molla
+                  </div>
+                  <Link
+                    to={`${`/productList?page=1&limit=15&sort_by=view&category=60afacca6ef5b902180aacaf`}`}
+                    className={`flex items-center gap-1 ${darkMode ? "text-[#f2f2f2] hover:text-[#f2f2f2]/70" : "text-primaryColor hover:text-primaryColor/70"}`}
+                  >
+                    <span className="text-sm md:text-base font-semibold capitalize">
+                      {t("header.headerList.watch")}
+                    </span>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      strokeWidth={1.5}
+                      stroke="currentColor"
+                      className="w-4 h-4"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="m19.5 8.25-7.5 7.5-7.5-7.5"
+                      />
+                    </svg>
+                  </Link>
+                  <Link
+                    to={`${`/productList?page=1&limit=15&category=60aba4e24efcc70f8892e1c6&sort_by=view`}`}
+                    className={`flex items-center gap-1 ${darkMode ? "text-[#f2f2f2] hover:text-[#f2f2f2]/70" : "text-primaryColor hover:text-primaryColor/70"}`}
+                  >
+                    <span className="text-sm md:text-base font-semibold capitalize">
+                      {t("header.headerList.clothes")}
+                    </span>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      strokeWidth={1.5}
+                      stroke="currentColor"
+                      className="w-4 h-4"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="m19.5 8.25-7.5 7.5-7.5-7.5"
+                      />
+                    </svg>
+                  </Link>
+                  <Link
+                    to={`${`/productList?page=1&limit=15&category=60afafe76ef5b902180aacb5&sort_by=view`}`}
+                    className={`flex items-center gap-1 ${darkMode ? "text-[#f2f2f2] hover:text-[#f2f2f2]/70" : "text-primaryColor hover:text-primaryColor/70"}`}
+                  >
+                    <span className="text-sm md:text-base font-semibold capitalize">
+                      {t("header.headerList.phone")}
+                    </span>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      strokeWidth={1.5}
+                      stroke="currentColor"
+                      className="w-4 h-4"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="m19.5 8.25-7.5 7.5-7.5-7.5"
+                      />
+                    </svg>
+                  </Link>
+                </div>
+              </div>
+
+              <div className="col-span-2 justify-self-end">
+                <Popover
+                  renderPopover={
+                    <div className="mt-1 w-[400px] bg-white p-5 shadow-md rounded-sm">
+                      {purchasesInCart && purchasesInCart.length > 0 ? (
+                        <Fragment>
+                          <span className="text-gray-500 text-base font-semibold">
+                            {t("header.cart.title")}
+                          </span>
+
+                          <div className="mt-5">
+                            {purchasesInCart.slice(0, MAX_PURCHASES).map((item) => {
+                              return (
+                                <div className="mt-2 py-2 flex hover:bg-gray-200" key={item._id}>
+                                  <div className="flex-shrink-0">
+                                    <img
+                                      src={item.product.image}
+                                      alt={item.product.name}
+                                      className="w-11 h-11 object-cover"
+                                    />
+                                  </div>
+                                  <div className="ml-2 flex-grow overflow-hidden">
+                                    <div className="truncate">{item.product.name}</div>
+                                  </div>
+                                  <div className="ml-2 flex-shrink-0">
+                                    <span className="text-red-500">$</span>
+                                    <span className="text-red-500">
+                                      {formatCurrency(item.product.price)}
+                                    </span>
+                                  </div>
+                                </div>
+                              )
+                            })}
+                          </div>
+
+                          <div className="flex items-center justify-between">
+                            <span className="text-gray-500 text-sm">
+                              {purchasesInCart.length > MAX_PURCHASES
+                                ? purchasesInCart.length - MAX_PURCHASES
+                                : ""}
+                              {t("header.cart.add")}
+                            </span>
+                            <Link
+                              to={path.cart}
+                              className="p-3 bg-red-500 hover:bg-red/80 duration-300 text-white"
+                            >
+                              {t("header.cart.see")}
+                            </Link>
+                          </div>
+                        </Fragment>
+                      ) : (
+                        <div className="p-2 flex items-center justify-center flex-col">
+                          <img src={cartImg} alt="ảnh lỗi" className="w-[200px]" />
+                          <h1>{t("cart:noProduct")}</h1>
+                        </div>
+                      )}
+                    </div>
+                  }
+                >
+                  <Link
+                    to="/"
+                    className="w-12 h-12 flex items-center justify-center rounded-sm relative"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      strokeWidth={1.5}
+                      stroke={`${darkMode ? "white" : "black"}`}
+                      className="w-8 h-8 md:w-11 md:h-11"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 0 0-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 0 0-16.536-1.84M7.5 14.25 5.106 5.272M6 20.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Zm12.75 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z"
+                      />
+                    </svg>
+                    {(purchasesInCart as Purchase[])?.length > 0 && (
+                      <span className="w-4 h-4 md:h-5 md:w-6 text-white bg-primaryColor rounded-full absolute top-1 md:top-0 right-0 md:-right-2 text-[12px] flex items-center justify-center">
+                        {purchasesInCart?.length}
+                      </span>
+                    )}
+                  </Link>
+                </Popover>
+              </div>
             </div>
           </div>
         </div>

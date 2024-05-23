@@ -11,12 +11,11 @@
     "descLogin": "Do not have an account?",
     "headerList": {
       "home": "Home",
-      "productList": "Product list",
+      "productList": "Shop",
       "watch": "Watch",
       "clothes": "Clothes",
       "phone": "Phone",
-      "phone2": "Phones and accessories",
-      "deal": "Hot deal"
+      "new": "News"
     },
     "search": "Search product...",
     "cart": {

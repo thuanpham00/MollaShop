@@ -38,16 +38,17 @@ export default function ProductItem({ item }: Props) {
         <img src={currentImg} alt={item.name} className="cursor-not-allowed" />
       </div>
       <div className="py-3 text-center">
-        <span className={`mt-1 ${darkMode ? "text-[#fff]" : "text-gray-400"} block`}>
+        <span
+          className={`mt-1 text-sm md:text-lg ${darkMode ? "text-[#fff]" : "text-gray-400"} block`}
+        >
           {item.category.name}
         </span>
         <div className="flex justify-center mt-1">
           <ProductRating rating={item.rating} />
         </div>
         <div
-          className={`mt-1 w-full font-medium text-xs md:text-sm ${darkMode ? "text-[#fff]" : "text-[#000]"} block px-10 truncate `}
+          className={`text-sm md:text-lg mt-1 w-full font-medium  ${darkMode ? "text-[#fff]" : "text-[#000]"} block px-10 truncate `}
         >
-          {" "}
           {item.name}
         </div>
         <span className={`${darkMode ? "text-[#fff]" : "text-gray-700"} mt-1 mb-4 block`}>

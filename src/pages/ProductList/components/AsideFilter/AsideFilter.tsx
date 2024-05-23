@@ -71,7 +71,7 @@ export default function AsideFilter({ categories, queryConfig, className }: Prop
         className={classNames(
           "flex items-center gap-x-2 text-gray-500 duration-200 capitalize font-semibold text-md",
           {
-            "text-primaryOrange": !category
+            "text-primaryColor": !category
           }
         )}
       >
@@ -107,7 +107,7 @@ export default function AsideFilter({ categories, queryConfig, className }: Prop
                   }).toString()
                 }}
                 className={classNames("relative font-medium", {
-                  "text-primaryOrange": isActive,
+                  "text-primaryColor": isActive,
                   "text-gray-500": !isActive
                 })}
               >
@@ -211,7 +211,7 @@ export default function AsideFilter({ categories, queryConfig, className }: Prop
             {errors.price_min?.message}
           </div>
 
-          <Button classInput="flex items-center justify-center w-full bg-primaryOrange text-white py-3 px-2 uppercase hover:bg-primaryOrange/80 duration-300 text-sm">
+          <Button classInput="flex items-center justify-center w-full bg-primaryColor text-white py-3 px-2 uppercase hover:bg-primaryColor/80 duration-300 text-sm">
             {t("asideFilter.apply")}
           </Button>
         </form>
@@ -227,7 +227,7 @@ export default function AsideFilter({ categories, queryConfig, className }: Prop
 
       <Button
         onClick={handleDeleteConfig}
-        classInput="flex items-center justify-center w-full bg-primaryOrange text-white py-3 px-2 uppercase hover:bg-primaryOrange/80 duration-300 text-sm"
+        classInput="flex items-center justify-center w-full bg-primaryColor text-white py-3 px-2 uppercase hover:bg-primaryColor/80 duration-300 text-sm"
       >
         {t("asideFilter.delete")}
       </Button>

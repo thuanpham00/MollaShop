@@ -5,7 +5,7 @@ export default function RegisterHeader() {
   const { t } = useTranslation("header")
   const isLogin = useMatch("/login") // dùng để check trang login và register nào match trùng thì xử lý
   return (
-    <header className="bg-gradient-to-r from-[#667db6] via-[#0082c8] to-[#667db6]">
+    <header className="bg-primaryColor">
       <div className="container">
         <div className="py-10 flex items-center">
           <Link to="/">

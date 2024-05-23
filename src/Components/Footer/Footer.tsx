@@ -41,27 +41,27 @@ export default function Footer() {
               </h3>
               <ul className="mt-2 md:mt-5">
                 <li>
-                  <Link to="" className="text-primaryOrange mb-2 block text-xs md:text-base">
+                  <Link to="" className="text-primaryColor mb-2 block text-xs md:text-base">
                     {t("shop.hotDeal")}
                   </Link>
                 </li>
                 <li>
-                  <Link to="" className="text-primaryOrange mb-2 block text-xs md:text-base">
+                  <Link to="" className="text-primaryColor mb-2 block text-xs md:text-base">
                     {t("shop.categories")}
                   </Link>
                 </li>
                 <li>
-                  <Link to="" className="text-primaryOrange mb-2 block text-xs md:text-base">
+                  <Link to="" className="text-primaryColor mb-2 block text-xs md:text-base">
                     {t("shop.brands")}
                   </Link>
                 </li>
                 <li>
-                  <Link to="" className="text-primaryOrange mb-2 block text-xs md:text-base">
+                  <Link to="" className="text-primaryColor mb-2 block text-xs md:text-base">
                     {t("shop.rebates")}
                   </Link>
                 </li>
                 <li>
-                  <Link to="" className="text-primaryOrange mb-2 block text-xs md:text-base">
+                  <Link to="" className="text-primaryColor mb-2 block text-xs md:text-base">
                     {t("shop.weeklyDeal")}
                   </Link>
                 </li>
@@ -76,27 +76,27 @@ export default function Footer() {
               </h3>
               <ul className="mt-2 md:mt-5">
                 <li>
-                  <Link to="" className="text-primaryOrange mb-2 block text-xs md:text-base">
+                  <Link to="" className="text-primaryColor mb-2 block text-xs md:text-base">
                     {t("needHelps.contact")}
                   </Link>
                 </li>
                 <li>
-                  <Link to="" className="text-primaryOrange mb-2 block text-xs md:text-base">
+                  <Link to="" className="text-primaryColor mb-2 block text-xs md:text-base">
                     {t("needHelps.orderTracking")}
                   </Link>
                 </li>
                 <li>
-                  <Link to="" className="text-primaryOrange mb-2 block text-xs md:text-base">
+                  <Link to="" className="text-primaryColor mb-2 block text-xs md:text-base">
                     {t("needHelps.FAQS")}
                   </Link>
                 </li>
                 <li>
-                  <Link to="" className="text-primaryOrange mb-2 block text-xs md:text-base">
+                  <Link to="" className="text-primaryColor mb-2 block text-xs md:text-base">
                     {t("needHelps.returnPolicy")}
                   </Link>
                 </li>
                 <li>
-                  <Link to="" className="text-primaryOrange mb-2 block text-xs md:text-base">
+                  <Link to="" className="text-primaryColor mb-2 block text-xs md:text-base">
                     {t("needHelps.privacyPolicy")}
                   </Link>
                 </li>
@@ -111,17 +111,17 @@ export default function Footer() {
               </h3>
               <ul className="mt-2 md:mt-5">
                 <li>
-                  <Link to="" className="text-primaryOrange mb-2 block text-xs md:text-base">
+                  <Link to="" className="text-primaryColor mb-2 block text-xs md:text-base">
                     23/46 NHT, Tan Phu, Ho Chi Minh city
                   </Link>
                 </li>
                 <li>
-                  <Link to="" className="text-primaryOrange mb-2 block text-xs md:text-base">
+                  <Link to="" className="text-primaryColor mb-2 block text-xs md:text-base">
                     phamminhthuan912@gmail.com
                   </Link>
                 </li>
                 <li>
-                  <Link to="" className="text-primaryOrange mb-2 block text-xs md:text-base">
+                  <Link to="" className="text-primaryColor mb-2 block text-xs md:text-base">
                     +84-931-554-657
                   </Link>
                 </li>

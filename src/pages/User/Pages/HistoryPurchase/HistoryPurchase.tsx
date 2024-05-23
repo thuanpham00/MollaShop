@@ -80,7 +80,7 @@ export default function HistoryPurchase() {
                 className={classNames(
                   "flex flex-1 items-center justify-center border-b-2 py-4 text-center",
                   {
-                    "border-b-primaryOrange text-primaryOrange": status === item.status,
+                    "border-b-primaryColor text-primaryColor": status === item.status,
                     "border-b-black/10 text-gray-900": !darkMode && status !== item.status,
                     "border-b-white/90 text-white": darkMode && status !== item.status
                   }

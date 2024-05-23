@@ -208,12 +208,12 @@ export default function Home() {
             <h2 className="tracking-wider font_logo capitalize mt-0 md:mt-4 block text-black text-2xl md:text-5xl">
               {t("home:title")}
             </h2>
-            <h3 className="text-sm md:text-base text-gray-600 mt-0 md:mt-4 font-medium text-center">
+            <h3 className="text-sm md:text-lg text-gray-600 mt-0 md:mt-4 font-medium text-center">
               {t("home:desc")}
             </h3>
             <Link
               to={path.productList}
-              className="text-xs md:text-base tracking-widest uppercase mt-4 py-2 px-3 md:py-5 md:px-6 bg-primaryOrange hover:bg-primaryOrange/80 duration-200 rounded-sm shadow-sm text-white"
+              className="text-sm md:text-lg tracking-widest uppercase mt-4 py-2 px-3 md:py-5 md:px-6 bg-primaryColor hover:bg-primaryColor/80 duration-200 rounded-sm shadow-sm text-white"
             >
               {t("home:buy")}
             </Link>
@@ -276,7 +276,7 @@ export default function Home() {
                 </div>
                 <div>
                   <span
-                    className={`${darkMode ? "text-white" : "text-black"} font-semibold text-xs md:text-base md:line-clamp-1`}
+                    className={`${darkMode ? "text-white" : "text-black"} font-semibold text-sm md:text-lg md:line-clamp-1`}
                   >
                     {t("home:service.service_2.title")}
                   </span>
@@ -401,22 +401,4 @@ export default function Home() {
       </div>
     </div>
   )
-}
-
-{
-  /* <Slide {...buttonImageList}>
-            {imageList.map((item, index) => (
-              <div className="each-slide-effect rounded-md h-[150px] w-[250px]" key={index}>
-                <div
-                  style={{
-                    backgroundImage: `url(${item})`,
-                    borderRadius: "6px",
-                    backgroundSize: "cover",
-                    backgroundPosition: "center"
-                  }}
-                  className="h-full w-full"
-                ></div>
-              </div>
-            ))}
-          </Slide> */
 }

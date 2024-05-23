@@ -48,7 +48,7 @@ export default function DateSelect({ onChange, errorMessage, value }: Props) {
             onChange={handleChangeDate}
             value={value?.getDate() || date.day}
             name="day"
-            className="h-10 w-[32%] rounded-sm border border-black/10 px-3 cursor-pointer hover:border-primaryOrange hover:border-2 text-[#000]"
+            className="h-10 w-[32%] rounded-sm border border-black/10 px-3 cursor-pointer hover:border-primaryColor hover:border-2 text-[#000]"
           >
             <option disabled>Ngày</option>
             {range(1, 32).map((item) => (
@@ -62,7 +62,7 @@ export default function DateSelect({ onChange, errorMessage, value }: Props) {
             onChange={handleChangeDate}
             value={value?.getMonth() || date.month}
             name="month"
-            className="h-10 w-[32%] rounded-sm border border-black/10 px-3 cursor-pointer hover:border-primaryOrange hover:border-2 text-[#000]"
+            className="h-10 w-[32%] rounded-sm border border-black/10 px-3 cursor-pointer hover:border-primaryColor hover:border-2 text-[#000]"
           >
             <option disabled>Tháng</option>
             {range(0, 12).map((item) => (
@@ -76,7 +76,7 @@ export default function DateSelect({ onChange, errorMessage, value }: Props) {
             onChange={handleChangeDate}
             value={value?.getFullYear() || date.year}
             name="year"
-            className="h-10 w-[32%] rounded-sm border border-black/10 px-3 cursor-pointer hover:border-primaryOrange hover:border-2 text-[#000]"
+            className="h-10 w-[32%] rounded-sm border border-black/10 px-3 cursor-pointer hover:border-primaryColor hover:border-2 text-[#000]"
           >
             <option disabled>Năm</option>
             {range(1990, 2025).map((item) => (

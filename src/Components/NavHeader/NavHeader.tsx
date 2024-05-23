@@ -54,25 +54,27 @@ export default function NavHeader() {
   }
 
   return (
-    <div className={`${darkMode ? "bg-[#252323]" : "bg-[#f2f2f2]"} duration-200`}>
+    <div className="bg-primaryColor">
       <div className="container">
         <div className="flex items-center justify-end lg:justify-between py-1">
           <div
-            className={`${darkMode ? "text-[#f2f2f2]" : "text-grayText"} text-base hidden lg:block`}
+            className="text-[#f2f2f2]/90 text-base hidden lg:block"
           >
-            <span className="font-normal">{t("header.customerService")}</span>
-            <span className="ml-2 font-medium">931-554-657</span>
+            <span className="text-xs md:text-base font-normal">{t("header.customerService")}</span>
+            <span className="text-xs md:text-base ml-2 font-medium">931-554-657</span>
           </div>
 
           <div className="flex items-center gap-x-6">
             <Popover
-              className={`${darkMode ? "text-[#f2f2f2] hover:text-[#f2f2f2]/70" : "text-grayText hover:text-grayText/70"} flex items-center gap-x-1 py-1 text-base cursor-pointer`}
+              className={
+                "text-[#f2f2f2]/90 hover:text-[#f2f2f2]/70 flex items-center gap-x-1 py-1 text-base cursor-pointer"
+              }
               renderPopover={
                 <div className="bg-white relative shadow-md rounded-sm border border-gray-200">
                   <div className="flex flex-col">
                     <button
                       onClick={toggleLight}
-                      className="flex items-center justify-between px-5 py-3 hover:text-orange-600 hover:bg-slate-200"
+                      className="text-sm md:text-base flex items-center justify-between px-5 py-3 hover:text-orange-600 hover:bg-slate-200"
                     >
                       {t("header.modeLight")}
                       <svg
@@ -92,7 +94,7 @@ export default function NavHeader() {
                     </button>
                     <button
                       onClick={toggleDark}
-                      className="flex items-center justify-start gap-5 px-5 py-3 hover:text-orange-600 hover:bg-slate-200 mt-2"
+                      className="text-sm md:text-base flex items-center justify-start gap-5 px-5 py-3 hover:text-orange-600 hover:bg-slate-200 mt-2"
                     >
                       {t("header.modeDark")}
                       <svg
@@ -120,7 +122,7 @@ export default function NavHeader() {
                 viewBox="0 0 24 24"
                 strokeWidth={1.5}
                 stroke="currentColor"
-                className="w-6 h-6"
+                className="w-5 h-5"
               >
                 <path
                   strokeLinecap="round"
@@ -128,32 +130,32 @@ export default function NavHeader() {
                   d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.773-4.227-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z"
                 />
               </svg>
-              <span>{darkMode ? "Tối" : "Sáng"}</span>
+              <span className="text-xs md:text-base">{darkMode ? "Tối" : "Sáng"}</span>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
                 strokeWidth={1.5}
                 stroke="currentColor"
-                className="w-5 h-5"
+                className="w-4 h-4"
               >
                 <path strokeLinecap="round" strokeLinejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
               </svg>
             </Popover>
 
             <Popover
-              className={`${darkMode ? "text-[#f2f2f2] hover:text-[#f2f2f2]/70" : "text-grayText hover:text-grayText/70"} hidden md:flex items-center gap-x-1 py-1 text-base cursor-pointer`}
+              className="text-[#f2f2f2]/90 hover:text-[#f2f2f2]/70 hidden md:flex items-center gap-x-1 py-1 text-base cursor-pointer"
               renderPopover={
                 <div className="bg-white relative shadow-md rounded-sm border border-gray-200">
                   <div className="flex flex-col">
                     <button
-                      className="px-8 py-3 hover:text-orange-600 hover:bg-slate-200"
+                      className="text-sm md:text-base px-8 py-3 hover:text-orange-600 hover:bg-slate-200"
                       onClick={() => changeLanguage("vi")}
                     >
                       Tiếng việt
                     </button>
                     <button
-                      className="px-8 py-3 hover:text-orange-600 hover:bg-slate-200 mt-2"
+                      className="text-sm md:text-base px-8 py-3 hover:text-orange-600 hover:bg-slate-200 mt-2"
                       onClick={() => changeLanguage("en")}
                     >
                       English
@@ -168,7 +170,7 @@ export default function NavHeader() {
                 viewBox="0 0 24 24"
                 strokeWidth={1.5}
                 stroke="currentColor"
-                className="w-5 h-5"
+                className="w-4 h-4"
               >
                 <path
                   strokeLinecap="round"
@@ -176,14 +178,14 @@ export default function NavHeader() {
                   d="M12 21a9.004 9.004 0 0 0 8.716-6.747M12 21a9.004 9.004 0 0 1-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 0 1 7.843 4.582M12 3a8.997 8.997 0 0 0-7.843 4.582m15.686 0A11.953 11.953 0 0 1 12 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0 1 21 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0 1 12 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 0 1 3 12c0-1.605.42-3.113 1.157-4.418"
                 />
               </svg>
-              <span className="text-sm lg:text-base">{currentLanguage}</span>
+              <span className="text-sm md:text-base">{currentLanguage}</span>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
                 strokeWidth={1.5}
                 stroke="currentColor"
-                className="w-5 h-5"
+                className="w-4 h-4"
               >
                 <path strokeLinecap="round" strokeLinejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
               </svg>
@@ -197,19 +199,19 @@ export default function NavHeader() {
                     <div className="flex flex-col">
                       <Link
                         to={path.profile}
-                        className="p-3 hover:text-orange-600 hover:bg-slate-200"
+                        className="text-sm md:text-base p-3 hover:text-orange-600 hover:bg-slate-200"
                       >
                         {t("header.myAccount")}
                       </Link>
                       <Link
                         to={path.historyPurchase}
-                        className="p-3 hover:text-orange-600 hover:bg-slate-200"
+                        className="text-sm md:text-base p-3 hover:text-orange-600 hover:bg-slate-200"
                       >
                         {t("header.purchase")}
                       </Link>
                       <button
                         onClick={handleLogout}
-                        className="p-3 hover:text-orange-600 hover:bg-slate-200 text-left"
+                        className="text-sm md:text-base p-3 hover:text-orange-600 hover:bg-slate-200 text-left"
                       >
                         {t("header.logout")}
                       </button>
@@ -224,7 +226,7 @@ export default function NavHeader() {
                     className="w-full h-full rounded-full object-cover"
                   />
                 </div>
-                <span className="text-xs md:text-base font-semibold font_name">
+                <span className="text-[#f2f2f2]/90 hover:text-[#f2f2f2]/70 text-xs md:text-base font-medium font_name">
                   {getNameFromeEmail(isProfile?.email as string)}
                 </span>
               </Popover>
@@ -234,13 +236,13 @@ export default function NavHeader() {
               <div className="flex items-center gap-x-4">
                 <Link
                   to={path.register}
-                  className={`${darkMode ? "text-[#f2f2f2] hover:text-[#f2f2f2]/70" : "text-grayText hover:text-grayText/70"} text-base cursor-pointer`}
+                  className="text-[#f2f2f2]/90 hover:text-[#f2f2f2]/70 text-base cursor-pointer"
                 >
                   {t("header.register")}
                 </Link>
                 <Link
                   to={path.login}
-                  className={`${darkMode ? "text-[#f2f2f2] hover:text-[#f2f2f2]/70" : "text-grayText hover:text-grayText/70"} text-base cursor-pointer`}
+                  className="text-[#f2f2f2]/90 hover:text-[#f2f2f2]/70 text-base cursor-pointer"
                 >
                   {t("header.login")}
                 </Link>

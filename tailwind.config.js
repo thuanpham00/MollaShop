@@ -12,7 +12,7 @@ module.exports = {
     extend: {
       // ee4a00
       colors: {
-        primaryOrange: "#0077b6",
+        primaryColor: "rgba(31, 31, 31, 0.9)", // == #1f1f1f/90
         primaryGray: "#27323f",
         grayText: "#4d4d4d"
       }

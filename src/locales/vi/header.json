@@ -11,12 +11,11 @@
     "descLogin": "Bạn chưa có tài khoản?",
     "headerList": {
       "home": "Trang chủ",
-      "productList": "Tất cả sản phẩm",
+      "productList": "Shop",
       "watch": "Đồng hồ",
       "clothes": "Quần áo",
       "phone": "Điện thoại",
-      "phone2": "Điện thoại và phụ kiện",
-      "deal": "Khuyến mãi"
+      "new": "Tin tức"
     },
     "search": "Tìm kiếm sản phẩm...",
     "cart": {

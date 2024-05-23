@@ -368,7 +368,7 @@ export default function Cart() {
                 <Button
                   onClick={handleBuyPurchases}
                   disabled={buyProductMutation.isPending}
-                  classInput="sm:ml-4 mt-5 sm:mt-0 h-10 w-52 flex items-center justify-center gap-x-2 w-full bg-primaryOrange text-white uppercase hover:bg-primaryOrange/80 duration-300"
+                  classInput="sm:ml-4 mt-5 sm:mt-0 h-10 w-52 flex items-center justify-center gap-x-2 w-full bg-primaryColor text-white uppercase hover:bg-primaryColor/80 duration-300"
                 >
                   {t("productDetail:buyNow")}
                 </Button>
@@ -382,7 +382,7 @@ export default function Cart() {
               <h1>{t("cart:noProduct")}</h1>
               <Link
                 to={path.productList}
-                className="uppercase px-5 py-3 bg-primaryOrange hover:bg-primaryOrange/80 duration-200 transition-all text-white mt-5"
+                className="uppercase px-5 py-3 bg-primaryColor hover:bg-primaryColor/80 duration-200 transition-all text-white mt-5"
               >
                 {t("productDetail:buyNow")}
               </Link>

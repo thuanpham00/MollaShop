@@ -269,7 +269,7 @@ export default function Profile() {
                 <Button
                   type="submit"
                   className="mt-0"
-                  classInput="px-5 h-9 flex items-center bg-primaryOrange text-white text-sm rounded-sm hover:bg-primaryOrange/80 duration-200"
+                  classInput="px-5 h-9 flex items-center bg-primaryColor text-white text-sm rounded-sm hover:bg-primaryColor/80 duration-200"
                 >
                   {t("save")}
                 </Button>

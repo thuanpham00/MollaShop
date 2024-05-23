@@ -52,7 +52,7 @@ export default function UserSideNav() {
         <NavLink
           to={path.profile}
           className={({ isActive }) =>
-            `flex items-center gap-2 capitalize ${isActive ? "text-primaryOrange font-semibold" : "text-gray-500"}
+            `flex items-center gap-2 capitalize ${isActive ? "text-primaryColor font-semibold" : "text-gray-500"}
          ${darkMode && !isActive ? "text-white/90" : ""}`
           }
         >
@@ -76,7 +76,7 @@ export default function UserSideNav() {
         <NavLink
           to={path.changePassword}
           className={({ isActive }) =>
-            `mt-3 flex items-center gap-2 capitalize ${isActive ? "text-primaryOrange font-semibold" : "text-gray-500"}
+            `mt-3 flex items-center gap-2 capitalize ${isActive ? "text-primaryColor font-semibold" : "text-gray-500"}
          ${darkMode && !isActive ? "text-white/90" : ""}`
           }
         >
@@ -100,7 +100,7 @@ export default function UserSideNav() {
         <NavLink
           to={path.historyPurchase}
           className={({ isActive }) =>
-            `mt-3 flex items-center gap-2 capitalize ${isActive ? "text-primaryOrange font-semibold" : "text-gray-500"}
+            `mt-3 flex items-center gap-2 capitalize ${isActive ? "text-primaryColor font-semibold" : "text-gray-500"}
          ${darkMode && !isActive ? "text-white/90" : ""}`
           }
         >
