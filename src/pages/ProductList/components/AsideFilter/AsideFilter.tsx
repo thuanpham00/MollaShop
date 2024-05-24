@@ -69,7 +69,7 @@ export default function AsideFilter({ categories, queryConfig, className }: Prop
       <Link
         to={path.productList}
         className={classNames(
-          "flex items-center gap-x-2 text-gray-500 duration-200 capitalize font-semibold text-md",
+          "flex items-center gap-x-2 text-gray-500 duration-200 capitalize font-semibold text-sm md:text-base",
           {
             "text-primaryColor": !category
           }
@@ -93,11 +93,11 @@ export default function AsideFilter({ categories, queryConfig, className }: Prop
         {/* truyền key vào */}
       </Link>
 
-      <ul className="mt-5">
+      <ul className="mt-2 md:mt-5">
         {categories.map((item) => {
           const isActive = category === item._id
           return (
-            <li className="py-2 px-5" key={item._id}>
+            <li className="text-left text-xs md:text-base p-2 md:py-2 md:px-5" key={item._id}>
               <Link
                 to={{
                   pathname: path.productList,
@@ -126,7 +126,7 @@ export default function AsideFilter({ categories, queryConfig, className }: Prop
         })}
       </ul>
 
-      <div className="flex items-center gap-x-2 mt-10">
+      <div className="flex items-center gap-x-2 mt-4 md:mt-10">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -141,11 +141,13 @@ export default function AsideFilter({ categories, queryConfig, className }: Prop
             d="M12 3c2.755 0 5.455.232 8.083.678.533.09.917.556.917 1.096v1.044a2.25 2.25 0 0 1-.659 1.591l-5.432 5.432a2.25 2.25 0 0 0-.659 1.591v2.927a2.25 2.25 0 0 1-1.244 2.013L9.75 21v-6.568a2.25 2.25 0 0 0-.659-1.591L3.659 7.409A2.25 2.25 0 0 1 3 5.818V4.774c0-.54.384-1.006.917-1.096A48.32 48.32 0 0 1 12 3Z"
           />
         </svg>
-        <div className="capitalize font-semibold text-md">{t("asideFilter.filterSearch")}</div>
+        <div className="capitalize font-semibold text-sm md:text-lg">
+          {t("asideFilter.filterSearch")}
+        </div>
       </div>
 
-      <div className="mt-5">
-        <span>{t("asideFilter.priceRange")}</span>
+      <div className="mt-2 md:mt-5">
+        <span className="text-sm md:text-base">{t("asideFilter.priceRange")}</span>
 
         <form onSubmit={onSubmit} className="mt-2">
           <div className="flex items-center">
@@ -217,8 +219,8 @@ export default function AsideFilter({ categories, queryConfig, className }: Prop
         </form>
       </div>
 
-      <div className="mt-10 mb-4">
-        <span className="flex items-center gap-x-2 hover:text-gray-500 duration-200 uppercase font-semibold text-md">
+      <div className="mt-4 md:mt-10 mb-4">
+        <span className="flex items-center gap-x-2 hover:text-gray-500 duration-200 uppercase font-semibold text-sm md:text-lg">
           {t("asideFilter.rating")}
         </span>
 

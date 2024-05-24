@@ -102,7 +102,7 @@ export default function RatingStar({ queryConfig }: Props) {
                       </svg>
                     )
                   })}
-                {index !== 0 && <span className="pl-5">Trở lên</span>}
+                {index !== 0 && <span className="pl-5 text-sm md:text-lg">Trở lên</span>}
               </button>
             </li>
           )
