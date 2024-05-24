@@ -70,9 +70,9 @@ export default function Header() {
     <Fragment>
       <NavHeader />
 
-      <div className={`${activeNav ? "" : "sticky top-0 left-0 z-20"}`}>
+      <div className={`${activeNav ? "" : "sticky top-0 left-0 z-20"} shadow-lg`}>
         <div
-          className={`${darkMode ? "bg-gradient-to-r from-[#232526] to-[#414345]" : "bg-white"} duration-200 border-b border-gray-300`}
+          className={`${darkMode ? "bg-gradient-to-r from-[#232526] to-[#414345]" : "bg-[#f2f2f2]"} duration-200 border-b border-gray-300`}
         >
           <div className="container">
             {/* header_mobile */}
@@ -97,7 +97,7 @@ export default function Header() {
                   </SheetTrigger>
                   <SheetContent>
                     <SheetHeader>
-                      <div className="mt-5 flex items-center gap-4">
+                      <Link to={path.profile} className="mt-5 flex items-center gap-2">
                         <div className="w-10 h-10">
                           <img
                             src={getAvatarUrl(isProfile?.avatar as string)}
@@ -110,10 +110,10 @@ export default function Header() {
                             {getNameFromeEmail(isProfile?.email as string)}
                           </span>
                           <span className="text-primaryColor text-xs md:text-lg font-medium font_name">
-                            {getNameFromeEmail(isProfile?.name as string)}
+                            {isProfile?.name}
                           </span>
                         </div>
-                      </div>
+                      </Link>
                       <div>
                         <Link
                           to={path.home}
@@ -254,95 +254,36 @@ export default function Header() {
               </div>
 
               <div
-                className={`font_logo ${darkMode ? "text-[#f2f2f2]" : "text-primaryColor"} ml-8 text-4xl`}
+                className={`font_logo ${darkMode ? "text-[#f2f2f2]" : "text-primaryColor"} ml-6 text-4xl`}
               >
                 Molla
               </div>
 
               <div className="flex items-center">
-                <Popover
-                  renderPopover={
-                    <div className="mt-1 w-[400px] bg-white p-5 shadow-md rounded-sm">
-                      {purchasesInCart && purchasesInCart.length > 0 ? (
-                        <Fragment>
-                          <span className="text-gray-500 text-base font-semibold">
-                            {t("header.cart.title")}
-                          </span>
-
-                          <div className="mt-5">
-                            {purchasesInCart.slice(0, MAX_PURCHASES).map((item) => {
-                              return (
-                                <div className="mt-2 py-2 flex hover:bg-gray-200" key={item._id}>
-                                  <div className="flex-shrink-0">
-                                    <img
-                                      src={item.product.image}
-                                      alt={item.product.name}
-                                      className="w-11 h-11 object-cover"
-                                    />
-                                  </div>
-                                  <div className="ml-2 flex-grow overflow-hidden">
-                                    <div className="truncate">{item.product.name}</div>
-                                  </div>
-                                  <div className="ml-2 flex-shrink-0">
-                                    <span className="text-red-500">$</span>
-                                    <span className="text-red-500">
-                                      {formatCurrency(item.product.price)}
-                                    </span>
-                                  </div>
-                                </div>
-                              )
-                            })}
-                          </div>
-
-                          <div className="flex items-center justify-between">
-                            <span className="text-gray-500 text-sm">
-                              {purchasesInCart.length > MAX_PURCHASES
-                                ? purchasesInCart.length - MAX_PURCHASES
-                                : ""}
-                              {t("header.cart.add")}
-                            </span>
-                            <Link
-                              to={path.cart}
-                              className="p-3 bg-red-500 hover:bg-red/80 duration-300 text-white"
-                            >
-                              {t("header.cart.see")}
-                            </Link>
-                          </div>
-                        </Fragment>
-                      ) : (
-                        <div className="p-2 flex items-center justify-center flex-col">
-                          <img src={cartImg} alt="ảnh lỗi" className="w-[200px]" />
-                          <h1>{t("cart:noProduct")}</h1>
-                        </div>
-                      )}
-                    </div>
-                  }
+                <Link
+                  to={path.cart}
+                  className="w-12 h-12 flex items-center justify-center rounded-sm relative"
                 >
-                  <Link
-                    to="/"
-                    className="w-12 h-12 flex items-center justify-center rounded-sm relative"
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    strokeWidth={1.5}
+                    stroke={`${darkMode ? "white" : "black"}`}
+                    className="w-8 h-8"
                   >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      strokeWidth={1.5}
-                      stroke={`${darkMode ? "white" : "black"}`}
-                      className="w-8 h-8"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 0 0-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 0 0-16.536-1.84M7.5 14.25 5.106 5.272M6 20.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Zm12.75 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z"
-                      />
-                    </svg>
-                    {(purchasesInCart as Purchase[])?.length > 0 && (
-                      <span className="w-4 h-4 md:h-5 md:w-6 text-white bg-primaryColor rounded-full absolute top-1 md:top-0 right-0 md:-right-2 text-[12px] flex items-center justify-center">
-                        {purchasesInCart?.length}
-                      </span>
-                    )}
-                  </Link>
-                </Popover>
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 0 0-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 0 0-16.536-1.84M7.5 14.25 5.106 5.272M6 20.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Zm12.75 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z"
+                    />
+                  </svg>
+                  {(purchasesInCart as Purchase[])?.length > 0 && (
+                    <span className="w-4 h-4 md:h-5 md:w-6 text-white bg-primaryColor rounded-full absolute top-1 md:top-0 right-0 md:-right-2 text-[12px] flex items-center justify-center">
+                      {purchasesInCart?.length}
+                    </span>
+                  )}
+                </Link>
               </div>
             </div>
 
@@ -408,7 +349,7 @@ export default function Header() {
                             {getNameFromeEmail(isProfile?.email as string)}
                           </span>
                           <span className="text-primaryColor text-xs md:text-lg font-medium font_name">
-                            {getNameFromeEmail(isProfile?.name as string)}
+                            {isProfile?.name}
                           </span>
                         </div>
                       </div>
