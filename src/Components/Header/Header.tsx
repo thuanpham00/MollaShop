@@ -26,7 +26,8 @@ export default function Header() {
   const { t } = useTranslation(["header", "cart"])
   const { isAuthenticated, darkMode, isProfile } = useContext(AppContext)
 
-  const { onSubmitSearch, register } = useSearchProduct() // destructuring
+  const { onSubmitSearch_desktop, onSubmitSearch_mobile, registerLarge, registerSmall } =
+    useSearchProduct() // destructuring
 
   // khi chúng ta chuyển trang thì Header chỉ bị re-render
   // chứ không bị unmount - mounting again
@@ -72,7 +73,7 @@ export default function Header() {
 
       <div className={`${activeNav ? "" : "sticky top-0 left-0 z-20"} shadow-lg`}>
         <div
-          className={`${darkMode ? "bg-gradient-to-r from-[#232526] to-[#414345]" : "bg-[#f2f2f2]"} duration-200 border-b border-gray-300`}
+          className={`${darkMode ? "bg-gradient-to-r from-[#232526] to-[#414345]" : "bg-[#fff]"} duration-200 border-b border-gray-300`}
         >
           <div className="container">
             {/* header_mobile */}
@@ -287,13 +288,17 @@ export default function Header() {
               </div>
             </div>
 
-            <form autoComplete="off" onSubmit={onSubmitSearch} className="w-full md:hidden py-2">
+            <form
+              autoComplete="off"
+              onSubmit={onSubmitSearch_mobile}
+              className="w-full md:hidden py-2"
+            >
               <div className="w-full bg-[#f1f1f1] p-1 flex items-center rounded-full">
                 <input
                   type="text"
                   placeholder={t("header.search")}
                   className="w-full md:flex-grow outline-none py-2 px-3 text-sm md:text-base bg-transparent"
-                  {...register("name")}
+                  {...registerSmall("name")}
                 />
                 <div className="flex-shrink-0 pr-2 cursor-pointer">
                   <svg
@@ -357,13 +362,13 @@ export default function Header() {
                   </SheetContent>
                 </Sheet>
 
-                <form onSubmit={onSubmitSearch} className="w-[180px]">
+                <form onSubmit={onSubmitSearch_desktop} className="hidden md:block md:w-[180px]">
                   <div className="w-[180px] md:w-full bg-[#f1f1f1] p-1 flex items-center rounded-full">
                     <input
                       type="text"
                       placeholder={t("header.search")}
                       className="w-full md:flex-grow outline-none py-2 px-3 text-sm md:text-base bg-transparent"
-                      {...register("name")}
+                      {...registerLarge("name")}
                     />
                     <div className="flex-shrink-0 pr-2 cursor-pointer">
                       <svg

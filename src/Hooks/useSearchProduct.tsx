@@ -15,14 +15,43 @@ export default function useSearchProduct() {
   // console.log(queryConfig);
   const navigate = useNavigate()
 
-  const { handleSubmit, register } = useForm<FormData>({
+  // 1 form cho desktop và 1 form cho mobile
+  // vì 2 form sử dùng cùng 1 instance useForm sẽ gây xung đột dữ liệu ko submit được nên tách ra 2 instance khác nhau - tránh trùng lặp state
+  // gọi hàm submit sai
+  const { handleSubmit: handleSubmitLarge, register: registerLarge } = useForm<FormData>({
     resolver: yupResolver(nameSchema), // validate
     defaultValues: {
       name: ""
     }
   })
 
-  const onSubmitSearch = handleSubmit((data) => {
+  const { handleSubmit: handleSubmitSmall, register: registerSmall } = useForm<FormData>({
+    resolver: yupResolver(nameSchema), // validate
+    defaultValues: {
+      name: ""
+    }
+  })
+
+  const onSubmitSearch_desktop = handleSubmitLarge((data) => {
+    const config = queryConfig.order // nếu có order thì loại bỏ
+      ? omit(
+          {
+            ...queryConfig,
+            name: data.name
+          },
+          ["order", "sort_by"]
+        )
+      : {
+          ...queryConfig,
+          name: data.name
+        }
+    navigate({
+      pathname: path.productList,
+      search: createSearchParams(config).toString()
+    })
+  })
+
+  const onSubmitSearch_mobile = handleSubmitSmall((data) => {
     const config = queryConfig.order // nếu có order thì loại bỏ
       ? omit(
           {
@@ -42,7 +71,9 @@ export default function useSearchProduct() {
   })
 
   return {
-    onSubmitSearch,
-    register
+    onSubmitSearch_desktop,
+    onSubmitSearch_mobile,
+    registerLarge,
+    registerSmall
   }
 }
