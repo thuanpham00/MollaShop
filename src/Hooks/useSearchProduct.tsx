@@ -17,7 +17,7 @@ export default function useSearchProduct() {
 
   // 1 form cho desktop và 1 form cho mobile
   // vì 2 form sử dùng cùng 1 instance useForm sẽ gây xung đột dữ liệu ko submit được nên tách ra 2 instance khác nhau - tránh trùng lặp state
-  // gọi hàm submit sai
+  // và lỗi - gọi hàm submit sai
   const { handleSubmit: handleSubmitLarge, register: registerLarge } = useForm<FormData>({
     resolver: yupResolver(nameSchema), // validate
     defaultValues: {

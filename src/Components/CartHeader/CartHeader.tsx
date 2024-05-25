@@ -8,7 +8,7 @@ import { useTranslation } from "react-i18next"
 export default function CartHeader() {
   const { t } = useTranslation(["cart", "header"])
   const { darkMode } = useContext(AppContext)
-  const { onSubmitSearch, register } = useSearchProduct() // destructuring
+  const { onSubmitSearch_desktop, registerLarge } = useSearchProduct() // destructuring
 
   return (
     <div>
@@ -40,15 +40,15 @@ export default function CartHeader() {
             </div>
 
             <form
-              onSubmit={onSubmitSearch}
+              onSubmit={onSubmitSearch_desktop}
               className="md:col-start-7 md:col-span-6 lg:col-start-7 lg:col-span-6 shadow-sm"
             >
-              <div className="w-[420px] md:w-full bg-white p-1 flex items-center round-sm border border-gray-400">
+              <div className="w-[400px] md:w-full p-2 flex items-center rounded-full bg-[#f2f2f2]">
                 <input
                   type="text"
                   placeholder={t("header:header.search")}
-                  className="w-full md:flex-grow outline-none p-2 text-base"
-                  {...register("name")}
+                  className="w-full md:flex-grow outline-none p-2 text-base bg-transparent"
+                  {...registerLarge("name")}
                 />
                 <div className="flex-shrink-0 pr-2 cursor-pointer">
                   <svg
