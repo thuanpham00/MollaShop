@@ -47,7 +47,7 @@ const initialState: TypeInitialState = {
 
 export const AppContext = createContext<TypeInitialState>(initialState)
 
-// global state - context api - state toàn cục
+// global state - Context Api - state toàn cục : redux cũng tương tự
 export const AppProvider = ({ children }: Props) => {
   const { i18n } = useTranslation("header")
   const [darkMode, setDarkMode] = useState<boolean>(initialState.darkMode)

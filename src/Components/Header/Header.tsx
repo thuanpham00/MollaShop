@@ -20,6 +20,14 @@ import {
   // eslint-disable-next-line import/no-unresolved
 } from "@/ui/sheet"
 
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTrigger
+  // eslint-disable-next-line import/no-unresolved
+} from "@/ui/dialog"
+
 const MAX_PURCHASES = 5
 
 export default function Header() {
@@ -362,32 +370,57 @@ export default function Header() {
                   </SheetContent>
                 </Sheet>
 
-                <form onSubmit={onSubmitSearch_desktop} className="hidden md:block md:w-[180px]">
-                  <div className="w-[180px] md:w-full bg-[#f1f1f1] p-1 flex items-center rounded-full">
-                    <input
-                      type="text"
-                      placeholder={t("header.search")}
-                      className="w-full md:flex-grow outline-none py-2 px-3 text-sm md:text-base bg-transparent"
-                      {...registerLarge("name")}
-                    />
-                    <div className="flex-shrink-0 pr-2 cursor-pointer">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        strokeWidth={1.5}
-                        stroke="currentColor"
-                        className="w-4 h-4 md:w-6 md:h-6"
+                <Dialog>
+                  <DialogTrigger>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      strokeWidth={1.5}
+                      stroke={`${darkMode ? "#f1f1f1" : "#1f1f1f"}`}
+                      className="w-4 h-4 md:w-6 md:h-6"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"
+                      />
+                    </svg>
+                  </DialogTrigger>
+                  <DialogContent>
+                    <DialogHeader>
+                      <form
+                        onSubmit={onSubmitSearch_desktop}
+                        className="md:mt-5 hidden md:block md:w-full"
                       >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"
-                        />
-                      </svg>
-                    </div>
-                  </div>
-                </form>
+                        <div className="w-[180px] md:w-full bg-[#f1f1f1] p-1 flex items-center rounded-full">
+                          <input
+                            type="text"
+                            placeholder={t("header.search")}
+                            className="w-full md:flex-grow outline-none py-2 px-3 text-sm md:text-base bg-transparent"
+                            {...registerLarge("name")}
+                          />
+                          <div className="flex-shrink-0 pr-2 cursor-pointer">
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              fill="none"
+                              viewBox="0 0 24 24"
+                              strokeWidth={1.5}
+                              stroke="currentColor"
+                              className="w-4 h-4 md:w-6 md:h-6"
+                            >
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"
+                              />
+                            </svg>
+                          </div>
+                        </div>
+                      </form>
+                    </DialogHeader>
+                  </DialogContent>
+                </Dialog>
               </div>
 
               <div className="ml-6 col-span-8 rounded-md">

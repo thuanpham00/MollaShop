@@ -5,7 +5,7 @@ import { useMutation } from "@tanstack/react-query"
 import omit from "lodash/omit" /// giảm kích thước file
 
 import { useContext } from "react"
-import { Helmet } from "react-helmet"
+import { Helmet } from "react-helmet-async"
 import { useForm } from "react-hook-form"
 import { useTranslation } from "react-i18next"
 import { toast } from "react-toastify"

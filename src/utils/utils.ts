@@ -85,3 +85,16 @@ export const getAvatarUrl = (avatarName: string) => {
     return minhthuan
   }
 }
+
+export const demo = (value: number) => {
+  let result = 0
+  if (value < 10) {
+    result++
+  }
+  if (value % 2 == 0) {
+    result++
+  }
+  return result
+}
+
+// test coverage branch

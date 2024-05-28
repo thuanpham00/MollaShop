@@ -19,7 +19,7 @@ import keyBy from "lodash/keyBy"
 import { toast } from "react-toastify"
 import cartImg from "src/img/cart.png"
 import { useTranslation } from "react-i18next"
-import { Helmet } from "react-helmet"
+import { Helmet } from "react-helmet-async"
 
 type PurchaseType = {
   product_id: string

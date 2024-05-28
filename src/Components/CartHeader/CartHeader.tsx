@@ -43,11 +43,11 @@ export default function CartHeader() {
               onSubmit={onSubmitSearch_desktop}
               className="md:col-start-7 md:col-span-6 lg:col-start-7 lg:col-span-6 shadow-sm"
             >
-              <div className="w-[400px] md:w-full p-2 flex items-center rounded-full bg-[#f2f2f2]">
+              <div className="w-[400px] md:w-full p-1 flex items-center rounded-full bg-[#f2f2f2]">
                 <input
                   type="text"
                   placeholder={t("header:header.search")}
-                  className="w-full md:flex-grow outline-none p-2 text-base bg-transparent"
+                  className="w-full md:flex-grow outline-none py-2 px-3 md:p-2 text-sm md:text-base bg-transparent"
                   {...registerLarge("name")}
                 />
                 <div className="flex-shrink-0 pr-2 cursor-pointer">

@@ -21,7 +21,7 @@ import { ErrorResponse } from "src/types/utils.type"
 // gọi lại Purchase: giây thứ 4 - 6
 // refresh-token mới cho me:5 - 6
 
-class http {
+export class http {
   instance: AxiosInstance
   private accessToken: string
   private refreshToken: string

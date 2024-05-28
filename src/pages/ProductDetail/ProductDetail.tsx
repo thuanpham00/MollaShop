@@ -20,7 +20,7 @@ import { toast } from "react-toastify"
 import { AppContext } from "src/contexts/auth.context"
 import { path } from "src/constants/path"
 import { useTranslation } from "react-i18next"
-import { Helmet } from "react-helmet"
+import { Helmet } from "react-helmet-async"
 
 type AddToCart = {
   product_id: string

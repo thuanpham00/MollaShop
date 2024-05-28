@@ -57,9 +57,7 @@ export default function NavHeader() {
     <div className="bg-primaryColor">
       <div className="container">
         <div className="flex items-center justify-end lg:justify-between py-1">
-          <div
-            className="text-[#f2f2f2]/90 text-base hidden lg:block"
-          >
+          <div className="text-[#f2f2f2]/90 text-base hidden lg:block">
             <span className="text-xs md:text-base font-normal">{t("header.customerService")}</span>
             <span className="text-xs md:text-base ml-2 font-medium">931-554-657</span>
           </div>

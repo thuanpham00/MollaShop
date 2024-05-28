@@ -16,7 +16,7 @@ import { getAvatarUrl, isError422 } from "src/utils/utils"
 import { ErrorResponse } from "src/types/utils.type"
 import InputFileImage from "../../Components/InputFileImage"
 import { useTranslation } from "react-i18next"
-import { Helmet } from "react-helmet"
+import { Helmet } from "react-helmet-async"
 
 type FormData1 = Pick<UserSchemaType, "name" | "address" | "avatar" | "phone" | "date_of_birth">
 type FormDataString = {

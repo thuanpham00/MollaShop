@@ -51,6 +51,7 @@ export const resources = {
 
 export const defaultNS = "home" // giúp ko có truyền namespace thì lấy mặc định home
 
+// eslint-disable-next-line import/no-named-as-default-member
 i18n.use(initReactI18next).init({
   resources,
   lng: "en", // ngôn ngữ mặc định

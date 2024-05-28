@@ -10,7 +10,7 @@ import { categoriesApi } from "src/apis/categories"
 import useQueryConfig from "src/Hooks/useQueryConfig"
 import { useContext } from "react"
 import { AppContext } from "src/contexts/auth.context"
-import { Helmet } from "react-helmet"
+import { Helmet } from "react-helmet-async"
 
 export default function ProductList() {
   const { darkMode } = useContext(AppContext)

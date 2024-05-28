@@ -14,7 +14,7 @@ import { isError422 } from "src/utils/utils"
 import image1 from "src/img/shoppingBG.jpg"
 import image2 from "src/img/image_register.jpg"
 import { useTranslation } from "react-i18next"
-import { Helmet } from "react-helmet"
+import { Helmet } from "react-helmet-async"
 
 // type FormData = Omit<SchemaType, "confirm_password"> // không cần confirm_password
 // // dùng Omit để loại bỏ bớt thuộc tính
@@ -74,7 +74,6 @@ export default function Login() {
               message: formError.password
             })
           }
-          console.log(formError?.password)
         }
       }
     })

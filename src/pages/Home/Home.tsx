@@ -23,7 +23,7 @@ import productItem3 from "src/img/productItem3.png"
 import productItem4 from "src/img/productItem4.png"
 import productItem5 from "src/img/productItem5.png"
 import { useTranslation } from "react-i18next"
-import { Helmet } from "react-helmet"
+import { Helmet } from "react-helmet-async"
 import SlideBanner from "./components/SideBanner"
 
 const buttonSlideList = {

@@ -14,7 +14,7 @@ import { AppContext } from "src/contexts/auth.context"
 import image1 from "src/img/shoppingBG.jpg"
 import image2 from "src/img/image_register.jpg"
 import { useTranslation } from "react-i18next"
-import { Helmet } from "react-helmet"
+import { Helmet } from "react-helmet-async"
 
 const imageList = [image1, image2]
 
@@ -106,6 +106,7 @@ export default function Register() {
               className="rounded-sm shadow-md object-cover w-[600px] h-[470px]"
             />
           </div>
+
           <div className="lg:col-span-2">
             <div className="bg-white py-10 px-8 rounded shadow-md">
               <h1 className="text-primaryGray text-3xl font-normal">{t("header.register")}</h1>

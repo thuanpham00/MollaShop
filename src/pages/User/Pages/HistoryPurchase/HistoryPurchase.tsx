@@ -1,7 +1,7 @@
 import { keepPreviousData, useQuery } from "@tanstack/react-query"
 import classNames from "classnames"
 import { useContext } from "react"
-import { Helmet } from "react-helmet"
+import { Helmet } from "react-helmet-async"
 import { useTranslation } from "react-i18next"
 import { Link, createSearchParams } from "react-router-dom"
 import useQueryParams from "src/Hooks/useSearchParams"

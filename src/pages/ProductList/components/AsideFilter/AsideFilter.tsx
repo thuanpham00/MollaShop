@@ -12,6 +12,8 @@ import { queryParamConfig } from "src/Hooks/useQueryConfig"
 // import { omit } from "lodash"
 import omit from "lodash/omit" // giảm kích thước file
 import { useTranslation } from "react-i18next"
+import { useContext } from "react"
+import { AppContext } from "src/contexts/auth.context"
 
 interface Props {
   categories: Categories[]
@@ -24,6 +26,7 @@ type FormData = Pick<SchemaType, "price_max" | "price_min">
 const schemaPick = schema.pick(["price_max", "price_min"])
 
 export default function AsideFilter({ categories, queryConfig, className }: Props) {
+  const { darkMode } = useContext(AppContext)
   const { category } = queryConfig
   const { t } = useTranslation(["productList", "header"]) // sử i18next ngôn ngữ
 
@@ -69,9 +72,10 @@ export default function AsideFilter({ categories, queryConfig, className }: Prop
       <Link
         to={path.productList}
         className={classNames(
-          "flex items-center gap-x-2 text-gray-500 duration-200 capitalize font-semibold text-sm md:text-base",
+          "flex items-center gap-x-2 text-gray-400 duration-200 capitalize font-semibold text-sm md:text-base",
           {
-            "text-primaryColor": !category
+            "text-primaryColor": !category && !darkMode,
+            "text-white": !category && darkMode
           }
         )}
       >
@@ -107,8 +111,10 @@ export default function AsideFilter({ categories, queryConfig, className }: Prop
                   }).toString()
                 }}
                 className={classNames("relative font-medium", {
-                  "text-primaryColor": isActive,
-                  "text-gray-500": !isActive
+                  "text-primaryColor": isActive && !darkMode,
+                  "text-[#f2f2f2]": isActive && darkMode,
+                  "text-gray-400": !isActive && !darkMode,
+                  "text-[#fff]/60": !isActive && darkMode
                 })}
               >
                 {isActive && (
