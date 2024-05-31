@@ -1,6 +1,6 @@
-import { rest } from "msw"
-import { config } from "src/constants/config"
-import { HttpStatusCode } from "src/constants/httpStatusCode.enum"
+// import { rest } from "msw"
+// import { config } from "src/constants/config"
+// import { HttpStatusCode } from "src/constants/httpStatusCode.enum"
 
 export const access_token_1giay =
   "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2Mzc5NWNjYTcxYTZjMDI5ZGVjNDU0MyIsImVtYWlsIjoiYWRtaW5fQGdtYWlsLmNvbSIsInJvbGVzIjpbIlVzZXIiXSwiY3JlYXRlZF9hdCI6IjIwMjQtMDUtMjVUMTE6MDg6MjguMTc3WiIsImlhdCI6MTcxNjYzNTMwOCwiZXhwIjoxNzE2NjM1MzA5fQ.XSqC1ltfny9_iXv_h6YcNOCEAO-rR7BCvAeiIL-npjY"
@@ -33,14 +33,14 @@ export const loginRes = {
   }
 }
 
-const loginRequest = rest.post(`${config.baseUrl}login`, (req, res, ctx) => {
-  return res(ctx.status(HttpStatusCode.Ok), ctx.json(loginRes))
-})
+// const loginRequest = rest.post(`${config.baseUrl}login`, (req, res, ctx) => {
+//   return res(ctx.status(HttpStatusCode.Ok), ctx.json(loginRes))
+// })
 
-const refreshToken = rest.post(`${config.baseUrl}refresh`, (req, res, ctx) => {
-  return res(ctx.status(HttpStatusCode.Ok), ctx.json(loginRes))
-})
+// const refreshToken = rest.post(`${config.baseUrl}refresh`, (req, res, ctx) => {
+//   return res(ctx.status(HttpStatusCode.Ok), ctx.json(loginRes))
+// })
 
-const authRequest = [loginRequest]
+// const authRequest = [loginRequest]
 
-export default authRequest
+// export default authRequest

@@ -367,7 +367,7 @@ export default function Cart() {
                 </div>
                 <Button
                   onClick={handleBuyPurchases}
-                  disabled={buyProductMutation.isPending}
+                  disabled={buyProductMutation.isLoading}
                   classInput="sm:ml-4 mt-5 sm:mt-0 h-10 w-52 flex items-center justify-center gap-x-2 w-full bg-primaryColor text-white uppercase hover:bg-primaryColor/80 duration-300"
                 >
                   {t("productDetail:buyNow")}
