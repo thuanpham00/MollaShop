@@ -1,4 +1,3 @@
-import { yupResolver } from "@hookform/resolvers/yup"
 import { useMutation } from "@tanstack/react-query"
 import { useContext, useEffect, useState } from "react"
 import { useForm } from "react-hook-form"
@@ -15,6 +14,7 @@ import image1 from "src/img/shoppingBG.jpg"
 import image2 from "src/img/image_register.jpg"
 import { useTranslation } from "react-i18next"
 import { Helmet } from "react-helmet-async"
+import { yupResolver } from "@hookform/resolvers/yup"
 
 // type FormData = Omit<SchemaType, "confirm_password"> // không cần confirm_password
 // // dùng Omit để loại bỏ bớt thuộc tính
@@ -114,6 +114,7 @@ export default function Login() {
               className="rounded-sm shadow-md object-cover w-[600px] h-[395px]"
             />
           </div>
+
           <div className="lg:col-span-2">
             <div className="bg-white py-10 px-8 rounded shadow-md">
               <h1 className="text-primaryGray text-3xl font-normal">{t("header.login")}</h1>
@@ -140,8 +141,8 @@ export default function Login() {
                 <Button
                   className="mt-2"
                   type="submit"
-                  disabled={loginAccountMutation.isPending}
-                  isLoading={loginAccountMutation.isPending}
+                  disabled={loginAccountMutation.isLoading}
+                  isLoading={loginAccountMutation.isLoading}
                 >
                   {t("header.login")}
                 </Button>

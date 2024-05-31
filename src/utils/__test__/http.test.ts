@@ -1,7 +1,16 @@
 import { beforeEach, describe, expect, it } from "vitest"
 import { http } from "../http"
-import { HttpStatusCode } from "@/constants/httpStatusCode.enum"
+import { HttpStatusCode } from "src/constants/httpStatusCode.enum"
 import { setAccessTokenToLs, setRefreshTokenToLs } from "../auth"
+import { access_token_1giay, refresh_token_1000days } from "src/msw/auth.msw"
+
+/**
+ * beforeAll: Chạy một lần trước tất cả các bài kiểm thử trong một khối test. 
+   beforeEach: Chạy trước mỗi bài kiểm thử.
+ */
+
+// expect dùng để viết các biểu thức kiểm tra tính đúng sai
+// waitFor được sử dụng để đợi các thay đổi không đồng bộ xảy ra
 
 describe("http axios", () => {
   let Http = new http().instance
@@ -9,11 +18,6 @@ describe("http axios", () => {
     localStorage.clear()
     Http = new http().instance
   })
-  const access_token_1giay =
-    "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2Mzc5NWNjYTcxYTZjMDI5ZGVjNDU0MyIsImVtYWlsIjoiYWRtaW5fQGdtYWlsLmNvbSIsInJvbGVzIjpbIlVzZXIiXSwiY3JlYXRlZF9hdCI6IjIwMjQtMDUtMjVUMTE6MDg6MjguMTc3WiIsImlhdCI6MTcxNjYzNTMwOCwiZXhwIjoxNzE2NjM1MzA5fQ.XSqC1ltfny9_iXv_h6YcNOCEAO-rR7BCvAeiIL-npjY"
-
-  const refresh_token_1000days =
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2Mzc5NWNjYTcxYTZjMDI5ZGVjNDU0MyIsImVtYWlsIjoiYWRtaW5fQGdtYWlsLmNvbSIsInJvbGVzIjpbIlVzZXIiXSwiY3JlYXRlZF9hdCI6IjIwMjQtMDUtMjVUMTE6MTI6MzAuMjYzWiIsImlhdCI6MTcxNjYzNTU1MCwiZXhwIjoxODAzMDM1NTUwfQ.5G8fPhCn2xoVqN7CZU186gPnB2DeSSuAeGZVK5zyVO4"
 
   it("goi api", async () => {
     // ko nên đụng đến thư mục apis

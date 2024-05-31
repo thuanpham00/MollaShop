@@ -28,7 +28,7 @@ import {
 } from "@/ui/sheet"
 
 export default function SortProductList({ queryConfig, page_size }: Props) {
-  const { t } = useTranslation("productList")
+  const { t } = useTranslation("productList") // translation
   const { darkMode } = useContext(AppContext)
   const page = Number(queryConfig.page)
   const { sort_by = sortBy.view, order } = queryConfig
@@ -80,46 +80,55 @@ export default function SortProductList({ queryConfig, page_size }: Props) {
         <div className="flex items-center flex-wrap gap-2">
           <span className="hidden md:block md:text-base">{t("sortByProduct.desc")}</span>
           <button
-            className={classNames("p-[6px] md:px-4 md:h-[40px] text-xs md:text-base rounded-sm", {
-              "bg-primaryColor text-white": isActiveSort(sortBy.view),
-              border: !isActiveSort(sortBy.view),
-              "border-black text-black": !darkMode && !isActiveSort(sortBy.view),
-              "border-white text-white": darkMode && !isActiveSort(sortBy.view)
-            })}
+            className={classNames(
+              "p-[6px] md:px-4 md:h-[40px] text-xs md:text-base rounded-sm border",
+              {
+                "bg-primaryColor text-white": !darkMode && isActiveSort(sortBy.view),
+                "border-black text-black": !darkMode && !isActiveSort(sortBy.view),
+                "border-white text-white": darkMode && !isActiveSort(sortBy.view),
+                "bg-[#fff] text-black": darkMode && isActiveSort(sortBy.view)
+              }
+            )}
             onClick={() => handleSort(sortBy.view)}
           >
             {t("sortByProduct.view")}
           </button>
           <button
-            className={classNames("p-[6px] md:px-4 md:h-[40px] text-xs md:text-base rounded-sm", {
-              "bg-primaryColor text-white": isActiveSort(sortBy.createdAt),
-              border: !isActiveSort(sortBy.createdAt),
-              "border-black text-black": !darkMode && !isActiveSort(sortBy.createdAt),
-              "border-white text-white": darkMode && !isActiveSort(sortBy.createdAt)
-            })}
+            className={classNames(
+              "p-[6px] md:px-4 md:h-[40px] text-xs md:text-base rounded-sm border",
+              {
+                "bg-primaryColor text-white": !darkMode && isActiveSort(sortBy.createdAt),
+                "border-black text-black": !darkMode && !isActiveSort(sortBy.createdAt),
+                "border-white text-white": darkMode && !isActiveSort(sortBy.createdAt),
+                "bg-[#fff] text-black": darkMode && isActiveSort(sortBy.createdAt)
+              }
+            )}
             onClick={() => handleSort(sortBy.createdAt)}
           >
             {t("sortByProduct.createdAt")}
           </button>
           <button
-            className={classNames("p-[6px] md:px-4 md:h-[40px] text-xs md:text-base rounded-sm", {
-              "bg-primaryColor text-white": isActiveSort(sortBy.sold),
-              border: !isActiveSort(sortBy.sold),
-              "border-black text-black": !darkMode && !isActiveSort(sortBy.sold),
-              "border-white text-white": darkMode && !isActiveSort(sortBy.sold)
-            })}
+            className={classNames(
+              "p-[6px] md:px-4 md:h-[40px] text-xs md:text-base rounded-sm border",
+              {
+                "bg-primaryColor text-white": !darkMode && isActiveSort(sortBy.sold),
+                "border-black text-black": !darkMode && !isActiveSort(sortBy.sold),
+                "border-white text-white": darkMode && !isActiveSort(sortBy.sold),
+                "bg-[#fff] text-black": darkMode && isActiveSort(sortBy.sold)
+              }
+            )}
             onClick={() => handleSort(sortBy.sold)}
           >
             {t("sortByProduct.sold")}
           </button>
           <select
             className={classNames(
-              "p-[6px] w-[60px] md:w-[170px] md:h-[40px] text-xs md:text-base rounded-sm outline-none",
+              "p-[6px] w-[60px] md:w-[170px] md:h-[40px] text-xs md:text-base rounded-sm outline-none border",
               {
-                "bg-primaryColor text-white": isActiveSort(sortBy.price),
-                border: !isActiveSort(sortBy.price),
-                "border-black text-black bg-transparent": !darkMode && !isActiveSort(sortBy.price),
-                "border-white text-white bg-transparent": darkMode && !isActiveSort(sortBy.price)
+                "bg-primaryColor text-white": !darkMode && isActiveSort(sortBy.price),
+                "border-black text-black": !darkMode && !isActiveSort(sortBy.price),
+                "bg-transparent border-white text-white": darkMode && !isActiveSort(sortBy.price),
+                "bg-[#fff] text-black": darkMode && isActiveSort(sortBy.price)
               }
             )}
             value={order || ""}

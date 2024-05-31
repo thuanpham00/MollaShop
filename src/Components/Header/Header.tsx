@@ -79,7 +79,7 @@ export default function Header() {
     <Fragment>
       <NavHeader />
 
-      <div className={`${activeNav ? "" : "sticky top-0 left-0 z-20"} shadow-lg`}>
+      <header className={`${activeNav ? "" : "sticky top-0 left-0 z-20"} shadow-lg`}>
         <div
           className={`${darkMode ? "bg-gradient-to-r from-[#232526] to-[#414345]" : "bg-[#fff]"} duration-200 border-b border-gray-300`}
         >
@@ -359,10 +359,10 @@ export default function Header() {
                         </div>
                         <div className="flex flex-col justify-start">
                           <span className="mt-5 text-primaryColor text-xs md:text-xl font-semibold font_name">
-                            {getNameFromeEmail(isProfile?.email as string)}
+                            {getNameFromeEmail(isProfile?.email as string) || "Email user"}
                           </span>
                           <span className="text-primaryColor text-xs md:text-lg font-medium font_name">
-                            {isProfile?.name}
+                            {isProfile?.name || "Name user"}
                           </span>
                         </div>
                       </div>
@@ -653,7 +653,7 @@ export default function Header() {
             </div>
           </div>
         </div>
-      </div>
+      </header>
     </Fragment>
   )
 }

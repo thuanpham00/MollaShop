@@ -81,16 +81,26 @@ export default function ProductDetail() {
             queryKey: ["purchaseList", { status: purchaseStatus.inCart }] // addToCart - cập nhật data query
           }),
             toast.success("Thêm sản phẩm vào giỏ hàng thành công")
+        },
+        onError: () => {
+          toast.error("Vui lòng đăng nhập")
         }
       }
     )
   }
 
   const buyNow = async () => {
-    const response = await addToCartMutation.mutateAsync({
-      buy_count: buyCount,
-      product_id: product?._id as string
-    })
+    const response = await addToCartMutation.mutateAsync(
+      {
+        buy_count: buyCount,
+        product_id: product?._id as string
+      },
+      {
+        onError: () => {
+          toast.error("Vui lòng đăng nhập")
+        }
+      }
+    )
     // dùng mutateAsync chức năng tương tự mutate
     const purchase = response.data.data
     navigate(path.cart, {
@@ -98,7 +108,6 @@ export default function ProductDetail() {
         purchaseId: purchase._id // điều hướng trang -> cart - đồng thời truyền state ở trang hiện tại sang trang mới
       }
     })
-    console.log(purchase)
   }
 
   const [currentImagesIndex, setCurrentImagesIndex] = useState([0, 5])

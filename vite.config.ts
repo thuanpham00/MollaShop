@@ -11,7 +11,8 @@ export default defineConfig({
     port: 4000 // có thể thay port khác
   },
   test: {
-    environment: "jsdom" // or 'jsdom', 'node' // thay dổi môi trường để test
+    environment: "jsdom", // or 'jsdom', 'node' // thay dổi môi trường để test
+    setupFiles: path.resolve(__dirname, "./vitest.setup.js") // dùng để test mock API
   },
   css: {
     devSourcemap: true // thể hiện đường dẫn src map css

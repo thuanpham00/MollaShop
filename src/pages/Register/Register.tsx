@@ -28,6 +28,7 @@ export default function Register() {
   const { t } = useTranslation("header")
   const { darkMode } = useContext(AppContext)
   const navigate = useNavigate()
+
   const {
     formState: { errors },
     register,
@@ -143,8 +144,8 @@ export default function Register() {
                 <Button
                   className="mt-2"
                   type="submit"
-                  disabled={registerAccountMutation.isPending}
-                  isLoading={registerAccountMutation.isPending}
+                  disabled={registerAccountMutation.isLoading}
+                  isLoading={registerAccountMutation.isLoading}
                 >
                   {t("header.register")}
                 </Button>
