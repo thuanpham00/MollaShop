@@ -1,0 +1,3238 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`ProductDetail > render UI ProductDetail 1`] = `
+<body>
+  <div>
+    <div>
+      <div
+        class="bg-primaryColor"
+      >
+        <div
+          class="container"
+        >
+          <div
+            class="flex items-center justify-end lg:justify-between py-1"
+          >
+            <div
+              class="text-[#f2f2f2]/90 text-base hidden lg:block"
+            >
+              <span
+                class="text-xs md:text-base font-normal"
+              >
+                24/7 Customer service
+              </span>
+              <span
+                class="text-xs md:text-base ml-2 font-medium"
+              >
+                931-554-657
+              </span>
+            </div>
+            <div
+              class="flex items-center gap-x-6"
+            >
+              <div
+                class="text-[#f2f2f2]/90 hover:text-[#f2f2f2]/70 flex items-center gap-x-1 py-1 text-base cursor-pointer"
+              >
+                <svg
+                  class="w-5 h-5"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.773-4.227-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+                <span
+                  class="text-xs md:text-base"
+                >
+                  Sáng
+                </span>
+                <svg
+                  class="w-4 h-4"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="m19.5 8.25-7.5 7.5-7.5-7.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </div>
+              <div
+                class="text-[#f2f2f2]/90 hover:text-[#f2f2f2]/70 hidden md:flex items-center gap-x-1 py-1 text-base cursor-pointer"
+              >
+                <svg
+                  class="w-4 h-4"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M12 21a9.004 9.004 0 0 0 8.716-6.747M12 21a9.004 9.004 0 0 1-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 0 1 7.843 4.582M12 3a8.997 8.997 0 0 0-7.843 4.582m15.686 0A11.953 11.953 0 0 1 12 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0 1 21 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0 1 12 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 0 1 3 12c0-1.605.42-3.113 1.157-4.418"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+                <span
+                  class="text-sm md:text-base"
+                >
+                  English
+                </span>
+                <svg
+                  class="w-4 h-4"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="m19.5 8.25-7.5 7.5-7.5-7.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </div>
+              <div
+                class="flex items-center gap-x-4"
+              >
+                <a
+                  class="text-[#f2f2f2]/90 hover:text-[#f2f2f2]/70 text-base cursor-pointer"
+                  href="/register"
+                >
+                  Register
+                </a>
+                <a
+                  class="text-[#f2f2f2]/90 hover:text-[#f2f2f2]/70 text-base cursor-pointer"
+                  href="/login"
+                >
+                  Login
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <header
+        class=" shadow-lg"
+      >
+        <div
+          class="bg-[#fff] duration-200 border-b border-gray-300"
+        >
+          <div
+            class="container"
+          >
+            <div
+              class="flex items-center justify-between md:hidden gap-4 py-2"
+            >
+              <div
+                class="flex items-center gap-4"
+              >
+                <button
+                  aria-controls="radix-:r4:"
+                  aria-expanded="false"
+                  aria-haspopup="dialog"
+                  data-state="closed"
+                  type="button"
+                >
+                  <svg
+                    class="h-9 w-9"
+                    fill="none"
+                    stroke="#1f1f1f"
+                    stroke-width="1.5"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </button>
+              </div>
+              <div
+                class="font_logo text-primaryColor ml-6 text-4xl"
+              >
+                Molla
+              </div>
+              <div
+                class="flex items-center"
+              >
+                <a
+                  class="w-12 h-12 flex items-center justify-center rounded-sm relative"
+                  href="/cart"
+                >
+                  <svg
+                    class="w-8 h-8"
+                    fill="none"
+                    stroke="black"
+                    stroke-width="1.5"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 0 0-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 0 0-16.536-1.84M7.5 14.25 5.106 5.272M6 20.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Zm12.75 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </a>
+              </div>
+            </div>
+            <form
+              autocomplete="off"
+              class="w-full md:hidden py-2"
+            >
+              <div
+                class="w-full bg-[#f1f1f1] p-1 flex items-center rounded-full"
+              >
+                <input
+                  class="w-full md:flex-grow outline-none py-2 px-3 text-sm md:text-base bg-transparent"
+                  name="name"
+                  placeholder="Search product..."
+                  type="text"
+                />
+                <div
+                  class="flex-shrink-0 pr-2 cursor-pointer"
+                >
+                  <svg
+                    class="w-4 h-4 md:w-6 md:h-6"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </div>
+              </div>
+            </form>
+            <div
+              class="hidden md:grid grid-cols-12 gap-4 py-4 items-center"
+            >
+              <div
+                class="col-span-2 flex items-center gap-2"
+              >
+                <button
+                  aria-controls="radix-:r7:"
+                  aria-expanded="false"
+                  aria-haspopup="dialog"
+                  data-state="closed"
+                  type="button"
+                >
+                  <svg
+                    class="h-12 w-12"
+                    fill="none"
+                    stroke="#1f1f1f"
+                    stroke-width="1.5"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </button>
+                <button
+                  aria-controls="radix-:ra:"
+                  aria-expanded="false"
+                  aria-haspopup="dialog"
+                  data-state="closed"
+                  type="button"
+                >
+                  <svg
+                    class="w-4 h-4 md:w-6 md:h-6"
+                    fill="none"
+                    stroke="#1f1f1f"
+                    stroke-width="1.5"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </button>
+              </div>
+              <div
+                class="ml-6 col-span-8 rounded-md"
+              >
+                <div
+                  class="flex items-center justify-center gap-4"
+                >
+                  <a
+                    class="flex items-center gap-1 text-primaryColor hover:text-primaryColor/70"
+                    href="/"
+                  >
+                    <span
+                      class="text-sm md:text-base font-semibold capitalize"
+                    >
+                      Home
+                    </span>
+                    <svg
+                      class="w-4 h-4"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.5"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="m19.5 8.25-7.5 7.5-7.5-7.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                  </a>
+                  <a
+                    class="flex items-center justify-center gap-1 text-primaryColor hover:text-primaryColor/70"
+                    href="/productList"
+                  >
+                    <span
+                      class="text-sm md:text-base font-semibold capitalize"
+                    >
+                      Shop
+                    </span>
+                    <svg
+                      class="w-4 h-4"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.5"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="m19.5 8.25-7.5 7.5-7.5-7.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                  </a>
+                  <a
+                    class="flex items-center gap-1 text-primaryColor hover:text-primaryColor/70"
+                    href="/productList"
+                  >
+                    <span
+                      class="text-sm md:text-base font-semibold capitalize"
+                    >
+                      News
+                    </span>
+                    <svg
+                      class="w-4 h-4"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.5"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="m19.5 8.25-7.5 7.5-7.5-7.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                  </a>
+                  <div
+                    class="font_logo text-primaryColor text-[28px] md:text-3xl lg:text-5xl"
+                  >
+                    Molla
+                  </div>
+                  <a
+                    class="flex items-center gap-1 text-primaryColor hover:text-primaryColor/70"
+                    href="/productList?page=1&limit=15&sort_by=view&category=60afacca6ef5b902180aacaf"
+                  >
+                    <span
+                      class="text-sm md:text-base font-semibold capitalize"
+                    >
+                      Watch
+                    </span>
+                    <svg
+                      class="w-4 h-4"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.5"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="m19.5 8.25-7.5 7.5-7.5-7.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                  </a>
+                  <a
+                    class="flex items-center gap-1 text-primaryColor hover:text-primaryColor/70"
+                    href="/productList?page=1&limit=15&category=60aba4e24efcc70f8892e1c6&sort_by=view"
+                  >
+                    <span
+                      class="text-sm md:text-base font-semibold capitalize"
+                    >
+                      Clothes
+                    </span>
+                    <svg
+                      class="w-4 h-4"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.5"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="m19.5 8.25-7.5 7.5-7.5-7.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                  </a>
+                  <a
+                    class="flex items-center gap-1 text-primaryColor hover:text-primaryColor/70"
+                    href="/productList?page=1&limit=15&category=60afafe76ef5b902180aacb5&sort_by=view"
+                  >
+                    <span
+                      class="text-sm md:text-base font-semibold capitalize"
+                    >
+                      Phone
+                    </span>
+                    <svg
+                      class="w-4 h-4"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.5"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="m19.5 8.25-7.5 7.5-7.5-7.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                  </a>
+                </div>
+              </div>
+              <div
+                class="col-span-2 justify-self-end"
+              >
+                <div>
+                  <a
+                    class="w-12 h-12 flex items-center justify-center rounded-sm relative"
+                    href="/"
+                  >
+                    <svg
+                      class="w-8 h-8 md:w-11 md:h-11"
+                      fill="none"
+                      stroke="black"
+                      stroke-width="1.5"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 0 0-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 0 0-16.536-1.84M7.5 14.25 5.106 5.272M6 20.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Zm12.75 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+      <div
+        class="bg-gray-100 py-6"
+      >
+        <div
+          class="container"
+        >
+          <div
+            class="bg-[#fff] p-4 shadow"
+          >
+            <div
+              class="grid grid-cols-1 md:grid-cols-12 gap-9"
+            >
+              <div
+                class="md:col-span-5"
+              >
+                <div
+                  class="relative w-full pt-[100%] shadow overflow-hidden cursor-zoom-in"
+                >
+                  <img
+                    alt="Điện thoại OPPO A12 (3GB/32GB) - Hàng chính hãng"
+                    class="absolute pointer-events-none top-0 left-0 w-full h-full object-cover"
+                    src="https://api-ecom.duthanhduoc.com/images/aa374023-7a5b-46ea-aca3-dad1b29fb015.jpg"
+                  />
+                </div>
+                <div
+                  class="relative mt-4 grid grid-cols-5 gap-1"
+                >
+                  <button
+                    class="absolute left-0 top-1/2 -translate-y-1/2 z-10 h-9 w-5 bg-black/20 text-white"
+                  >
+                    <svg
+                      class="w-5 h-5"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.5"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M15.75 19.5 8.25 12l7.5-7.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                  </button>
+                  <div
+                    class="relative w-full pt-[100%]"
+                  >
+                    <img
+                      alt="Điện thoại OPPO A12 (3GB/32GB) - Hàng chính hãng"
+                      class="cursor-pointer w-full h-full object-cover bg-white absolute left-0 top-0"
+                      src="https://api-ecom.duthanhduoc.com/images/aa374023-7a5b-46ea-aca3-dad1b29fb015.jpg"
+                    />
+                    <div
+                      class="absolute inset-0 border border-red-500"
+                    />
+                  </div>
+                  <div
+                    class="relative w-full pt-[100%]"
+                  >
+                    <img
+                      alt="Điện thoại OPPO A12 (3GB/32GB) - Hàng chính hãng"
+                      class="cursor-pointer w-full h-full object-cover bg-white absolute left-0 top-0"
+                      src="https://api-ecom.duthanhduoc.com/images/b997dac2-2674-4e20-b5ee-459566b077e7.jpg"
+                    />
+                  </div>
+                  <div
+                    class="relative w-full pt-[100%]"
+                  >
+                    <img
+                      alt="Điện thoại OPPO A12 (3GB/32GB) - Hàng chính hãng"
+                      class="cursor-pointer w-full h-full object-cover bg-white absolute left-0 top-0"
+                      src="https://api-ecom.duthanhduoc.com/images/ac328d77-6014-4a2d-8626-924ac35876df.jpg"
+                    />
+                  </div>
+                  <div
+                    class="relative w-full pt-[100%]"
+                  >
+                    <img
+                      alt="Điện thoại OPPO A12 (3GB/32GB) - Hàng chính hãng"
+                      class="cursor-pointer w-full h-full object-cover bg-white absolute left-0 top-0"
+                      src="https://api-ecom.duthanhduoc.com/images/5061fefa-bded-4fb0-80e5-3623656a4816.jpg"
+                    />
+                  </div>
+                  <div
+                    class="relative w-full pt-[100%]"
+                  >
+                    <img
+                      alt="Điện thoại OPPO A12 (3GB/32GB) - Hàng chính hãng"
+                      class="cursor-pointer w-full h-full object-cover bg-white absolute left-0 top-0"
+                      src="https://api-ecom.duthanhduoc.com/images/02c08a86-4d9b-437b-ae02-f1d49cf2933b.jpg"
+                    />
+                  </div>
+                  <button
+                    class="absolute right-0 top-1/2 -translate-y-1/2 z-10 h-9 w-5 bg-black/20 text-white"
+                  >
+                    <svg
+                      class="w-5 h-5"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.5"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="m8.25 4.5 7.5 7.5-7.5 7.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+              <div
+                class="md:col-span-7"
+              >
+                <h1
+                  class="font-medium uppercase text-xl "
+                >
+                  Điện thoại OPPO A12 (3GB/32GB) - Hàng chính hãng
+                </h1>
+                <div
+                  class="mt-2 flex items-center gap-4 "
+                >
+                  <div
+                    class="flex items-center gap-1"
+                  >
+                    <span
+                      class="border-b-orange-500 border-b text-orange-500"
+                    >
+                      4.2
+                    </span>
+                    <div
+                      class="flex items-center"
+                    >
+                      <div
+                        class="relative"
+                      >
+                        <div
+                          class="absolute top-0 left-0 h-full overflow-hidden"
+                          style="width: 100%;"
+                        >
+                          <svg
+                            class="w-2 h-2 md:h-4 md:w-4 fill-yellow-300 text-yellow-300"
+                            enable-background="new 0 0 15 15"
+                            viewBox="0 0 15 15"
+                            x="0"
+                            y="0"
+                          >
+                            <polygon
+                              points="7.5 .8 9.7 5.4 14.5 5.9 10.7 9.1 11.8 14.2 7.5 11.6 3.2 14.2 4.3 9.1 .5 5.9 5.3 5.4"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              stroke-miterlimit="10"
+                            />
+                          </svg>
+                        </div>
+                        <svg
+                          class="w-2 h-2 md:h-4 md:w-4 fill-current text-gray-300"
+                          enable-background="new 0 0 15 15"
+                          viewBox="0 0 15 15"
+                          x="0"
+                          y="0"
+                        >
+                          <polygon
+                            points="7.5 .8 9.7 5.4 14.5 5.9 10.7 9.1 11.8 14.2 7.5 11.6 3.2 14.2 4.3 9.1 .5 5.9 5.3 5.4"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-miterlimit="10"
+                          />
+                        </svg>
+                      </div>
+                      <div
+                        class="relative"
+                      >
+                        <div
+                          class="absolute top-0 left-0 h-full overflow-hidden"
+                          style="width: 100%;"
+                        >
+                          <svg
+                            class="w-2 h-2 md:h-4 md:w-4 fill-yellow-300 text-yellow-300"
+                            enable-background="new 0 0 15 15"
+                            viewBox="0 0 15 15"
+                            x="0"
+                            y="0"
+                          >
+                            <polygon
+                              points="7.5 .8 9.7 5.4 14.5 5.9 10.7 9.1 11.8 14.2 7.5 11.6 3.2 14.2 4.3 9.1 .5 5.9 5.3 5.4"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              stroke-miterlimit="10"
+                            />
+                          </svg>
+                        </div>
+                        <svg
+                          class="w-2 h-2 md:h-4 md:w-4 fill-current text-gray-300"
+                          enable-background="new 0 0 15 15"
+                          viewBox="0 0 15 15"
+                          x="0"
+                          y="0"
+                        >
+                          <polygon
+                            points="7.5 .8 9.7 5.4 14.5 5.9 10.7 9.1 11.8 14.2 7.5 11.6 3.2 14.2 4.3 9.1 .5 5.9 5.3 5.4"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-miterlimit="10"
+                          />
+                        </svg>
+                      </div>
+                      <div
+                        class="relative"
+                      >
+                        <div
+                          class="absolute top-0 left-0 h-full overflow-hidden"
+                          style="width: 100%;"
+                        >
+                          <svg
+                            class="w-2 h-2 md:h-4 md:w-4 fill-yellow-300 text-yellow-300"
+                            enable-background="new 0 0 15 15"
+                            viewBox="0 0 15 15"
+                            x="0"
+                            y="0"
+                          >
+                            <polygon
+                              points="7.5 .8 9.7 5.4 14.5 5.9 10.7 9.1 11.8 14.2 7.5 11.6 3.2 14.2 4.3 9.1 .5 5.9 5.3 5.4"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              stroke-miterlimit="10"
+                            />
+                          </svg>
+                        </div>
+                        <svg
+                          class="w-2 h-2 md:h-4 md:w-4 fill-current text-gray-300"
+                          enable-background="new 0 0 15 15"
+                          viewBox="0 0 15 15"
+                          x="0"
+                          y="0"
+                        >
+                          <polygon
+                            points="7.5 .8 9.7 5.4 14.5 5.9 10.7 9.1 11.8 14.2 7.5 11.6 3.2 14.2 4.3 9.1 .5 5.9 5.3 5.4"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-miterlimit="10"
+                          />
+                        </svg>
+                      </div>
+                      <div
+                        class="relative"
+                      >
+                        <div
+                          class="absolute top-0 left-0 h-full overflow-hidden"
+                          style="width: 100%;"
+                        >
+                          <svg
+                            class="w-2 h-2 md:h-4 md:w-4 fill-yellow-300 text-yellow-300"
+                            enable-background="new 0 0 15 15"
+                            viewBox="0 0 15 15"
+                            x="0"
+                            y="0"
+                          >
+                            <polygon
+                              points="7.5 .8 9.7 5.4 14.5 5.9 10.7 9.1 11.8 14.2 7.5 11.6 3.2 14.2 4.3 9.1 .5 5.9 5.3 5.4"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              stroke-miterlimit="10"
+                            />
+                          </svg>
+                        </div>
+                        <svg
+                          class="w-2 h-2 md:h-4 md:w-4 fill-current text-gray-300"
+                          enable-background="new 0 0 15 15"
+                          viewBox="0 0 15 15"
+                          x="0"
+                          y="0"
+                        >
+                          <polygon
+                            points="7.5 .8 9.7 5.4 14.5 5.9 10.7 9.1 11.8 14.2 7.5 11.6 3.2 14.2 4.3 9.1 .5 5.9 5.3 5.4"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-miterlimit="10"
+                          />
+                        </svg>
+                      </div>
+                      <div
+                        class="relative"
+                      >
+                        <div
+                          class="absolute top-0 left-0 h-full overflow-hidden"
+                          style="width: 20.000000000000018%;"
+                        >
+                          <svg
+                            class="w-2 h-2 md:h-4 md:w-4 fill-yellow-300 text-yellow-300"
+                            enable-background="new 0 0 15 15"
+                            viewBox="0 0 15 15"
+                            x="0"
+                            y="0"
+                          >
+                            <polygon
+                              points="7.5 .8 9.7 5.4 14.5 5.9 10.7 9.1 11.8 14.2 7.5 11.6 3.2 14.2 4.3 9.1 .5 5.9 5.3 5.4"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              stroke-miterlimit="10"
+                            />
+                          </svg>
+                        </div>
+                        <svg
+                          class="w-2 h-2 md:h-4 md:w-4 fill-current text-gray-300"
+                          enable-background="new 0 0 15 15"
+                          viewBox="0 0 15 15"
+                          x="0"
+                          y="0"
+                        >
+                          <polygon
+                            points="7.5 .8 9.7 5.4 14.5 5.9 10.7 9.1 11.8 14.2 7.5 11.6 3.2 14.2 4.3 9.1 .5 5.9 5.3 5.4"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-miterlimit="10"
+                          />
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+                  <div>
+                    <span>
+                      6,8K
+                    </span>
+                    <span
+                      class="ml-1"
+                    >
+                      Sold
+                    </span>
+                  </div>
+                </div>
+                <div
+                  class="mt-8 flex items-center px-4 py-3 bg-gray-50"
+                >
+                  <div
+                    class="text-gray-500 line-through"
+                  >
+                    $
+                    3.490.000
+                  </div>
+                  <div
+                    class="ml-4 text-3xl font-medium text-orange-500"
+                  >
+                    $
+                    2.590.000
+                  </div>
+                  <div
+                    class="px-2 md:px-0 ml-4 w-[100px] h-[40px] bg-orange-500 text-white flex items-center justify-center"
+                  >
+                    26%
+                     GIẢM
+                  </div>
+                </div>
+                <div
+                  class="mt-8 flex items-center"
+                >
+                  <div
+                    class="capitalize text-gray-500"
+                  >
+                    Quantity
+                  </div>
+                  <div
+                    class="flex items-center ml-10"
+                  >
+                    <button
+                      class="h-8 w-8 flex items-center border border-gray-200 justify-center duration-200 rounded-tl rounded-bl hover:bg-gray-200"
+                    >
+                      <svg
+                        class="w-3 h-3"
+                        fill="none"
+                        stroke="black"
+                        stroke-width="1.5"
+                        viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M5 12h14"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                      </svg>
+                    </button>
+                    <div
+                      class=""
+                    >
+                      <input
+                        class="duration-200 h-8 w-14 border-t border-b border-gray-300 p-1 text-center outline-none "
+                        value="1"
+                      />
+                      <div
+                        class="hidden"
+                      />
+                    </div>
+                    <button
+                      class="h-8 w-8 flex items-center border border-gray-200 justify-center duration-200 rounded-tr rounded-br hover:bg-gray-200"
+                    >
+                      <svg
+                        class="w-3 h-3"
+                        fill="none"
+                        stroke="black"
+                        stroke-width="1.5"
+                        viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M12 4.5v15m7.5-7.5h-15"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                      </svg>
+                    </button>
+                  </div>
+                  <div
+                    class="ml-5 text-gray-500 text-sm"
+                  >
+                    <span>
+                      73
+                    </span>
+                    <span
+                      class="ml-1"
+                    >
+                      Available product
+                    </span>
+                  </div>
+                </div>
+                <div
+                  class="mt-8 flex items-center gap-5"
+                >
+                  <button
+                    class="flex h-12 items-center justify-center gap-2 capitalize border border-orange-500 text-orange-500 px-4 py-3 bg-orange-50 rounded"
+                  >
+                    <svg
+                      class="w-6 h-6"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.5"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M15.75 10.5V6a3.75 3.75 0 1 0-7.5 0v4.5m11.356-1.993 1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 0 1-1.12-1.243l1.264-12A1.125 1.125 0 0 1 5.513 7.5h12.974c.576 0 1.059.435 1.119 1.007ZM8.625 10.5a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm7.5 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                    Add to cart
+                  </button>
+                  <button
+                    class="h-12 min-w-[5rem] bg-orange-500 text-white px-4 py-3 rounded hover:bg-orange-500/50 duration-400 outline-none"
+                  >
+                    Buy now
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="bg-white mt-5 p-4 shadow"
+          >
+            <span
+              class="block px-3 py-4 uppercase text-lg rounded bg-gray-50"
+            >
+              Product Description
+            </span>
+            <div
+              class="mx-4 mt-5 leading-loose text-sm"
+            >
+              <div>
+                <p>
+                  Thể hiện cá tính của bạn bằng thiết kế kim cương 3D độc đáo của OPPO A12, cùng với màn hình lớn “giọt nước” tuyệt mỹ và camera kép sành điệu, bạn sẽ luôn vui vẻ năng động suốt cả ngày.
+                </p>
+                <p>
+                  Thiết kế siêu mỏng nhẹ, họa tiết kim cương 3D ấn tượng
+                  <br />
+                  OPPO A12 sở hữu thiết kế không chỉ đẹp phá cách mà còn rất dễ dàng để sử dụng trên tay. Trọng lượng cực nhẹ 165gram, độ mỏng chỉ 8,3mm kết hợp với những đường bo cong khéo léo giúp điện thoại vô cùng gọn nhẹ, mượt mà trong lòng bàn tay. Kiểu dáng của OPPO A12 đặc biệt ấn tượng nhờ điểm nhấn là mặt lưng họa tiết 3D kim cương độc đáo. Ở mỗi góc nhìn khác nhau, bạn sẽ thấy một vẻ đẹp khác nhau, giúp chiếc điện thoại trở nên thực sự nổi bật.
+                </p>
+                <p>
+                  Màn hình lớn 6,22 inch “giọt nước” bảo vệ mắt
+                  <br />
+                  Bạn sẽ được tận hưởng những hình ảnh hấp dẫn trên OPPO A12 nhờ màn hình lớn kích thước 6,22 inch, hiệu ứng tràn viền dạng “giọt nước” đẹp mắt, tăng cường trải nghiệm xem phim, chơi game.
+                </p>
+                <p>
+                  Mở khóa theo cách của bạn
+                  <br />
+                  Không cần phải nhập mật khẩu mỗi lần mở máy nữa, OPPO A12 cho phép bạn đăng nhập bằng cảm biến vân tay hoặc nhận diện khuôn mặt AI rất tiện lợi. Chỉ cần chạm nhẹ vào khu vực cảm biến mặt lưng hoặc đơn giản là đưa máy lên, điện thoại sẽ ngay lập tức nhận ra chủ nhân của máy và mở khóa một cách sẵn sàng.
+                </p>
+                <p>
+                  Bộ vi xử lý 8 nhân mạnh mẽ
+                  <br />
+                  OPPO A12 sở hữu cấu hình đáng nể trong tầm giá rẻ nhờ bộ vi xử lý Helio P35. Con chip mới từ nhà MediaTek sản xuất trên tiến trình 12nm với 8 nhân cực mạnh, trong đó 4 nhân 2,35GHz và 4 nhân 1,8GHz đi cùng GPU đồ họa PowerVR GE8320.
+                </p>
+                <p>
+                  Thời lượng pin suốt cả ngày
+                  <br />
+                  Mang trên mình viên pin dung lượng cực “khủng” 4230 mAh, bạn có thể thoải mái sử dụng trong 2 ngày ở nhu cầu sử dụng bình thường.
+                </p>
+                <p>
+                  Âm thanh sống động
+                  <br />
+                  OPPO A12 được trang bị tính năng Dirac, một tính năng cho phép chuyển đổi các chế độ âm thanh thông minh để tối ưu hóa âm thanh dựa trên tác vụ bạn đang hoạt động.
+                </p>
+                <p>
+                  Camera kép AI, tỏa sáng trong từng bức ảnh
+                  <br />
+                  OPPO A12 sở hữu camera kép ở mặt sau, bao gồm camera chính 13MP và camera 2MP hỗ trợ đo độ sâu trường ảnh. Camera chính chất lượng mang đến những hình ảnh sắc nét, rõ ràng và độ sáng, màu sắc trung thực.
+                </p>
+                <p>
+                  Thông số kỹ thuật chi tiết
+                  <br />
+                  Màn hình
+                  <br />
+                  Công nghệ màn hình : IPS LCD
+                  <br />
+                  Màu màn hình : 16 triệu màu
+                  <br />
+                  Chuẩn màn hình : HD +
+                  <br />
+                  Độ phân giải màn hình : 720 x 1560 Pixels
+                  <br />
+                  Màn hình : 6.22 inches
+                  <br />
+                  Mặt kính màn hình : Corning Gorilla Glass 3
+                  <br />
+                  Camera Trước
+                  <br />
+                  Độ phân giải : 5 MP
+                  <br />
+                  Thông tin khác : Xoá phông, Làm đẹp (Selfie A.I Beauty), Nhãn dán (AR Stickers), Flash màn hình, Toàn cảnh (Panorama), Quay video HD, Chụp bằng cử chỉ, Nhận diện khuôn mặt, Làm đẹp (Beautify), Quay video Full HD, Tự động lấy nét (AF), HDR
+                  <br />
+                  Camera Sau
+                  <br />
+                  Độ phân giải : Chính 13 MP & Phụ 2 MP
+                  <br />
+                  Quay phim : Quay phim HD 720p@30fps
+                  <br />
+                  Đèn Flash : Có
+                  <br />
+                  Chụp ảnh nâng cao : Google Lens, Góc siêu rộng (Ultrawide), Nhãn dán (AR Stickers), Chụp bằng cử chỉ, Xoá phông, Quay chậm (Slow Motion), Trôi nhanh thời gian (Time Lapse), A.I Camera, Làm đẹp, Tự động lấy nét (AF)
+                  <br />
+                  Cấu hình phần cứng
+                  <br />
+                  Tốc độ CPU : 2.3GHz
+                  <br />
+                  Số nhân : 4 nhân 2.35 GHz & 4 nhân 1.9 GHz
+                  <br />
+                  Chipset : MediaTek Helio P35 8 nhân
+                  <br />
+                  RAM : 3 GB
+                  <br />
+                  Chip đồ họa (GPU) : PowerVR GE8320
+                  <br />
+                  Cảm biến : Cảm biến tiệm cận, Cảm biến ánh sáng, Cảm biến gia tốc kế
+                  <br />
+                  Bộ nhớ & Lưu trữ
+                  <br />
+                  Danh bạ lưu trữ : Không giới hạn
+                  <br />
+                  ROM : 32 GB
+                  <br />
+                  Bộ nhớ còn lại : Đang cập nhật
+                  <br />
+                  Thẻ nhớ ngoài : MicroSD
+                  <br />
+                  Hỗ trợ thẻ nhớ tối đa : 256 GB
+                  <br />
+                  Thiết kế & Trọng lượng
+                  <br />
+                  Kiểu dáng : Nguyên Khối
+                  <br />
+                  Chất liệu : Khung & Mặt lưng nhựa
+                  <br />
+                  Kích thước : Dài 155.9 mm - Ngang 75.5 mm - Dày 8.3 mm
+                  <br />
+                  Trọng lượng : 165 g
+                  <br />
+                  Khả năng chống nước : Đang cập nhật
+                  <br />
+                  Thông tin pin
+                  <br />
+                  Loại pin : Pin chuẩn Li-Po
+                  <br />
+                  Dung lượng pin : 4230 mAh
+                  <br />
+                  Pin có thể tháo rời : Không
+                  <br />
+                  Chế độ sạc nhanh : Đang cập nhật
+                  <br />
+                  Kết nối & Cổng giao tiếp
+                  <br />
+                  Loại SIM : 2 Nano SIM
+                  <br />
+                  Khe cắm sim : Dual nano-SIM + 1 khe thẻ nhớ
+                  <br />
+                  Wifi : Wi-Fi 802.11 a/b/g/n/ac, DLNA, Wi-Fi Direct, Wi-Fi hotspot
+                  <br />
+                  GPS : BDS, A-GPS, GLONASS
+                  <br />
+                  Bluetooth : Bluetooth 5.0
+                  <br />
+                  GPRS/EDGE : Có
+                  <br />
+                  NFC : Đang cập nhật
+                  <br />
+                  Cổng sạc : Micro USB
+                  <br />
+                  Jack (Input & Output) : 3.5mm
+                  <br />
+                  Giải trí & Ứng dụng
+                  <br />
+                  Xem phim : Có
+                  <br />
+                  Nghe nhạc : Có
+                  <br />
+                  Ghi âm : Có
+                  <br />
+                  FM radio : Có
+                  <br />
+                  Đèn pin : Có
+                  <br />
+                  Chức năng khác : Đang cập nhật
+                  <br />
+                  Bảo hành
+                  <br />
+                  Thời gian bảo hành : 12 Tháng
+                  <br />
+                  Thông tin hàng hóa
+                  <br />
+                  Xuất xứ : Trung Quốc
+                  <br />
+                  Năm sản xuất : 2020
+                  <br />
+                  Thông tin dòng sản phẩm
+                  <br />
+                  Model Series : OPPO A12
+                  <br />
+                  Hệ điều hành
+                  <br />
+                  Hệ điều hành : ColorOS 6.1.2, nền tảng Android 9
+                  <br />
+                  Bộ sản phẩm bao gồm: Hộp, Sạc, Sách hướng dẫn, Cáp, Cây lấy sim, Ốp lưng
+                </p>
+                <p>
+                  Thông tin bảo hành: 
+                  <br />
+                  Sản phẩm được bảo hành 12 tháng tại các trung tâm bảo hành OPPO
+                  <br />
+                  - 1 đổi 1 trong 30 ngày đầu sử dụng (Lỗi phần cứng sản xuất)
+                  <br />
+                  - Giao hàng trên toàn quốc
+                  <br />
+                  - Hotline: 1800 577 776 (miễn phí).
+                </p>
+                <p>
+                  #OPPO #OPPOA12
+                </p>
+              </div>
+            </div>
+          </div>
+          <div
+            class="bg-white mt-5 p-4 shadow"
+          >
+            <span
+              class="block px-3 py-4 uppercase text-lg rounded bg-gray-50"
+            >
+              You may also like
+            </span>
+            <div
+              class="text-sm grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 mt-4 gap-10"
+            >
+              <div
+                class="col-span-1"
+              >
+                <a
+                  href="/Mã-FAMALLT5-giảm-15-đơn-150K-Áo-thun-tay-lỡ-GENZ-phông-Unisex-nam-nữ-Cotton-oversize-form-rộng-Racing-Genz-GZT021-i-60ad02422fb52902585972a9"
+                >
+                  <div
+                    class="duration-300 rounded-sm hover:translate-y-[-3px] transition-transform overflow-hidden"
+                  >
+                    <div
+                      class="w-full pt-[100%] relative"
+                    >
+                      <img
+                        alt="[Mã FAMALLT5 giảm 15% đơn 150K] Áo thun tay lỡ GENZ phông Unisex nam nữ Cotton oversize form rộng Racing Genz GZT021"
+                        class="absolute top-0 left-0 w-full h-full object-cover"
+                        src="https://api-ecom.duthanhduoc.com/images/08b79b1d-169d-4de1-85a2-4e5e8ff535b7.jpg"
+                      />
+                    </div>
+                    <div
+                      class="mt-2 flex items-center justify-between"
+                    >
+                      <div
+                        class="flex items-center"
+                      >
+                        <div
+                          class="relative"
+                        >
+                          <div
+                            class="absolute top-0 left-0 h-full overflow-hidden"
+                            style="width: 100%;"
+                          >
+                            <svg
+                              class="w-2 h-2 md:h-4 md:w-4 fill-yellow-300 text-yellow-300"
+                              enable-background="new 0 0 15 15"
+                              viewBox="0 0 15 15"
+                              x="0"
+                              y="0"
+                            >
+                              <polygon
+                                points="7.5 .8 9.7 5.4 14.5 5.9 10.7 9.1 11.8 14.2 7.5 11.6 3.2 14.2 4.3 9.1 .5 5.9 5.3 5.4"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-miterlimit="10"
+                              />
+                            </svg>
+                          </div>
+                          <svg
+                            class="w-2 h-2 md:h-4 md:w-4 fill-current text-gray-300"
+                            enable-background="new 0 0 15 15"
+                            viewBox="0 0 15 15"
+                            x="0"
+                            y="0"
+                          >
+                            <polygon
+                              points="7.5 .8 9.7 5.4 14.5 5.9 10.7 9.1 11.8 14.2 7.5 11.6 3.2 14.2 4.3 9.1 .5 5.9 5.3 5.4"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              stroke-miterlimit="10"
+                            />
+                          </svg>
+                        </div>
+                        <div
+                          class="relative"
+                        >
+                          <div
+                            class="absolute top-0 left-0 h-full overflow-hidden"
+                            style="width: 100%;"
+                          >
+                            <svg
+                              class="w-2 h-2 md:h-4 md:w-4 fill-yellow-300 text-yellow-300"
+                              enable-background="new 0 0 15 15"
+                              viewBox="0 0 15 15"
+                              x="0"
+                              y="0"
+                            >
+                              <polygon
+                                points="7.5 .8 9.7 5.4 14.5 5.9 10.7 9.1 11.8 14.2 7.5 11.6 3.2 14.2 4.3 9.1 .5 5.9 5.3 5.4"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-miterlimit="10"
+                              />
+                            </svg>
+                          </div>
+                          <svg
+                            class="w-2 h-2 md:h-4 md:w-4 fill-current text-gray-300"
+                            enable-background="new 0 0 15 15"
+                            viewBox="0 0 15 15"
+                            x="0"
+                            y="0"
+                          >
+                            <polygon
+                              points="7.5 .8 9.7 5.4 14.5 5.9 10.7 9.1 11.8 14.2 7.5 11.6 3.2 14.2 4.3 9.1 .5 5.9 5.3 5.4"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              stroke-miterlimit="10"
+                            />
+                          </svg>
+                        </div>
+                        <div
+                          class="relative"
+                        >
+                          <div
+                            class="absolute top-0 left-0 h-full overflow-hidden"
+                            style="width: 100%;"
+                          >
+                            <svg
+                              class="w-2 h-2 md:h-4 md:w-4 fill-yellow-300 text-yellow-300"
+                              enable-background="new 0 0 15 15"
+                              viewBox="0 0 15 15"
+                              x="0"
+                              y="0"
+                            >
+                              <polygon
+                                points="7.5 .8 9.7 5.4 14.5 5.9 10.7 9.1 11.8 14.2 7.5 11.6 3.2 14.2 4.3 9.1 .5 5.9 5.3 5.4"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-miterlimit="10"
+                              />
+                            </svg>
+                          </div>
+                          <svg
+                            class="w-2 h-2 md:h-4 md:w-4 fill-current text-gray-300"
+                            enable-background="new 0 0 15 15"
+                            viewBox="0 0 15 15"
+                            x="0"
+                            y="0"
+                          >
+                            <polygon
+                              points="7.5 .8 9.7 5.4 14.5 5.9 10.7 9.1 11.8 14.2 7.5 11.6 3.2 14.2 4.3 9.1 .5 5.9 5.3 5.4"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              stroke-miterlimit="10"
+                            />
+                          </svg>
+                        </div>
+                        <div
+                          class="relative"
+                        >
+                          <div
+                            class="absolute top-0 left-0 h-full overflow-hidden"
+                            style="width: 100%;"
+                          >
+                            <svg
+                              class="w-2 h-2 md:h-4 md:w-4 fill-yellow-300 text-yellow-300"
+                              enable-background="new 0 0 15 15"
+                              viewBox="0 0 15 15"
+                              x="0"
+                              y="0"
+                            >
+                              <polygon
+                                points="7.5 .8 9.7 5.4 14.5 5.9 10.7 9.1 11.8 14.2 7.5 11.6 3.2 14.2 4.3 9.1 .5 5.9 5.3 5.4"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-miterlimit="10"
+                              />
+                            </svg>
+                          </div>
+                          <svg
+                            class="w-2 h-2 md:h-4 md:w-4 fill-current text-gray-300"
+                            enable-background="new 0 0 15 15"
+                            viewBox="0 0 15 15"
+                            x="0"
+                            y="0"
+                          >
+                            <polygon
+                              points="7.5 .8 9.7 5.4 14.5 5.9 10.7 9.1 11.8 14.2 7.5 11.6 3.2 14.2 4.3 9.1 .5 5.9 5.3 5.4"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              stroke-miterlimit="10"
+                            />
+                          </svg>
+                        </div>
+                        <div
+                          class="relative"
+                        >
+                          <div
+                            class="absolute top-0 left-0 h-full overflow-hidden"
+                            style="width: 100%;"
+                          >
+                            <svg
+                              class="w-2 h-2 md:h-4 md:w-4 fill-yellow-300 text-yellow-300"
+                              enable-background="new 0 0 15 15"
+                              viewBox="0 0 15 15"
+                              x="0"
+                              y="0"
+                            >
+                              <polygon
+                                points="7.5 .8 9.7 5.4 14.5 5.9 10.7 9.1 11.8 14.2 7.5 11.6 3.2 14.2 4.3 9.1 .5 5.9 5.3 5.4"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-miterlimit="10"
+                              />
+                            </svg>
+                          </div>
+                          <svg
+                            class="w-2 h-2 md:h-4 md:w-4 fill-current text-gray-300"
+                            enable-background="new 0 0 15 15"
+                            viewBox="0 0 15 15"
+                            x="0"
+                            y="0"
+                          >
+                            <polygon
+                              points="7.5 .8 9.7 5.4 14.5 5.9 10.7 9.1 11.8 14.2 7.5 11.6 3.2 14.2 4.3 9.1 .5 5.9 5.3 5.4"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              stroke-miterlimit="10"
+                            />
+                          </svg>
+                        </div>
+                      </div>
+                      <div>
+                        <span
+                          class="lowercase text-xs md:text-base"
+                        >
+                          36
+                        </span>
+                        <span
+                          class="ml-1 text-xs md:text-base"
+                        >
+                          Đã bán
+                        </span>
+                      </div>
+                    </div>
+                    <div
+                      class="mt-2 line-clamp-2 font-medium text-xs md:text-base"
+                    >
+                      [Mã FAMALLT5 giảm 15% đơn 150K] Áo thun tay lỡ GENZ phông Unisex nam nữ Cotton oversize form rộng Racing Genz GZT021
+                    </div>
+                    <div
+                      class="mt-2 flex items-center"
+                    >
+                      <div
+                        class="flex items-center text-gray-500 line-through"
+                      >
+                        <span
+                          class="text-xs md:text-sm"
+                        >
+                          315.000
+                        </span>
+                        <span
+                          class="text-xs md:text-sm"
+                        >
+                          đ
+                        </span>
+                      </div>
+                      <div
+                        class="flex items-center ml-2 font-medium text-[#000]"
+                      >
+                        <span
+                          class="text-xs md:text-lg"
+                        >
+                          279.000
+                        </span>
+                        <span
+                          class="text-xs md:text-lg"
+                        >
+                          đ
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </a>
+              </div>
+              <div
+                class="col-span-1"
+              >
+                <a
+                  href="/Áo-thun-nam-nữ-tay-lỡ-YINXX-áo-phông-nam-nữ-form-rộng-A304-i-60ad01102fb52902585972a7"
+                >
+                  <div
+                    class="duration-300 rounded-sm hover:translate-y-[-3px] transition-transform overflow-hidden"
+                  >
+                    <div
+                      class="w-full pt-[100%] relative"
+                    >
+                      <img
+                        alt="Áo thun nam nữ tay lỡ YINXX, áo phông nam nữ form rộng A304"
+                        class="absolute top-0 left-0 w-full h-full object-cover"
+                        src="https://api-ecom.duthanhduoc.com/images/b1c008a6-bb10-46a6-8caf-2b0e9ca4e175.jpg"
+                      />
+                    </div>
+                    <div
+                      class="mt-2 flex items-center justify-between"
+                    >
+                      <div
+                        class="flex items-center"
+                      >
+                        <div
+                          class="relative"
+                        >
+                          <div
+                            class="absolute top-0 left-0 h-full overflow-hidden"
+                            style="width: 100%;"
+                          >
+                            <svg
+                              class="w-2 h-2 md:h-4 md:w-4 fill-yellow-300 text-yellow-300"
+                              enable-background="new 0 0 15 15"
+                              viewBox="0 0 15 15"
+                              x="0"
+                              y="0"
+                            >
+                              <polygon
+                                points="7.5 .8 9.7 5.4 14.5 5.9 10.7 9.1 11.8 14.2 7.5 11.6 3.2 14.2 4.3 9.1 .5 5.9 5.3 5.4"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-miterlimit="10"
+                              />
+                            </svg>
+                          </div>
+                          <svg
+                            class="w-2 h-2 md:h-4 md:w-4 fill-current text-gray-300"
+                            enable-background="new 0 0 15 15"
+                            viewBox="0 0 15 15"
+                            x="0"
+                            y="0"
+                          >
+                            <polygon
+                              points="7.5 .8 9.7 5.4 14.5 5.9 10.7 9.1 11.8 14.2 7.5 11.6 3.2 14.2 4.3 9.1 .5 5.9 5.3 5.4"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              stroke-miterlimit="10"
+                            />
+                          </svg>
+                        </div>
+                        <div
+                          class="relative"
+                        >
+                          <div
+                            class="absolute top-0 left-0 h-full overflow-hidden"
+                            style="width: 100%;"
+                          >
+                            <svg
+                              class="w-2 h-2 md:h-4 md:w-4 fill-yellow-300 text-yellow-300"
+                              enable-background="new 0 0 15 15"
+                              viewBox="0 0 15 15"
+                              x="0"
+                              y="0"
+                            >
+                              <polygon
+                                points="7.5 .8 9.7 5.4 14.5 5.9 10.7 9.1 11.8 14.2 7.5 11.6 3.2 14.2 4.3 9.1 .5 5.9 5.3 5.4"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-miterlimit="10"
+                              />
+                            </svg>
+                          </div>
+                          <svg
+                            class="w-2 h-2 md:h-4 md:w-4 fill-current text-gray-300"
+                            enable-background="new 0 0 15 15"
+                            viewBox="0 0 15 15"
+                            x="0"
+                            y="0"
+                          >
+                            <polygon
+                              points="7.5 .8 9.7 5.4 14.5 5.9 10.7 9.1 11.8 14.2 7.5 11.6 3.2 14.2 4.3 9.1 .5 5.9 5.3 5.4"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              stroke-miterlimit="10"
+                            />
+                          </svg>
+                        </div>
+                        <div
+                          class="relative"
+                        >
+                          <div
+                            class="absolute top-0 left-0 h-full overflow-hidden"
+                            style="width: 100%;"
+                          >
+                            <svg
+                              class="w-2 h-2 md:h-4 md:w-4 fill-yellow-300 text-yellow-300"
+                              enable-background="new 0 0 15 15"
+                              viewBox="0 0 15 15"
+                              x="0"
+                              y="0"
+                            >
+                              <polygon
+                                points="7.5 .8 9.7 5.4 14.5 5.9 10.7 9.1 11.8 14.2 7.5 11.6 3.2 14.2 4.3 9.1 .5 5.9 5.3 5.4"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-miterlimit="10"
+                              />
+                            </svg>
+                          </div>
+                          <svg
+                            class="w-2 h-2 md:h-4 md:w-4 fill-current text-gray-300"
+                            enable-background="new 0 0 15 15"
+                            viewBox="0 0 15 15"
+                            x="0"
+                            y="0"
+                          >
+                            <polygon
+                              points="7.5 .8 9.7 5.4 14.5 5.9 10.7 9.1 11.8 14.2 7.5 11.6 3.2 14.2 4.3 9.1 .5 5.9 5.3 5.4"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              stroke-miterlimit="10"
+                            />
+                          </svg>
+                        </div>
+                        <div
+                          class="relative"
+                        >
+                          <div
+                            class="absolute top-0 left-0 h-full overflow-hidden"
+                            style="width: 100%;"
+                          >
+                            <svg
+                              class="w-2 h-2 md:h-4 md:w-4 fill-yellow-300 text-yellow-300"
+                              enable-background="new 0 0 15 15"
+                              viewBox="0 0 15 15"
+                              x="0"
+                              y="0"
+                            >
+                              <polygon
+                                points="7.5 .8 9.7 5.4 14.5 5.9 10.7 9.1 11.8 14.2 7.5 11.6 3.2 14.2 4.3 9.1 .5 5.9 5.3 5.4"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-miterlimit="10"
+                              />
+                            </svg>
+                          </div>
+                          <svg
+                            class="w-2 h-2 md:h-4 md:w-4 fill-current text-gray-300"
+                            enable-background="new 0 0 15 15"
+                            viewBox="0 0 15 15"
+                            x="0"
+                            y="0"
+                          >
+                            <polygon
+                              points="7.5 .8 9.7 5.4 14.5 5.9 10.7 9.1 11.8 14.2 7.5 11.6 3.2 14.2 4.3 9.1 .5 5.9 5.3 5.4"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              stroke-miterlimit="10"
+                            />
+                          </svg>
+                        </div>
+                        <div
+                          class="relative"
+                        >
+                          <div
+                            class="absolute top-0 left-0 h-full overflow-hidden"
+                            style="width: 100%;"
+                          >
+                            <svg
+                              class="w-2 h-2 md:h-4 md:w-4 fill-yellow-300 text-yellow-300"
+                              enable-background="new 0 0 15 15"
+                              viewBox="0 0 15 15"
+                              x="0"
+                              y="0"
+                            >
+                              <polygon
+                                points="7.5 .8 9.7 5.4 14.5 5.9 10.7 9.1 11.8 14.2 7.5 11.6 3.2 14.2 4.3 9.1 .5 5.9 5.3 5.4"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-miterlimit="10"
+                              />
+                            </svg>
+                          </div>
+                          <svg
+                            class="w-2 h-2 md:h-4 md:w-4 fill-current text-gray-300"
+                            enable-background="new 0 0 15 15"
+                            viewBox="0 0 15 15"
+                            x="0"
+                            y="0"
+                          >
+                            <polygon
+                              points="7.5 .8 9.7 5.4 14.5 5.9 10.7 9.1 11.8 14.2 7.5 11.6 3.2 14.2 4.3 9.1 .5 5.9 5.3 5.4"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              stroke-miterlimit="10"
+                            />
+                          </svg>
+                        </div>
+                      </div>
+                      <div>
+                        <span
+                          class="lowercase text-xs md:text-base"
+                        >
+                          2,3K
+                        </span>
+                        <span
+                          class="ml-1 text-xs md:text-base"
+                        >
+                          Đã bán
+                        </span>
+                      </div>
+                    </div>
+                    <div
+                      class="mt-2 line-clamp-2 font-medium text-xs md:text-base"
+                    >
+                      Áo thun nam nữ tay lỡ YINXX, áo phông nam nữ form rộng A304
+                    </div>
+                    <div
+                      class="mt-2 flex items-center"
+                    >
+                      <div
+                        class="flex items-center text-gray-500 line-through"
+                      >
+                        <span
+                          class="text-xs md:text-sm"
+                        >
+                          106.000
+                        </span>
+                        <span
+                          class="text-xs md:text-sm"
+                        >
+                          đ
+                        </span>
+                      </div>
+                      <div
+                        class="flex items-center ml-2 font-medium text-[#000]"
+                      >
+                        <span
+                          class="text-xs md:text-lg"
+                        >
+                          53.000
+                        </span>
+                        <span
+                          class="text-xs md:text-lg"
+                        >
+                          đ
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </a>
+              </div>
+              <div
+                class="col-span-1"
+              >
+                <a
+                  href="/Mẫu-Mới-Khuyến-Mãi-Sốc-3-Ngày-⚡-Áo-Thun-Tay-Lỡ-In-Bướm-Dirty-Coins-Ao-Thun-Unisex-From-Rộng-BONSEN-STORE-i-60ad004c2fb52902585972a6"
+                >
+                  <div
+                    class="duration-300 rounded-sm hover:translate-y-[-3px] transition-transform overflow-hidden"
+                  >
+                    <div
+                      class="w-full pt-[100%] relative"
+                    >
+                      <img
+                        alt="Mẫu Mới Khuyến Mãi Sốc 3 Ngày ⚡ Áo Thun Tay Lỡ In Bướm Dirty Coins Ao Thun Unisex From Rộng -BONSEN STORE"
+                        class="absolute top-0 left-0 w-full h-full object-cover"
+                        src="https://api-ecom.duthanhduoc.com/images/b1c008a6-bb10-46a6-8caf-2b0e9ca4e175.jpg"
+                      />
+                    </div>
+                    <div
+                      class="mt-2 flex items-center justify-between"
+                    >
+                      <div
+                        class="flex items-center"
+                      >
+                        <div
+                          class="relative"
+                        >
+                          <div
+                            class="absolute top-0 left-0 h-full overflow-hidden"
+                            style="width: 100%;"
+                          >
+                            <svg
+                              class="w-2 h-2 md:h-4 md:w-4 fill-yellow-300 text-yellow-300"
+                              enable-background="new 0 0 15 15"
+                              viewBox="0 0 15 15"
+                              x="0"
+                              y="0"
+                            >
+                              <polygon
+                                points="7.5 .8 9.7 5.4 14.5 5.9 10.7 9.1 11.8 14.2 7.5 11.6 3.2 14.2 4.3 9.1 .5 5.9 5.3 5.4"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-miterlimit="10"
+                              />
+                            </svg>
+                          </div>
+                          <svg
+                            class="w-2 h-2 md:h-4 md:w-4 fill-current text-gray-300"
+                            enable-background="new 0 0 15 15"
+                            viewBox="0 0 15 15"
+                            x="0"
+                            y="0"
+                          >
+                            <polygon
+                              points="7.5 .8 9.7 5.4 14.5 5.9 10.7 9.1 11.8 14.2 7.5 11.6 3.2 14.2 4.3 9.1 .5 5.9 5.3 5.4"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              stroke-miterlimit="10"
+                            />
+                          </svg>
+                        </div>
+                        <div
+                          class="relative"
+                        >
+                          <div
+                            class="absolute top-0 left-0 h-full overflow-hidden"
+                            style="width: 100%;"
+                          >
+                            <svg
+                              class="w-2 h-2 md:h-4 md:w-4 fill-yellow-300 text-yellow-300"
+                              enable-background="new 0 0 15 15"
+                              viewBox="0 0 15 15"
+                              x="0"
+                              y="0"
+                            >
+                              <polygon
+                                points="7.5 .8 9.7 5.4 14.5 5.9 10.7 9.1 11.8 14.2 7.5 11.6 3.2 14.2 4.3 9.1 .5 5.9 5.3 5.4"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-miterlimit="10"
+                              />
+                            </svg>
+                          </div>
+                          <svg
+                            class="w-2 h-2 md:h-4 md:w-4 fill-current text-gray-300"
+                            enable-background="new 0 0 15 15"
+                            viewBox="0 0 15 15"
+                            x="0"
+                            y="0"
+                          >
+                            <polygon
+                              points="7.5 .8 9.7 5.4 14.5 5.9 10.7 9.1 11.8 14.2 7.5 11.6 3.2 14.2 4.3 9.1 .5 5.9 5.3 5.4"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              stroke-miterlimit="10"
+                            />
+                          </svg>
+                        </div>
+                        <div
+                          class="relative"
+                        >
+                          <div
+                            class="absolute top-0 left-0 h-full overflow-hidden"
+                            style="width: 100%;"
+                          >
+                            <svg
+                              class="w-2 h-2 md:h-4 md:w-4 fill-yellow-300 text-yellow-300"
+                              enable-background="new 0 0 15 15"
+                              viewBox="0 0 15 15"
+                              x="0"
+                              y="0"
+                            >
+                              <polygon
+                                points="7.5 .8 9.7 5.4 14.5 5.9 10.7 9.1 11.8 14.2 7.5 11.6 3.2 14.2 4.3 9.1 .5 5.9 5.3 5.4"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-miterlimit="10"
+                              />
+                            </svg>
+                          </div>
+                          <svg
+                            class="w-2 h-2 md:h-4 md:w-4 fill-current text-gray-300"
+                            enable-background="new 0 0 15 15"
+                            viewBox="0 0 15 15"
+                            x="0"
+                            y="0"
+                          >
+                            <polygon
+                              points="7.5 .8 9.7 5.4 14.5 5.9 10.7 9.1 11.8 14.2 7.5 11.6 3.2 14.2 4.3 9.1 .5 5.9 5.3 5.4"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              stroke-miterlimit="10"
+                            />
+                          </svg>
+                        </div>
+                        <div
+                          class="relative"
+                        >
+                          <div
+                            class="absolute top-0 left-0 h-full overflow-hidden"
+                            style="width: 100%;"
+                          >
+                            <svg
+                              class="w-2 h-2 md:h-4 md:w-4 fill-yellow-300 text-yellow-300"
+                              enable-background="new 0 0 15 15"
+                              viewBox="0 0 15 15"
+                              x="0"
+                              y="0"
+                            >
+                              <polygon
+                                points="7.5 .8 9.7 5.4 14.5 5.9 10.7 9.1 11.8 14.2 7.5 11.6 3.2 14.2 4.3 9.1 .5 5.9 5.3 5.4"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-miterlimit="10"
+                              />
+                            </svg>
+                          </div>
+                          <svg
+                            class="w-2 h-2 md:h-4 md:w-4 fill-current text-gray-300"
+                            enable-background="new 0 0 15 15"
+                            viewBox="0 0 15 15"
+                            x="0"
+                            y="0"
+                          >
+                            <polygon
+                              points="7.5 .8 9.7 5.4 14.5 5.9 10.7 9.1 11.8 14.2 7.5 11.6 3.2 14.2 4.3 9.1 .5 5.9 5.3 5.4"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              stroke-miterlimit="10"
+                            />
+                          </svg>
+                        </div>
+                        <div
+                          class="relative"
+                        >
+                          <div
+                            class="absolute top-0 left-0 h-full overflow-hidden"
+                            style="width: 100%;"
+                          >
+                            <svg
+                              class="w-2 h-2 md:h-4 md:w-4 fill-yellow-300 text-yellow-300"
+                              enable-background="new 0 0 15 15"
+                              viewBox="0 0 15 15"
+                              x="0"
+                              y="0"
+                            >
+                              <polygon
+                                points="7.5 .8 9.7 5.4 14.5 5.9 10.7 9.1 11.8 14.2 7.5 11.6 3.2 14.2 4.3 9.1 .5 5.9 5.3 5.4"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-miterlimit="10"
+                              />
+                            </svg>
+                          </div>
+                          <svg
+                            class="w-2 h-2 md:h-4 md:w-4 fill-current text-gray-300"
+                            enable-background="new 0 0 15 15"
+                            viewBox="0 0 15 15"
+                            x="0"
+                            y="0"
+                          >
+                            <polygon
+                              points="7.5 .8 9.7 5.4 14.5 5.9 10.7 9.1 11.8 14.2 7.5 11.6 3.2 14.2 4.3 9.1 .5 5.9 5.3 5.4"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              stroke-miterlimit="10"
+                            />
+                          </svg>
+                        </div>
+                      </div>
+                      <div>
+                        <span
+                          class="lowercase text-xs md:text-base"
+                        >
+                          21
+                        </span>
+                        <span
+                          class="ml-1 text-xs md:text-base"
+                        >
+                          Đã bán
+                        </span>
+                      </div>
+                    </div>
+                    <div
+                      class="mt-2 line-clamp-2 font-medium text-xs md:text-base"
+                    >
+                      Mẫu Mới Khuyến Mãi Sốc 3 Ngày ⚡ Áo Thun Tay Lỡ In Bướm Dirty Coins Ao Thun Unisex From Rộng -BONSEN STORE
+                    </div>
+                    <div
+                      class="mt-2 flex items-center"
+                    >
+                      <div
+                        class="flex items-center text-gray-500 line-through"
+                      >
+                        <span
+                          class="text-xs md:text-sm"
+                        >
+                          70.000
+                        </span>
+                        <span
+                          class="text-xs md:text-sm"
+                        >
+                          đ
+                        </span>
+                      </div>
+                      <div
+                        class="flex items-center ml-2 font-medium text-[#000]"
+                      >
+                        <span
+                          class="text-xs md:text-lg"
+                        >
+                          49.000
+                        </span>
+                        <span
+                          class="text-xs md:text-lg"
+                        >
+                          đ
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </a>
+              </div>
+              <div
+                class="col-span-1"
+              >
+                <a
+                  href="/Có-video-Áo-phông-form-rộng-tay-lỡ-unisex--Áo-thun-orange-soda--Sỉ-áo-thun-số-lượng-lớn-i-60acfac72fb529025859729f"
+                >
+                  <div
+                    class="duration-300 rounded-sm hover:translate-y-[-3px] transition-transform overflow-hidden"
+                  >
+                    <div
+                      class="w-full pt-[100%] relative"
+                    >
+                      <img
+                        alt="[Có video] Áo phông form rộng tay lỡ unisex - Áo thun orange soda - Sỉ áo thun số lượng lớn"
+                        class="absolute top-0 left-0 w-full h-full object-cover"
+                        src="https://api-ecom.duthanhduoc.com/images/ad82b185-5c18-41ca-90ec-1c54c846fd49.jpg"
+                      />
+                    </div>
+                    <div
+                      class="mt-2 flex items-center justify-between"
+                    >
+                      <div
+                        class="flex items-center"
+                      >
+                        <div
+                          class="relative"
+                        >
+                          <div
+                            class="absolute top-0 left-0 h-full overflow-hidden"
+                            style="width: 100%;"
+                          >
+                            <svg
+                              class="w-2 h-2 md:h-4 md:w-4 fill-yellow-300 text-yellow-300"
+                              enable-background="new 0 0 15 15"
+                              viewBox="0 0 15 15"
+                              x="0"
+                              y="0"
+                            >
+                              <polygon
+                                points="7.5 .8 9.7 5.4 14.5 5.9 10.7 9.1 11.8 14.2 7.5 11.6 3.2 14.2 4.3 9.1 .5 5.9 5.3 5.4"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-miterlimit="10"
+                              />
+                            </svg>
+                          </div>
+                          <svg
+                            class="w-2 h-2 md:h-4 md:w-4 fill-current text-gray-300"
+                            enable-background="new 0 0 15 15"
+                            viewBox="0 0 15 15"
+                            x="0"
+                            y="0"
+                          >
+                            <polygon
+                              points="7.5 .8 9.7 5.4 14.5 5.9 10.7 9.1 11.8 14.2 7.5 11.6 3.2 14.2 4.3 9.1 .5 5.9 5.3 5.4"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              stroke-miterlimit="10"
+                            />
+                          </svg>
+                        </div>
+                        <div
+                          class="relative"
+                        >
+                          <div
+                            class="absolute top-0 left-0 h-full overflow-hidden"
+                            style="width: 100%;"
+                          >
+                            <svg
+                              class="w-2 h-2 md:h-4 md:w-4 fill-yellow-300 text-yellow-300"
+                              enable-background="new 0 0 15 15"
+                              viewBox="0 0 15 15"
+                              x="0"
+                              y="0"
+                            >
+                              <polygon
+                                points="7.5 .8 9.7 5.4 14.5 5.9 10.7 9.1 11.8 14.2 7.5 11.6 3.2 14.2 4.3 9.1 .5 5.9 5.3 5.4"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-miterlimit="10"
+                              />
+                            </svg>
+                          </div>
+                          <svg
+                            class="w-2 h-2 md:h-4 md:w-4 fill-current text-gray-300"
+                            enable-background="new 0 0 15 15"
+                            viewBox="0 0 15 15"
+                            x="0"
+                            y="0"
+                          >
+                            <polygon
+                              points="7.5 .8 9.7 5.4 14.5 5.9 10.7 9.1 11.8 14.2 7.5 11.6 3.2 14.2 4.3 9.1 .5 5.9 5.3 5.4"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              stroke-miterlimit="10"
+                            />
+                          </svg>
+                        </div>
+                        <div
+                          class="relative"
+                        >
+                          <div
+                            class="absolute top-0 left-0 h-full overflow-hidden"
+                            style="width: 100%;"
+                          >
+                            <svg
+                              class="w-2 h-2 md:h-4 md:w-4 fill-yellow-300 text-yellow-300"
+                              enable-background="new 0 0 15 15"
+                              viewBox="0 0 15 15"
+                              x="0"
+                              y="0"
+                            >
+                              <polygon
+                                points="7.5 .8 9.7 5.4 14.5 5.9 10.7 9.1 11.8 14.2 7.5 11.6 3.2 14.2 4.3 9.1 .5 5.9 5.3 5.4"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-miterlimit="10"
+                              />
+                            </svg>
+                          </div>
+                          <svg
+                            class="w-2 h-2 md:h-4 md:w-4 fill-current text-gray-300"
+                            enable-background="new 0 0 15 15"
+                            viewBox="0 0 15 15"
+                            x="0"
+                            y="0"
+                          >
+                            <polygon
+                              points="7.5 .8 9.7 5.4 14.5 5.9 10.7 9.1 11.8 14.2 7.5 11.6 3.2 14.2 4.3 9.1 .5 5.9 5.3 5.4"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              stroke-miterlimit="10"
+                            />
+                          </svg>
+                        </div>
+                        <div
+                          class="relative"
+                        >
+                          <div
+                            class="absolute top-0 left-0 h-full overflow-hidden"
+                            style="width: 100%;"
+                          >
+                            <svg
+                              class="w-2 h-2 md:h-4 md:w-4 fill-yellow-300 text-yellow-300"
+                              enable-background="new 0 0 15 15"
+                              viewBox="0 0 15 15"
+                              x="0"
+                              y="0"
+                            >
+                              <polygon
+                                points="7.5 .8 9.7 5.4 14.5 5.9 10.7 9.1 11.8 14.2 7.5 11.6 3.2 14.2 4.3 9.1 .5 5.9 5.3 5.4"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-miterlimit="10"
+                              />
+                            </svg>
+                          </div>
+                          <svg
+                            class="w-2 h-2 md:h-4 md:w-4 fill-current text-gray-300"
+                            enable-background="new 0 0 15 15"
+                            viewBox="0 0 15 15"
+                            x="0"
+                            y="0"
+                          >
+                            <polygon
+                              points="7.5 .8 9.7 5.4 14.5 5.9 10.7 9.1 11.8 14.2 7.5 11.6 3.2 14.2 4.3 9.1 .5 5.9 5.3 5.4"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              stroke-miterlimit="10"
+                            />
+                          </svg>
+                        </div>
+                        <div
+                          class="relative"
+                        >
+                          <div
+                            class="absolute top-0 left-0 h-full overflow-hidden"
+                            style="width: 100%;"
+                          >
+                            <svg
+                              class="w-2 h-2 md:h-4 md:w-4 fill-yellow-300 text-yellow-300"
+                              enable-background="new 0 0 15 15"
+                              viewBox="0 0 15 15"
+                              x="0"
+                              y="0"
+                            >
+                              <polygon
+                                points="7.5 .8 9.7 5.4 14.5 5.9 10.7 9.1 11.8 14.2 7.5 11.6 3.2 14.2 4.3 9.1 .5 5.9 5.3 5.4"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-miterlimit="10"
+                              />
+                            </svg>
+                          </div>
+                          <svg
+                            class="w-2 h-2 md:h-4 md:w-4 fill-current text-gray-300"
+                            enable-background="new 0 0 15 15"
+                            viewBox="0 0 15 15"
+                            x="0"
+                            y="0"
+                          >
+                            <polygon
+                              points="7.5 .8 9.7 5.4 14.5 5.9 10.7 9.1 11.8 14.2 7.5 11.6 3.2 14.2 4.3 9.1 .5 5.9 5.3 5.4"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              stroke-miterlimit="10"
+                            />
+                          </svg>
+                        </div>
+                      </div>
+                      <div>
+                        <span
+                          class="lowercase text-xs md:text-base"
+                        >
+                          97
+                        </span>
+                        <span
+                          class="ml-1 text-xs md:text-base"
+                        >
+                          Đã bán
+                        </span>
+                      </div>
+                    </div>
+                    <div
+                      class="mt-2 line-clamp-2 font-medium text-xs md:text-base"
+                    >
+                      [Có video] Áo phông form rộng tay lỡ unisex - Áo thun orange soda - Sỉ áo thun số lượng lớn
+                    </div>
+                    <div
+                      class="mt-2 flex items-center"
+                    >
+                      <div
+                        class="flex items-center text-gray-500 line-through"
+                      >
+                        <span
+                          class="text-xs md:text-sm"
+                        >
+                          60.000
+                        </span>
+                        <span
+                          class="text-xs md:text-sm"
+                        >
+                          đ
+                        </span>
+                      </div>
+                      <div
+                        class="flex items-center ml-2 font-medium text-[#000]"
+                      >
+                        <span
+                          class="text-xs md:text-lg"
+                        >
+                          39.000
+                        </span>
+                        <span
+                          class="text-xs md:text-lg"
+                        >
+                          đ
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </a>
+              </div>
+              <div
+                class="col-span-1"
+              >
+                <a
+                  href="/Áo-thun-nam-ngắn-tay-thể-thao-chất-liệu-thun-lạnh-4-chiều-AT39-i-60acf0ec2fb5290258597299"
+                >
+                  <div
+                    class="duration-300 rounded-sm hover:translate-y-[-3px] transition-transform overflow-hidden"
+                  >
+                    <div
+                      class="w-full pt-[100%] relative"
+                    >
+                      <img
+                        alt="Áo thun nam ngắn tay thể thao chất liệu thun lạnh 4 chiều AT39"
+                        class="absolute top-0 left-0 w-full h-full object-cover"
+                        src="https://api-ecom.duthanhduoc.com/images/25c409a5-9e6c-4e2d-a49e-23a8c291f749.jpg"
+                      />
+                    </div>
+                    <div
+                      class="mt-2 flex items-center justify-between"
+                    >
+                      <div
+                        class="flex items-center"
+                      >
+                        <div
+                          class="relative"
+                        >
+                          <div
+                            class="absolute top-0 left-0 h-full overflow-hidden"
+                            style="width: 100%;"
+                          >
+                            <svg
+                              class="w-2 h-2 md:h-4 md:w-4 fill-yellow-300 text-yellow-300"
+                              enable-background="new 0 0 15 15"
+                              viewBox="0 0 15 15"
+                              x="0"
+                              y="0"
+                            >
+                              <polygon
+                                points="7.5 .8 9.7 5.4 14.5 5.9 10.7 9.1 11.8 14.2 7.5 11.6 3.2 14.2 4.3 9.1 .5 5.9 5.3 5.4"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-miterlimit="10"
+                              />
+                            </svg>
+                          </div>
+                          <svg
+                            class="w-2 h-2 md:h-4 md:w-4 fill-current text-gray-300"
+                            enable-background="new 0 0 15 15"
+                            viewBox="0 0 15 15"
+                            x="0"
+                            y="0"
+                          >
+                            <polygon
+                              points="7.5 .8 9.7 5.4 14.5 5.9 10.7 9.1 11.8 14.2 7.5 11.6 3.2 14.2 4.3 9.1 .5 5.9 5.3 5.4"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              stroke-miterlimit="10"
+                            />
+                          </svg>
+                        </div>
+                        <div
+                          class="relative"
+                        >
+                          <div
+                            class="absolute top-0 left-0 h-full overflow-hidden"
+                            style="width: 100%;"
+                          >
+                            <svg
+                              class="w-2 h-2 md:h-4 md:w-4 fill-yellow-300 text-yellow-300"
+                              enable-background="new 0 0 15 15"
+                              viewBox="0 0 15 15"
+                              x="0"
+                              y="0"
+                            >
+                              <polygon
+                                points="7.5 .8 9.7 5.4 14.5 5.9 10.7 9.1 11.8 14.2 7.5 11.6 3.2 14.2 4.3 9.1 .5 5.9 5.3 5.4"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-miterlimit="10"
+                              />
+                            </svg>
+                          </div>
+                          <svg
+                            class="w-2 h-2 md:h-4 md:w-4 fill-current text-gray-300"
+                            enable-background="new 0 0 15 15"
+                            viewBox="0 0 15 15"
+                            x="0"
+                            y="0"
+                          >
+                            <polygon
+                              points="7.5 .8 9.7 5.4 14.5 5.9 10.7 9.1 11.8 14.2 7.5 11.6 3.2 14.2 4.3 9.1 .5 5.9 5.3 5.4"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              stroke-miterlimit="10"
+                            />
+                          </svg>
+                        </div>
+                        <div
+                          class="relative"
+                        >
+                          <div
+                            class="absolute top-0 left-0 h-full overflow-hidden"
+                            style="width: 100%;"
+                          >
+                            <svg
+                              class="w-2 h-2 md:h-4 md:w-4 fill-yellow-300 text-yellow-300"
+                              enable-background="new 0 0 15 15"
+                              viewBox="0 0 15 15"
+                              x="0"
+                              y="0"
+                            >
+                              <polygon
+                                points="7.5 .8 9.7 5.4 14.5 5.9 10.7 9.1 11.8 14.2 7.5 11.6 3.2 14.2 4.3 9.1 .5 5.9 5.3 5.4"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-miterlimit="10"
+                              />
+                            </svg>
+                          </div>
+                          <svg
+                            class="w-2 h-2 md:h-4 md:w-4 fill-current text-gray-300"
+                            enable-background="new 0 0 15 15"
+                            viewBox="0 0 15 15"
+                            x="0"
+                            y="0"
+                          >
+                            <polygon
+                              points="7.5 .8 9.7 5.4 14.5 5.9 10.7 9.1 11.8 14.2 7.5 11.6 3.2 14.2 4.3 9.1 .5 5.9 5.3 5.4"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              stroke-miterlimit="10"
+                            />
+                          </svg>
+                        </div>
+                        <div
+                          class="relative"
+                        >
+                          <div
+                            class="absolute top-0 left-0 h-full overflow-hidden"
+                            style="width: 100%;"
+                          >
+                            <svg
+                              class="w-2 h-2 md:h-4 md:w-4 fill-yellow-300 text-yellow-300"
+                              enable-background="new 0 0 15 15"
+                              viewBox="0 0 15 15"
+                              x="0"
+                              y="0"
+                            >
+                              <polygon
+                                points="7.5 .8 9.7 5.4 14.5 5.9 10.7 9.1 11.8 14.2 7.5 11.6 3.2 14.2 4.3 9.1 .5 5.9 5.3 5.4"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-miterlimit="10"
+                              />
+                            </svg>
+                          </div>
+                          <svg
+                            class="w-2 h-2 md:h-4 md:w-4 fill-current text-gray-300"
+                            enable-background="new 0 0 15 15"
+                            viewBox="0 0 15 15"
+                            x="0"
+                            y="0"
+                          >
+                            <polygon
+                              points="7.5 .8 9.7 5.4 14.5 5.9 10.7 9.1 11.8 14.2 7.5 11.6 3.2 14.2 4.3 9.1 .5 5.9 5.3 5.4"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              stroke-miterlimit="10"
+                            />
+                          </svg>
+                        </div>
+                        <div
+                          class="relative"
+                        >
+                          <div
+                            class="absolute top-0 left-0 h-full overflow-hidden"
+                            style="width: 100%;"
+                          >
+                            <svg
+                              class="w-2 h-2 md:h-4 md:w-4 fill-yellow-300 text-yellow-300"
+                              enable-background="new 0 0 15 15"
+                              viewBox="0 0 15 15"
+                              x="0"
+                              y="0"
+                            >
+                              <polygon
+                                points="7.5 .8 9.7 5.4 14.5 5.9 10.7 9.1 11.8 14.2 7.5 11.6 3.2 14.2 4.3 9.1 .5 5.9 5.3 5.4"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-miterlimit="10"
+                              />
+                            </svg>
+                          </div>
+                          <svg
+                            class="w-2 h-2 md:h-4 md:w-4 fill-current text-gray-300"
+                            enable-background="new 0 0 15 15"
+                            viewBox="0 0 15 15"
+                            x="0"
+                            y="0"
+                          >
+                            <polygon
+                              points="7.5 .8 9.7 5.4 14.5 5.9 10.7 9.1 11.8 14.2 7.5 11.6 3.2 14.2 4.3 9.1 .5 5.9 5.3 5.4"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              stroke-miterlimit="10"
+                            />
+                          </svg>
+                        </div>
+                      </div>
+                      <div>
+                        <span
+                          class="lowercase text-xs md:text-base"
+                        >
+                          24
+                        </span>
+                        <span
+                          class="ml-1 text-xs md:text-base"
+                        >
+                          Đã bán
+                        </span>
+                      </div>
+                    </div>
+                    <div
+                      class="mt-2 line-clamp-2 font-medium text-xs md:text-base"
+                    >
+                      Áo thun nam ngắn tay thể thao chất liệu thun lạnh 4 chiều AT39
+                    </div>
+                    <div
+                      class="mt-2 flex items-center"
+                    >
+                      <div
+                        class="flex items-center text-gray-500 line-through"
+                      >
+                        <span
+                          class="text-xs md:text-sm"
+                        >
+                          198.000
+                        </span>
+                        <span
+                          class="text-xs md:text-sm"
+                        >
+                          đ
+                        </span>
+                      </div>
+                      <div
+                        class="flex items-center ml-2 font-medium text-[#000]"
+                      >
+                        <span
+                          class="text-xs md:text-lg"
+                        >
+                          119.000
+                        </span>
+                        <span
+                          class="text-xs md:text-lg"
+                        >
+                          đ
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </a>
+              </div>
+              <div
+                class="col-span-1"
+              >
+                <a
+                  href="/Mã-FAMAYMA2-giảm-10K-đơn-50K-Áo-thun-nam-nữ-form-rộng-Yinxx-áo-phông-tay-lỡ-ATL43-i-60abaa9adbfa6e153cb9962c"
+                >
+                  <div
+                    class="duration-300 rounded-sm hover:translate-y-[-3px] transition-transform overflow-hidden"
+                  >
+                    <div
+                      class="w-full pt-[100%] relative"
+                    >
+                      <img
+                        alt="[Mã FAMAYMA2 giảm 10K đơn 50K] Áo thun nam nữ form rộng Yinxx, áo phông tay lỡ ATL43"
+                        class="absolute top-0 left-0 w-full h-full object-cover"
+                        src="https://api-ecom.duthanhduoc.com/images/c9e6cdf9-5d7c-4767-ab19-5d64b133fd3b.jpg"
+                      />
+                    </div>
+                    <div
+                      class="mt-2 flex items-center justify-between"
+                    >
+                      <div
+                        class="flex items-center"
+                      >
+                        <div
+                          class="relative"
+                        >
+                          <div
+                            class="absolute top-0 left-0 h-full overflow-hidden"
+                            style="width: 100%;"
+                          >
+                            <svg
+                              class="w-2 h-2 md:h-4 md:w-4 fill-yellow-300 text-yellow-300"
+                              enable-background="new 0 0 15 15"
+                              viewBox="0 0 15 15"
+                              x="0"
+                              y="0"
+                            >
+                              <polygon
+                                points="7.5 .8 9.7 5.4 14.5 5.9 10.7 9.1 11.8 14.2 7.5 11.6 3.2 14.2 4.3 9.1 .5 5.9 5.3 5.4"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-miterlimit="10"
+                              />
+                            </svg>
+                          </div>
+                          <svg
+                            class="w-2 h-2 md:h-4 md:w-4 fill-current text-gray-300"
+                            enable-background="new 0 0 15 15"
+                            viewBox="0 0 15 15"
+                            x="0"
+                            y="0"
+                          >
+                            <polygon
+                              points="7.5 .8 9.7 5.4 14.5 5.9 10.7 9.1 11.8 14.2 7.5 11.6 3.2 14.2 4.3 9.1 .5 5.9 5.3 5.4"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              stroke-miterlimit="10"
+                            />
+                          </svg>
+                        </div>
+                        <div
+                          class="relative"
+                        >
+                          <div
+                            class="absolute top-0 left-0 h-full overflow-hidden"
+                            style="width: 100%;"
+                          >
+                            <svg
+                              class="w-2 h-2 md:h-4 md:w-4 fill-yellow-300 text-yellow-300"
+                              enable-background="new 0 0 15 15"
+                              viewBox="0 0 15 15"
+                              x="0"
+                              y="0"
+                            >
+                              <polygon
+                                points="7.5 .8 9.7 5.4 14.5 5.9 10.7 9.1 11.8 14.2 7.5 11.6 3.2 14.2 4.3 9.1 .5 5.9 5.3 5.4"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-miterlimit="10"
+                              />
+                            </svg>
+                          </div>
+                          <svg
+                            class="w-2 h-2 md:h-4 md:w-4 fill-current text-gray-300"
+                            enable-background="new 0 0 15 15"
+                            viewBox="0 0 15 15"
+                            x="0"
+                            y="0"
+                          >
+                            <polygon
+                              points="7.5 .8 9.7 5.4 14.5 5.9 10.7 9.1 11.8 14.2 7.5 11.6 3.2 14.2 4.3 9.1 .5 5.9 5.3 5.4"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              stroke-miterlimit="10"
+                            />
+                          </svg>
+                        </div>
+                        <div
+                          class="relative"
+                        >
+                          <div
+                            class="absolute top-0 left-0 h-full overflow-hidden"
+                            style="width: 100%;"
+                          >
+                            <svg
+                              class="w-2 h-2 md:h-4 md:w-4 fill-yellow-300 text-yellow-300"
+                              enable-background="new 0 0 15 15"
+                              viewBox="0 0 15 15"
+                              x="0"
+                              y="0"
+                            >
+                              <polygon
+                                points="7.5 .8 9.7 5.4 14.5 5.9 10.7 9.1 11.8 14.2 7.5 11.6 3.2 14.2 4.3 9.1 .5 5.9 5.3 5.4"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-miterlimit="10"
+                              />
+                            </svg>
+                          </div>
+                          <svg
+                            class="w-2 h-2 md:h-4 md:w-4 fill-current text-gray-300"
+                            enable-background="new 0 0 15 15"
+                            viewBox="0 0 15 15"
+                            x="0"
+                            y="0"
+                          >
+                            <polygon
+                              points="7.5 .8 9.7 5.4 14.5 5.9 10.7 9.1 11.8 14.2 7.5 11.6 3.2 14.2 4.3 9.1 .5 5.9 5.3 5.4"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              stroke-miterlimit="10"
+                            />
+                          </svg>
+                        </div>
+                        <div
+                          class="relative"
+                        >
+                          <div
+                            class="absolute top-0 left-0 h-full overflow-hidden"
+                            style="width: 100%;"
+                          >
+                            <svg
+                              class="w-2 h-2 md:h-4 md:w-4 fill-yellow-300 text-yellow-300"
+                              enable-background="new 0 0 15 15"
+                              viewBox="0 0 15 15"
+                              x="0"
+                              y="0"
+                            >
+                              <polygon
+                                points="7.5 .8 9.7 5.4 14.5 5.9 10.7 9.1 11.8 14.2 7.5 11.6 3.2 14.2 4.3 9.1 .5 5.9 5.3 5.4"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-miterlimit="10"
+                              />
+                            </svg>
+                          </div>
+                          <svg
+                            class="w-2 h-2 md:h-4 md:w-4 fill-current text-gray-300"
+                            enable-background="new 0 0 15 15"
+                            viewBox="0 0 15 15"
+                            x="0"
+                            y="0"
+                          >
+                            <polygon
+                              points="7.5 .8 9.7 5.4 14.5 5.9 10.7 9.1 11.8 14.2 7.5 11.6 3.2 14.2 4.3 9.1 .5 5.9 5.3 5.4"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              stroke-miterlimit="10"
+                            />
+                          </svg>
+                        </div>
+                        <div
+                          class="relative"
+                        >
+                          <div
+                            class="absolute top-0 left-0 h-full overflow-hidden"
+                            style="width: 100%;"
+                          >
+                            <svg
+                              class="w-2 h-2 md:h-4 md:w-4 fill-yellow-300 text-yellow-300"
+                              enable-background="new 0 0 15 15"
+                              viewBox="0 0 15 15"
+                              x="0"
+                              y="0"
+                            >
+                              <polygon
+                                points="7.5 .8 9.7 5.4 14.5 5.9 10.7 9.1 11.8 14.2 7.5 11.6 3.2 14.2 4.3 9.1 .5 5.9 5.3 5.4"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-miterlimit="10"
+                              />
+                            </svg>
+                          </div>
+                          <svg
+                            class="w-2 h-2 md:h-4 md:w-4 fill-current text-gray-300"
+                            enable-background="new 0 0 15 15"
+                            viewBox="0 0 15 15"
+                            x="0"
+                            y="0"
+                          >
+                            <polygon
+                              points="7.5 .8 9.7 5.4 14.5 5.9 10.7 9.1 11.8 14.2 7.5 11.6 3.2 14.2 4.3 9.1 .5 5.9 5.3 5.4"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              stroke-miterlimit="10"
+                            />
+                          </svg>
+                        </div>
+                      </div>
+                      <div>
+                        <span
+                          class="lowercase text-xs md:text-base"
+                        >
+                          4,1K
+                        </span>
+                        <span
+                          class="ml-1 text-xs md:text-base"
+                        >
+                          Đã bán
+                        </span>
+                      </div>
+                    </div>
+                    <div
+                      class="mt-2 line-clamp-2 font-medium text-xs md:text-base"
+                    >
+                      [Mã FAMAYMA2 giảm 10K đơn 50K] Áo thun nam nữ form rộng Yinxx, áo phông tay lỡ ATL43
+                    </div>
+                    <div
+                      class="mt-2 flex items-center"
+                    >
+                      <div
+                        class="flex items-center text-gray-500 line-through"
+                      >
+                        <span
+                          class="text-xs md:text-sm"
+                        >
+                          80.000
+                        </span>
+                        <span
+                          class="text-xs md:text-sm"
+                        >
+                          đ
+                        </span>
+                      </div>
+                      <div
+                        class="flex items-center ml-2 font-medium text-[#000]"
+                      >
+                        <span
+                          class="text-xs md:text-lg"
+                        >
+                          69.000
+                        </span>
+                        <span
+                          class="text-xs md:text-lg"
+                        >
+                          đ
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </a>
+              </div>
+              <div
+                class="col-span-1"
+              >
+                <a
+                  href="/Mã-FAMAYMA2-giảm-10K-đơn-50K-Áo-thun-tay-lỡ-unisex-Yinxx-áo-phông-form-rộng-ATL187-i-60aba9a2dbfa6e153cb9962b"
+                >
+                  <div
+                    class="duration-300 rounded-sm hover:translate-y-[-3px] transition-transform overflow-hidden"
+                  >
+                    <div
+                      class="w-full pt-[100%] relative"
+                    >
+                      <img
+                        alt="[Mã FAMAYMA2 giảm 10K đơn 50K] Áo thun tay lỡ unisex Yinxx, áo phông form rộng ATL187"
+                        class="absolute top-0 left-0 w-full h-full object-cover"
+                        src="https://api-ecom.duthanhduoc.com/images/2b5e1bfa-b202-46b3-b68b-f6c8a19cb1cf.jpg"
+                      />
+                    </div>
+                    <div
+                      class="mt-2 flex items-center justify-between"
+                    >
+                      <div
+                        class="flex items-center"
+                      >
+                        <div
+                          class="relative"
+                        >
+                          <div
+                            class="absolute top-0 left-0 h-full overflow-hidden"
+                            style="width: 100%;"
+                          >
+                            <svg
+                              class="w-2 h-2 md:h-4 md:w-4 fill-yellow-300 text-yellow-300"
+                              enable-background="new 0 0 15 15"
+                              viewBox="0 0 15 15"
+                              x="0"
+                              y="0"
+                            >
+                              <polygon
+                                points="7.5 .8 9.7 5.4 14.5 5.9 10.7 9.1 11.8 14.2 7.5 11.6 3.2 14.2 4.3 9.1 .5 5.9 5.3 5.4"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-miterlimit="10"
+                              />
+                            </svg>
+                          </div>
+                          <svg
+                            class="w-2 h-2 md:h-4 md:w-4 fill-current text-gray-300"
+                            enable-background="new 0 0 15 15"
+                            viewBox="0 0 15 15"
+                            x="0"
+                            y="0"
+                          >
+                            <polygon
+                              points="7.5 .8 9.7 5.4 14.5 5.9 10.7 9.1 11.8 14.2 7.5 11.6 3.2 14.2 4.3 9.1 .5 5.9 5.3 5.4"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              stroke-miterlimit="10"
+                            />
+                          </svg>
+                        </div>
+                        <div
+                          class="relative"
+                        >
+                          <div
+                            class="absolute top-0 left-0 h-full overflow-hidden"
+                            style="width: 100%;"
+                          >
+                            <svg
+                              class="w-2 h-2 md:h-4 md:w-4 fill-yellow-300 text-yellow-300"
+                              enable-background="new 0 0 15 15"
+                              viewBox="0 0 15 15"
+                              x="0"
+                              y="0"
+                            >
+                              <polygon
+                                points="7.5 .8 9.7 5.4 14.5 5.9 10.7 9.1 11.8 14.2 7.5 11.6 3.2 14.2 4.3 9.1 .5 5.9 5.3 5.4"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-miterlimit="10"
+                              />
+                            </svg>
+                          </div>
+                          <svg
+                            class="w-2 h-2 md:h-4 md:w-4 fill-current text-gray-300"
+                            enable-background="new 0 0 15 15"
+                            viewBox="0 0 15 15"
+                            x="0"
+                            y="0"
+                          >
+                            <polygon
+                              points="7.5 .8 9.7 5.4 14.5 5.9 10.7 9.1 11.8 14.2 7.5 11.6 3.2 14.2 4.3 9.1 .5 5.9 5.3 5.4"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              stroke-miterlimit="10"
+                            />
+                          </svg>
+                        </div>
+                        <div
+                          class="relative"
+                        >
+                          <div
+                            class="absolute top-0 left-0 h-full overflow-hidden"
+                            style="width: 100%;"
+                          >
+                            <svg
+                              class="w-2 h-2 md:h-4 md:w-4 fill-yellow-300 text-yellow-300"
+                              enable-background="new 0 0 15 15"
+                              viewBox="0 0 15 15"
+                              x="0"
+                              y="0"
+                            >
+                              <polygon
+                                points="7.5 .8 9.7 5.4 14.5 5.9 10.7 9.1 11.8 14.2 7.5 11.6 3.2 14.2 4.3 9.1 .5 5.9 5.3 5.4"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-miterlimit="10"
+                              />
+                            </svg>
+                          </div>
+                          <svg
+                            class="w-2 h-2 md:h-4 md:w-4 fill-current text-gray-300"
+                            enable-background="new 0 0 15 15"
+                            viewBox="0 0 15 15"
+                            x="0"
+                            y="0"
+                          >
+                            <polygon
+                              points="7.5 .8 9.7 5.4 14.5 5.9 10.7 9.1 11.8 14.2 7.5 11.6 3.2 14.2 4.3 9.1 .5 5.9 5.3 5.4"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              stroke-miterlimit="10"
+                            />
+                          </svg>
+                        </div>
+                        <div
+                          class="relative"
+                        >
+                          <div
+                            class="absolute top-0 left-0 h-full overflow-hidden"
+                            style="width: 100%;"
+                          >
+                            <svg
+                              class="w-2 h-2 md:h-4 md:w-4 fill-yellow-300 text-yellow-300"
+                              enable-background="new 0 0 15 15"
+                              viewBox="0 0 15 15"
+                              x="0"
+                              y="0"
+                            >
+                              <polygon
+                                points="7.5 .8 9.7 5.4 14.5 5.9 10.7 9.1 11.8 14.2 7.5 11.6 3.2 14.2 4.3 9.1 .5 5.9 5.3 5.4"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-miterlimit="10"
+                              />
+                            </svg>
+                          </div>
+                          <svg
+                            class="w-2 h-2 md:h-4 md:w-4 fill-current text-gray-300"
+                            enable-background="new 0 0 15 15"
+                            viewBox="0 0 15 15"
+                            x="0"
+                            y="0"
+                          >
+                            <polygon
+                              points="7.5 .8 9.7 5.4 14.5 5.9 10.7 9.1 11.8 14.2 7.5 11.6 3.2 14.2 4.3 9.1 .5 5.9 5.3 5.4"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              stroke-miterlimit="10"
+                            />
+                          </svg>
+                        </div>
+                        <div
+                          class="relative"
+                        >
+                          <div
+                            class="absolute top-0 left-0 h-full overflow-hidden"
+                            style="width: 100%;"
+                          >
+                            <svg
+                              class="w-2 h-2 md:h-4 md:w-4 fill-yellow-300 text-yellow-300"
+                              enable-background="new 0 0 15 15"
+                              viewBox="0 0 15 15"
+                              x="0"
+                              y="0"
+                            >
+                              <polygon
+                                points="7.5 .8 9.7 5.4 14.5 5.9 10.7 9.1 11.8 14.2 7.5 11.6 3.2 14.2 4.3 9.1 .5 5.9 5.3 5.4"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-miterlimit="10"
+                              />
+                            </svg>
+                          </div>
+                          <svg
+                            class="w-2 h-2 md:h-4 md:w-4 fill-current text-gray-300"
+                            enable-background="new 0 0 15 15"
+                            viewBox="0 0 15 15"
+                            x="0"
+                            y="0"
+                          >
+                            <polygon
+                              points="7.5 .8 9.7 5.4 14.5 5.9 10.7 9.1 11.8 14.2 7.5 11.6 3.2 14.2 4.3 9.1 .5 5.9 5.3 5.4"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              stroke-miterlimit="10"
+                            />
+                          </svg>
+                        </div>
+                      </div>
+                      <div>
+                        <span
+                          class="lowercase text-xs md:text-base"
+                        >
+                          3,8K
+                        </span>
+                        <span
+                          class="ml-1 text-xs md:text-base"
+                        >
+                          Đã bán
+                        </span>
+                      </div>
+                    </div>
+                    <div
+                      class="mt-2 line-clamp-2 font-medium text-xs md:text-base"
+                    >
+                      [Mã FAMAYMA2 giảm 10K đơn 50K] Áo thun tay lỡ unisex Yinxx, áo phông form rộng ATL187
+                    </div>
+                    <div
+                      class="mt-2 flex items-center"
+                    >
+                      <div
+                        class="flex items-center text-gray-500 line-through"
+                      >
+                        <span
+                          class="text-xs md:text-sm"
+                        >
+                          100.000
+                        </span>
+                        <span
+                          class="text-xs md:text-sm"
+                        >
+                          đ
+                        </span>
+                      </div>
+                      <div
+                        class="flex items-center ml-2 font-medium text-[#000]"
+                      >
+                        <span
+                          class="text-xs md:text-lg"
+                        >
+                          69.000
+                        </span>
+                        <span
+                          class="text-xs md:text-lg"
+                        >
+                          đ
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <footer>
+        <div
+          class="bg-[#fff] duration-200 border-t border-gray-500"
+        >
+          <div
+            class="container"
+          >
+            <div
+              class="pt-10 pb-8 lg:flex lg:items-start lg:justify-between gap-4"
+            >
+              <a
+                class="lg:flex-1 mt-2 md:mt-5"
+                href="/"
+              >
+                <div
+                  class="flex items-center w-full lg:w-full text-[28px] md:text-3xl lg:text-4xl"
+                >
+                  <div
+                    class="text-[#27232f] font_logo"
+                  >
+                    Molla
+                  </div>
+                </div>
+              </a>
+              <div
+                class="lg:flex-1 mt-5"
+              >
+                <h3
+                  class="text-[#27232f] text-xl md:text-2xl font-semibold"
+                >
+                  Shop
+                </h3>
+                <ul
+                  class="mt-2 md:mt-5"
+                >
+                  <li>
+                    <a
+                      class="text-[#27232f] mb-2 block text-xs md:text-base"
+                      href="/%C4%90i%E1%BB%87n-tho%E1%BA%A1i-Apple-Iphone-12-64GB--H%C3%A0ng-ch%C3%ADnh-h%C3%A3ng-VNA-i-60afb1c56ef5b902180aacb8"
+                    >
+                      Hot deal
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      class="text-[#27232f] mb-2 block text-xs md:text-base"
+                      href="/%C4%90i%E1%BB%87n-tho%E1%BA%A1i-Apple-Iphone-12-64GB--H%C3%A0ng-ch%C3%ADnh-h%C3%A3ng-VNA-i-60afb1c56ef5b902180aacb8"
+                    >
+                      Categories
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      class="text-[#27232f] mb-2 block text-xs md:text-base"
+                      href="/%C4%90i%E1%BB%87n-tho%E1%BA%A1i-Apple-Iphone-12-64GB--H%C3%A0ng-ch%C3%ADnh-h%C3%A3ng-VNA-i-60afb1c56ef5b902180aacb8"
+                    >
+                      Brands
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      class="text-[#27232f] mb-2 block text-xs md:text-base"
+                      href="/%C4%90i%E1%BB%87n-tho%E1%BA%A1i-Apple-Iphone-12-64GB--H%C3%A0ng-ch%C3%ADnh-h%C3%A3ng-VNA-i-60afb1c56ef5b902180aacb8"
+                    >
+                      Rebates
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      class="text-[#27232f] mb-2 block text-xs md:text-base"
+                      href="/%C4%90i%E1%BB%87n-tho%E1%BA%A1i-Apple-Iphone-12-64GB--H%C3%A0ng-ch%C3%ADnh-h%C3%A3ng-VNA-i-60afb1c56ef5b902180aacb8"
+                    >
+                      Weekly Deal
+                    </a>
+                  </li>
+                </ul>
+              </div>
+              <div
+                class="lg:flex-1 mt-5"
+              >
+                <h3
+                  class="text-[#27232f] text-xl md:text-2xl font-semibold"
+                >
+                  Need helps
+                </h3>
+                <ul
+                  class="mt-2 md:mt-5"
+                >
+                  <li>
+                    <a
+                      class="text-[#27232f] mb-2 block text-xs md:text-base"
+                      href="/%C4%90i%E1%BB%87n-tho%E1%BA%A1i-Apple-Iphone-12-64GB--H%C3%A0ng-ch%C3%ADnh-h%C3%A3ng-VNA-i-60afb1c56ef5b902180aacb8"
+                    >
+                      Contact
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      class="text-[#27232f] mb-2 block text-xs md:text-base"
+                      href="/%C4%90i%E1%BB%87n-tho%E1%BA%A1i-Apple-Iphone-12-64GB--H%C3%A0ng-ch%C3%ADnh-h%C3%A3ng-VNA-i-60afb1c56ef5b902180aacb8"
+                    >
+                      Order Tracking
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      class="text-[#27232f] mb-2 block text-xs md:text-base"
+                      href="/%C4%90i%E1%BB%87n-tho%E1%BA%A1i-Apple-Iphone-12-64GB--H%C3%A0ng-ch%C3%ADnh-h%C3%A3ng-VNA-i-60afb1c56ef5b902180aacb8"
+                    >
+                      FAQS
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      class="text-[#27232f] mb-2 block text-xs md:text-base"
+                      href="/%C4%90i%E1%BB%87n-tho%E1%BA%A1i-Apple-Iphone-12-64GB--H%C3%A0ng-ch%C3%ADnh-h%C3%A3ng-VNA-i-60afb1c56ef5b902180aacb8"
+                    >
+                      Return policy
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      class="text-[#27232f] mb-2 block text-xs md:text-base"
+                      href="/%C4%90i%E1%BB%87n-tho%E1%BA%A1i-Apple-Iphone-12-64GB--H%C3%A0ng-ch%C3%ADnh-h%C3%A3ng-VNA-i-60afb1c56ef5b902180aacb8"
+                    >
+                      Privacy policy
+                    </a>
+                  </li>
+                </ul>
+              </div>
+              <div
+                class="lg:flex-1 mt-5"
+              >
+                <h3
+                  class="text-[#27232f] text-xl md:text-2xl font-semibold"
+                >
+                  Contact
+                </h3>
+                <ul
+                  class="mt-2 md:mt-5"
+                >
+                  <li>
+                    <a
+                      class="text-[#27232f] mb-2 block text-xs md:text-base"
+                      href="/%C4%90i%E1%BB%87n-tho%E1%BA%A1i-Apple-Iphone-12-64GB--H%C3%A0ng-ch%C3%ADnh-h%C3%A3ng-VNA-i-60afb1c56ef5b902180aacb8"
+                    >
+                      23/46 NHT, Tan Phu, Ho Chi Minh city
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      class="text-[#27232f] mb-2 block text-xs md:text-base"
+                      href="/%C4%90i%E1%BB%87n-tho%E1%BA%A1i-Apple-Iphone-12-64GB--H%C3%A0ng-ch%C3%ADnh-h%C3%A3ng-VNA-i-60afb1c56ef5b902180aacb8"
+                    >
+                      phamminhthuan912@gmail.com
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      class="text-[#27232f] mb-2 block text-xs md:text-base"
+                      href="/%C4%90i%E1%BB%87n-tho%E1%BA%A1i-Apple-Iphone-12-64GB--H%C3%A0ng-ch%C3%ADnh-h%C3%A3ng-VNA-i-60afb1c56ef5b902180aacb8"
+                    >
+                      +84-931-554-657
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="bg-primaryGray"
+        >
+          <div
+            class="container"
+          >
+            <div
+              class="py-5 md:py-10 flex items-center justify-between flex-wrap gap-4"
+            >
+              <span
+                class="text-[#9ca7ab]"
+              >
+                @2024 Molla Store. Power by Molla Store
+              </span>
+              <div
+                class="flex items-center gap-x-5"
+              >
+                <div>
+                  <svg
+                    class="w-10 h-10"
+                    fill="none"
+                    stroke="#9ca7ab"
+                    stroke-width="1.5"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M21 12a2.25 2.25 0 0 0-2.25-2.25H15a3 3 0 1 1-6 0H5.25A2.25 2.25 0 0 0 3 12m18 0v6a2.25 2.25 0 0 1-2.25 2.25H5.25A2.25 2.25 0 0 1 3 18v-6m18 0V9M3 12V9m18 0a2.25 2.25 0 0 0-2.25-2.25H5.25A2.25 2.25 0 0 0 3 9m18 0V6a2.25 2.25 0 0 0-2.25-2.25H5.25A2.25 2.25 0 0 0 3 6v3"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </div>
+                <div>
+                  <svg
+                    class="w-10 h-10"
+                    fill="none"
+                    stroke="#9ca7ab"
+                    stroke-width="1.5"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </div>
+                <div>
+                  <svg
+                    class="w-10 h-10"
+                    fill="none"
+                    stroke="#9ca7ab"
+                    stroke-width="1.5"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12c0 4.556-4.03 8.25-9 8.25a9.764 9.764 0 0 1-2.555-.337A5.972 5.972 0 0 1 5.41 20.97a5.969 5.969 0 0 1-.474-.065 4.48 4.48 0 0 0 .978-2.025c.09-.457-.133-.901-.467-1.226C3.93 16.178 3 14.189 3 12c0-4.556 4.03-8.25 9-8.25s9 3.694 9 8.25Z"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+    <div
+      class="Toastify"
+    />
+  </div>
+  <div
+    data-floating-ui-portal=""
+    id=":r1:"
+  />
+  <div
+    data-floating-ui-portal=""
+    id=":r3:"
+  />
+  <div
+    data-floating-ui-portal=""
+    id=":re:"
+  />
+</body>
+`;

@@ -13,6 +13,7 @@ import {
 
 interface Props {
   children: React.ReactNode
+  defaultValue?: TypeInitialState
 }
 
 interface TypeInitialState {
@@ -25,12 +26,25 @@ interface TypeInitialState {
   extendedPurchase: ExtendedPurchase[]
   setExtendedPurchase: React.Dispatch<React.SetStateAction<ExtendedPurchase[]>>
   reset: () => void
-
   language: string
   setLanguage: React.Dispatch<React.SetStateAction<string>>
 }
 
-const initialState: TypeInitialState = {
+// const initialState: TypeInitialState = {
+//   isAuthenticated: Boolean(getAccessTokenToLs()), // lấy access_token từ ls ra và chuyển nó thành boolean
+//   setIsAuthenticated: () => null,
+//   isProfile: getProfileToLs(),
+//   setIsProfile: () => null,
+//   darkMode: getDarkModeToLs() === "true" ? true : false,
+//   setDarkMode: () => null,
+//   extendedPurchase: [],
+//   setExtendedPurchase: () => null,
+//   reset: () => null,
+//   language: getLanguageToLS(),
+//   setLanguage: () => null
+// }
+
+export const getInitialAppContext: () => TypeInitialState = () => ({
   isAuthenticated: Boolean(getAccessTokenToLs()), // lấy access_token từ ls ra và chuyển nó thành boolean
   setIsAuthenticated: () => null,
   isProfile: getProfileToLs(),
@@ -40,18 +54,19 @@ const initialState: TypeInitialState = {
   extendedPurchase: [],
   setExtendedPurchase: () => null,
   reset: () => null,
-
   language: getLanguageToLS(),
   setLanguage: () => null
-}
+})
+
+const initialState = getInitialAppContext()
 
 export const AppContext = createContext<TypeInitialState>(initialState)
 
 // global state - Context Api - state toàn cục : redux cũng tương tự
-export const AppProvider = ({ children }: Props) => {
+export const AppProvider = ({ children, defaultValue = initialState }: Props) => {
   const { i18n } = useTranslation("header")
-  const [darkMode, setDarkMode] = useState<boolean>(initialState.darkMode)
-  const [language, setLanguage] = useState<string>(initialState.language)
+  const [darkMode, setDarkMode] = useState<boolean>(defaultValue.darkMode)
+  const [language, setLanguage] = useState<string>(defaultValue.language)
 
   useEffect(() => {
     setDarkModeToLs(darkMode.toString())
@@ -65,11 +80,11 @@ export const AppProvider = ({ children }: Props) => {
     i18n.changeLanguage(isLanguageEn)
   }, [i18n])
 
-  const [isAuthenticated, setIsAuthenticated] = useState<boolean>(initialState.isAuthenticated)
-  const [isProfile, setIsProfile] = useState<User | null>(initialState.isProfile)
+  const [isAuthenticated, setIsAuthenticated] = useState<boolean>(defaultValue.isAuthenticated)
+  const [isProfile, setIsProfile] = useState<User | null>(defaultValue.isProfile)
   // eslint-disable-next-line prettier/prettier
   const [extendedPurchase, setExtendedPurchase] = useState<ExtendedPurchase[]>(
-    initialState.extendedPurchase
+    defaultValue.extendedPurchase
   )
 
   const reset = () => {

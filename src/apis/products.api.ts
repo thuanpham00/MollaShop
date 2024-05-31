@@ -3,9 +3,10 @@ import { SuccessResponse } from "src/types/utils.type"
 import Http from "src/utils/http"
 
 export const productApi = {
-  getProductList: (params: ProductListConfig) => {
+  getProductList: (params: ProductListConfig, signal?: AbortSignal) => {
     return Http.get<SuccessResponse<ProductList>>("products", {
-      params
+      params,
+      signal
     })
   },
   getProductDetail: (id: string) => {

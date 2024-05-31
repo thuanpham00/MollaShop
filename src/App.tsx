@@ -3,10 +3,9 @@ import useRouterElements from "./useRouterElements"
 import { ToastContainer } from "react-toastify"
 import "react-toastify/dist/ReactToastify.css"
 import { LocalStorageEventTarget } from "./utils/auth"
-import { AppContext, AppProvider } from "./contexts/auth.context"
+import { AppContext } from "./contexts/auth.context"
 import { HelmetProvider } from "react-helmet-async"
 import ErrorBoundary from "./Components/ErrBoundary"
-import { ReactQueryDevtools } from "@tanstack/react-query-devtools"
 
 function App() {
   const elementRoutes = useRouterElements()
@@ -22,13 +21,10 @@ function App() {
 
   return (
     <HelmetProvider>
-      <AppProvider>
-        <ErrorBoundary>
-          {elementRoutes}
-          <ToastContainer />
-        </ErrorBoundary>
-      </AppProvider>
-      <ReactQueryDevtools initialIsOpen={false} />
+      <ErrorBoundary>
+        {elementRoutes}
+        <ToastContainer />
+      </ErrorBoundary>
     </HelmetProvider>
   )
 }

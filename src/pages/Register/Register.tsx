@@ -144,8 +144,8 @@ export default function Register() {
                 <Button
                   className="mt-2"
                   type="submit"
-                  disabled={registerAccountMutation.isLoading}
-                  isLoading={registerAccountMutation.isLoading}
+                  disabled={registerAccountMutation.isPending}
+                  isPending={registerAccountMutation.isPending}
                 >
                   {t("header.register")}
                 </Button>

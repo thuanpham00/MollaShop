@@ -1,7 +1,7 @@
 import { screen, waitFor, fireEvent } from "@testing-library/react"
 import { path } from "src/constants/path"
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { logScreen, renderWithRouter } from "src/testUtils"
+import { renderWithRouter } from "src/testUtils"
 import { beforeAll, describe, expect, it } from "vitest"
 
 describe("Login", () => {
@@ -13,7 +13,7 @@ describe("Login", () => {
     await waitFor(() => {
       expect(screen.queryByPlaceholderText("Email")).toBeTruthy()
     })
-    // await logScreen()
+
     emailInput = document.querySelector('form input[type="email"]') as HTMLInputElement
     passwordInput = document.querySelector('form input[type="password"]') as HTMLInputElement
     submitButton = document.querySelector('form button[type="submit"]') as HTMLButtonElement
@@ -27,7 +27,6 @@ describe("Login", () => {
       expect(screen.queryByText("Email bắt buộc")).toBeTruthy()
       expect(screen.queryByText("Password bắt buộc")).toBeTruthy()
     })
-    // await logScreen()
   })
 
   it("Hiển thị lỗi khi nhập value input sai", async () => {
@@ -48,7 +47,6 @@ describe("Login", () => {
       expect(screen.queryByText("Email không đúng định dạng")).toBeTruthy()
       expect(screen.queryByText("Độ dài 6-160 kí tự")).toBeTruthy()
     })
-    // await logScreen()
   })
 
   it("không nên hiển thị lỗi khi nhập lại value đúng", async () => {
@@ -71,7 +69,7 @@ describe("Login", () => {
     // test cho nó báo lỗi input khi login
     // những trường hợp chứng minh rằng tìm không ra text hay là element
     // thì nên dùng query hơn là find hay get
-    await logScreen()
+    // await logScreen()
 
     // await waitFor(() => {
     //   expect(document.querySelector("title")?.textContent).toBe("")

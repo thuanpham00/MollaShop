@@ -1,12 +1,15 @@
-// import { rest } from "msw"
-// import { config } from "src/constants/config"
-// import { HttpStatusCode } from "src/constants/httpStatusCode.enum"
+import { rest } from "msw"
+import { config } from "src/constants/config"
+import { HttpStatusCode } from "src/constants/httpStatusCode.enum"
 
 export const access_token_1giay =
   "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2Mzc5NWNjYTcxYTZjMDI5ZGVjNDU0MyIsImVtYWlsIjoiYWRtaW5fQGdtYWlsLmNvbSIsInJvbGVzIjpbIlVzZXIiXSwiY3JlYXRlZF9hdCI6IjIwMjQtMDUtMjVUMTE6MDg6MjguMTc3WiIsImlhdCI6MTcxNjYzNTMwOCwiZXhwIjoxNzE2NjM1MzA5fQ.XSqC1ltfny9_iXv_h6YcNOCEAO-rR7BCvAeiIL-npjY"
 
 export const refresh_token_1000days =
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2Mzc5NWNjYTcxYTZjMDI5ZGVjNDU0MyIsImVtYWlsIjoiYWRtaW5fQGdtYWlsLmNvbSIsInJvbGVzIjpbIlVzZXIiXSwiY3JlYXRlZF9hdCI6IjIwMjQtMDUtMjVUMTE6MTI6MzAuMjYzWiIsImlhdCI6MTcxNjYzNTU1MCwiZXhwIjoxODAzMDM1NTUwfQ.5G8fPhCn2xoVqN7CZU186gPnB2DeSSuAeGZVK5zyVO4"
+
+export const access_token =
+  "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2Mzc5NWNjYTcxYTZjMDI5ZGVjNDU0MyIsImVtYWlsIjoiYWRtaW5fQGdtYWlsLmNvbSIsInJvbGVzIjpbIlVzZXIiXSwiY3JlYXRlZF9hdCI6IjIwMjQtMDUtMzFUMjA6MDM6MTMuMzgzWiIsImlhdCI6MTcxNzE4NTc5MywiZXhwIjoxNzI3MTg1NzkyfQ.dJcoDGzitfvtujkUxpgv5gC0qBiXiL6GT7PKhmjqjWQ"
 
 export const loginRes = {
   message: "Đăng nhập thành công",
@@ -33,14 +36,20 @@ export const loginRes = {
   }
 }
 
-// const loginRequest = rest.post(`${config.baseUrl}login`, (req, res, ctx) => {
-//   return res(ctx.status(HttpStatusCode.Ok), ctx.json(loginRes))
-// })
+const refreshTokenRes = {
+  message: "Refresh Token thành công",
+  data: {
+    access_token:
+      "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2Mzc5NWNjYTcxYTZjMDI5ZGVjNDU0MyIsImVtYWlsIjoiYWRtaW5fQGdtYWlsLmNvbSIsInJvbGVzIjpbIlVzZXIiXSwiY3JlYXRlZF9hdCI6IjIwMjQtMDUtMzFUMTg6MjI6MTQuMTY0WiIsImlhdCI6MTcxNzE3OTczNCwiZXhwIjoxNzE3Nzg0NTM0fQ.m9BM2RKSxCvbcS1xS5TkuM8THpuJioKZ2QLm23tBizY"
+  }
+}
 
-// const refreshToken = rest.post(`${config.baseUrl}refresh`, (req, res, ctx) => {
-//   return res(ctx.status(HttpStatusCode.Ok), ctx.json(loginRes))
-// })
+const loginRequest = rest.post(`${config.baseUrl}login`, (req, res, ctx) => {
+  return res(ctx.status(HttpStatusCode.Ok), ctx.json(loginRes))
+})
 
-// const authRequest = [loginRequest]
+const refreshToken = rest.post(`${config.baseUrl}refresh-access-token`, (req, res, ctx) => {
+  return res(ctx.status(HttpStatusCode.Ok), ctx.json(refreshTokenRes))
+})
 
-// export default authRequest
+export const authRequests = [loginRequest, refreshToken]

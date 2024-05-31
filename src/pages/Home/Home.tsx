@@ -113,9 +113,36 @@ const productFeatured: ProductFeatured[] = [
   }
 ]
 
+// const schemaEmail = schema.pick(["email"])
+
+// type EmailType = string
+
 export default function Home() {
   const { t } = useTranslation(["header", "home"])
   const { darkMode } = useContext(AppContext)
+  // const {
+  //   handleSubmit,
+  //   register,
+  //   formState: { errors }
+  // } = useForm<EmailType>({
+  //   resolver: yupResolver(schemaEmail)
+  // })
+
+  // const signUpMutation = useMutation({
+  //   mutationFn: (data: EmailType) => {
+  //     return signUpLetter.signUp(data)
+  //   }
+  // })
+
+  // const onSubmit = handleSubmit(async (data) => {
+  //   await signUpMutation.mutateAsync(data, {
+  //     onSuccess: () => {
+  //       const formData = new FormData()
+  //       formData.append("entry.904886241", data)
+  //       toast.success("Gửi email thành công")
+  //     }
+  //   })
+  // })
 
   const [scrollYPosition, setScrollYPosition] = useState<number>(0)
 
@@ -398,6 +425,58 @@ export default function Home() {
           productList={productListSold}
           timeScroll={2000}
         />
+      </div>
+
+      <div className="mt-5 p-16 border-t border-t-gray-300">
+        <div className="container">
+          <h2 className="text-xl md:text-3xl text-center font-medium text-[#3a3a3a]">
+            {t("home:signUp")}
+          </h2>
+          <span className="mt-5 mx-auto text-sm md:text-base text-center w-full max-w-[700px] block">
+            {t("home:signUpDesc")}
+          </span>
+
+          <form
+            // onSubmit={onSubmit}
+            className="mt-5 w-[700px] mx-auto flex items-center justify-center"
+          >
+            <div className="w-[500px] flex items-center border-2 border-orange-500 pl-4 rounded-tl-full rounded-bl-full">
+              <div className="flex-shrink-0">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={1.5}
+                  stroke="currentColor"
+                  className="size-6"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75"
+                  />
+                </svg>
+              </div>
+              <input
+                type="text"
+                className="flex-grow p-4 outline-none"
+                placeholder="Your email address"
+                autoComplete="on"
+                // {...register("email")}
+              />
+            </div>
+            <button
+              type="submit"
+              className="bg-orange-500 border-2 border-orange-500 py-4 px-8 text-white rounded-tr-full rounded-br-full hover:bg-orange-300 hover:border-orange-300 duration-200"
+            >
+              Subscribe
+            </button>
+          </form>
+
+          <span className="w-[700px] block mx-auto text-red-500 text-sm mt-1 min-h-[1.25rem]">
+            {/* {errors.email?.message} */}
+          </span>
+        </div>
       </div>
     </div>
   )

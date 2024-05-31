@@ -141,8 +141,8 @@ export default function Login() {
                 <Button
                   className="mt-2"
                   type="submit"
-                  disabled={loginAccountMutation.isLoading}
-                  isLoading={loginAccountMutation.isLoading}
+                  disabled={loginAccountMutation.isPending}
+                  isPending={loginAccountMutation.isPending}
                 >
                   {t("header.login")}
                 </Button>

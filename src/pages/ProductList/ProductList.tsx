@@ -1,4 +1,4 @@
-import { useQuery } from "@tanstack/react-query"
+import { keepPreviousData, useQuery } from "@tanstack/react-query"
 import AsideFilter from "./components/AsideFilter"
 import Product from "./components/Product/Product"
 import SortProductList from "./components/SortProductList"
@@ -35,13 +35,17 @@ export default function ProductList() {
   // cơ chế hoạt động
 
   const getProductListQuery = useQuery({
-    queryKey: ["productList", queryConfig] , // định danh
+    queryKey: ["productList", queryConfig], // định danh
     queryFn: () => {
-      return productApi.getProductList(queryConfig as ProductListConfig)
+      const controller = new AbortController()
+      setTimeout(() => {
+        controller.abort() // hủy request khi chờ quá lâu // 10 giây sau cho nó hủy // làm tự động
+      }, 10000)
+      return productApi.getProductList(queryConfig as ProductListConfig, controller.signal)
     }, // api (url) nhận vào params và params truyền xuống - lấy ra và fetch lại data theo yêu cầu
-
-    placeholderData: true,
-    staleTime: 5 * 60 * 1000 // dưới 5 phút nó không gọi lại api
+    placeholderData: keepPreviousData,
+    staleTime: 5 * 60 * 1000, // dưới 5 phút nó không gọi lại api
+    retry: 0 // số lần retry lại khi hủy request (dùng abort signal)
   })
 
   const data = getProductListQuery.data?.data.data

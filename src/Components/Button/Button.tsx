@@ -1,7 +1,7 @@
 import { ButtonHTMLAttributes } from "react"
 
 interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
-  isLoading?: boolean
+  isPending?: boolean
   classInput?: string
 }
 // nó sẽ thừa kế lại các attribute của thẻ button
@@ -10,7 +10,7 @@ export default function Button({
   className,
   type,
   classInput = "flex items-center justify-center gap-x-2 w-full bg-primaryColor text-white py-4 px-2 uppercase hover:bg-primaryColor/80 duration-300",
-  isLoading,
+  isPending,
   disabled,
   children,
   ...rest
@@ -19,7 +19,7 @@ export default function Button({
   return (
     <div className={className}>
       <button type={type} className={newClassName} disabled={disabled} {...rest}>
-        {isLoading && (
+        {isPending && (
           <div role="status">
             <svg
               aria-hidden="true"

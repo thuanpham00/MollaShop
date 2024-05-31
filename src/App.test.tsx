@@ -2,7 +2,6 @@ import { it, describe, expect } from "vitest"
 import { screen, waitFor } from "@testing-library/react"
 import { path } from "./constants/path"
 import { renderWithRouter } from "./testUtils"
-// import { logScreen } from "./testUtils"
 
 //test app render và react router
 // expect.extend(matchers)
@@ -40,7 +39,6 @@ describe("App", () => {
       expect(document.querySelector("title")?.textContent).toBe("NotFound")
       screen.debug(document.body.parentNode as HTMLElement, 9999999)
     })
-    // await logScreen()
   })
 
   it("Render trang register", async () => {
@@ -48,6 +46,5 @@ describe("App", () => {
     await waitFor(() => {
       expect(screen.getByText(/Do you already have an account?/i)).toBeTruthy()
     })
-    // await logScreen()
   })
 })
