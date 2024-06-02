@@ -25,6 +25,10 @@ import productItem5 from "src/img/productItem5.png"
 import { useTranslation } from "react-i18next"
 import { Helmet } from "react-helmet-async"
 import SlideBanner from "./components/SideBanner"
+import { useForm } from "react-hook-form"
+import { toast } from "react-toastify"
+import { schema } from "src/utils/rules"
+import { yupResolver } from "@hookform/resolvers/yup"
 
 const buttonSlideList = {
   prevArrow: (
@@ -113,36 +117,37 @@ const productFeatured: ProductFeatured[] = [
   }
 ]
 
-// const schemaEmail = schema.pick(["email"])
+const schemaEmail = schema.pick(["email"])
 
-// type EmailType = string
+type EmailType = {
+  email: string
+}
 
 export default function Home() {
   const { t } = useTranslation(["header", "home"])
   const { darkMode } = useContext(AppContext)
-  // const {
-  //   handleSubmit,
-  //   register,
-  //   formState: { errors }
-  // } = useForm<EmailType>({
-  //   resolver: yupResolver(schemaEmail)
-  // })
+  const {
+    handleSubmit,
+    register,
+    formState: { errors },
+    reset
+  } = useForm<EmailType>({ resolver: yupResolver(schemaEmail) })
 
-  // const signUpMutation = useMutation({
-  //   mutationFn: (data: EmailType) => {
-  //     return signUpLetter.signUp(data)
-  //   }
-  // })
-
-  // const onSubmit = handleSubmit(async (data) => {
-  //   await signUpMutation.mutateAsync(data, {
-  //     onSuccess: () => {
-  //       const formData = new FormData()
-  //       formData.append("entry.904886241", data)
-  //       toast.success("Gửi email thành công")
-  //     }
-  //   })
-  // })
+  const onSubmit = handleSubmit(async (data) => {
+    const formData = new FormData()
+    formData.append("entry.2124961965", data.email) // Thay đổi ID này thành Entry ID của Google Form
+    fetch(
+      "https://docs.google.com/forms/d/e/1FAIpQLSc6rZGuuM06mrLNHDSCNY9NvCv_emDvMvHh1m2QKCZ9urQuwQ/formResponse",
+      {
+        method: "POST",
+        mode: "no-cors",
+        body: formData
+      }
+    ).then(() => {
+      toast.success("gửi email thành công")
+      reset()
+    })
+  })
 
   const [scrollYPosition, setScrollYPosition] = useState<number>(0)
 
@@ -437,7 +442,7 @@ export default function Home() {
           </span>
 
           <form
-            // onSubmit={onSubmit}
+            onSubmit={onSubmit}
             className="mt-5 w-[700px] mx-auto flex items-center justify-center"
           >
             <div className="w-[500px] flex items-center border-2 border-orange-500 pl-4 rounded-tl-full rounded-bl-full">
@@ -462,7 +467,7 @@ export default function Home() {
                 className="flex-grow p-4 outline-none"
                 placeholder="Your email address"
                 autoComplete="on"
-                // {...register("email")}
+                {...register("email")}
               />
             </div>
             <button
@@ -474,7 +479,7 @@ export default function Home() {
           </form>
 
           <span className="w-[700px] block mx-auto text-red-500 text-sm mt-1 min-h-[1.25rem]">
-            {/* {errors.email?.message} */}
+            {errors.email?.message}
           </span>
         </div>
       </div>

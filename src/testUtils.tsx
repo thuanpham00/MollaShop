@@ -12,7 +12,7 @@ export const delay = (time: number) => {
       resolve(true)
     }, time)
   })
-}
+} // hàm này dùng để xử lý đợi promise nên cần tạo ra promise
 
 const createWrapper = () => {
   const queryClient = new QueryClient({
@@ -35,6 +35,7 @@ const Provider = createWrapper()
 
 export const renderWithRouter = ({ route = "/" } = {}) => {
   window.history.pushState({}, "Test page", route)
+  // Thiết lập route hiện tại của window thành route đã truyền vào (hoặc / nếu không truyền gì).
   const defaultValueAppContext = getInitialAppContext()
   return {
     user: userEvent.setup(),
@@ -44,7 +45,11 @@ export const renderWithRouter = ({ route = "/" } = {}) => {
           <App />
         </AppProvider>
       </Provider>,
-      { wrapper: BrowserRouter }
+      { wrapper: BrowserRouter } // giúp chuyển tới route truyền vào và render ra
     )
   }
 }
+
+/**Cấu hình sẵn một router với route tùy chọn.
+   Cung cấp context cho các component được render.
+   Hỗ trợ việc lấy và cập nhật dữ liệu với React Query mà không cần phải thử lại khi có lỗi. */

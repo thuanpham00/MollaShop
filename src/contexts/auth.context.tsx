@@ -64,6 +64,9 @@ export const AppContext = createContext<TypeInitialState>(initialState)
 
 // global state - Context Api - state toàn cục : redux cũng tương tự
 export const AppProvider = ({ children, defaultValue = initialState }: Props) => {
+  // truyền thêm props defaultValue để customize cái unit test kiểm thử
+  // gán giá trị của defaultValue là initialState (khởi tạo), thay vào đó
+  // như 1 initialState giá trị khởi tạo cho app
   const { i18n } = useTranslation("header")
   const [darkMode, setDarkMode] = useState<boolean>(defaultValue.darkMode)
   const [language, setLanguage] = useState<string>(defaultValue.language)

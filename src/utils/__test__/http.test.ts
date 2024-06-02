@@ -20,24 +20,24 @@ describe("http axios", () => {
     Http = new http().instance
   })
 
-  // it("goi api", async () => {
-  //   // ko nên đụng đến thư mục apis
-  //   // vì chúng ta test riêng file http chỉ "nên" dùng http thoi
-  //   // vì lỡ như thư mục api có thay đổi gì đó
-  //   // thì cũng không ảnh hưởng gì đến file test này
-  //   const res = await Http.get("products")
-  //   expect(res.status).toBe(HttpStatusCode.Ok)
-  // })
+  it("goi api", async () => {
+    // ko nên đụng đến thư mục apis
+    // vì chúng ta test riêng file http chỉ "nên" dùng http thoi
+    // vì lỡ như thư mục api có thay đổi gì đó
+    // thì cũng không ảnh hưởng gì đến file test này
+    const res = await Http.get("products")
+    expect(res.status).toBe(HttpStatusCode.Ok)
+  })
 
-  // it("auth request", async () => {
-  //   // nên có 1 account test và 1 server test
-  //   await Http.post("login", {
-  //     email: "admin_@gmail.com",
-  //     password: "thuan123456"
-  //   })
-  //   const res = await Http.get("me")
-  //   expect(res.status).toBe(HttpStatusCode.Ok)
-  // })
+  it("auth request", async () => {
+    // nên có 1 account test và 1 server test
+    await Http.post("login", {
+      email: "admin_@gmail.com",
+      password: "thuan123456"
+    })
+    const res = await Http.get("me")
+    expect(res.status).toBe(HttpStatusCode.Ok)
+  })
 
   it("refresh token", async () => {
     // muốn refresh_token thì cần access_token hết hạn && thời gian của refresh_token còn (expire)
