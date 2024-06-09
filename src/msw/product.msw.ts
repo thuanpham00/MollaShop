@@ -241,11 +241,11 @@ const productDetailRes = {
   }
 }
 
-const productsRequest = rest.get(`${config.baseUrl}products`, (req, res, ctx) => {
+const productsRequest = rest.get(`${config.baseUrl}products`, (_, res, ctx) => {
   return res(ctx.status(HttpStatusCode.Ok), ctx.json(productsRes))
 })
 
-const productDetailRequest = rest.get(`${config.baseUrl}products/:id`, (req, res, ctx) => {
+const productDetailRequest = rest.get(`${config.baseUrl}products/:id`, (_, res, ctx) => {
   return res(ctx.status(HttpStatusCode.Ok), ctx.json(productDetailRes))
 })
 
