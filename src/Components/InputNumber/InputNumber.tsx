@@ -37,7 +37,7 @@ const InputNumber = forwardRef<HTMLInputElement, InputNumberProp>(function Input
         className={classNameInput}
         {...rest}
         onChange={handleChange}
-        value={value || localValue}
+        value={value === undefined ? localValue : value}
         ref={ref}
       />
       <div className={classNameError}>{messageInputError}</div>

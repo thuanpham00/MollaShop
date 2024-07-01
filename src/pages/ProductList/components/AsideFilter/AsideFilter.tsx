@@ -34,7 +34,8 @@ export default function AsideFilter({ categories, queryConfig, className }: Prop
     control,
     formState: { errors },
     handleSubmit,
-    trigger
+    trigger,
+    reset
   } = useForm<FormData>({
     resolver: yupResolver(schemaPick),
     defaultValues: {
@@ -57,6 +58,7 @@ export default function AsideFilter({ categories, queryConfig, className }: Prop
   })
 
   const handleDeleteConfig = () => {
+    reset()
     navigate({
       pathname: path.productList,
       search: createSearchParams(
@@ -169,7 +171,7 @@ export default function AsideFilter({ categories, queryConfig, className }: Prop
                     classNameInput="p-1 text-sm w-full outline-none border border-gray-300 focus:border-gray-500 rounded-sm focus:shadow-sm"
                     className="grow"
                     onChange={(event) => {
-                      field.onChange(event)
+                      field.onChange(event) // quản lý dữ liệu của trường dữ liệu
                       trigger("price_max")
                     }}
                     value={field.value}
