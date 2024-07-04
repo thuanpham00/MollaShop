@@ -1,12 +1,9 @@
-import { useContext } from "react"
+import { memo, useContext } from "react"
 import UserSideNav from "../../Components/UserSideNav"
 import { AppContext } from "src/contexts/auth.context"
+import { Outlet } from "react-router-dom"
 
-interface Props {
-  children: React.ReactNode
-}
-
-export default function UserLayout({ children }: Props) {
+function UserLayoutInner() {
   const { darkMode } = useContext(AppContext)
   return (
     <div
@@ -20,10 +17,13 @@ export default function UserLayout({ children }: Props) {
           <div
             className={`md:col-span-9 lg:col-span-10 rounded-sm ${darkMode ? "bg-[#252323]" : "bg-[#fff]"} duration-200 shadow p-6`}
           >
-            {children}
+            <Outlet />
           </div>
         </div>
       </div>
     </div>
   )
 }
+
+const UserLayout = memo(UserLayoutInner)
+export default UserLayout
