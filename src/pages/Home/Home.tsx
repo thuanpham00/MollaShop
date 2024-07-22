@@ -443,9 +443,9 @@ export default function Home() {
 
           <form
             onSubmit={onSubmit}
-            className="mt-5 w-[700px] mx-auto flex items-center justify-center"
+            className="mt-5 w-[300px] md:w-[600px] mx-auto flex items-center justify-center"
           >
-            <div className="w-[500px] flex items-center border-2 border-orange-500 pl-4 rounded-tl-full rounded-bl-full">
+            <div className="w-[250px] md:w-[500px] flex items-center justify-center border-2 border-orange-500 pl-4 rounded-tl-full rounded-bl-full">
               <div className="flex-shrink-0">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -464,7 +464,7 @@ export default function Home() {
               </div>
               <input
                 type="text"
-                className="flex-grow p-4 outline-none"
+                className="flex-grow w-[180px] p-4 outline-none"
                 placeholder="Your email address"
                 autoComplete="on"
                 {...register("email")}
@@ -472,7 +472,7 @@ export default function Home() {
             </div>
             <button
               type="submit"
-              className="bg-orange-500 border-2 border-orange-500 py-4 px-8 text-white rounded-tr-full rounded-br-full hover:bg-orange-300 hover:border-orange-300 duration-200"
+              className="bg-orange-500 border-2 border-orange-500 py-4 px-4 md:px-8 text-white rounded-tr-full rounded-br-full hover:bg-orange-300 hover:border-orange-300 duration-200"
             >
               Subscribe
             </button>

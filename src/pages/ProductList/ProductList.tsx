@@ -49,7 +49,7 @@ export default function ProductList() {
   })
 
   const data = getProductListQuery.data?.data.data
-
+  console.log(data)
   const getCategoriesQuery = useQuery({
     queryKey: ["categories"],
     queryFn: () => {
