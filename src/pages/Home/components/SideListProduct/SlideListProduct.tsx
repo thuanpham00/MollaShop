@@ -127,17 +127,3 @@ export default function SlideListProduct({
     </div>
   )
 }
-
-/**
- *  <div className={classNameSlideAuto}>
-          <TransitionGroup component={null}>
-            {currentSlideIndex.map((item) => (
-              <CSSTransition key={item} timeout={500} classNames="slide">
-                <div className="w-full h-[150px] md:h-full">
-                  <img src={item} alt="Ảnh" className="w-full h-full object-cover" />
-                </div>
-              </CSSTransition>
-            ))}
-          </TransitionGroup>
-        </div>
- */

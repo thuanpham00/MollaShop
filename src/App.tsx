@@ -18,7 +18,7 @@ import ErrorBoundary from "./Components/ErrBoundary"
 function App() {
   const elementRoutes = useRouterElements()
   const { reset } = useContext(AppContext)
-  console.log("app")
+  // console.log("app")
   useEffect(() => {
     LocalStorageEventTarget.addEventListener("ClearLS", reset)
 

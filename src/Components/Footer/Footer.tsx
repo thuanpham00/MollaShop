@@ -10,7 +10,7 @@ export default function Footer() {
   return (
     <footer>
       <div
-        className={`${darkMode ? "bg-gradient-to-r from-[#232526] to-[#414345] border-t border-t-gray-300" : "bg-[#fff]"} duration-200`}
+        className={`${darkMode ? "bg-gradient-to-r from-[#232526] to-[#414345]" : "bg-[#fff]"} duration-200 border-t border-t-gray-300`}
       >
         <div className="container">
           <div className="pt-10 pb-8 lg:flex lg:items-start lg:justify-between gap-4">

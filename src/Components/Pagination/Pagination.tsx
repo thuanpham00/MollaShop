@@ -88,9 +88,9 @@ export default function Pagination({ queryConfig, page_size, scroll }: Props) {
               }).toString()
             }}
             className={classNames(
-              "text-xs md:test-base py-2 px-3 flex items-center justify-center border border-primaryColor hover:bg-red-300",
+              "text-xs md:test-base py-2 px-3 flex items-center justify-center border border-primaryColor hover:bg-gray-300",
               {
-                "bg-primaryColor": isActive,
+                "bg-primaryColor text-white": isActive,
                 "bg-transparent": !isActive
               }
             )}

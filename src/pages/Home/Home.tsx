@@ -126,12 +126,9 @@ type EmailType = {
 export default function Home() {
   const { t } = useTranslation(["header", "home"])
   const { darkMode } = useContext(AppContext)
-  const {
-    handleSubmit,
-    register,
-    formState: { errors },
-    reset
-  } = useForm<EmailType>({ resolver: yupResolver(schemaEmail) })
+  const { handleSubmit, register, reset } = useForm<EmailType>({
+    resolver: yupResolver(schemaEmail)
+  })
 
   const onSubmit = handleSubmit(async (data) => {
     const formData = new FormData()
@@ -441,11 +438,8 @@ export default function Home() {
             {t("home:signUpDesc")}
           </span>
 
-          <form
-            onSubmit={onSubmit}
-            className="mt-5 w-[300px] md:w-[600px] mx-auto flex items-center justify-center"
-          >
-            <div className="w-[250px] md:w-[500px] flex items-center justify-center border-2 border-orange-500 pl-4 rounded-tl-full rounded-bl-full">
+          <form onSubmit={onSubmit} className="mt-5 mx-auto flex items-center justify-center">
+            <div className="flex items-center justify-center border-2 border-orange-500 pl-4 rounded-tl-full rounded-bl-full">
               <div className="flex-shrink-0">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -464,7 +458,7 @@ export default function Home() {
               </div>
               <input
                 type="text"
-                className="flex-grow w-[180px] p-4 outline-none"
+                className="flex-grow w-[180px] p-4 outline-none bg-transparent"
                 placeholder="Your email address"
                 autoComplete="on"
                 {...register("email")}
@@ -477,10 +471,6 @@ export default function Home() {
               Subscribe
             </button>
           </form>
-
-          <span className="w-[700px] block mx-auto text-red-500 text-sm mt-1 min-h-[1.25rem]">
-            {errors.email?.message}
-          </span>
         </div>
       </div>
     </div>
