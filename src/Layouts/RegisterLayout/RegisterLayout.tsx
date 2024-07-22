@@ -8,7 +8,6 @@ interface Props {
 }
 
 function RegisterLayoutInner({ children }: Props) {
-  console.log("hihi")
   return (
     <div>
       <RegisterHeader />

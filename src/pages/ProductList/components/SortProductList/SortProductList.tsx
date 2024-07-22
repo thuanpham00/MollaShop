@@ -25,7 +25,7 @@ import {
   SheetHeader,
   SheetTrigger
   // eslint-disable-next-line import/no-unresolved
-} from "@/ui/sheet"
+} from "src/ui/sheet"
 
 export default function SortProductList({ queryConfig, page_size }: Props) {
   const { t } = useTranslation("productList") // translation

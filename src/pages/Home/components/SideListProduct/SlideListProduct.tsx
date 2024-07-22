@@ -79,6 +79,7 @@ export default function SlideListProduct({
 
       <div className="mt-4 flex relative">
         <button
+          aria-label="buttonLeft"
           onClick={handlePrevImg}
           className="ml-3 absolute top-1/2 left-0 flex-shrink-0 flex items-center justify-center hover:bg-gray-100 duration-200 rounded-full w-10 h-10 hover:text-black/80"
         >
@@ -107,6 +108,7 @@ export default function SlideListProduct({
         </div>
 
         <button
+          aria-label="buttonRight"
           onClick={handleNextImg}
           className="mr-3 absolute top-1/2 right-0 flex-shrink-0 flex items-center justify-center hover:bg-gray-400 duration-200 rounded-full w-10 h-10 hover:text-black/80"
         >

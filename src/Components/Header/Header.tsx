@@ -18,7 +18,7 @@ import {
   SheetHeader,
   SheetTrigger
   // eslint-disable-next-line import/no-unresolved
-} from "@/ui/sheet"
+} from "src/ui/sheet"
 
 import {
   Dialog,
@@ -26,7 +26,7 @@ import {
   DialogHeader,
   DialogTrigger
   // eslint-disable-next-line import/no-unresolved
-} from "@/ui/dialog"
+} from "src/ui/dialog"
 
 const MAX_PURCHASES = 5
 
@@ -332,20 +332,22 @@ export default function Header() {
               <div className="col-span-2 flex items-center gap-2">
                 <Sheet>
                   <SheetTrigger>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      strokeWidth={1.5}
-                      stroke={`${darkMode ? "#f1f1f1" : "#1f1f1f"}`}
-                      className="h-12 w-12"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
-                      />
-                    </svg>
+                    <button aria-label="threeLine">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        strokeWidth={1.5}
+                        stroke={`${darkMode ? "#f1f1f1" : "#1f1f1f"}`}
+                        className="h-12 w-12"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+                        />
+                      </svg>
+                    </button>
                   </SheetTrigger>
                   <SheetContent>
                     <SheetHeader>
@@ -372,20 +374,22 @@ export default function Header() {
 
                 <Dialog>
                   <DialogTrigger>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      strokeWidth={1.5}
-                      stroke={`${darkMode ? "#f1f1f1" : "#1f1f1f"}`}
-                      className="w-4 h-4 md:w-6 md:h-6"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"
-                      />
-                    </svg>
+                    <button aria-label="searchIcon">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        strokeWidth={1.5}
+                        stroke={`${darkMode ? "#f1f1f1" : "#1f1f1f"}`}
+                        className="w-4 h-4 md:w-6 md:h-6"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"
+                        />
+                      </svg>
+                    </button>
                   </DialogTrigger>
                   <DialogContent>
                     <DialogHeader>

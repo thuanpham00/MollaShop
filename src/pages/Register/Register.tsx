@@ -91,7 +91,7 @@ export default function Register() {
 
   return (
     <div
-      className={`${darkMode ? "bg-gradient-to-r from-[#232526] to-[#414345]" : "bg-slate-200"}`}
+      className={`${darkMode ? "bg-gradient-to-r from-[#232526] to-[#414345]" : "bg-slate-200"} `}
     >
       <Helmet>
         <title>Đăng ký</title>

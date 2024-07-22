@@ -39,7 +39,7 @@ export default function ProductItem2({
         Đã bán {item.sold}
       </div>
       <div className="mr-auto flex items-center md:flex-col lg:flex-row">
-        <div className="text-sm md:text-base lg:text-lg font-semibold text-red-500">
+        <div className="text-sm md:text-base lg:text-lg font-normal text-red-600">
           {formatCurrency(item.price)}đ
         </div>
         <div

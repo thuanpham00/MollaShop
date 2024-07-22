@@ -32,7 +32,7 @@ import { yupResolver } from "@hookform/resolvers/yup"
 
 const buttonSlideList = {
   prevArrow: (
-    <button className="ml-3 flex items-center justify-center">
+    <button aria-label="buttonLeft" className="ml-3 flex items-center justify-center">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
@@ -46,7 +46,7 @@ const buttonSlideList = {
     </button>
   ),
   nextArrow: (
-    <button className="mr-3 flex items-center justify-center">
+    <button aria-label="buttonRight" className="mr-3 flex items-center justify-center">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="none"

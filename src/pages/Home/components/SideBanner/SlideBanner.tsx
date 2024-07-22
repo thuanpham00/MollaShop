@@ -77,6 +77,7 @@ export default function SlideBanner({
 
       <div className="mt-4 flex relative">
         <button
+          aria-label="arrowLeft"
           onClick={handlePrevImg}
           className="md:ml-3 absolute top-1/2 left-0 flex-shrink-0 flex items-center justify-center hover:bg-gray-100 duration-200 rounded-full w-10 h-10 hover:text-black/80"
         >
@@ -109,6 +110,7 @@ export default function SlideBanner({
         </div>
 
         <button
+          aria-label="arrowRight"
           onClick={handleNextImg}
           className="md:mr-3 absolute top-1/2 right-0 flex-shrink-0 flex items-center justify-center hover:bg-gray-400 duration-200 rounded-full w-10 h-10 hover:text-black/80"
         >
