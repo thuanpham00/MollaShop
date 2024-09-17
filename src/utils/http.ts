@@ -75,6 +75,7 @@ export class http {
         return response
       },
       (error: AxiosError) => {
+        // có 2 cách tiếp cận đúng ko, cách 1 là xử lý chung các api , cách 2 là xử lý riêng cho từng api
         // chỉ toast lỗi liên quan đến 422 và 401
         // lỗi 404 khi lỗi đường dẫn
         if (isAxiosError(error) && error.response?.status === 404) {
